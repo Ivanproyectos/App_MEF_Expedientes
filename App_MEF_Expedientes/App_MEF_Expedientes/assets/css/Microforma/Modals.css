@@ -1,0 +1,34 @@
+﻿
+.modal-dialogValidar {
+    width: 1308px;
+    margin: 30px auto;
+}
+
+.modal-dialogDocObs {
+    width: 650px;
+    margin: 30px auto;
+}
+
+.modal-dialogMicroforma {
+    width: 650px;
+    margin: 30px auto;
+}
+
+.modal-dialogDocProceso {
+    width: 850px;
+    margin: 30px auto;
+}
+
+@media (min-width: 0px) and (max-width: 916px) {
+    .modal-dialogDocObs {
+        width: 90%;
+        margin: 30px auto;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 1240px) {
+    .modal-dialogValidar {
+        width: 90%;
+        margin: 30px auto;
+    }
+}

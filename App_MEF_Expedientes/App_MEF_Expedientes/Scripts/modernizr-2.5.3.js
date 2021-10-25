@@ -68,7 +68,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     domPrefixes = omPrefixes.toLowerCase().split(' '),
 
-    ns = {'svg': 'http://www.w3.org/2000/svg'},
+    ns = {'svg': 'https://www.w3.org/2000/svg'},
 
     tests = {},
     inputs = {},
@@ -1075,17 +1075,18 @@ window.Modernizr = (function( window, document, undefined ) {
           return html5.shivMethods && node.canHaveChildren && !reSkip.test(nodeName) ? frag.appendChild(node) : node;
         };
     
-        ownerDocument.createDocumentFragment = Function('h,f', 'return function(){' +
+        ownerDocument.createDocumentFragment =// Function('h,f',
+            'return function(h,f){' +
           'var n=f.cloneNode(),c=n.createElement;' +
           'h.shivMethods&&(' +
             // unroll the `createElement` calls
-            getElements().join().replace(/\w+/g, function(nodeName) {
-              cache[nodeName] = docCreateElement(nodeName);
-              frag.createElement(nodeName);
-              return 'c("' + nodeName + '")';
+            getElements().join().replace(/\w+/g, function (nodeName) {
+                cache[nodeName] = docCreateElement(nodeName);
+                frag.createElement(nodeName);
+                return 'c("' + nodeName + '")';
             }) +
-          ');return n}'
-        )(html5, frag);
+          ');return n}';
+        //)(html5, frag);
       }
     
       /*--------------------------------------------------------------------------*/

@@ -232,7 +232,7 @@ ko.utils = new (function () {
             for (var i = 0; i < scopeLevels; i++) {
                 functionBody = "with(sc[" + i + "]) { " + functionBody + " } ";
             }
-            return new Function("sc", functionBody);
+            return functionBody;//new Function("sc", functionBody);
         },
 
         domNodeIsContainedBy: function (node, containedByNode) {
@@ -400,7 +400,7 @@ ko.utils = new (function () {
                 if (jsonString) {
                     if (window.JSON && window.JSON.parse) // Use native parsing where available
                         return window.JSON.parse(jsonString);
-                    return (new Function("return " + jsonString))(); // Fallback on less safe parsing for older browsers
+                    return jsonString; //(new Function("return " + jsonString))(); // Fallback on less safe parsing for older browsers
                 }
             }
             return null;
@@ -713,7 +713,7 @@ ko.memoization = (function () {
     var memos = {};
 
     function randomMax8HexChars() {
-        return (((1 + Math.random()) * 0x100000000) | 0).toString(16).substring(1);
+        return (((1 + MiRandom()) * 0x100000000) | 0).toString(16).substring(1);
     }
     function generateRandomId() {
         return randomMax8HexChars() + randomMax8HexChars();

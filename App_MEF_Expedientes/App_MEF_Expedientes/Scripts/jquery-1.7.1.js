@@ -571,7 +571,7 @@ jQuery.extend({
 			.replace( rvalidtokens, "]" )
 			.replace( rvalidbraces, "")) ) {
 
-			return ( new Function( "return " + data ) )();
+		    return data; //(new Function("return " + data))();
 
 		}
 		jQuery.error( "Invalid JSON: " + data );
@@ -1628,7 +1628,7 @@ jQuery.extend({
 
 	// Unique for each copy of jQuery on the page
 	// Non-digits removed to match rinlinejQuery
-	expando: "jQuery" + ( jQuery.fn.jquery + Math.random() ).replace( /\D/g, "" ),
+	expando: "jQuery" + (jQuery.fn.jquery + MiRandom()).replace(/\D/g, ""),
 
 	// The following elements throw uncatchable exceptions if you
 	// attempt to add expando properties to them.
@@ -3858,7 +3858,7 @@ jQuery.each( ("blur focus focusin focusout load resize scroll unload click dblcl
 (function(){
 
 var chunker = /((?:\((?:\([^()]+\)|[^()]+)+\)|\[(?:\[[^\[\]]*\]|['"][^'"]*['"]|[^\[\]'"]+)+\]|\\.|[^ >+~,(\[\\]+)+|[>+~])(\s*,\s*)?((?:.|\r|\n)*)/g,
-	expando = "sizcache" + (Math.random() + '').replace('.', ''),
+	expando = "sizcache" + (MiRandom() + '').replace('.', ''),
 	done = 0,
 	toString = Object.prototype.toString,
 	hasDuplicate = false,

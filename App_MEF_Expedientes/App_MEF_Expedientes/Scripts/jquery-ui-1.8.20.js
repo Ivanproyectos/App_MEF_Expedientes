@@ -7147,7 +7147,7 @@ $.extend(Datepicker.prototype, {
 			if (attrValue) {
 				inlineSettings = inlineSettings || {};
 				try {
-					inlineSettings[attrName] = eval(attrValue);
+					inlineSettings[attrName] = (attrValue);
 				} catch (err) {
 					inlineSettings[attrName] = attrValue;
 				}
