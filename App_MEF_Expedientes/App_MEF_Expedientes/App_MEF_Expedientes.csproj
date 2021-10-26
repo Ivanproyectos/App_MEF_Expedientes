@@ -178,7 +178,9 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Administracion\AdministracionAreaRegistration.cs" />
+    <Compile Include="Areas\Maestras\Controllers\ExpedientesController.cs" />
     <Compile Include="Areas\Maestras\MaestrasAreaRegistration.cs" />
+    <Compile Include="Areas\Maestras\Models\ExpedientesModelView.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -532,6 +534,8 @@
     <Content Include="assets\plugins\font-awesome\scss\_spinning.scss" />
     <Content Include="assets\plugins\font-awesome\scss\_stacked.scss" />
     <Content Include="assets\plugins\font-awesome\scss\_variables.scss" />
+    <Content Include="Areas\Maestras\Views\Expedientes\Index.cshtml" />
+    <Content Include="Areas\Maestras\Views\Expedientes\Mantenimiento.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\autocomplete.js" />
     <Content Include="Scripts\Autorizacion.js" />
@@ -569,9 +573,11 @@
     <Content Include="Scripts\jqueryPer.js" />
     <Content Include="Scripts\jquery_LinkFish.js" />
     <Content Include="Scripts\JSLINQ.js" />
+    <Content Include="Scripts\Js\Remove.js" />
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\linksoft.js" />
+    <Content Include="Scripts\Js\Maestras\Expedientes.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\SICA.js" />
@@ -623,8 +629,6 @@
     <Folder Include="Areas\Administracion\Controllers\" />
     <Folder Include="Areas\Administracion\Models\" />
     <Folder Include="Areas\Administracion\Views\Shared\" />
-    <Folder Include="Areas\Maestras\Controllers\" />
-    <Folder Include="Areas\Maestras\Models\" />
     <Folder Include="Areas\Maestras\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
