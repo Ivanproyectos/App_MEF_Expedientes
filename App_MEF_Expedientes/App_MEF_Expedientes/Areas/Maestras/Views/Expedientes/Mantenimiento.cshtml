@@ -54,12 +54,14 @@
                 }
             </div>
             <div class="modal-body">
+        
                 <div class="row" style="padding: 0px 15px 0px 15px;">
-                    <div class="col-sm-12 inline-container-Group" id="cont_formRegistro">
-                        <p>ADICIONAR SOLICITUD</p>
-                        @using (Html.BeginForm("Proceso", "Proyectos", new { @area = "Proyectos" }, FormMethod.Post, new { @id = "frmMantenimientoProyectos", @class = "form-horizontal" }))
-                        {
-                            <div class="row">
+                    @using (Html.BeginForm("Proceso", "Proyectos", new { @area = "Proyectos" }, FormMethod.Post, new { @id = "frmMantenimientoProyectos", @class = "form-horizontal" }))
+                    {
+                        <div class="col-sm-12 inline-container-Group" style="margin-bottom:5px;padding:0px !important">
+                            <div style="font-weight:bold;background:silver; color:white;padding:5px; ">ADICIONAR SOLICITUD</div>
+
+                            <div class="row" style="padding:10px">
                                 <div class="form-group col-sm-4">
                                     @Html.LabelFor(model => model.COD_EXPEDIENTE, new { @class = "" })
                                     @Html.TextBoxFor(model => model.COD_EXPEDIENTE, new { @class = "form-control", @maxlength = "100", })
@@ -70,84 +72,241 @@
                                     @Html.TextBoxFor(model => model.FECHA_RECEPCION, new { @class = "form-control", @maxlength = "100", })
                                     @Html.ValidationMessageFor(model => model.FECHA_RECEPCION, string.Empty, new { @class = "cssMessageError" })
                                 </div>
-        
+
                                 <div class="form-group col-sm-4">
                                     @Html.LabelFor(model => model.FECHA_PRESCRIPCION, new { @class = "" })
                                     @Html.TextBoxFor(model => model.FECHA_PRESCRIPCION, new { @class = "form-control", @maxlength = "100" })
                                     @Html.ValidationMessageFor(model => model.FECHA_PRESCRIPCION, string.Empty, new { @class = "cssMessageError" })
                                 </div>
-         
+
                                 <div class="form-group  col-sm-4">
                                     @Html.LabelFor(model => model.FECHA_HECHO, new { @class = "" })
                                     @Html.TextBoxFor(model => model.FECHA_HECHO, new { @class = "form-control", @maxlength = "100" })
                                     @Html.ValidationMessageFor(model => model.FECHA_HECHO, string.Empty, new { @class = "cssMessageError" })
                                 </div>
-                                @*<div class="form-group col-sm-6">
-                                    @Html.LabelFor(model => model.FECHA_VENCIMIENTO, new { @class = "" })
-                                    @Html.TextBoxFor(model => model.FECHA_VENCIMIENTO, new { @class = "form-control", @maxlength = "100" })
-                                    @Html.ValidationMessageFor(model => model.FECHA_VENCIMIENTO, string.Empty, new { @class = "cssMessageError" })
-                                </div>*@
-                            </div>
-
-                            @*<div class="row">
-                                <div class="form-group col-sm-12">
-                                    @Html.LabelFor(model => model.CANTIDAD_DIAS, new { @class = "" })
-                                    @Html.TextBoxFor(model => model.CANTIDAD_DIAS, new { @class = "form-control", @maxlength = "150" })
-                                    @Html.ValidationMessageFor(model => model.CANTIDAD_DIAS, string.Empty, new { @class = "cssMessageError" })
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-sm-12">
-                                    @Html.LabelFor(model => model.ID_EMPRESA_CONTRATA, new { @class = "" })
-                                    @Html.DropDownListFor(x => x.ID_EMPRESA_CONTRATA, Model.Lista_Empresa_Interno, new { @class = "form-control", @maxlength = "50", @style = "width:100%" })
-                                    @Html.ValidationMessageFor(model => model.ID_EMPRESA_CONTRATA, string.Empty, new { @class = "cssMessageError" })
+                                <div class="form-group col-sm-4">
+                                    @Html.LabelFor(model => model.HOJA_RUTA, new { @class = "" })
+                                    @Html.TextBoxFor(model => model.HOJA_RUTA, new { @class = "form-control", @maxlength = "100" })
+                                    @Html.ValidationMessageFor(model => model.HOJA_RUTA, string.Empty, new { @class = "cssMessageError" })
                                 </div>
 
-                                <div class="form-group  col-sm-12">
-                                    @Html.LabelFor(model => model.ID_EMPRESA, new { @class = "" })
-                                    @Html.DropDownListFor(x => x.ID_EMPRESA, Model.Lista_Empresa_Externa, new { @class = "form-control", @maxlength = "50", @style = "width:100%" })
-                                    @Html.ValidationMessageFor(model => model.ID_EMPRESA, string.Empty, new { @class = "cssMessageError" })
+                                <div class="form-group col-sm-4">
+                                    @Html.LabelFor(model => model.SEARCH_REMITENTE, new { @class = "" })
+                                    <div class="col-sm-12 input-group">
+                                        @Html.TextBoxFor(model => model.SEARCH_REMITENTE, new { @class = "form-control", @maxlength = "100", @placeholder = "Ejm: Wilfredo Delgado" })
+                                        <span class="input-group-addon" style="cursor: pointer; font-weight: bold;" title="Buscar Remitente" onclick=""><i class=" clip-search-3" style="font-size: 13px;"></i></span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.SEARCH_REMITENTE, string.Empty, new { @class = "cssMessageError" })
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="row">
-                                <div class="form-group col-sm-6 ">
-                                    @Html.LabelFor(model => model.ID_MONEDA, new { @class = "" })
-                                    @Html.DropDownListFor(x => x.ID_MONEDA, Model.Lista_Moneda, new { @class = "form-control", @maxlength = "50", @style = "width:100%" })
-                                    @Html.ValidationMessageFor(model => model.ID_MONEDA, string.Empty, new { @class = "cssMessageError" })
+
+                        <div class="col-sm-12 inline-container-Group" style="margin-bottom:5px;padding:0px !important">
+                            <div style="font-weight:bold;background:silver; color:white;padding:5px;"> DATOS DEL TRABAJADOR</div>
+                            <div class="row" style="padding:10px">
+                                <div class="form-group col-sm-4">
+                                    @Html.LabelFor(model => model.SEARCH_PERSONAL, new { @class = "" })
+                                    <div class="col-sm-12 input-group">
+                                        @Html.TextBoxFor(model => model.SEARCH_PERSONAL, new { @class = "form-control", @maxlength = "100", @placeholder = "Ejm: Perez Galvez Rin..." })
+                                        <span class="input-group-addon" style="cursor: pointer; font-weight: bold;" title="Buscar Remitente" onclick=""><i class=" clip-search-3" style="font-size: 13px;"></i></span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.SEARCH_PERSONAL, string.Empty, new { @class = "cssMessageError" })
+                                </div>
+                                <div class="form-group col-sm-4 ">
+                                    @Html.LabelFor(model => model.REGIMEN_LABORAL, new { @class = "" })
+                                    @Html.TextBoxFor(model => model.REGIMEN_LABORAL, new { @class = "form-control", @maxlength = "100", @readOnly = "true" })
                                 </div>
 
-                                <div class="form-group  col-sm-6">
-                                    @Html.LabelFor(model => model.MONTO, new { @class = "" })
-                                    @Html.TextBoxFor(model => model.MONTO, new { @class = "form-control", @maxlength = "100" })
-                                    @Html.ValidationMessageFor(model => model.MONTO, string.Empty, new { @class = "cssMessageError" })
+                                <div class="form-group col-sm-4">
+                                    @Html.LabelFor(model => model.CARGO, new { @class = "" })
+                                    @Html.TextBoxFor(model => model.CARGO, new { @class = "form-control", @maxlength = "100", @readOnly = "true" })
+                                    @Html.ValidationMessageFor(model => model.CARGO, string.Empty, new { @class = "cssMessageError" })
+                                </div>
+
+                                <div class="form-group  col-sm-4">
+                                    @Html.LabelFor(model => model.OFICINA, new { @class = "" })
+                                    @Html.TextBoxFor(model => model.OFICINA, new { @class = "form-control", @maxlength = "100", @readOnly = "true" })
+                                    @Html.ValidationMessageFor(model => model.OFICINA, string.Empty, new { @class = "cssMessageError" })
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="form-group col-sm-6 ">
-                                    @Html.LabelFor(model => model.ID_PERSONA_RESPONSABLE, new { @class = "" })
-                                    @Html.DropDownListFor(x => x.ID_PERSONA_RESPONSABLE, Model.Lista_Personal, new { @class = "form-control", @maxlength = "50", @style = "width:100%" })
-                                    @Html.ValidationMessageFor(model => model.ID_PERSONA_RESPONSABLE, string.Empty, new { @class = "cssMessageError" })
+                        </div>
+
+
+
+                        <div class="col-sm-12 inline-container-Group" style="margin-bottom:5px;padding:0px !important">
+                            <div style="font-weight:bold;background:silver; color:white;padding:5px;"> ETAPA INVESTIGADORA</div>
+                            <div class="row" style="padding:10px">
+                                <div class="form-group col-sm-4">
+                                    @Html.LabelFor(model => model.ID_ACTO, new { @class = "" })
+                                    @Html.DropDownListFor(x => x.ID_ACTO, Model.Lista_Acto, new { @class = "form-control", @maxlength = "50", @style = "width:100%" })
+                                    @Html.ValidationMessageFor(model => model.ID_ACTO, string.Empty, new { @class = "cssMessageError" })
                                 </div>
 
-                                <div class="form-group col-sm-6 ">
-                                    @Html.LabelFor(model => model.ID_ESTADO, new { @class = "" })
-                                    @Html.DropDownListFor(x => x.ID_ESTADO, Model.Lista_Estado, new { @class = "form-control", @maxlength = "50", @style = "width:100%" })
-                                    @Html.ValidationMessageFor(model => model.ID_ESTADO, string.Empty, new { @class = "cssMessageError" })
+                                <div class="form-group  col-sm-4">
+                                    @Html.LabelFor(model => model.OBSERVACION_INVESTIGADORA, new { @class = "" })
+                                    @Html.TextAreaFor(model => model.OBSERVACION_INVESTIGADORA, new { @class = "form-control", @maxlength = "100" })
+                                    @Html.ValidationMessageFor(model => model.OBSERVACION_INVESTIGADORA, string.Empty, new { @class = "cssMessageError" })
                                 </div>
-                            </div>*@
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-12 inline-container-Group" style="margin-bottom:5px;padding:0px !important">
+                            <div style="font-weight:bold;background:silver; color:white;padding:5px;"> ETAPA INSTRUCTORA</div>
+                            <div class="row" style="padding:10px">
+                                <div class="form-group col-sm-4">
+                                    @Html.LabelFor(model => model.ID_ACTO, new { @class = "" })
+                                    @Html.DropDownListFor(x => x.ID_ACTO, Model.Lista_Acto, new { @class = "form-control", @maxlength = "50", @style = "width:100%" })
+                                    @Html.ValidationMessageFor(model => model.ID_ACTO, string.Empty, new { @class = "cssMessageError" })
+                                </div>
+
+                                <div class="form-group  col-sm-4">
+                                    @Html.LabelFor(model => model.ARTICULO, new { @class = "" })
+                                    @Html.TextBoxFor(model => model.ARTICULO, new { @class = "form-control", @maxlength = "100" })
+                                    @Html.ValidationMessageFor(model => model.ARTICULO, string.Empty, new { @class = "cssMessageError" })
+                                </div>
+
+                                <div class="form-group  col-sm-4">
+                                    @Html.LabelFor(model => model.INC, new { @class = "" })
+                                    @Html.TextBoxFor(model => model.INC, new { @class = "form-control", @maxlength = "100" })
+                                    @Html.ValidationMessageFor(model => model.INC, string.Empty, new { @class = "cssMessageError" })
+                                </div>
+
+
+                                <div class="form-group  col-sm-4">
+                                    @Html.LabelFor(model => model.ID_PRECALIFICACION, new { @class = "" })
+                                    @Html.DropDownListFor(x => x.ID_PRECALIFICACION, Model.Lista_Acto, new { @class = "form-control", @maxlength = "50", @style = "width:100%" })
+                                    @Html.ValidationMessageFor(model => model.ID_PRECALIFICACION, string.Empty, new { @class = "cssMessageError" })
+                                </div>
+
+
+                                <div class="form-group  col-sm-4">
+                                    @Html.LabelFor(model => model.TIPO_SANCION_RECOMENDADA, new { @class = "" })
+                                    @Html.TextBoxFor(model => model.TIPO_SANCION_RECOMENDADA, new { @class = "form-control", @maxlength = "100" })
+                                    @Html.ValidationMessageFor(model => model.TIPO_SANCION_RECOMENDADA, string.Empty, new { @class = "cssMessageError" })
+                                </div>
+
+
+                                <div class="form-group  col-sm-4">
+                                    @Html.LabelFor(model => model.ACTO_INICIO, new { @class = "" })
+                                    @Html.TextBoxFor(model => model.ACTO_INICIO, new { @class = "form-control", @maxlength = "100" })
+                                    @Html.ValidationMessageFor(model => model.ACTO_INICIO, string.Empty, new { @class = "cssMessageError" })
+                                </div>
+
+
+                                <div class="form-group  col-sm-4">
+                                    @Html.LabelFor(model => model.FECHA_NOTIFICACION, new { @class = "" })
+                                    @Html.TextBoxFor(model => model.FECHA_NOTIFICACION, new { @class = "form-control", @maxlength = "100" })
+                                    @Html.ValidationMessageFor(model => model.FECHA_NOTIFICACION, string.Empty, new { @class = "cssMessageError" })
+                                </div>
+
+                                <div class="form-group  col-sm-4">
+                                    @Html.LabelFor(model => model.OBSERVACION_INSTRUCTORA, new { @class = "" })
+                                    @Html.TextAreaFor(model => model.OBSERVACION_INSTRUCTORA, new { @class = "form-control", @maxlength = "100" })
+                                    @Html.ValidationMessageFor(model => model.OBSERVACION_INSTRUCTORA, string.Empty, new { @class = "cssMessageError" })
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-sm-12 inline-container-Group" style="margin-bottom:5px;padding:0px !important">
+                            <div style="font-weight:bold;background:silver; color:white;padding:5px;">  ETAPA SANCIONADORA</div>
+                                <div class="row" style="padding:10px">
+                                    <div class="form-group col-sm-4">
+                                        @Html.LabelFor(model => model.SEARCH_ORGANO_INSTRUCTOR, new { @class = "" })
+                                        <div class="col-sm-12 input-group">
+                                            @Html.TextBoxFor(model => model.SEARCH_ORGANO_INSTRUCTOR, new { @class = "form-control", @maxlength = "100", @placeholder = "Ejm: Perez Galvez Rin..." })
+                                            <span class="input-group-addon" style="cursor: pointer; font-weight: bold;" title="Buscar Remitente" onclick=""><i class=" clip-search-3" style="font-size: 13px;"></i></span>
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.SEARCH_ORGANO_INSTRUCTOR, string.Empty, new { @class = "cssMessageError" })
+                                    </div>
+
+                                    <div class="form-group col-sm-4">
+                                        @Html.LabelFor(model => model.RECOMENDACION_PREINFORME, new { @class = "" })
+                                        @Html.TextBoxFor(model => model.RECOMENDACION_PREINFORME, new { @class = "form-control", @maxlength = "100" })
+                                        @Html.ValidationMessageFor(model => model.RECOMENDACION_PREINFORME, string.Empty, new { @class = "cssMessageError" })
+                                    </div>
+
+                                    <div class="form-group col-sm-4">
+                                        @Html.LabelFor(model => model.ID_SANCION_RECOMENDADA, new { @class = "" })
+                                        @Html.DropDownListFor(x => x.ID_SANCION_RECOMENDADA, Model.Lista_Acto, new { @class = "form-control", @maxlength = "50", @style = "width:100%" })
+                                        @Html.ValidationMessageFor(model => model.ID_SANCION_RECOMENDADA, string.Empty, new { @class = "cssMessageError" })
+                                    </div>
+
+
+
+                                    <div class="form-group col-sm-4">
+                                        @Html.LabelFor(model => model.FECHA_NOTIFICACION_INICIO, new { @class = "" })
+                                        @Html.TextBoxFor(model => model.FECHA_NOTIFICACION_INICIO, new { @class = "form-control", @maxlength = "100" })
+                                        @Html.ValidationMessageFor(model => model.FECHA_NOTIFICACION_INICIO, string.Empty, new { @class = "cssMessageError" })
+                                    </div>
+
+                                    <div class="form-group col-sm-4">
+                                        @Html.LabelFor(model => model.DOCUMENTO_FINALIZACION, new { @class = "" })
+                                        @Html.TextBoxFor(model => model.DOCUMENTO_FINALIZACION, new { @class = "form-control", @maxlength = "100" })
+                                        @Html.ValidationMessageFor(model => model.DOCUMENTO_FINALIZACION, string.Empty, new { @class = "cssMessageError" })
+                                    </div>
+
+                                    <div class="form-group col-sm-4">
+                                        @Html.LabelFor(model => model.RECOMENDACION_INSTRUCTOR, new { @class = "" })
+                                        @Html.TextBoxFor(model => model.RECOMENDACION_INSTRUCTOR, new { @class = "form-control", @maxlength = "100" })
+                                        @Html.ValidationMessageFor(model => model.RECOMENDACION_INSTRUCTOR, string.Empty, new { @class = "cssMessageError" })
+                                    </div>
+
+                                    <div class="form-group col-sm-4">
+                                        @Html.LabelFor(model => model.SEARCH_ORGANO_SANCIONADOR, new { @class = "" })
+                                        <div class="col-sm-12 input-group">
+                                            @Html.TextBoxFor(model => model.SEARCH_ORGANO_SANCIONADOR, new { @class = "form-control", @maxlength = "100", @placeholder = "Ejm: Perez Galvez Rin..." })
+                                            <span class="input-group-addon" style="cursor: pointer; font-weight: bold;" title="Buscar Remitente" onclick=""><i class=" clip-search-3" style="font-size: 13px;"></i></span>
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.SEARCH_ORGANO_SANCIONADOR, string.Empty, new { @class = "cssMessageError" })
+                                    </div>
+
+
+                                    <div class="form-group col-sm-4">
+                                        @Html.LabelFor(model => model.SACION, new { @class = "" })
+                                        @Html.TextBoxFor(model => model.SACION, new { @class = "form-control", @maxlength = "100", @readOnly = "true" })
+                                        @Html.ValidationMessageFor(model => model.SACION, string.Empty, new { @class = "cssMessageError" })
+                                    </div>
+
+
+                                    <div class="form-group col-sm-4">
+                                        @Html.LabelFor(model => model.ID_SITUACION, new { @class = "" })
+                                        @Html.DropDownListFor(x => x.ID_SITUACION, Model.Lista_Acto, new { @class = "form-control", @maxlength = "50", @style = "width:100%" })
+                                        @Html.ValidationMessageFor(model => model.ID_SITUACION, string.Empty, new { @class = "cssMessageError" })
+                                    </div>
+
+                                    <div class="form-group col-sm-4">
+                                        @Html.LabelFor(model => model.ID_ESTADO, new { @class = "" })
+                                        @Html.DropDownListFor(x => x.ID_ESTADO, Model.Lista_Acto, new { @class = "form-control", @maxlength = "50", @style = "width:100%" })
+                                        @Html.ValidationMessageFor(model => model.ID_ESTADO, string.Empty, new { @class = "cssMessageError" })
+                                    </div>
+
+
+                                    <div class="form-group col-sm-4">
+                                        @Html.LabelFor(model => model.OBSERVACION_SANCIONADORA, new { @class = "" })
+                                        @Html.TextAreaFor(model => model.OBSERVACION_SANCIONADORA, new { @class = "form-control", @maxlength = "100" })
+                                        @Html.ValidationMessageFor(model => model.OBSERVACION_SANCIONADORA, string.Empty, new { @class = "cssMessageError" })
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+
+
+
                         }
-
-        
-                    </div>
-
 
                 </div>
                 <div class="modal-footer">
                     <button id="btnGrabar" class="btn btn-red" type="button" data-toggle="modal"><i class="fa fa-save" />&nbsp Grabar</button>
                     <button type="button" class="btn btn-light-grey" data-dismiss="modal"><i class="fa fa-share-square-o"></i>&nbsp Cerrar</button>
                 </div>
-            </div>
+                </div>
         </div>
     </div>
     @Html.Hidden("hdfID_EXPEDIENTE", Model.ID_EXPEDIENTE)

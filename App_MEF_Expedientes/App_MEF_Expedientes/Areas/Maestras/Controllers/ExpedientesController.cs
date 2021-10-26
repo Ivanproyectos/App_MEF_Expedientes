@@ -20,7 +20,22 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
         {
             ExpedientesModelView  modelo = new  ExpedientesModelView();
             modelo.ID_EXPEDIENTE = id;
-            modelo.Accion = Accion; 
+            modelo.Accion = Accion;
+
+
+            modelo.Lista_Acto = new List<SelectListItem>();
+            modelo.Lista_Acto.Insert(0, new SelectListItem() { Value = "", Text = "-- Seleccione --" });
+
+            modelo.Lista_Precalifacion = new List<SelectListItem>();
+            modelo.Lista_Precalifacion.Insert(0, new SelectListItem() { Value = "", Text = "-- Seleccione --" });
+
+
+            modelo.Lista_Situacion = new List<SelectListItem>();
+            modelo.Lista_Situacion.Insert(0, new SelectListItem() { Value = "", Text = "-- Seleccione --" });
+
+
+            modelo.Lista_Estado = new List<SelectListItem>();
+            modelo.Lista_Estado.Insert(0, new SelectListItem() { Value = "", Text = "-- Seleccione --" });
 
 
             return View(modelo);

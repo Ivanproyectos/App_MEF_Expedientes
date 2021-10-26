@@ -178,6 +178,14 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Administracion\AdministracionAreaRegistration.cs" />
+    <Compile Include="Areas\Administracion\Controllers\ActosController.cs" />
+    <Compile Include="Areas\Administracion\Controllers\EstadoController.cs" />
+    <Compile Include="Areas\Administracion\Controllers\FaltasController.cs" />
+    <Compile Include="Areas\Administracion\Controllers\FormatosCorreoController.cs" />
+    <Compile Include="Areas\Administracion\Controllers\SancionController.cs" />
+    <Compile Include="Areas\Administracion\Controllers\SituacionController.cs" />
+    <Compile Include="Areas\Administracion\Controllers\TipoArchivoController.cs" />
+    <Compile Include="Areas\Administracion\Models\DominioModelView.cs" />
     <Compile Include="Areas\Maestras\Controllers\ExpedientesController.cs" />
     <Compile Include="Areas\Maestras\MaestrasAreaRegistration.cs" />
     <Compile Include="Areas\Maestras\Models\ExpedientesModelView.cs" />
@@ -536,6 +544,19 @@
     <Content Include="assets\plugins\font-awesome\scss\_variables.scss" />
     <Content Include="Areas\Maestras\Views\Expedientes\Index.cshtml" />
     <Content Include="Areas\Maestras\Views\Expedientes\Mantenimiento.cshtml" />
+    <Content Include="Areas\Administracion\Views\Actos\Index.cshtml" />
+    <Content Include="Areas\Administracion\Views\Faltas\Index.cshtml" />
+    <Content Include="Areas\Administracion\Views\FormatosCorreo\Index.cshtml" />
+    <Content Include="Areas\Administracion\Views\Sancion\Index.cshtml" />
+    <Content Include="Areas\Administracion\Views\Situacion\Index.cshtml" />
+    <Content Include="Areas\Administracion\Views\TipoArchivo\Index.cshtml" />
+    <Content Include="Areas\Administracion\Views\Estado\Index.cshtml" />
+    <Content Include="Areas\Administracion\Views\TipoArchivo\Mantenimiento.cshtml" />
+    <Content Include="Areas\Administracion\Views\Actos\Mantenimiento.cshtml" />
+    <Content Include="Areas\Administracion\Views\Faltas\Mantenimiento.cshtml" />
+    <Content Include="Areas\Administracion\Views\Estado\Mantenimiento.cshtml" />
+    <Content Include="Areas\Administracion\Views\Sancion\Mantenimiento.cshtml" />
+    <Content Include="Areas\Administracion\Views\Situacion\Mantenimiento.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\autocomplete.js" />
     <Content Include="Scripts\Autorizacion.js" />
@@ -573,6 +594,12 @@
     <Content Include="Scripts\jqueryPer.js" />
     <Content Include="Scripts\jquery_LinkFish.js" />
     <Content Include="Scripts\JSLINQ.js" />
+    <Content Include="Scripts\Js\Administracion\Situacion.js" />
+    <Content Include="Scripts\Js\Administracion\Sancion.js" />
+    <Content Include="Scripts\Js\Administracion\Estado.js" />
+    <Content Include="Scripts\Js\Administracion\Faltas.js" />
+    <Content Include="Scripts\Js\Administracion\Actos.js" />
+    <Content Include="Scripts\Js\Administracion\TipoArchivo.js" />
     <Content Include="Scripts\Js\Remove.js" />
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
@@ -626,8 +653,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Administracion\Controllers\" />
-    <Folder Include="Areas\Administracion\Models\" />
     <Folder Include="Areas\Administracion\Views\Shared\" />
     <Folder Include="Areas\Maestras\Views\Shared\" />
   </ItemGroup>

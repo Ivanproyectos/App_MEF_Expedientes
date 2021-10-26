@@ -18,17 +18,18 @@ function LimpiarExpedientes() {
 function Expedientes_ConfigurarGrilla() {
     var url = baseUrl + 'Maestras/Expedientes/Expedientes_Paginado';
     $("#" + Expedientes_grilla).GridUnload();
-    var colNames = ['Editar', 'Eliminar', 'Activo', 'ID_EMPRESA', 'Tipo Expedientes', 'Ruc', 'Expedientes', 'Telefono', 'Correo', 'Dirección', 'Departamento',
-        'Provincia', 'Distrito', 'FLG_ESTADO', 'Usuario Creación', 'Fecha Creación', 'Usuario Modificación', 'Fecha Modificación'];
+    var colNames = ['Editar', 'Eliminar', 'Activo', 'ID_EXPEDIENTE', 'Nro. Expediente', 'Personal', 'Oficina', 'Reg. Laboral', 'Cargo', 'Falta', 'Sanción',
+        'Hechos', 'Situación','Estado', 'FLG_ESTADO', 'Usuario Creación', 'Fecha Creación', 'Usuario Modificación', 'Fecha Modificación'];
     var colModels = [
         { name: 'EDITAR', index: 'EDITAR', align: 'center', width: 60, hidden: false, sortable: false, formatter: Expedientes_actionEditar },
         { name: 'ELIMINAR', index: 'ELIMINAR', align: 'center', width: 70, hidden: false, sortable: false, formatter: Expedientes_actionEliminar },
         { name: 'ACTIVO', index: 'ACTIVO', align: 'center', width: 55, hidden: false, sortable: false, formatter: Expedientes_actionActivo },
-        { name: 'ID_EMPRESA', index: 'ID_EMPRESA', align: 'center', width: 50, hidden: true },
-        { name: 'TIPO_EMPRESA', index: 'TIPO_EMPRESA', align: 'center', width: 200, hidden: false },
-        { name: 'RUC', index: 'RUC', align: 'center', width: 100, hidden: false },
-        { name: 'EMPRESA', index: 'NRO_DOCUMENTO', align: 'center', width: 300, hidden: false, sortable: false },
-        { name: 'TELEFONO', index: 'TELEFONO', align: 'center', width: 100, hidden: false },
+        { name: 'ID_EXPEDIENTE', index: 'ID_EXPEDIENTE', align: 'center', width: 50, hidden: true },
+        { name: 'COD_EXPEDIENTE', index: 'COD_EXPEDIENTE', align: 'center', width: 150, hidden: false },
+        { name: 'PERSONAL', index: 'PERSONAL', align: 'center', width: 200, hidden: false },
+        { name: 'OFICINA', index: 'OFICINA', align: 'center', width: 200, hidden: false },
+        { name: 'REGIMEN_LABORAL', index: 'REGIMEN_LABORAL', width: 200, align: 'center', hidden: false},
+        { name: 'CARGO', index: 'CARGO', align: 'center', width: 100, hidden: false },
         { name: 'CORREO', index: 'CORREO', align: 'center', width: 200, hidden: false, resizable: true },
         { name: 'DIRECCION', index: 'DIRECCION', align: 'center', width: 120, hidden: false, hidden: false },
         { name: 'DEPARTAMENTO', index: 'DEPARTAMENTO', align: 'center', width: 140, hidden: false, hidden: false },
@@ -57,7 +58,7 @@ function Expedientes_ConfigurarGrilla() {
         },
 
     };
-    SICA.Grilla(Expedientes_grilla, Expedientes_barra, '', '400', '', "Lista de Expedientes", url, 'ID_EMPRESA', colNames, colModels, 'ID_EMPRESA', opciones);
+    SICA.Grilla(Expedientes_grilla, Expedientes_barra, '', '400', '', "Lista de Expedientes", url, 'ID_EXPEDIENTE', colNames, colModels, 'ID_EXPEDIENTE', opciones);
 }
 
 function Expedientes_actionActivo(cellvalue, options, rowObject) {
@@ -99,9 +100,9 @@ function Expedientes_actionEditar(cellvalue, options, rowObject) {
     return _btn;
 }
 
-function Expedientes_Editar(ID_EMPRESA) {
+function Expedientes_Editar(ID_EXPEDIENTE) {
     jQuery("#myModalNuevo").html('');
-    jQuery("#myModalNuevo").load(baseUrl + "Maestras/Expedientes/Mantenimiento?id=" + ID_EMPRESA + "&Accion=M", function (responseText, textStatus, request) {
+    jQuery("#myModalNuevo").load(baseUrl + "Maestras/Expedientes/Mantenimiento?id=" + ID_EXPEDIENTE + "&Accion=M", function (responseText, textStatus, request) {
         $.validator.unobtrusive.parse('#myModalNuevo');
         if (request.status != 200) return;
     });
@@ -122,7 +123,7 @@ function Expedientes_Actualizar() {
     if ($("#frmMantenimientoExpedientes").valid()) {
         var item =
         {
-            ID_EMPRESA: $("#hdfID_EMPRESA").val(),
+            ID_EXPEDIENTE: $("#hdfID_EXPEDIENTE").val(),
             FLG_TIPO: $("#FLG_TIPO").val(),
             RUC: $("#RUC").val(),
             DESC_EMPRESA: $("#DESC_EMPRESA").val(),
@@ -223,10 +224,10 @@ function Expedientes_Registrar() {
 
 
 
-function Expedientes_CambiarEstado(ID_EMPRESA, MiCheck) {
+function Expedientes_CambiarEstado(ID_EXPEDIENTE, MiCheck) {
     var url = baseUrl + 'Maestras/Expedientes/Expedientes_Estado';
     var item = {
-        ID_EMPRESA: ID_EMPRESA,
+        ID_EXPEDIENTE: ID_EXPEDIENTE,
         FLG_ESTADO: MiCheck.checked == true ? 1 : 0,
         USU_MODIFICACION: $('#inputHddcod_usuario').val()
     };
@@ -253,13 +254,13 @@ function Expedientes_actionEliminar(cellvalue, options, rowObject) {
     return _btn;
 }
 
-function Expedientes_Eliminar(ID_EMPRESA) {
+function Expedientes_Eliminar(ID_EXPEDIENTE) {
     //var data = jQuery("#" + Expedientes_grilla).jqGrid('getRowData', CODIGO);
     jConfirm("¿ Desea eliminar este personal ?", "Atención", function (r) {
         if (r) {
             var url = baseUrl + 'Maestras/Expedientes/Expedientes_Eliminar';
             var item = {
-                ID_EMPRESA: ID_EMPRESA,
+                ID_EXPEDIENTE: ID_EXPEDIENTE,
             };
             var auditoria = Autorizacion.Ajax(url, item, false);
             if (auditoria != null) {

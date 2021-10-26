@@ -152,12 +152,12 @@
                     <li id="liAdministracion">
                         <a style="height: 38px; padding-top: 9px;cursor:pointer"><i class="clip-cog-2"></i><span class="title"> Administración</span><i class="icon-arrow"></i><span class="selected"></span></a>
                         <ul class="sub-menu">
-                            <li id="liFondo" style=""> <a id="aFondo" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Tipo Archivo</span></a></li>
-                            <li id="liSeccion" style=""> <a id="aSeccion" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Actos</span></a></li>
-                            <li id="liSubSeccion" style=""> <a id="aSubSeccion" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Faltas</span></a></li>
-                            <li id="liSerie" style=""> <a id="aSerie" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Sanción</span></a></li>
-                            <li id="liTipoDoc" style=""> <a id="aTipoDoc" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Estado</span></a></li>
-                            <li id="liTipoObservacion" style=""> <a id="aTipoObservacion" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Situación</span></a></li>      
+                            <li id="liTipoArchivo" style=""> <a id="aTipoArchivo" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Tipo Archivo</span></a></li>
+                            <li id="liActos" style=""> <a id="aActos" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Actos</span></a></li>
+                            <li id="liFaltas" style=""> <a id="aFaltas" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Faltas</span></a></li>
+                            <li id="liSancion" style=""> <a id="aSancion" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Sanción</span></a></li>
+                            <li id="liEstado" style=""> <a id="aEstado" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Estado</span></a></li>
+                            <li id="liSituacion" style=""> <a id="aSituacion" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Situación</span></a></li>      
                         </ul>
                     </li>
 
@@ -267,10 +267,17 @@
             Main.init();
 
             var rutaExpedientes = baseUrl + "Maestras/Expedientes/";
-            var rutaDigitalizacion = baseUrl + "Microforma/Digitalizacion/";
-            var rutaControlCalidad = baseUrl + "Microforma/ControlCalidad/";
 
-
+            // ADMINISTRACION 
+            var rutaTipoArchivo = baseUrl + "Administracion/TipoArchivo/";
+            var rutaActos = baseUrl + "Administracion/Actos/";
+            var rutaFaltas = baseUrl + "Administracion/Faltas/";
+            var rutaEstado = baseUrl + "Administracion/Estado/";
+            var rutaSancion= baseUrl + "Administracion/Sancion/";
+            var rutaSituacion = baseUrl + "Administracion/Situacion/";
+            
+            
+            $("#Frm_General").hide();
             ///InvocarVista(rutaRecepcion + "Index", item_);
 
             jQuery('#aExpedientes').click(function (e) {
@@ -280,7 +287,50 @@
                 InvocarVista(rutaExpedientes + "Index", item);
             });
 
-            $("#Frm_General").hide();
+            jQuery('#aTipoArchivo').click(function (e) {
+                var item =
+                {
+                };
+                InvocarVista(rutaTipoArchivo + "Index", item);
+            });
+
+            jQuery('#aActos').click(function (e) {
+                var item =
+                {
+                };
+                InvocarVista(rutaActos + "Index", item);
+            });
+
+
+            jQuery('#aFaltas').click(function (e) {
+                var item =
+                {
+                };
+                InvocarVista(rutaFaltas + "Index", item);
+            });
+
+            jQuery('#aEstado').click(function (e) {
+                var item =
+                {
+                };
+                InvocarVista(rutaEstado + "Index", item);
+            });
+
+            jQuery('#aSancion').click(function (e) {
+                var item =
+                {
+                };
+                InvocarVista(rutaSancion + "Index", item);
+            });
+
+            jQuery('#aSituacion').click(function (e) {
+                var item =
+                {
+                };
+                InvocarVista(rutaSituacion + "Index", item);
+            });
+
+            
 
         }
 
