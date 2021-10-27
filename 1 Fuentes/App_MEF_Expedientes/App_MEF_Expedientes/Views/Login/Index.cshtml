@@ -1,0 +1,186 @@
+﻿@model App_MEF_Expedientes.Models.LoginModelView
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="x-ua-compatible" content="IE=8" />
+    <meta http-equiv="x-ua-compatible" content="IE=9" />
+    <meta http-equiv="x-ua-compatible" content="IE=10" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/assets/plugins/bootstrap/css/bootstrap.min.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/assets/plugins/font-awesome/css/font-awesome.min.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/assets/fonts/style.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/assets/css/jquery.alert.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/assets/css/main.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/assets/css/main-responsive.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css")" />
+    <link href="@Url.Content("~/assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/assets/jqGrid/css/ui.jqgrid.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css")" />
+    <link rel="stylesheet" type="text/css" id="skin_color" href="@Url.Content("~/assets/css/theme_light.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/assets/css/general.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/assets/css/select2.css")" />
+    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.8.24.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-migrate-1.0.0.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ui.datepicker-es.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/jqGrid/js/i18n/grid.locale-es.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.jqGrid.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.form.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/JSLINQ.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/SICA.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/plugins/bootstrap/js/bootstrap.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/plugins/blockUI/jquery.blockUI.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/inicializacion.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/plugins/less/less-1.5.0.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/plugins/jquery-cookie/jquery.cookie.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js")" type="text/javascript"></script>
+    <script src="~/assets/plugins/bootstrap/js/bootstrap-alert.js"></script>
+    <script src="@Url.Content("~/Scripts/jquery.allowchars.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.alphanumeric.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/main.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/linksoft.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.alerts.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/bootbox.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Js/Login.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/assets/js/select2.js")" type="text/javascript"></script>
+
+
+</head>
+
+<body class="login linkfish">
+    <div class="main-login col-sm-4 col-sm-offset-4" style="background-image: url(/assets/images/login/xd.png); background-attachment: fixed;">
+        <div class="logo">
+            <img src="~/assets/images/logo_mef.jpg" width="350">
+        </div>
+
+        <div class="modal fade" id="myModalNuevo" tabindex="" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+        <div id="Usuario_Load" hidden="hidden" class="blockUI blockMsg blockPage " style="z-index: 1070; position: fixed; padding: 0px; margin: 0px; width: 30%; top: 40%; left: 35%; text-align: center; color: rgb(0, 0, 0); border: 3px solid rgb(170, 170, 170); background-color: rgb(255, 255, 255); cursor: wait;">
+            <h5>
+                <img style="height: 20px" src="@Url.Content("~/assets/images/loading.gif")">
+                Procesando...
+            </h5>
+        </div>
+
+
+        <div class="box-login" style="display: block; opacity: 90%">
+            <h1 style=" text-align: center;  color: #721c24; margin-top: 2px; font-weight:bold; font-size:25px ">EXPEDIENTES DISCIPLINARIOS</h1>
+            <h3>Iniciar sesión                  </h3>
+            <p>Ingrese su usuario y contraseña, luego click en el botón <b>Ingresar</b>: </p>
+            <div class="form-login">
+                <fieldset>
+
+                    @using (Html.BeginForm("", "", new { @area = "" }, FormMethod.Post, new { @id = "frmLogin" }))
+                    {
+                        <div class="form-group">
+                            <span class="input-icon">
+                                @*<input type="text" class="form-control" name="username" id="LOGIN" placeholder="Nombre de usuario" style="height: 33px"*@
+                                @Html.TextBoxFor(model => model.LOGIN, new { @class = "form-control", @maxlength = "100", style = "height: 33px", placeholder = "Nombre de usuario" })
+                                <i class="fa fa-user"></i>
+                            </span>
+                            @Html.ValidationMessageFor(model => model.LOGIN, string.Empty, new { @class = "cssMessageError" })
+                        </div>
+                        <div class="form-group">
+                            <span class="input-icon">
+                                @*<input type="password" class="form-control password" id="PASSWORD" name="password" placeholder="Contraseña" style="height: 33px">*@
+                                @Html.TextBoxFor(model => model.PASSWORD, new { @class = "form-control", @maxlength = "100", placeholder = "Contraseña", @type = "password" })
+                                <i class="fa fa-lock"></i>
+                                <a class="forgot " href="#" style="cursor: pointer" onclick="Usuario_MostrarRecuperarClave();" data-toggle="modal" data-target="#myModalNuevo">
+                                    ¿ Olvide mi contraseña ?
+                                </a>
+                            </span>
+                            @Html.ValidationMessageFor(model => model.PASSWORD, string.Empty, new { @class = "cssMessageError" })
+                        </div>
+              
+
+                        <div class="errorHandler alert alert-danger no-display">
+                            <i class="clip-warning"></i>&nbsp El usuario/clave son incorrectos.
+                        </div>
+
+
+                        <div class="new-account" style="border-top: 1px solid;">
+                            @*<a id="clicrecuperar" onclick="Nuevo_Usuario();" class="register" style="cursor: pointer" data-toggle="modal" data-target="#myModalNuevo">
+                                ¿No tienes cuenta aún ? Prueba gratuita 30 días.
+                            </a>*@
+                            <br />
+
+                            <button id="btn_login" type="button" class="btn btn-blue pull-right">
+                                Ingresar &nbsp<i class="fa fa-arrow-circle-right"></i>
+                            </button>
+                        </div>
+                    }
+                </fieldset>
+            </div>
+        </div>
+        <div class="copyright">
+            <script>
+                document.write(new Date().getFullYear())
+            </script>
+            © Linksoft solutions
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var baseUrl = '@Url.Content("~")';
+        var indicadorParametro = "0";
+        var contador = 0;
+    </script>
+    <script type="text/javascript">
+
+        $(document).keypress(function (e) {
+            if (e.which == 13) {
+                Ingresar();
+            }
+        });
+
+        $(document).ready(function () {
+        });
+
+
+
+ 
+
+        $('#btn_login').click(function () {
+            Ingresar();
+        });
+
+
+        function Ingresar() {
+            if ($('#frmLogin').valid()) {
+                var item =
+                {
+                    USUARIO: $("#LOGIN").val(),
+                    CLAVE: $("#PASSWORD").val().trim(),
+                };
+                var url = baseUrl + 'Login/Validar_usuario';
+                var auditoria = SICA.Ajax(url, item, false);
+                if (auditoria != null && auditoria != "") {
+                    if (auditoria.EJECUCION_PROCEDIMIENTO) {
+                        window.location = baseUrl + 'Home/Index';
+                    } else {
+                        $('.errorHandler').show();
+                    }
+                }
+            }
+        }
+
+
+
+
+
+    </script>
+
+</body>
+</html>
+

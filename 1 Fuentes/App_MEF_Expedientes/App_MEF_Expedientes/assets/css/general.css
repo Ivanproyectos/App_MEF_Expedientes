@@ -9,16 +9,41 @@
  
 }
 
-
+/*
 .cssMessageError
 {
     font-size:12px;
     color: red;
+}*/
+
+.field-validation-error {
+    display: block;
+    color: #ff0000;
 }
+
+.field-validation-valid {
+    display: none !important;
+}
+
+
+
+.cssMessageError {
+    padding: 5px;
+    margin-bottom: 3px;
+    margin-top: 1px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+}
+
 
 .cssSinEstilo {
 	margin:0px;padding:0px;
 }
+
+
 
 .cssTablaMarco {
     border-collapse: collapse;
