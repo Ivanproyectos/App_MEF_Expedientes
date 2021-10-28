@@ -166,8 +166,8 @@
                 var url = baseUrl + 'Login/Validar_usuario';
                 var auditoria = SICA.Ajax(url, item, false);
                 if (auditoria != null && auditoria != "") {
-                    if (auditoria.EJECUCION_PROCEDIMIENTO) {
-                        window.location = baseUrl + 'Home/Index';
+                    if (!auditoria.RECHAZAR) {
+                        window.location = baseUrl + 'Home/Index?usuario=' + auditoria.OBJETO;
                     } else {
                         $('.errorHandler').show();
                     }
