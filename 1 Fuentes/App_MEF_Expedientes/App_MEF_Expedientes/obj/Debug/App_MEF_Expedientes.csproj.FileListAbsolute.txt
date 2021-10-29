@@ -165,6 +165,10 @@ C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\DotNetOpenAuth.OpenId.dll
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\EntityFramework.dll
+C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\MEF.Expedientes.Contract.dll
+C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\MEF.Expedientes.Entity.dll
+C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\MEF.Expedientes.Repository.dll
+C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\MEF.Expedientes.Service.dll
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\Microsoft.Web.Helpers.dll
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\Microsoft.Web.WebPages.OAuth.dll
@@ -188,6 +192,15 @@ C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\WebGrease.dll
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\WebMatrix.Data.dll
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\WebMatrix.WebData.dll
+C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\MEF.Expedientes.Data.dll
+C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\Oracle.ManagedDataAccess.dll
+C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\Oracle.ManagedDataAccess.EntityFramework.dll
+C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\MEF.Expedientes.Contract.pdb
+C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\MEF.Expedientes.Entity.pdb
+C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\MEF.Expedientes.Repository.pdb
+C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\MEF.Expedientes.Repository.dll.config
+C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\MEF.Expedientes.Service.pdb
+C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\MEF.Expedientes.Service.dll.config
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\Microsoft.Web.WebPages.OAuth.xml
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\System.Threading.Tasks.Extensions.xml
@@ -214,6 +227,8 @@ C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\WebMatrix.Data.xml
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\WebMatrix.WebData.xml
+C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\MEF.Expedientes.Data.pdb
+C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\MEF.Expedientes.Data.dll.config
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\es\Microsoft.Web.WebPages.OAuth.resources.dll
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\es\System.Web.Helpers.resources.dll
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\es\System.Web.Mvc.resources.dll
@@ -232,6 +247,3 @@ C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\obj\Debug\App_MEF_Expedientes.csproj.CopyComplete
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\obj\Debug\App_MEF_Expedientes.dll
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\obj\Debug\App_MEF_Expedientes.pdb
-C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\MEF.Expedientes.Entity.dll
-C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\MEF.Expedientes.Entity.pdb
-C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\obj\Debug\App_MEF_Expedientes.csprojResolveAssemblyReference.cache

@@ -7,6 +7,7 @@ namespace MEF.Expedientes.Entity.Maestras
     public class Cls_Ent_Oficina
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string ID_OFICINA { get; set; }
         public string DESC_OFICINA { get; set; }
         public string DESC_CORTA { get; set; }

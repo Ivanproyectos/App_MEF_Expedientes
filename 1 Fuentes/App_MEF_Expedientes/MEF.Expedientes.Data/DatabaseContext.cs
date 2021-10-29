@@ -25,7 +25,7 @@ namespace MEF.Expedientes.Data
         public DatabaseContext(string connectionString)
             : base(connectionString) => Database.SetInitializer<DatabaseContext>(null);
 
-        public virtual DbSet<Cls_Ent_Oficina> cls_Ent_Oficinas { get; set; }
+        public virtual DbSet<Cls_Ent_Oficina> cls_Ent_Oficina { get; set; }
         public virtual DbSet<Cls_Ent_Personal> cls_Ent_Personal { get; set; }
 
         //public virtual DbSet<Cls_Ent_Tabla> cls_Ent_Tabla { get; set; }
