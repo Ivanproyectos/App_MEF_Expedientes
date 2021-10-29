@@ -18,6 +18,8 @@
     @*<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,700">*@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/assets/plugins/bootstrap/css/bootstrap.min.css")" />
+    @*<link rel="stylesheet" type="text/css" href="@Url.Content("~/assets/plugins/bootstrap-3.4/css/bootstrap.min.css")" />*@
+
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/assets/plugins/font-awesome/css/font-awesome.min.css")" />
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/assets/fonts/style.css")" />
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/assets/css/jquery.alert.css")" />
@@ -30,6 +32,8 @@
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css")" />
     <link rel="stylesheet" type="text/css" id="skin_color" href="@Url.Content("~/assets/css/theme_light.css")" />
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/assets/css/general.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/assets/summernote/summernote.min.css")" />
+
     <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/jquery-ui-1.8.24.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/jquery-migrate-1.0.0.js")" type="text/javascript"></script>
@@ -44,6 +48,8 @@
     <script src="@Url.Content("~/Scripts/SICA.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/Autorizacion.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/assets/plugins/bootstrap/js/bootstrap.min.js")" type="text/javascript"></script>
+    @*<script src="@Url.Content("~/assets/plugins/bootstrap-3.4/js/bootstrap.min.js")" type="text/javascript"></script>*@
+
     <script src="@Url.Content("~/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/assets/plugins/blockUI/jquery.blockUI.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/inicializacion.js")" type="text/javascript"></script>
@@ -63,6 +69,7 @@
     <script src="@Url.Content("~/Scripts/Js/General.js")" type="text/javascript"></script>
     <link href="~/assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" />
     <script src="~/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+    <script src="@Url.Content("~/assets/summernote/summernote.min.js")"></script>
 
 </head>
 <body>
@@ -157,7 +164,8 @@
                             <li id="liFaltas" style=""> <a id="aFaltas" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Faltas</span></a></li>
                             <li id="liSancion" style=""> <a id="aSancion" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Sanción</span></a></li>
                             <li id="liEstado" style=""> <a id="aEstado" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Estado</span></a></li>
-                            <li id="liSituacion" style=""> <a id="aSituacion" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Situación</span></a></li>      
+                            <li id="liSituacion" style=""> <a id="aSituacion" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Situación</span></a></li>
+                            <li id="liFormatoCorreo" style=""> <a id="aFormatoCorreo" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Formato Correo</span></a></li>
                         </ul>
                     </li>
 
@@ -275,6 +283,7 @@
             var rutaEstado = baseUrl + "Administracion/Estado/";
             var rutaSancion= baseUrl + "Administracion/Sancion/";
             var rutaSituacion = baseUrl + "Administracion/Situacion/";
+            var rutaFormatoCorreo = baseUrl + "Administracion/FormatosCorreo/";
             
             
             $("#Frm_General").hide();
@@ -330,7 +339,12 @@
                 InvocarVista(rutaSituacion + "Index", item);
             });
 
-            
+            jQuery('#aFormatoCorreo').click(function (e) {
+                var item =
+                {
+                };
+                InvocarVista(rutaFormatoCorreo + "Index", item);
+            });
 
         }
 
