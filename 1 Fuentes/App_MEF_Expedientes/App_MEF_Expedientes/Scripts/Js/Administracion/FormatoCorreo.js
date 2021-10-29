@@ -182,8 +182,6 @@ function FormatoCorreo_CargarGrilla() {
 
 /************************************************* Nuevo FormatoCorreo ***************************************************/
 
-
-
 function FormatoCorreo_Registrar() {
     if ($("#frmMantenimientoFormatoCorreo").valid()) {
         if ($('#AccionFormatoCorreo').val() == "M") {
@@ -220,8 +218,6 @@ function FormatoCorreo_Registrar() {
         }
     }
 }
-
-
 
 /*********************************************** ----------------- *************************************************/
 

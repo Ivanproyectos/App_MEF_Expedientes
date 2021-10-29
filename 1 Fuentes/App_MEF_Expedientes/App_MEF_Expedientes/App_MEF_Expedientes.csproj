@@ -634,6 +634,7 @@
     <Content Include="Scripts\Js\Administracion\Faltas.js" />
     <Content Include="Scripts\Js\Administracion\Actos.js" />
     <Content Include="Scripts\Js\Administracion\TipoArchivo.js" />
+    <Content Include="Scripts\Js\Maestras\Expedientes_Fn.js" />
     <Content Include="Scripts\Js\Remove.js" />
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
@@ -645,7 +646,9 @@
     <Content Include="Scripts\SITRADOC.js" />
     <Content Include="Scripts\ui.datepicker-es.js" />
     <Content Include="Scripts\ui.datepicker-pt.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -696,9 +699,21 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MEF.Expedientes.Contract\MEF.Expedientes.Contract.csproj">
+      <Project>{34533c1d-0591-4abb-b5ba-ce97cc43e1bd}</Project>
+      <Name>MEF.Expedientes.Contract</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MEF.Expedientes.Entity\MEF.Expedientes.Entity.csproj">
       <Project>{b46ca567-5d59-4937-a080-7bb2bb3048c9}</Project>
       <Name>MEF.Expedientes.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MEF.Expedientes.Repository\MEF.Expedientes.Repository.csproj">
+      <Project>{fb2870a1-d7aa-4062-8a15-64b5d27d905b}</Project>
+      <Name>MEF.Expedientes.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MEF.Expedientes.Service\MEF.Expedientes.Service.csproj">
+      <Project>{de461f5f-2183-4c49-ae5a-5853119ada02}</Project>
+      <Name>MEF.Expedientes.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

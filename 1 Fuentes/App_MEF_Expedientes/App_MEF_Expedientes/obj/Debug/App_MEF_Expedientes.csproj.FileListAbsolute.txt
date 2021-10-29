@@ -234,3 +234,4 @@ C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\obj\Debug\App_MEF_Expedientes.pdb
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\MEF.Expedientes.Entity.dll
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\MEF.Expedientes.Entity.pdb
+C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\obj\Debug\App_MEF_Expedientes.csprojResolveAssemblyReference.cache

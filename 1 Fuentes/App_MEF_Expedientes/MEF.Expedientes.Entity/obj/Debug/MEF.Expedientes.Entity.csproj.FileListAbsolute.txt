@@ -12,7 +12,6 @@ C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\App_MEF_Expediente
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\App_MEF_Expedientes\MEF.Expedientes.Entity\obj\Debug\MEF.Expedientes.Entity.pdb
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Entity\bin\Debug\MEF.Expedientes.Entity.dll
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Entity\bin\Debug\MEF.Expedientes.Entity.pdb
-C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Entity\obj\Debug\MEF.Expedientes.Entity.csprojAssemblyReference.cache
-C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Entity\obj\Debug\MEF.Expedientes.Entity.csproj.CoreCompileInputs.cache
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Entity\obj\Debug\MEF.Expedientes.Entity.dll
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Entity\obj\Debug\MEF.Expedientes.Entity.pdb
+C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Entity\obj\Debug\MEF.Expedientes.Entity.csproj.CoreCompileInputs.cache

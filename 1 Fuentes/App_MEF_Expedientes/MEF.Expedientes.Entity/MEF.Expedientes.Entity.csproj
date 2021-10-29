@@ -43,6 +43,9 @@
   <ItemGroup>
     <Compile Include="Cls_Ent_Auditoria.cs" />
     <Compile Include="Cls_Ent_Dominio.cs" />
+    <Compile Include="Maestras\Cls_Ent_Oficina.cs" />
+    <Compile Include="Maestras\Cls_Ent_Personal.cs" />
+    <Compile Include="Models\PagedResultBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

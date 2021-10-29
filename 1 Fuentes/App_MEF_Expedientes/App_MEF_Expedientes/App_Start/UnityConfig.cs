@@ -1,4 +1,6 @@
 using System;
+using MEF.Expedientes.Service.Maestras;
+using MEF.Expedientes.Contract.Maestras;
 
 using Unity;
 
@@ -36,6 +38,8 @@ namespace App_MEF_Expedientes
         /// </remarks>
         public static void RegisterTypes(IUnityContainer container)
         {
+
+            container.RegisterType<ICls_Serv_Oficina, Cls_Serv_Oficina>();
             // NOTE: To load from web.config uncomment the line below.
             // Make sure to add a Unity.Configuration to the using statements.
             // container.LoadConfiguration();

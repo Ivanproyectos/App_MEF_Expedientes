@@ -1,5 +1,5 @@
 ﻿using MEF.Expedientes.Entity;
-//using MEF.Microformas.Entity.Carga;
+using MEF.Expedientes.Entity.Maestras;
 //using MEF.Microformas.Entity.Carga.Vistas;
 //using MEF.Microformas.Entity.Proceso;
 //using MEF.Microformas.Entity.Proceso.Vistas;
@@ -25,7 +25,9 @@ namespace MEF.Expedientes.Data
         public DatabaseContext(string connectionString)
             : base(connectionString) => Database.SetInitializer<DatabaseContext>(null);
 
-        //public virtual DbSet<Cls_Ent_Estado> cls_Ent_Estado { get; set; }
+        public virtual DbSet<Cls_Ent_Oficina> cls_Ent_Oficinas { get; set; }
+        public virtual DbSet<Cls_Ent_Personal> cls_Ent_Personal { get; set; }
+
         //public virtual DbSet<Cls_Ent_Tabla> cls_Ent_Tabla { get; set; }
         //public virtual DbSet<Cls_Ent_Campo> cls_Ent_Campo { get; set; }
         //public virtual DbSet<Cls_Ent_Control_Carga> cls_Ent_Control_Carga { get; set; }
@@ -36,7 +38,7 @@ namespace MEF.Expedientes.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.HasDefaultSchema("MICROFORMAS");
+            modelBuilder.HasDefaultSchema("EXPEDIENTES");
 
             //modelBuilder.Entity<Cls_Ent_Control_Carga>().ha.Property = false;
             //.HasSequence(PersonIdSequence)

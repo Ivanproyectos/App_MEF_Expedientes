@@ -1,7 +1,9 @@
-﻿using System;
+﻿
+using MEF.Expedientes.Entity;
+using MEF.Expedientes.Entity.Maestras;
+using MEF.Expedientes.Service.Maestras;
+using MEF.Expedientes.Contract.Maestras;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using App_MEF_Expedientes.Areas.Maestras.Models; 
 
@@ -10,10 +12,34 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
     public class ExpedientesController : Controller
     {
         // GET: Maestras/Expedientes
+        private ICls_Serv_Oficina _cls_Serv_Oficina; 
+        public ExpedientesController()
+        {
+            _cls_Serv_Oficina = new Cls_Serv_Oficina();
+        }
+
+
         public ActionResult Index()
         {
             return View();
         }
+        public ActionResult Buscar_Oficina_Listar(string DESC_OFICINA)
+        {
+            Cls_Ent_Auditoria auditoria = new Cls_Ent_Auditoria();
+            auditoria.Limpiar();
+            IEnumerable<Cls_Ent_Oficina> lista = _cls_Serv_Oficina.Buscar_Oficina_Listar(DESC_OFICINA, ref auditoria);
+            if (!auditoria.EJECUCION_PROCEDIMIENTO)
+            {
+                Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
+            }
+            else
+            {
+                auditoria.OBJETO = lista;
+            }
+            return Json(auditoria, JsonRequestBehavior.AllowGet);
+        }
+
+
 
 
         public ActionResult Mantenimiento(int id, string Accion)

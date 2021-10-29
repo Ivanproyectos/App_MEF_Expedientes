@@ -2,23 +2,71 @@
 @model App_MEF_Expedientes.Areas.Maestras.Models.ExpedientesModelView
 
 <script type="text/javascript">
-        var f = new Date();
+        var today = new Date();
+        var year = today.getFullYear();
         var combo2 = false;
         var combo1 = false;
-        $(document).ready(function () {
+        var url_autocomplete_oficina = '@Url.Action("Buscar_Oficina_Listar", "Expedientes", new { area = "Maestras" })'
+      $(document).ready(function () {
             //$('#ID_DEPARTAMENTO').select2();
-    
+
             if ($('#AccionExpedientes').val() == "M") {
                 Provincia_Listar($('#ID_DEPARTAMENTO').val());
 
             }
         });
 
- 
+
 
         jQuery('#btnGrabar').click(function (e) {
             Expedientes_Registrar();
         });
+
+
+    $("#btnFechaRecepcion").click(function () {
+        $("#FECHA_RECEPCION").datepicker({
+            dateFormat: "dd/mm/yy",
+            constrainInput: true,
+            // showButtonPanel: true,
+            autoSize: true,
+            //maxDate: dateToday,
+            changeMonth: true,
+            changeYear: true,
+            showAnim: 'slideDown',
+            yearRange: '' + 1990 + ':' + (year + 5) + ''
+        }).css("z-index", 90000);
+        $("#FECHA_RECEPCION").datepicker("show");
+    });
+
+    $("#btnFechaPrescripcion").click(function () {
+        $("#FECHA_PRESCRIPCION").datepicker({
+            dateFormat: "dd/mm/yy",
+            constrainInput: true,
+            // showButtonPanel: true,
+            autoSize: true,
+            //maxDate: dateToday,
+            changeMonth: true,
+            changeYear: true,
+            showAnim: 'slideDown',
+            yearRange: '' + 1990 + ':' + (year + 5) + ''
+        }).css("z-index", 90000);
+        $("#FECHA_PRESCRIPCION").datepicker("show");
+    });
+
+    $("#btnFechaHecho").click(function () {
+        $("#FECHA_HECHO").datepicker({
+            dateFormat: "dd/mm/yy",
+            constrainInput: true,
+            // showButtonPanel: true,
+            autoSize: true,
+            //maxDate: dateToday,
+            changeMonth: true,
+            changeYear: true,
+            showAnim: 'slideDown',
+            yearRange: '' + 1990 + ':' + (year + 5) + ''
+        }).css("z-index", 90000);
+        $("#FECHA_HECHO").datepicker("show");
+    });
 
 
 </script>
@@ -62,43 +110,52 @@
                             <div style="font-weight:bold;background:silver; color:white;padding:5px; ">ADICIONAR SOLICITUD</div>
 
                             <div class="row" style="padding:10px">
-                                <div class="form-group col-sm-4">
+                                <div class="form-row col-sm-4">
                                     @Html.LabelFor(model => model.COD_EXPEDIENTE, new { @class = "" })
                                     @Html.TextBoxFor(model => model.COD_EXPEDIENTE, new { @class = "form-control", @maxlength = "100", })
                                     @Html.ValidationMessageFor(model => model.COD_EXPEDIENTE, string.Empty, new { @class = "cssMessageError" })
                                 </div>
-                                <div class="form-group col-sm-4 ">
+                                <div class="form-row     col-sm-4 ">
                                     @Html.LabelFor(model => model.FECHA_RECEPCION, new { @class = "" })
-                                    @Html.TextBoxFor(model => model.FECHA_RECEPCION, new { @class = "form-control", @maxlength = "100", })
-                                    @Html.ValidationMessageFor(model => model.FECHA_RECEPCION, string.Empty, new { @class = "cssMessageError" })
-                                </div>
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(model => model.FECHA_RECEPCION, new { @class = "form-control", @maxlength = "100", @readOnly = "true" })
+                                        <span title="Calendario" class="input-group-addon" id="btnFechaRecepcion" style="border: 1px solid #c42e32;  cursor: pointer; background:white;"><i class="fa fa-calendar-o"></i></span>
+                                    </div>
+                                        @Html.ValidationMessageFor(model => model.FECHA_RECEPCION, string.Empty, new { @class = "cssMessageError" })
+                                    </div>
 
                                 <div class="form-group col-sm-4">
                                     @Html.LabelFor(model => model.FECHA_PRESCRIPCION, new { @class = "" })
-                                    @Html.TextBoxFor(model => model.FECHA_PRESCRIPCION, new { @class = "form-control", @maxlength = "100" })
-                                    @Html.ValidationMessageFor(model => model.FECHA_PRESCRIPCION, string.Empty, new { @class = "cssMessageError" })
-                                </div>
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(model => model.FECHA_PRESCRIPCION, new { @class = "form-control", @maxlength = "100", @readOnly = "true" })
+                                        <span title="Calendario" class="input-group-addon" id="btnFechaPrescripcion" style="border: 1px solid #c42e32;  cursor: pointer; background:white;"><i class="fa fa-calendar-o"></i></span>
+                                    </div>
+                                        @Html.ValidationMessageFor(model => model.FECHA_PRESCRIPCION, string.Empty, new { @class = "cssMessageError" })
+                                    </div>
 
                                 <div class="form-group  col-sm-4">
                                     @Html.LabelFor(model => model.FECHA_HECHO, new { @class = "" })
-                                    @Html.TextBoxFor(model => model.FECHA_HECHO, new { @class = "form-control", @maxlength = "100" })
-                                    @Html.ValidationMessageFor(model => model.FECHA_HECHO, string.Empty, new { @class = "cssMessageError" })
-                                </div>
-                                <div class="form-group col-sm-4">
-                                    @Html.LabelFor(model => model.HOJA_RUTA, new { @class = "" })
-                                    @Html.TextBoxFor(model => model.HOJA_RUTA, new { @class = "form-control", @maxlength = "100" })
-                                    @Html.ValidationMessageFor(model => model.HOJA_RUTA, string.Empty, new { @class = "cssMessageError" })
-                                </div>
-
-                                <div class="form-group col-sm-4">
-                                    @Html.LabelFor(model => model.SEARCH_REMITENTE, new { @class = "" })
-                                    <div class="col-sm-12 input-group">
-                                        @Html.TextBoxFor(model => model.SEARCH_REMITENTE, new { @class = "form-control", @maxlength = "100", @placeholder = "Ejm: Wilfredo Delgado" })
-                                        <span class="input-group-addon" style="cursor: pointer; font-weight: bold;" title="Buscar Remitente" onclick=""><i class=" clip-search-3" style="font-size: 13px;"></i></span>
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(model => model.FECHA_HECHO, new { @class = "form-control", @maxlength = "100", @readOnly = "true" })
+                                        <span title="Calendario" class="input-group-addon" id="btnFechaHecho" style="border: 1px solid #c42e32;  cursor: pointer; background:white;"><i class="fa fa-calendar-o"></i></span>
                                     </div>
-                                    @Html.ValidationMessageFor(model => model.SEARCH_REMITENTE, string.Empty, new { @class = "cssMessageError" })
+                                        @Html.ValidationMessageFor(model => model.FECHA_HECHO, string.Empty, new { @class = "cssMessageError" })
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        @Html.LabelFor(model => model.HOJA_RUTA, new { @class = "" })
+                                        @Html.TextBoxFor(model => model.HOJA_RUTA, new { @class = "form-control", @maxlength = "100" })
+                                        @Html.ValidationMessageFor(model => model.HOJA_RUTA, string.Empty, new { @class = "cssMessageError" })
+                                    </div>
+
+                                    <div class="form-group col-sm-4">
+                                        @Html.LabelFor(model => model.SEARCH_REMITENTE, new { @class = "" })
+                                        <div class="col-sm-12 input-group">
+                                            @Html.TextBoxFor(model => model.SEARCH_REMITENTE, new { @class = "form-control", @maxlength = "100", @placeholder = "Ejm: Consejo Fiscal." })
+                                            <span class="input-group-addon" style="cursor: pointer; font-weight: bold;" title="Buscar Remitente" onclick=""><i class=" clip-search-3" style="font-size: 13px;"></i></span>
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.SEARCH_REMITENTE, string.Empty, new { @class = "cssMessageError" })
+                                    </div>
                                 </div>
-                            </div>
                         </div>
 
 

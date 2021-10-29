@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DE461F5F-2183-4C49-AE5A-5853119ADA02}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MEF.Expedientes.Service</RootNamespace>
+    <AssemblyName>MEF.Expedientes.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Maestras\Cls_Serv_Oficina.cs" />
+    <Compile Include="Maestras\Cls_Serv_Personal.cs" />
+    <Compile Include="Maestras\Cls_Serv_Expedientes.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MEF.Expedientes.Contract\MEF.Expedientes.Contract.csproj">
+      <Project>{34533c1d-0591-4abb-b5ba-ce97cc43e1bd}</Project>
+      <Name>MEF.Expedientes.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MEF.Expedientes.Data\MEF.Expedientes.Data.csproj">
+      <Project>{6bcd6247-d87c-4e74-b1b5-89d29e42ed01}</Project>
+      <Name>MEF.Expedientes.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MEF.Expedientes.Entity\MEF.Expedientes.Entity.csproj">
+      <Project>{b46ca567-5d59-4937-a080-7bb2bb3048c9}</Project>
+      <Name>MEF.Expedientes.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MEF.Expedientes.Repository\MEF.Expedientes.Repository.csproj">
+      <Project>{fb2870a1-d7aa-4062-8a15-64b5d27d905b}</Project>
+      <Name>MEF.Expedientes.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
