@@ -53,7 +53,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Maestras\Cls_Serv_Oficina.cs" />
     <Compile Include="Maestras\Cls_Serv_Personal.cs" />
     <Compile Include="Maestras\Cls_Serv_Expedientes.cs" />
