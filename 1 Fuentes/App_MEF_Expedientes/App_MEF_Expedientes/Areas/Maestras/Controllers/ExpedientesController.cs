@@ -12,10 +12,12 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
     public class ExpedientesController : Controller
     {
         // GET: Maestras/Expedientes
-        private ICls_Serv_Oficina _cls_Serv_Oficina; 
+        private ICls_Serv_Oficina _cls_Serv_Oficina;
+        private ICls_Serv_Personal _cls_Serv_Personal;
         public ExpedientesController()
         {
             _cls_Serv_Oficina = new Cls_Serv_Oficina();
+            _cls_Serv_Personal = new Cls_Serv_Personal();
         }
 
 
@@ -36,10 +38,25 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
             {
                 auditoria.OBJETO = lista;
             }
-            return Json(auditoria, JsonRequestBehavior.AllowGet);
+            return Json(auditoria.OBJETO, JsonRequestBehavior.AllowGet);
         }
 
 
+        public ActionResult Buscar_Personal_Listar(string NOMBRES_APE)
+        {
+            Cls_Ent_Auditoria auditoria = new Cls_Ent_Auditoria();
+            auditoria.Limpiar();
+            IEnumerable<Cls_Ent_Personal> lista = _cls_Serv_Personal.Buscar_Personal_Listar(NOMBRES_APE, ref auditoria);
+            if (!auditoria.EJECUCION_PROCEDIMIENTO)
+            {
+                Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
+            }
+            else
+            {
+                auditoria.OBJETO = lista;
+            }
+            return Json(auditoria.OBJETO, JsonRequestBehavior.AllowGet);
+        }
 
 
         public ActionResult Mantenimiento(int id, string Accion)
