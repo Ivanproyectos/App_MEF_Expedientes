@@ -12,7 +12,8 @@
         //Remove_RemoverClases("liFormatoCorreo");
         //$('#Grilla_Load').show();
         Remove_RemoverClases("liFormatoCorreo");
-       FormatoCorreo_ConfigurarGrilla();
+        FormatoCorreo_ConfigurarGrilla();
+        FormatoCorreo_CargarGrilla(); 
     });
 
     $("#btnLimpiarFormatoCorreo").click(function (e) {
@@ -55,7 +56,7 @@
                         <label class="col-sm-15 control-label" for="form-field-1" style="width: 100%; margin-top: 5px; text-align: right;">Asunto:</label>
                     </div>
                     <div class="col-sm-2">
-                        <input type="text" id="txt_DescripcionCarga" name="txt_DescripcionCarga" maxlength="30" class="form-control" style="width: 100%" />
+                        <input type="text" id="txt_Asunto" name="txt_Asunto" maxlength="30" class="form-control" style="width: 100%" />
                     </div>
      
 
@@ -64,7 +65,7 @@
                     </div>
                     <div class="col-sm-2">
                         <select id="CBOESTADO" class="form-control">
-                            <option value="">--Seleccione--</option>
+                            <option value="2">--Seleccione--</option>
                             <option value="1">Activo</option>
                             <option value="0">Inactivo</option>
                         </select>

@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administracion\ICls_Serv_FormatoCorreo.cs" />
+    <Compile Include="Administracion\ICls_Serv_Dominio.cs" />
     <Compile Include="Maestras\ICls_Serv_Oficina.cs" />
     <Compile Include="Maestras\ICls_Serv_Personal.cs" />
     <Compile Include="Maestras\ICls_Serv_Expedientes.cs" />

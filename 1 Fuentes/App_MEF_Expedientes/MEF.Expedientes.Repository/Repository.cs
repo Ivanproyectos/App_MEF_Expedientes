@@ -80,6 +80,11 @@ namespace MEF.Expedientes.Repository
             return entities;
         }
 
+        public void Delete(T entity)
+        {
+            _context.Set<T>().Remove(entity);
+            _context.SaveChanges();
+        }
         public void Update(T entity)
         {
             if (entity == null)
@@ -169,11 +174,7 @@ namespace MEF.Expedientes.Repository
             }
         }
 
-        public void Delete(T entity)
-        {
-            _context.Set<T>().Remove(entity);
-            _context.SaveChanges();
-        }
+ 
 
         public void DeleteUno(long ID)
         {

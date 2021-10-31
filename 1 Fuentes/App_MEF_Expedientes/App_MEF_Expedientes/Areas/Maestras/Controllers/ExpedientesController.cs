@@ -14,10 +14,13 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
         // GET: Maestras/Expedientes
         private ICls_Serv_Oficina _cls_Serv_Oficina;
         private ICls_Serv_Personal _cls_Serv_Personal;
+        private ICls_Serv_Expedientes _cls_Expedientes; 
+        
         public ExpedientesController()
         {
             _cls_Serv_Oficina = new Cls_Serv_Oficina();
             _cls_Serv_Personal = new Cls_Serv_Personal();
+            _cls_Expedientes = new Cls_Serv_Expedientes();
         }
 
 
@@ -25,6 +28,25 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
         {
             return View();
         }
+
+
+        public ActionResult Expedientes_Codigo_Listar()
+        {
+            Cls_Ent_Auditoria auditoria = new Cls_Ent_Auditoria();
+            auditoria.Limpiar();
+            Cls_Ent_Expedientes lista = _cls_Expedientes.Expedientes_Codigo_Listar( ref auditoria);
+            if (!auditoria.EJECUCION_PROCEDIMIENTO)
+            {
+                Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
+            }
+            else
+            {
+                auditoria.OBJETO = lista;
+            }
+            return Json(auditoria.OBJETO, JsonRequestBehavior.AllowGet);
+        }
+
+
         public ActionResult Buscar_Oficina_Listar(string DESC_OFICINA)
         {
             Cls_Ent_Auditoria auditoria = new Cls_Ent_Auditoria();

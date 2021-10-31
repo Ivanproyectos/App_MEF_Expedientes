@@ -2,16 +2,11 @@
 var Sancion_barra = 'Sancion_barra';
 
 
-//$(document).ready(function () {
-//    Sancion_ConfigurarGrilla();
-//    //Sancion_CargarGrilla();
-//});
-
 function LimpiarSancion() {
     $("#txt_DescripcionCorta").val('');
     $("#txt_DescripcionLarga").val('');
     $('#CBOESTADO').val('');
-    Sancion_ConfigurarGrilla();
+    Sancion_CargarGrilla();
 }
 
 function Sancion_ConfigurarGrilla() {
@@ -28,16 +23,64 @@ function Sancion_ConfigurarGrilla() {
         { name: 'DESC_LARGA_DOMINIO', index: 'DESC_LARGA_DOMINIO', align: 'center', width: 300, hidden: false },
         { name: 'FLG_ESTADO', index: 'FLG_ESTADO', align: 'center', width: 140, hidden: true, sortable: true },
         { name: 'USU_CREACION', index: 'USU_CREACION', align: 'center', width: 140, hidden: false, sortable: true },
-        { name: 'FEC_CREACION', index: 'FEC_CREACION', align: 'center', width: 160, hidden: false, sortable: true },
+        { name: 'FEC_CREACION', index: 'FEC_CREACION', align: 'center', width: 160, hidden: false, sortable: true, formatter: 'date', formatoptions: { srcformat: 'd/m/Y h:i A', newformat: 'd/m/Y h:i A' } },
         { name: 'USU_MODIFICACION', index: 'USU_MODIFICACION', align: 'center', width: 150, hidden: false, sortable: true },
-        { name: 'FEC_MODIFICACION', index: 'FEC_MODIFICACION', align: 'center', width: 160, hidden: false, sortable: true },
+        { name: 'FEC_MODIFICACION', index: 'FEC_MODIFICACION', align: 'center', width: 160, hidden: false, sortable: true, formatter: 'date', formatoptions: { srcformat: 'd/m/Y h:i A', newformat: 'd/m/Y h:i A' } },
     ];
     var opciones = {
         GridLocal: true, multiselect: false, CellEdit: false, Editar: false, nuevo: false, eliminar: false, search: false, sort: 'DESC',
 
     };
-    SICA.Grilla(Sancion_grilla, Sancion_barra, '', '400', '', "Lista de Sanción", '', 'ID_DOMINIO', colNames, colModels, 'ID_DOMINIO', opciones);
+    SICA.Grilla(Sancion_grilla, Sancion_barra, '', '400', '', "Lista de Sancion", '', 'ID_DOMINIO', colNames, colModels, 'ID_DOMINIO', opciones);
 }
+
+
+
+
+function Sancion_CargarGrilla() {
+    $('#Grilla_Load').show();
+    var item =
+    {
+        DESC_CORTA_DOMINIO: $("#txt_DescripcionCorta").val(),
+        DESC_LARGA_DOMINIO: $("#txt_DescripcionLarga").val(),
+        FLG_ESTADO: $("#CBOESTADO").val(),
+        NOM_DOMINIO: 'TIPSAN' // SANCION
+    };
+    var url = baseUrl + 'Administracion/Sancion/Sancion_Listar';
+
+    var auditoria = Autorizacion.Ajax(url, item, false);
+    jQuery("#" + Sancion_grilla).jqGrid('clearGridData', true).trigger("reloadGrid");
+    if (auditoria != null) {
+        if (auditoria.EJECUCION_PROCEDIMIENTO) {
+            $.each(auditoria.OBJETO, function (i, v) {
+                var rowKey = jQuery("#" + Sancion_grilla).getDataIDs();
+                var ix = rowKey.length;
+                ix++;
+                var myData =
+                {
+                    CODIGO: ix,
+                    ID_DOMINIO: v.ID_DOMINIO,
+                    COD_DOMINIO: v.COD_DOMINIO,
+                    DESC_CORTA_DOMINIO: v.DESC_CORTA_DOMINIO,
+                    DESC_LARGA_DOMINIO: v.DESC_LARGA_DOMINIO,
+                    FLG_ESTADO: v.FLG_ESTADO,
+                    USU_CREACION: v.USU_CREACION,
+                    FEC_CREACION: v.FEC_CREACION,
+                    USU_MODIFICACION: v.USU_MODIFICACION,
+                    FEC_MODIFICACION: v.FEC_MODIFICACION
+
+                };
+                jQuery("#" + Sancion_grilla).jqGrid('addRowData', v.ID_DOMINIO, myData);
+            });
+            jQuery("#" + Sancion_grilla).trigger("reloadGrid");
+            $('#Grilla_Load').hide();
+        } else {
+            jAlert(auditoria.MENSAJE_SALIDA, 'Atención');
+            $('#Grilla_Load').hide();
+        }
+    }
+}
+
 
 
 
@@ -63,7 +106,7 @@ function Sancion_actionActivo(cellvalue, options, rowObject) {
         check_ = 'checked';
 
     var _btn = "<label class=\"switch\">"
-        + "<input id=\"Sancion_chk_" + rowObject.ID_DOMINIO + "\" type=\"checkbox\" onchange=\"Sancion_CambiarSancion(" + rowObject.ID_DOMINIO + "this)" + check_ + ">"
+        + "<input id=\"Sancion_chk_" + rowObject.ID_DOMINIO + "\" type=\"checkbox\" onchange=\"Sancion_CambiarEstado(" + rowObject.ID_DOMINIO + ",this)\" " + check_ + ">"
         + "<span class=\"slider round\"></span>"
         + "</label>";
     return _btn;
@@ -131,53 +174,6 @@ function Sancion_Actualizar() {
 
 
 
-function Sancion_CargarGrilla() {
-    $('#Grilla_Load').show();
-    var item =
-    {
-        DESC_CORTA_DOMINIO: $("#txt_DescripcionCorta").val(),
-        DESC_LARGA_DOMINIO: $("#txt_DescripcionLarga").val(),
-        FLG_ESTADO: $("#CBOESTADO").val(),
-    };
-    var url = baseUrl + 'Administracion/Sancion/Sancion_Listar';
-
-    var auditoria = Autorizacion.Ajax(url, item, false);
-    jQuery("#" + Sancion_grilla).jqGrid('clearGridData', true).trigger("reloadGrid");
-    if (auditoria != null) {
-        if (auditoria.EJECUCION_PROCEDIMIENTO) {
-            $.each(auditoria.OBJETO, function (i, v) {
-                var rowKey = jQuery("#" + Sancion_grilla).getDataIDs();
-                var ix = rowKey.length;
-                ix++;
-                var myData =
-                {
-                    CODIGO: ix,
-                    ID_DOMINIO: v.ID_DOMINIO,
-                    COD_DOMINIO: v.COD_DOMINIO,
-                    DESC_CORTA_DOMINIO: v.DESC_CORTA_DOMINIO,
-                    DESC_LARGA_DOMINIO: v.DESC_LARGA_DOMINIO,
-                    FLG_ESTADO: v.FLG_ESTADO,
-                    USU_CREACION: v.USU_CREACION,
-                    FEC_CREACION: v.FEC_CREACION,
-                    USU_MODIFICACION: v.USU_MODIFICACION,
-                    FEC_MODIFICACION: v.FEC_MODIFICACION
-
-                };
-                jQuery("#" + Sancion_grilla).jqGrid('addRowData', v.ID_DOMINIO, myData);
-            });
-            jQuery("#" + Sancion_grilla).trigger("reloadGrid");
-            $('#Grilla_Load').hide();
-        } else {
-            jAlert(auditoria.MENSAJE_SALIDA, 'Atención');
-            $('#Grilla_Load').hide();
-        }
-    }
-}
-
-
-
-
-
 
 
 /*********************************************** ----------------- *************************************************/
@@ -195,6 +191,8 @@ function Sancion_Registrar() {
                 if (r) {
                     var item =
                     {
+                        ID_DOMINIO_PADRE: 4, //CODITO TABLA SANCION
+                        NOM_DOMINIO: 'TIPSAN', // CODITO SANCION
                         COD_DOMINIO: $("#COD_DOMINIO").val(),
                         DESC_CORTA_DOMINIO: $("#DESC_CORTA_DOMINIO").val(),
                         DESC_LARGA_DOMINIO: $("#DESC_LARGA_DOMINIO").val(),
@@ -231,8 +229,8 @@ function Sancion_Registrar() {
 
 
 
-function Sancion_CambiarSancion(ID_DOMINIO, MiCheck) {
-    var url = baseUrl + 'Administracion/Sancion/Sancion_Sancion';
+function Sancion_CambiarEstado(ID_DOMINIO, MiCheck) {
+    var url = baseUrl + 'Administracion/Sancion/Sancion_Estado';
     var item = {
         ID_DOMINIO: ID_DOMINIO,
         FLG_ESTADO: MiCheck.checked == true ? 1 : 0,

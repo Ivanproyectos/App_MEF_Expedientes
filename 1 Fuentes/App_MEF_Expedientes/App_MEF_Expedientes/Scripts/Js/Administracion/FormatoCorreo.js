@@ -2,16 +2,11 @@
 var FormatoCorreo_barra = 'FormatoCorreo_barra';
 
 
-//$(document).ready(function () {
-//    FormatoCorreo_ConfigurarGrilla();
-//    //FormatoCorreo_CargarGrilla();
-//});
 
 function LimpiarFormatoCorreo() {
-    $("#txt_DescripcionCorta").val('');
-    $("#txt_DescripcionLarga").val('');
+    $("#txt_Asunto").val('');
     $('#CBOESTADO').val('');
-    FormatoCorreo_ConfigurarGrilla();
+    FormatoCorreo_CargarGrilla();
 }
 
 function FormatoCorreo_ConfigurarGrilla() {
@@ -23,12 +18,12 @@ function FormatoCorreo_ConfigurarGrilla() {
         { name: 'ELIMINAR', index: 'ELIMINAR', align: 'center', width: 70, hidden: false, sortable: false, formatter: FormatoCorreo_actionEliminar },
         { name: 'ACTIVO', index: 'ACTIVO', align: 'center', width: 55, hidden: false, sortable: false, formatter: FormatoCorreo_actionActivo },
         { name: 'ID_FORMATO', index: 'ID_FORMATO', align: 'center', width: 50, hidden: true },
-        { name: 'COD_DOMINIO', index: 'COD_DOMINIO', align: 'center', width: 200, hidden: false },
+        { name: 'ASUNTO', index: 'ASUNTO', align: 'center', width: 200, hidden: false },
         { name: 'FLG_ESTADO', index: 'FLG_ESTADO', align: 'center', width: 140, hidden: true, sortable: true },
         { name: 'USU_CREACION', index: 'USU_CREACION', align: 'center', width: 140, hidden: false, sortable: true },
-        { name: 'FEC_CREACION', index: 'FEC_CREACION', align: 'center', width: 160, hidden: false, sortable: true },
+        { name: 'FEC_CREACION', index: 'FEC_CREACION', align: 'center', width: 160, hidden: false, sortable: true, formatter: 'date', formatoptions: { srcformat: 'd/m/Y h:i A', newformat: 'd/m/Y h:i A' } },
         { name: 'USU_MODIFICACION', index: 'USU_MODIFICACION', align: 'center', width: 150, hidden: false, sortable: true },
-        { name: 'FEC_MODIFICACION', index: 'FEC_MODIFICACION', align: 'center', width: 160, hidden: false, sortable: true },
+        { name: 'FEC_MODIFICACION', index: 'FEC_MODIFICACION', align: 'center', width: 160, hidden: false, sortable: true, formatter: 'date', formatoptions: { srcformat: 'd/m/Y h:i A', newformat: 'd/m/Y h:i A' } },
     ];
     var opciones = {
         GridLocal: true, multiselect: false, CellEdit: false, Editar: false, nuevo: false, eliminar: false, search: false, sort: 'DESC',
@@ -94,9 +89,8 @@ function FormatoCorreo_Actualizar() {
         var item =
         {
             ID_FORMATO: $("#hdfID_FORMATO").val(),
-            COD_DOMINIO: $("#COD_DOMINIO").val(),
-            DESC_CORTA_DOMINIO: $("#DESC_CORTA_DOMINIO").val(),
-            DESC_LARGA_DOMINIO: $("#DESC_LARGA_DOMINIO").val(),
+            ASUNTO: $("#COD_DOMINIO").val(),
+            BODY: $('#BODY').summernote('code'),
             USU_MODIFICACION: $("#inputHddcod_usuario").val(),
             TIPO: $("#HDF_Tipo_FormatoCorreo").val(),
             Accion: $("#AccionFormatoCorreo").val()
@@ -133,8 +127,7 @@ function FormatoCorreo_CargarGrilla() {
     $('#Grilla_Load').show();
     var item =
     {
-        DESC_CORTA_DOMINIO: $("#txt_DescripcionCorta").val(),
-        DESC_LARGA_DOMINIO: $("#txt_DescripcionLarga").val(),
+        ASUNTO: $("#txt_Asunto").val(),
         FLG_ESTADO: $("#CBOESTADO").val(),
     };
     var url = baseUrl + 'Administracion/FormatosCorreo/FormatoCorreo_Listar';
@@ -151,9 +144,7 @@ function FormatoCorreo_CargarGrilla() {
                 {
                     CODIGO: ix,
                     ID_FORMATO: v.ID_FORMATO,
-                    COD_DOMINIO: v.COD_DOMINIO,
-                    DESC_CORTA_DOMINIO: v.DESC_CORTA_DOMINIO,
-                    DESC_LARGA_DOMINIO: v.DESC_LARGA_DOMINIO,
+                    ASUNTO: v.ASUNTO,
                     FLG_ESTADO: v.FLG_ESTADO,
                     USU_CREACION: v.USU_CREACION,
                     FEC_CREACION: v.FEC_CREACION,

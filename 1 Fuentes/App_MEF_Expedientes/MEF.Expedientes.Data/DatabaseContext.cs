@@ -3,7 +3,7 @@ using MEF.Expedientes.Entity.Maestras;
 //using MEF.Microformas.Entity.Carga.Vistas;
 //using MEF.Microformas.Entity.Proceso;
 //using MEF.Microformas.Entity.Proceso.Vistas;
-//using MEF.Microformas.Entity.Administracion.Vistas;
+using MEF.Expedientes.Entity.Administracion;
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
@@ -27,6 +27,11 @@ namespace MEF.Expedientes.Data
 
         public virtual DbSet<Cls_Ent_Oficina> cls_Ent_Oficina { get; set; }
         public virtual DbSet<Cls_Ent_Personal> cls_Ent_Personal { get; set; }
+
+        public virtual DbSet<Cls_Ent_Expedientes> Cls_Ent_Expedientes { get; set; }
+
+        public virtual DbSet<Cls_Ent_Dominio> cls_Ent_Dominio { get; set; }
+        
 
         //public virtual DbSet<Cls_Ent_Tabla> cls_Ent_Tabla { get; set; }
         //public virtual DbSet<Cls_Ent_Campo> cls_Ent_Campo { get; set; }

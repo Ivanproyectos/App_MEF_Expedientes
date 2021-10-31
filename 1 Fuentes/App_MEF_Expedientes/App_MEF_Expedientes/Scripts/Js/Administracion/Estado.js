@@ -2,16 +2,11 @@
 var Estado_barra = 'Estado_barra';
 
 
-//$(document).ready(function () {
-//    Estado_ConfigurarGrilla();
-//    //Estado_CargarGrilla();
-//});
-
 function LimpiarEstado() {
     $("#txt_DescripcionCorta").val('');
     $("#txt_DescripcionLarga").val('');
     $('#CBOESTADO').val('');
-    Estado_ConfigurarGrilla();
+    Estado_CargarGrilla();
 }
 
 function Estado_ConfigurarGrilla() {
@@ -28,9 +23,9 @@ function Estado_ConfigurarGrilla() {
         { name: 'DESC_LARGA_DOMINIO', index: 'DESC_LARGA_DOMINIO', align: 'center', width: 300, hidden: false },
         { name: 'FLG_ESTADO', index: 'FLG_ESTADO', align: 'center', width: 140, hidden: true, sortable: true },
         { name: 'USU_CREACION', index: 'USU_CREACION', align: 'center', width: 140, hidden: false, sortable: true },
-        { name: 'FEC_CREACION', index: 'FEC_CREACION', align: 'center', width: 160, hidden: false, sortable: true },
+        { name: 'FEC_CREACION', index: 'FEC_CREACION', align: 'center', width: 160, hidden: false, sortable: true, formatter: 'date', formatoptions: { srcformat: 'd/m/Y h:i A', newformat: 'd/m/Y h:i A' } },
         { name: 'USU_MODIFICACION', index: 'USU_MODIFICACION', align: 'center', width: 150, hidden: false, sortable: true },
-        { name: 'FEC_MODIFICACION', index: 'FEC_MODIFICACION', align: 'center', width: 160, hidden: false, sortable: true },
+        { name: 'FEC_MODIFICACION', index: 'FEC_MODIFICACION', align: 'center', width: 160, hidden: false, sortable: true, formatter: 'date', formatoptions: { srcformat: 'd/m/Y h:i A', newformat: 'd/m/Y h:i A' } },
     ];
     var opciones = {
         GridLocal: true, multiselect: false, CellEdit: false, Editar: false, nuevo: false, eliminar: false, search: false, sort: 'DESC',
@@ -42,95 +37,6 @@ function Estado_ConfigurarGrilla() {
 
 
 
-
-
-function Estado_actionEditar(cellvalue, options, rowObject) {
-    var _btn = "<button title='Editar' onclick='Estado_Editar(" + rowObject.ID_DOMINIO + ");' class=\"btn btn-link\" type=\"button\" data-toggle=\"modal\"  style=\"text-decoration: none !important;\" data-target=\"#myModalNuevo\"> <i class=\"clip-pencil-3\" style=\"color:#e68c1b;font-size:17px\"></i></button>";
-    return _btn;
-}
-
-
-
-function Estado_actionEliminar(cellvalue, options, rowObject) {
-    var _btn = "<button title='Eliminar' onclick=\"Estado_Eliminar(" + rowObject.ID_DOMINIO + ");\" class=\"btn btn-link\" type=\"button\" style=\"text-decoration: none !important;\"> <i class=\"clip-cancel-circle-2\" style=\"color:#c35245;font-size:17px\"></i></button>";
-    return _btn;
-}
-
-
-function Estado_actionActivo(cellvalue, options, rowObject) {
-    var check_ = 'check';
-    if (rowObject.FLG_ESTADO == 1)
-        check_ = 'checked';
-
-    var _btn = "<label class=\"switch\">"
-        + "<input id=\"Estado_chk_" + rowObject.ID_DOMINIO + "\" type=\"checkbox\" onchange=\"Estado_CambiarEstado(" + rowObject.ID_DOMINIO + "this)" + check_ + ">"
-        + "<span class=\"slider round\"></span>"
-        + "</label>";
-    return _btn;
-}
-
-
-
-
-
-function Estado_Editar(ID_DOMINIO) {
-    jQuery("#myModalNuevo").html('');
-    jQuery("#myModalNuevo").load(baseUrl + "Administracion/Estado/Mantenimiento?id=" + ID_DOMINIO + "&Accion=M", function (responseText, textStatus, request) {
-        $.validator.unobtrusive.parse('#myModalNuevo');
-        if (request.status != 200) return;
-    });
-}
-
-function Estado_Nuevo() {
-    jQuery("#myModalNuevo").html('');
-    jQuery("#myModalNuevo").load(baseUrl + "Administracion/Estado/Mantenimiento?id=0&Accion=N", function (responseText, textStatus, request) {
-        $.validator.unobtrusive.parse('#myModalNuevo');
-        if (request.status != 200) return;
-    });
-}
-
-
-
-function Estado_Actualizar() {
-    if ($("#frmMantenimientoEstado").valid()) {
-        var item =
-        {
-            ID_DOMINIO: $("#hdfID_DOMINIO").val(),
-            COD_DOMINIO: $("#COD_DOMINIO").val(),
-            DESC_CORTA_DOMINIO: $("#DESC_CORTA_DOMINIO").val(),
-            DESC_LARGA_DOMINIO: $("#DESC_LARGA_DOMINIO").val(),
-            USU_MODIFICACION: $("#inputHddcod_usuario").val(),
-            TIPO: $("#HDF_Tipo_Estado").val(),
-            Accion: $("#AccionEstado").val()
-        };
-        jConfirm("¿ Desea actualizar este tipo archivo ?", "Atención", function (r) {
-            if (r) {
-                var url = baseUrl + 'Administracion/Estado/Estado_Actualizar';
-                var auditoria = Autorizacion.Ajax(url, item, false);
-                if (auditoria != null) {
-                    if (auditoria.EJECUCION_PROCEDIMIENTO) {
-                        if (!auditoria.RECHAZAR) {
-                            Estado_CargarGrilla();
-                            jAlert("Datos actualizados satisfactoriamente", "Proceso");
-                            $('#myModalNuevo').modal('hide');
-                            jQuery("#myModalNuevo").html('');
-                        } else {
-                            jAlert(auditoria.MENSAJE_SALIDA, 'Atención');
-                        }
-                    } else {
-                        jAlert(auditoria.MENSAJE_SALIDA, 'Atención');
-                    }
-                }
-            }
-        });
-
-    }
-}
-
-
-
-
-
 function Estado_CargarGrilla() {
     $('#Grilla_Load').show();
     var item =
@@ -138,6 +44,7 @@ function Estado_CargarGrilla() {
         DESC_CORTA_DOMINIO: $("#txt_DescripcionCorta").val(),
         DESC_LARGA_DOMINIO: $("#txt_DescripcionLarga").val(),
         FLG_ESTADO: $("#CBOESTADO").val(),
+        NOM_DOMINIO: 'ESTADO' // ESTADO
     };
     var url = baseUrl + 'Administracion/Estado/Estado_Listar';
 
@@ -180,6 +87,95 @@ function Estado_CargarGrilla() {
 
 
 
+function Estado_actionEditar(cellvalue, options, rowObject) {
+    var _btn = "<button title='Editar' onclick='Estado_Editar(" + rowObject.ID_DOMINIO + ");' class=\"btn btn-link\" type=\"button\" data-toggle=\"modal\"  style=\"text-decoration: none !important;\" data-target=\"#myModalNuevo\"> <i class=\"clip-pencil-3\" style=\"color:#e68c1b;font-size:17px\"></i></button>";
+    return _btn;
+}
+
+
+
+function Estado_actionEliminar(cellvalue, options, rowObject) {
+    var _btn = "<button title='Eliminar' onclick=\"Estado_Eliminar(" + rowObject.ID_DOMINIO + ");\" class=\"btn btn-link\" type=\"button\" style=\"text-decoration: none !important;\"> <i class=\"clip-cancel-circle-2\" style=\"color:#c35245;font-size:17px\"></i></button>";
+    return _btn;
+}
+
+
+function Estado_actionActivo(cellvalue, options, rowObject) {
+    var check_ = 'check';
+    if (rowObject.FLG_ESTADO == 1)
+        check_ = 'checked';
+
+    var _btn = "<label class=\"switch\">"
+        + "<input id=\"Estado_chk_" + rowObject.ID_DOMINIO + "\" type=\"checkbox\" onchange=\"Estado_CambiarEstado(" + rowObject.ID_DOMINIO + ",this)\" " + check_ + ">"
+        + "<span class=\"slider round\"></span>"
+        + "</label>";
+    return _btn;
+}
+
+
+
+
+
+function Estado_Editar(ID_DOMINIO) {
+    jQuery("#myModalNuevo").html('');
+    jQuery("#myModalNuevo").load(baseUrl + "Administracion/Estado/Mantenimiento?id=" + ID_DOMINIO + "&Accion=M", function (responseText, textStatus, request) {
+        $.validator.unobtrusive.parse('#myModalNuevo');
+        if (request.status != 200) return;
+    });
+}
+
+function Estado_Nuevo() {
+    jQuery("#myModalNuevo").html('');
+    jQuery("#myModalNuevo").load(baseUrl + "Administracion/Estado/Mantenimiento?id=0&Accion=N", function (responseText, textStatus, request) {
+        $.validator.unobtrusive.parse('#myModalNuevo');
+        if (request.status != 200) return;
+    });
+}
+
+
+
+function Estado_Actualizar() {
+    if ($("#frmMantenimientoEstado").valid()) {
+        var item =
+        {
+            ID_DOMINIO: $("#hdfID_DOMINIO").val(),
+            COD_DOMINIO: $("#COD_DOMINIO").val(),
+            DESC_CORTA_DOMINIO: $("#DESC_CORTA_DOMINIO").val(),
+            DESC_LARGA_DOMINIO: $("#DESC_LARGA_DOMINIO").val(),
+            USU_MODIFICACION: $("#inputHddcod_usuario").val(),
+            TIPO: $("#HDF_Tipo_Estado").val(),
+            Accion: $("#AccionEstado").val()
+        };
+        jConfirm("¿ Desea actualizar este tipo estado ?", "Atención", function (r) {
+            if (r) {
+                var url = baseUrl + 'Administracion/Estado/Estado_Actualizar';
+                var auditoria = Autorizacion.Ajax(url, item, false);
+                if (auditoria != null) {
+                    if (auditoria.EJECUCION_PROCEDIMIENTO) {
+                        if (!auditoria.RECHAZAR) {
+                            Estado_CargarGrilla();
+                            jAlert("Datos actualizados satisfactoriamente", "Proceso");
+                            $('#myModalNuevo').modal('hide');
+                            jQuery("#myModalNuevo").html('');
+                        } else {
+                            jAlert(auditoria.MENSAJE_SALIDA, 'Atención');
+                        }
+                    } else {
+                        jAlert(auditoria.MENSAJE_SALIDA, 'Atención');
+                    }
+                }
+            }
+        });
+
+    }
+}
+
+
+
+
+
+
+
 /*********************************************** ----------------- *************************************************/
 
 /************************************************* Nuevo Estado ***************************************************/
@@ -195,6 +191,8 @@ function Estado_Registrar() {
                 if (r) {
                     var item =
                     {
+                        ID_DOMINIO_PADRE: 5, //CODITO TABLA ESTADO
+                        NOM_DOMINIO: 'ESTADO', // CODITO ESTADO
                         COD_DOMINIO: $("#COD_DOMINIO").val(),
                         DESC_CORTA_DOMINIO: $("#DESC_CORTA_DOMINIO").val(),
                         DESC_LARGA_DOMINIO: $("#DESC_LARGA_DOMINIO").val(),
@@ -259,7 +257,7 @@ function Estado_CambiarEstado(ID_DOMINIO, MiCheck) {
 
 function Estado_Eliminar(ID_DOMINIO) {
     //var data = jQuery("#" + Estado_grilla).jqGrid('getRowData', CODIGO);
-    jConfirm("¿ Desea eliminar este tipo archivo ?", "Atención", function (r) {
+    jConfirm("¿ Desea eliminar este tipo estado ?", "Atención", function (r) {
         if (r) {
             var url = baseUrl + 'Administracion/Estado/Estado_Eliminar';
             var item = {

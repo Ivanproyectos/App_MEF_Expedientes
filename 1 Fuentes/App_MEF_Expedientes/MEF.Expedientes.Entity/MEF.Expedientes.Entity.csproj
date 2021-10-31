@@ -42,8 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Administracion\Cls_Ent_Dominio.cs" />
+    <Compile Include="Administracion\Cls_Ent_FormatoCorreo.cs" />
     <Compile Include="Cls_Ent_Auditoria.cs" />
-    <Compile Include="Cls_Ent_Dominio.cs" />
+    <Compile Include="Maestras\Cls_Ent_Expedientes.cs" />
     <Compile Include="Maestras\Cls_Ent_Oficina.cs" />
     <Compile Include="Maestras\Cls_Ent_Personal.cs" />
     <Compile Include="Models\PagedResultBase.cs" />

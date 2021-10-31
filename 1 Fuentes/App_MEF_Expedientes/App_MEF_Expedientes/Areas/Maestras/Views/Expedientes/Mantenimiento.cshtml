@@ -11,7 +11,7 @@
     
       $(document).ready(function () {
             //$('#ID_DEPARTAMENTO').select2();
-
+          //Expedientes_Codigo_Listar(); 
             if ($('#AccionExpedientes').val() == "M") {
                 Provincia_Listar($('#ID_DEPARTAMENTO').val());
 
@@ -69,6 +69,20 @@
         }).css("z-index", 90000);
         $("#FECHA_HECHO").datepicker("show");
     });
+
+    function Expedientes_Codigo_Listar() {
+        var item =
+        {
+        };
+        var url = baseUrl + 'Maestras/Expedientes/Expedientes_Codigo_Listar';
+        var auditoria = Autorizacion.Ajax(url, item, false);
+        jQuery("#" + Actos_grilla).jqGrid('clearGridData', true).trigger("reloadGrid");
+        if (auditoria != null) {
+            if (auditoria.EJECUCION_PROCEDIMIENTO) {
+
+            }
+        }
+    }
 
 
 </script>

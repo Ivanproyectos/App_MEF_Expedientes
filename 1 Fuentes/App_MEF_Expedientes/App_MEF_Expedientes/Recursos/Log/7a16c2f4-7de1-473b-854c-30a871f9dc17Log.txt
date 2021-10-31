@@ -1,0 +1,17 @@
+System.InvalidOperationException: No se admiten varios conjuntos de objetos por tipo. Los conjuntos de objetos 'cls_Ent_Personal' y 'Cls_Ent_Expedientes' pueden contener instancias de tipo 'MEF.Expedientes.Entity.Maestras.Cls_Ent_Personal'.
+   en System.Data.Entity.Internal.DbSetDiscoveryService.RegisterSets(DbModelBuilder modelBuilder)
+   en System.Data.Entity.Internal.LazyInternalContext.CreateModelBuilder()
+   en System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   en System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   en System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   en System.Data.Entity.Internal.InternalContext.Initialize()
+   en System.Data.Entity.Internal.LazyInternalContext.get_ObjectContext()
+   en System.Data.Entity.Internal.InternalContext.ExecuteSqlQuery[TElement](String sql, Nullable`1 streaming, Object[] parameters)
+   en System.Data.Entity.Internal.InternalContext.ExecuteSqlQueryAsIEnumerator[TElement](String sql, Nullable`1 streaming, Object[] parameters)
+   en System.Data.Entity.Internal.InternalContext.ExecuteSqlQuery(Type elementType, String sql, Nullable`1 streaming, Object[] parameters)
+   en System.Data.Entity.Internal.InternalSqlNonSetQuery.GetEnumerator()
+   en System.Data.Entity.Infrastructure.DbRawSqlQuery`1.GetEnumerator()
+   en System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   en MEF.Expedientes.Data.DatabaseContext.GetQuery(String sqlQuery) en C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Data\DatabaseContext.cs:línea 197
+   en MEF.Expedientes.Repository.Repository`1.GetQuery(String sqlQuery) en C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Repository\Repository.cs:línea 73
+   en MEF.Expedientes.Service.Maestras.Cls_Serv_Expedientes.Expedientes_Codigo_Listar(Cls_Ent_Auditoria& auditoria) en C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Service\Maestras\Cls_Serv_Expedientes.cs:línea 26
