@@ -43,6 +43,8 @@ namespace App_MEF_Expedientes
             container.RegisterType<ICls_Serv_Oficina, Cls_Serv_Oficina>();
             container.RegisterType<ICls_Serv_Dominio, Cls_Serv_Dominio>();
             container.RegisterType<ICls_Serv_Expedientes, Cls_Serv_Expedientes>();
+            container.RegisterType<ICls_Serv_FormatoCorreo, Cls_Serv_FormatoCorreo>();
+            
             // NOTE: To load from web.config uncomment the line below.
             // Make sure to add a Unity.Configuration to the using statements.
             // container.LoadConfiguration();

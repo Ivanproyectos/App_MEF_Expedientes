@@ -23,6 +23,8 @@ namespace MEF.Expedientes.Service.Administracion
             {
                 if (!string.IsNullOrEmpty(entidad.ASUNTO))
                     lista = FindAll(w => w.ASUNTO.ToUpper().Contains(entidad.ASUNTO.ToUpper()));
+                else if (entidad.FLG_ESTADO != 2)
+                    lista = FindAll(w => w.FLG_ESTADO == entidad.FLG_ESTADO); 
 
                 else
                     lista = GetAll().OrderByDescending(w => w.ID_FORMATO);

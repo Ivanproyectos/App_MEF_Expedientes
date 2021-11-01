@@ -56,7 +56,7 @@ function FormatoCorreo_actionActivo(cellvalue, options, rowObject) {
         check_ = 'checked';
 
     var _btn = "<label class=\"switch\">"
-        + "<input id=\"FormatoCorreo_chk_" + rowObject.ID_FORMATO + "\" type=\"checkbox\" onchange=\"FormatoCorreo_CambiarFormatoCorreo(" + rowObject.ID_FORMATO + "this)" + check_ + ">"
+        + "<input id=\"FormatoCorreo_chk_" + rowObject.ID_FORMATO + "\" type=\"checkbox\" onchange=\"FormatoCorreo_CambiarFormatoCorreo(" + rowObject.ID_FORMATO + ",this)\" " + check_ + ">"
         + "<span class=\"slider round\"></span>"
         + "</label>";
     return _btn;
@@ -89,7 +89,7 @@ function FormatoCorreo_Actualizar() {
         var item =
         {
             ID_FORMATO: $("#hdfID_FORMATO").val(),
-            ASUNTO: $("#COD_DOMINIO").val(),
+            ASUNTO: $("#ASUNTO").val(),
             BODY: $('#BODY').summernote('code'),
             USU_MODIFICACION: $("#inputHddcod_usuario").val(),
             TIPO: $("#HDF_Tipo_FormatoCorreo").val(),
@@ -188,7 +188,7 @@ function FormatoCorreo_Registrar() {
                         Accion: $("#AccionFormatoCorreo").val()
                     };
                     debugger; 
-                    //var url = baseUrl + 'Administracion/FormatosCorreo/FormatoCorreo_Insertar';
+                    var url = baseUrl + 'Administracion/FormatosCorreo/FormatoCorreo_Insertar';
                     var auditoria = Autorizacion.Ajax(url, item, false);
                     if (auditoria != null) {
                         if (auditoria.EJECUCION_PROCEDIMIENTO) {
@@ -217,7 +217,7 @@ function FormatoCorreo_Registrar() {
 
 
 function FormatoCorreo_CambiarFormatoCorreo(ID_FORMATO, MiCheck) {
-    var url = baseUrl + 'Administracion/FormatosCorreo/FormatoCorreo_FormatoCorreo';
+    var url = baseUrl + 'Administracion/FormatosCorreo/FormatoCorreo_Estado';
     var item = {
         ID_FORMATO: ID_FORMATO,
         FLG_ESTADO: MiCheck.checked == true ? 1 : 0,

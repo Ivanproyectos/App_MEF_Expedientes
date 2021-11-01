@@ -1,19 +1,32 @@
 ﻿@model App_MEF_Expedientes.Areas.Administracion.Models.FormatosModelView
 
 <script type="text/javascript">
-        $(document).ready(function () {
-            $('#BODY').summernote({
-                height: 300,                 // set editor height
-                minHeight: null,             // set minimum height of editor
-                maxHeight: null,             // set maximum height of editor
-                focus: true  
-            });
+    $(document).ready(function () {
+        $('#BODY').summernote({
+            height: 300,                 // set editor height
+            minHeight: null,             // set minimum height of editor
+            maxHeight: null,             // set maximum height of editor
+            focus: true
         });
 
+        if ($('#AccionFormatoCorreo').val() == "M") {
+  
+            //setTimeout(function () {
+                debugger;
+                //$('#BODY').html($('#hdf_BODY').val()); 
+                $("#BODY").summernote("code", $('#hdf_BODY').val());
+            //}, 500); 
+          
 
-        jQuery('#btnGrabar').click(function (e) {
-            FormatoCorreo_Registrar();
-        });
+        }
+
+
+    });
+
+
+    jQuery('#btnGrabar').click(function (e) {
+        FormatoCorreo_Registrar();
+    });
 
 
 </script>
@@ -22,9 +35,10 @@
         width: 45%;
         margin: 30px auto;
     }
+
     .panel-heading {
-        height: auto !important; 
-    } 
+        height: auto !important;
+    }
 </style>
 
 @{
@@ -46,7 +60,7 @@
                 }
                 else
                 {
-            <h4 class="modal-title"><i class="clip-pencil"></i>&nbsp Edición - Formato</h4>
+                    <h4 class="modal-title"><i class="clip-pencil"></i>&nbsp Edición - Formato</h4>
                 }
             </div>
             <div class="modal-body">
@@ -73,16 +87,18 @@
                     </div>
 
 
-                    </div>
-                    <div class="modal-footer">
-                        <button id="btnGrabar" class="btn btn-red" type="button" data-toggle="modal"><i class="fa fa-save" />&nbsp Grabar</button>
-                        <button type="button" class="btn btn-light-grey" data-dismiss="modal"><i class="fa fa-share-square-o"></i>&nbsp Cerrar</button>
-                    </div>
                 </div>
+                <div class="modal-footer">
+                    <button id="btnGrabar" class="btn btn-red" type="button" data-toggle="modal"><i class="fa fa-save" />&nbsp Grabar</button>
+                    <button type="button" class="btn btn-light-grey" data-dismiss="modal"><i class="fa fa-share-square-o"></i>&nbsp Cerrar</button>
+                </div>
+            </div>
         </div>
     </div>
     @Html.Hidden("hdfID_FORMATO", Model.ID_FORMATO)
     @Html.Hidden("AccionFormatoCorreo", Model.Accion)
+    @Html.Hidden("hdf_BODY", Model.BODY)
+
 }
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
