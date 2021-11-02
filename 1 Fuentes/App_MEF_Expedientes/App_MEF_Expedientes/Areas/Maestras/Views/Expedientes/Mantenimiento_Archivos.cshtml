@@ -1,17 +1,209 @@
-﻿
-@{
-    Layout = null;
-}
+﻿@model App_MEF_Expedientes.Areas.Maestras.Models.AdjuntosModelView
 
-<!DOCTYPE html>
+<script type="text/javascript">
+    var f = new Date();
+    var Archivo_cambiado = false;
+    var ArchivoNuevo_Array = new Array();
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Mantenimiento_Archivos</title>
-</head>
-<body>
-    <div> 
+    $(document).ready(function () {
+        $('#NUMERO').val(''); 
+        Adjuntos_ConfigurarGrilla();
+        //Adjuntos_CargarGrilla();
+    });
+
+    $("#file-upload_Adjuntos").change(function () {
+        $('#validar_file').hide();
+        $("#lbl_file").html("Seleccionar archivo");
+        var input = document.getElementById('file-upload_Adjuntos');
+        var file = input.files[0];
+        if (file != undefined) {
+            var PesodeArchivo = parseFloat(file.size);
+            var ext = input.files[0].name.split('.').pop();
+            var nombre = input.files[0].name;
+            if (nombre.length > 100) {
+                jAlert("El nombre del documento es muy largo", 'Alerta');
+                $(this).val('');
+                return false;
+            }
+            else {
+                var valido = false;
+                if (ext.toLowerCase() == "pdf")
+                    valido = true;
+                if (PesodeArchivo > Tamanio_Valido || !valido) {
+                    $(this).val('');
+                    if (!valido)
+                        jAlert("Solo se permite documentos en formato Pdf(.pdf)", 'Alerta');
+                    else
+                        jAlert("La cantidad de el archivo que va adjuntar no pueden pesar más de " + Tamanio_Valido / 1024 / 1024 + "Mb", 'Alerta');
+                    return false;
+                } else {
+                    $("#lbl_file").html(nombre);
+                    Nuevo_GuardarTemporalAdjuntos();
+                }
+                archivo_cambiado = true;
+            }
+        } else {
+            $(this).val('');
+            //DocumentoArchivo_Error();
+            return false;
+        }
+
+    });
+
+
+    function Nuevo_GuardarTemporalAdjuntos() {
+        //$("#FrmNuevoArchivo").show();
+        var ErrorUrl = '';
+        var url = baseUrl + "Seguridad/Archivo/Guardar_Temporal_Archivo";
+        var options = {
+            type: "POST",
+            dataType: "json",
+            contentType: false,
+            url: url,
+            resetForm: false,
+            beforeSubmit: function (formData, jqForm, options) {
+                return true;
+            },
+            success: function (response, textStatus, jqXHR) {
+                if (response.EJECUCION_PROCEDIMIENTO) {
+                    Archivo_cambiado = true;
+                    ArchivoNuevo_Array = new Array();
+                    ArchivoNuevo_Array.push(response.OBJETO);
+
+                }
+                else {
+                    jAlert(response.MENSAJE_SALIDA, 'Atención');
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) { window.location = ErrorUrl; }
+        };
+        $("#FrmNuevoArchivo").ajaxForm(options);
+        $("#FrmNuevoArchivo").submit();
+    }
+
+
+    function EliminartTemporal(CODIGO_ARCHIVO) {
+        var EXTENSION = "";
+        var item =
+            {
+                CODIGO: CODIGO_ARCHIVO,
+                EXTENSION: EXTENSION
+            };
+        var url = baseUrl + 'Seguridad/Archivo/Archivo_Eliminar_Temporal';
+
+        var respuesta = SICA.Ajax(url, item, false);
+        if (respuesta != null && respuesta != "") {
+
+        }
+    }
+
+    jQuery('#btnGrabar_Detalle').click(function (e) {
+        Adjuntos_Registrar();
+    });
+
+
+</script>
+<style>
+    .modal-dialogOrden1 {
+        width: 48%;
+        margin: 30px auto;
+    }
+</style>
+
+
+<div class="modal fade" id="myModalDescargar" tabindex="" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+
+<div class="modal-dialogOrden1">
+    <div class="modal-content" style="width: 100%;">
+        <div class="modal-header" style="cursor: move; background-color: #c42e32;">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+       
+               <h4 class="modal-title"><i class="clip-pencil"></i>&nbsp Agregar Adjuntos - @Model.COD_EXPEDIENTE </h4>
+        
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                @using (Html.BeginForm("Proceso", "Adjuntos", new { @area = "Adjuntos" }, FormMethod.Post, new { @id = "frmMantenimientoAdjuntos", @class = "form-horizontal" }))
+                {
+                    @Html.ValidationSummary(true)
+                    <div class="form-group ">
+                        @Html.LabelFor(model => model.ID_TIPO_ARCHIVO, new { @class = "col-sm-4 control-label" })
+                        <div class="col-sm-7">
+                            @Html.DropDownListFor(x => x.ID_TIPO_ARCHIVO, Model.Lista_Tipo_Archivo, new { @class = "form-control", @maxlength = "50", @style = "width:100%", })
+                            @Html.ValidationMessageFor(model => model.ID_TIPO_ARCHIVO, string.Empty, new { @class = "cssMessageError" })
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        @Html.LabelFor(model => model.NUMERO, new { @class = "col-sm-4 control-label" })
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(model => model.NUMERO, new { @class = "form-control", @maxlength = "100", })
+                            @Html.ValidationMessageFor(model => model.NUMERO, string.Empty, new { @class = "cssMessageError" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FECHA, new { @class = "col-sm-4 control-label" })
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(model => model.FECHA, new { @class = "form-control", @maxlength = "100" })
+                            @Html.ValidationMessageFor(model => model.FECHA, string.Empty, new { @class = "cssMessageError" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.OBSERVACION, new { @class = "col-sm-4 control-label" })
+                        <div class="col-sm-7">
+                            @Html.TextAreaFor(model => model.OBSERVACION, new { @class = "form-control", @maxlength = "100" }) 
+                            @Html.ValidationMessageFor(model => model.OBSERVACION, string.Empty, new { @class = "cssMessageError" })
+                        </div>
+                    </div>
+
+                }
+                @using (Html.BeginForm("Archivo", "Seguridad", new { @area = "Seguridad" }, FormMethod.Post, new { @id = "FrmNuevoArchivo", @class = "form-horizontal" }))
+                {
+
+                    <div class="form-group">
+
+                        <label class="col-sm-4 control-label">Adjunte Archivo:</label>
+                        <div class="col-sm-7" style="margin-bottom: 5px;">
+                            <div class="col-sm-12" style="padding-right: 0px; padding-left: 0px;">
+                                <label for="file-upload_Adjuntos" class="custom-file-upload" style="cursor: pointer; width: 100%; margin-bottom: 0px;">
+                                    <i class="clip-file-pdf"></i>&nbsp; <span id="lbl_file">Seleccionar archivo</span>
+                                </label>
+                                <input type="file" id="file-upload_Adjuntos" name="MifileArchivo" accept=".pdf">
+                            </div>
+                            <span id="validar_file" class="cssMessageError field-validation-error" data-valmsg-for="file-upload" data-valmsg-replace="true" style="display: none;">
+                                <span for="file-upload" generated="true" class="">[Archivo] es obligatorio </span>
+                            </span>
+                        </div>
+                    </div>
+                }
+                <div class="form-group">
+                    <label class="col-sm-4 control-label"></label>
+                    <div class="col-sm-7">
+                        <button id="btnGrabar_Detalle" class="btn btn-red" type="button" data-toggle="modal"><i class="fa fa-save" />&nbsp Guardar Archivo</button>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12" style="margin-top: 10px">
+                    <div class="jqGrid">
+                        <table id="Adjuntos_grilla">
+                        </table>
+                        <div id="Adjuntos_barra"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-light-grey" data-dismiss="modal"><i class="fa fa-share-square-o"></i>&nbsp Cerrar</button>
+            </div>
+        </div>
     </div>
-</body>
-</html>
+</div>
+@Html.Hidden("hdfID_EXPEDIENTE", Model.ID_MAESTRA)
+@Html.Hidden("AccionAdjuntos", Model.Accion)

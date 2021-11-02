@@ -382,13 +382,36 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
 
 
 
-        public ActionResult Mantenimiento_Archivos(int id, string COD_EXPEDIENTE,  string Accion)
+        public ActionResult Mantenimiento_Archivos(int id, string COD_EXPEDIENTE)
         {
             AdjuntosModelView modelo = new AdjuntosModelView();
             Cls_Ent_Auditoria auditoria = new Cls_Ent_Auditoria();
-            modelo.ID_ADJUNTO = id;
+            modelo.ID_MAESTRA = id;
             modelo.COD_EXPEDIENTE = COD_EXPEDIENTE; 
-            modelo.Accion = Accion;
+    
+            
+            Cls_Ent_Dominio entidad_tipoArc = new Cls_Ent_Dominio();
+            entidad_tipoArc.NOM_DOMINIO = "TIPO_ADJ";
+            entidad_tipoArc.FLG_ESTADO = 1;
+            var Lista_Sancion = _cls_Serv_Dominio.Dominio_Listar(entidad_tipoArc, ref auditoria);
+            if (auditoria.EJECUCION_PROCEDIMIENTO)
+            {
+                if (!auditoria.RECHAZAR)
+                {
+                    modelo.Lista_Tipo_Archivo = Lista_Sancion.Select(x => new SelectListItem()
+                    {
+                        Text = x.DESC_CORTA_DOMINIO.ToString(),
+                        Value = x.ID_DOMINIO.ToString()
+                    }).ToList();
+                    modelo.Lista_Tipo_Archivo.Insert(0, new SelectListItem() { Value = "", Text = "-- Seleccione --" });
+                }
+            }
+            else
+            {
+                modelo.Lista_Tipo_Archivo.Insert(0, new SelectListItem() { Value = "", Text = "-- Seleccione --" });
+                Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
+            }
+
 
             return View(modelo);
         }

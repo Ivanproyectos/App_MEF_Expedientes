@@ -90,7 +90,9 @@ function GetRules(Usuario_Grilla) {
 
 
 function Expedientes_actionArchivos(cellvalue, options, rowObject) {
-    var _btn = "<button title='Subir Archivo' onclick=\"Expedientes_SubirArchivo(" + rowObject[4] + ");\" class=\"btn btn-link\" type=\"button\" style=\"text-decoration: none !important;\"> <i class=\"clip-stack-empty\" style=\"color:#c35245;font-size:17px\"></i></button>";
+    var COD_EXPEDIENTE = "'" + rowObject[5] + "'"; 
+
+    var _btn = "<button title='Subir Archivo' onclick=\"Expedientes_SubirArchivo(" + rowObject[4] + "," + COD_EXPEDIENTE +");\" class=\"btn btn-link\" type=\"button\" style=\"text-decoration: none !important;\" data-toggle=\"modal\"  style=\"text-decoration: none !important;\" data-target=\"#myModalNuevo\"> <i class=\"clip-stack-empty\" style=\"color:#c35245;font-size:17px\"></i></button>";
     return _btn;
 }
 
@@ -105,6 +107,14 @@ function Expedientes_actionEditar(cellvalue, options, rowObject) {
     return _btn;
 }
 
+
+function Expedientes_SubirArchivo(ID_EXPEDIENTE, COD_EXPEDIENTE) {
+    jQuery("#myModalNuevo").html('');
+    jQuery("#myModalNuevo").load(baseUrl + "Maestras/Expedientes/Mantenimiento_Archivos?id=" + ID_EXPEDIENTE + "&COD_EXPEDIENTE=" + COD_EXPEDIENTE, function (responseText, textStatus, request) {
+        $.validator.unobtrusive.parse('#myModalNuevo');
+        if (request.status != 200) return;
+    });
+}
 
 
 
@@ -124,6 +134,9 @@ function Expedientes_Nuevo() {
         if (request.status != 200) return;
     });
 }
+
+
+
 
 function Expedientes_Actualizar() {
     if ($("#frmMantenimientoExpedientes").valid()) {

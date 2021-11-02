@@ -13,11 +13,13 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
 
         public long ID_ADJUNTO { get; set; }
 
+        public long ID_MAESTRA { get; set; }
 
         [Display(Name = "Tipo Archivo:")]
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "[Tipo Archivo] es obligatorio")]
         public long ID_TIPO_ARCHIVO { get; set; }
+        public List<SelectListItem> Lista_Tipo_Archivo { get; set; }
 
 
 

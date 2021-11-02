@@ -6,6 +6,7 @@
 <link href="~/assets/Switch_Toggle.css" rel="stylesheet" />
 <script src="@Url.Content("~/Scripts/Js/Remove.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/Js/Maestras/Expedientes.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/Js/Maestras/Adjuntos.js")" type="text/javascript"></script>
 
 
 <script type="text/javascript">
@@ -69,12 +70,12 @@
                     </div>
                     <div class="col-sm-2">
                         @*<select id="CBO_SITUACION" class="form-control">
-            <option value="">--Seleccione--</option>
-            <option value="1">Interno</option>
-            <option value="2">Externo</option>
-        </select>*@
+                                <option value="">--Seleccione--</option>
+                                <option value="1">Interno</option>
+                                <option value="2">Externo</option>
+                            </select>*@
                         @Html.DropDownListFor(x => x.ID_SITUACION_SEARCH, Model.Lista_Situacion, new { @class = "form-control", @maxlength = "50", @style = "width:100%" })
-                        
+
                     </div>
 
 
@@ -83,10 +84,10 @@
                     </div>
                     <div class="col-sm-2">
                         @*<select id="CBO_ESTADO" class="form-control">
-            <option value="">--Seleccione--</option>
-            <option value="1">Activo</option>
-            <option value="0">Inactivo</option>
-        </select>*@
+                                <option value="">--Seleccione--</option>
+                                <option value="1">Activo</option>
+                                <option value="0">Inactivo</option>
+                            </select>*@
                         @Html.DropDownListFor(x => x.ID_ESTADO_SEARCH, Model.Lista_Estado, new { @class = "form-control", @maxlength = "50", @style = "width:100%" })
 
                     </div>

@@ -645,6 +645,7 @@
     <Content Include="Scripts\Js\Administracion\Faltas.js" />
     <Content Include="Scripts\Js\Administracion\Actos.js" />
     <Content Include="Scripts\Js\Administracion\TipoArchivo.js" />
+    <Content Include="Scripts\Js\Maestras\Adjuntos.js" />
     <Content Include="Scripts\Js\Maestras\Expedientes_Fn.js" />
     <Content Include="Scripts\Js\Remove.js" />
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
