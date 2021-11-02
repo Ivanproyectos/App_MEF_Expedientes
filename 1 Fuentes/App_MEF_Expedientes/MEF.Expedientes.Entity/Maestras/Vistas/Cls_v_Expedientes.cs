@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace MEF.Expedientes.Entity.Maestras
 {
-    [Table("T_EXPM_EXPEDIENTES")]
-    public class Cls_Ent_Expedientes
+    [Table("V_EXPEDIENTES")]
+    public class Cls_v_Expedientes
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

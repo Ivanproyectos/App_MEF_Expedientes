@@ -119,7 +119,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
 
         [Display(Name = "Tipo sanción Recomendada:")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "[TIPO_SANCION_RECOMENDADA] es obligatorio")]
+        [Required(ErrorMessage = "[Tipo sanción Recomendada] es obligatorio")]
         public string TIPO_SANCION_RECOMENDADA { get; set; }
 
 

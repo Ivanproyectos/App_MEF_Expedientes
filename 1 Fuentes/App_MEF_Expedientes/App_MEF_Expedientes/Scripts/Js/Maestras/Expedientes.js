@@ -95,10 +95,22 @@ function GetRules(Usuario_Grilla) {
 
 /*********************************************** Editar el Expedientes *************************************************/
 
+
+
+
+function Expedientes_actionEliminar(cellvalue, options, rowObject) {
+    var _btn = "<button title='Eliminar' onclick=\"Expedientes_Eliminar(" + rowObject[3]  + ");\" class=\"btn btn-link\" type=\"button\" style=\"text-decoration: none !important;\"> <i class=\"clip-cancel-circle-2\" style=\"color:#c35245;font-size:17px\"></i></button>";
+    return _btn;
+}
+
+
 function Expedientes_actionEditar(cellvalue, options, rowObject) {
     var _btn = "<button title='Editar' onclick='Expedientes_Editar(" + rowObject[3] + ");' class=\"btn btn-link\" type=\"button\" data-toggle=\"modal\"  style=\"text-decoration: none !important;\" data-target=\"#myModalNuevo\"> <i class=\"clip-pencil-3\" style=\"color:#e68c1b;font-size:17px\"></i></button>";
     return _btn;
 }
+
+
+
 
 function Expedientes_Editar(ID_EXPEDIENTE) {
     jQuery("#myModalNuevo").html('');
@@ -117,28 +129,42 @@ function Expedientes_Nuevo() {
     });
 }
 
-
-
 function Expedientes_Actualizar() {
     if ($("#frmMantenimientoExpedientes").valid()) {
         var item =
         {
             ID_EXPEDIENTE: $("#hdfID_EXPEDIENTE").val(),
-            FLG_TIPO: $("#FLG_TIPO").val(),
-            RUC: $("#RUC").val(),
-            DESC_EMPRESA: $("#DESC_EMPRESA").val(),
-            RAZON_SOCIAL: $("#DESC_EMPRESA").val(),
-            TELEFONO: $("#TELEFONO").val(),
-            DIRECCION: $("#DIRECCION").val(),
-            CORREO: $("#CORREO").val(),
-            ID_DEPARTAMENTO: $("#ID_DEPARTAMENTO").val(),
-            REPRESENTANTE_LEGAL: $("#REPRESENTANTE_LEGAL").val(),
-            ID_PROVINCIA: $("#ID_PROVINCIA").val(),
-            ID_DISTRITO: $("#ID_DISTRITO").val(),
+            ID_REMITENTE: $("#ID_REMITENTE").val(),
+            ID_PERSONAL: $("#ID_PERSONAL").val(),
+            ID_ORGANO_INSTRUCTOR: $("#ID_ORGANO_INSTRUCTOR").val(),
+            ID_ORGANO_SANCIONADOR: $("#ID_ORGANO_SANCIONADOR").val(),
+            FECHA_RECEPCION: $("#FECHA_RECEPCION").val(),
+            HOJA_RUTA: $("#HOJA_RUTA").val(),
+            FECHA_PRESCRIPCION: $("#FECHA_PRESCRIPCION").val(),
+            FECHA_HECHO: $("#FECHA_HECHO").val(),
+            ID_ACTO: $("#ID_ACTO").val(),
+            //OBSERVACION_INVESTIGADORA: $("#OBSERVACION_INVESTIGADORA").val(),
+            ARTICULO: $("#ARTICULO").val(),
+            INC: $("#INC").val(),
+            ID_PRECALIFICACION: $("#ID_PRECALIFICACION").val(),
+            TIPO_SANCION_RECOMENDADA: $("#TIPO_SANCION_RECOMENDADA").val(),
+            ACTO_INICIO: $("#ACTO_INICIO").val(),
+            FECHA_NOTIFICACION: $("#FECHA_NOTIFICACION").val(),
+            OBSERVACION_INSTRUCTORA: $("#OBSERVACION_INSTRUCTORA").val(),
+            RECOMENDACION_PREINFORME: $("#RECOMENDACION_PREINFORME").val(),
+            ID_SANCION_RECOMENDADA: $("#ID_SANCION_RECOMENDADA").val(),
+            FECHA_NOTIFICACION_INICIO: $("#FECHA_NOTIFICACION_INICIO").val(),
+            DOCUMENTO_FINALIZACION: $("#DOCUMENTO_FINALIZACION").val(),
+            RECOMENDACION_INSTRUCTOR: $("#RECOMENDACION_INSTRUCTOR").val(),
+            SACION: $("#SACION").val(),
+            ID_SITUACION: $("#ID_SITUACION").val(),
+            ID_ESTADO: $("#ID_ESTADO").val(),
+            OBSERVACION_SANCIONADORA: $("#OBSERVACION_SANCIONADORA").val(),
             USU_MODIFICACION: $("#inputHddcod_usuario").val(),
+            TIPO: $("#HDF_Tipo_Expedientes").val(),
             Accion: $("#AccionExpedientes").val()
         };
-        jConfirm("¿ Desea actualizar este personal ?", "Atención", function (r) {
+        jConfirm("¿ Desea actualizar este tipo archivo ?", "Atención", function (r) {
             if (r) {
                 var url = baseUrl + 'Maestras/Expedientes/Expedientes_Actualizar';
                 var auditoria = Autorizacion.Ajax(url, item, false);
@@ -165,6 +191,9 @@ function Expedientes_Actualizar() {
 
 
 
+
+
+
 /*********************************************** ----------------- *************************************************/
 
 /************************************************* Nuevo Expedientes ***************************************************/
@@ -180,17 +209,32 @@ function Expedientes_Registrar() {
                 if (r) {
                     var item =
                     {
-                        FLG_TIPO: $("#FLG_TIPO").val(),
-                        RUC: $("#RUC").val(),
-                        DESC_EMPRESA: $("#DESC_EMPRESA").val(),
-                        RAZON_SOCIAL: $("#DESC_EMPRESA").val(),
-                        TELEFONO: $("#TELEFONO").val(),
-                        DIRECCION: $("#DIRECCION").val(),
-                        CORREO: $("#CORREO").val(),
-                        REPRESENTANTE_LEGAL: $("#REPRESENTANTE_LEGAL").val(),
-                        ID_DEPARTAMENTO: $("#ID_DEPARTAMENTO").val(),
-                        ID_PROVINCIA: $("#ID_PROVINCIA").val(),
-                        ID_DISTRITO: $("#ID_DISTRITO").val(),
+                        ID_REMITENTE: $("#ID_REMITENTE").val(),
+                        ID_PERSONAL: $("#ID_PERSONAL").val(),
+                        ID_ORGANO_INSTRUCTOR: $("#ID_ORGANO_INSTRUCTOR").val(),
+                        ID_ORGANO_SANCIONADOR: $("#ID_ORGANO_SANCIONADOR").val(),
+                        FECHA_RECEPCION: $("#FECHA_RECEPCION").val(),
+                        HOJA_RUTA: $("#HOJA_RUTA").val(),
+                        FECHA_PRESCRIPCION: $("#FECHA_PRESCRIPCION").val(),
+                        FECHA_HECHO: $("#FECHA_HECHO").val(),
+                        ID_ACTO: $("#ID_ACTO").val(),
+                        //OBSERVACION_INVESTIGADORA: $("#OBSERVACION_INVESTIGADORA").val(),
+                        ARTICULO: $("#ARTICULO").val(),
+                        INC: $("#INC").val(),
+                        ID_PRECALIFICACION: $("#ID_PRECALIFICACION").val(),
+                        TIPO_SANCION_RECOMENDADA: $("#TIPO_SANCION_RECOMENDADA").val(),
+                        ACTO_INICIO: $("#ACTO_INICIO").val(),
+                        FECHA_NOTIFICACION: $("#FECHA_NOTIFICACION").val(),
+                        OBSERVACION_INSTRUCTORA: $("#OBSERVACION_INSTRUCTORA").val(),
+                        RECOMENDACION_PREINFORME: $("#RECOMENDACION_PREINFORME").val(),
+                        ID_SANCION_RECOMENDADA: $("#ID_SANCION_RECOMENDADA").val(),
+                        FECHA_NOTIFICACION_INICIO: $("#FECHA_NOTIFICACION_INICIO").val(),
+                        DOCUMENTO_FINALIZACION: $("#DOCUMENTO_FINALIZACION").val(),
+                        RECOMENDACION_INSTRUCTOR: $("#RECOMENDACION_INSTRUCTOR").val(),
+                        SACION: $("#SACION").val(),
+                        ID_SITUACION: $("#ID_SITUACION").val(),
+                        ID_ESTADO: $("#ID_ESTADO").val(),
+                        OBSERVACION_SANCIONADORA: $("#OBSERVACION_SANCIONADORA").val(),
                         USU_CREACION: $("#inputHddcod_usuario").val(),
                         Accion: $("#AccionExpedientes").val()
                     };
@@ -249,14 +293,10 @@ function Expedientes_CambiarEstado(ID_EXPEDIENTE, MiCheck) {
 
 /************************************************ Elimina Expedientes **************************************************/
 
-function Expedientes_actionEliminar(cellvalue, options, rowObject) {
-    var _btn = "<button title='Eliminar' onclick='Expedientes_Eliminar(" + rowObject[3] + ");' class=\"btn btn-link\" type=\"button\" style=\"text-decoration: none !important;\"> <i class=\"clip-cancel-circle-2\" style=\"color:#c35245;font-size:17px\"></i></button>";
-    return _btn;
-}
 
 function Expedientes_Eliminar(ID_EXPEDIENTE) {
     //var data = jQuery("#" + Expedientes_grilla).jqGrid('getRowData', CODIGO);
-    jConfirm("¿ Desea eliminar este personal ?", "Atención", function (r) {
+    jConfirm("¿ Desea eliminar este tipo archivo ?", "Atención", function (r) {
         if (r) {
             var url = baseUrl + 'Maestras/Expedientes/Expedientes_Eliminar';
             var item = {
@@ -266,8 +306,8 @@ function Expedientes_Eliminar(ID_EXPEDIENTE) {
             if (auditoria != null) {
                 if (auditoria.EJECUCION_PROCEDIMIENTO) {
                     if (!auditoria.RECHAZAR) {
-                        jAlert("Expedientes eliminado", "Proceso");
-                        Expedientes_ConfigurarGrilla();
+                        jAlert("Tipo Archivo eliminado", "Proceso");
+                        Expedientes_CargarGrilla();
                     } else {
                         jAlert(auditoria.MENSAJE_SALIDA, 'Atención');
                     }
@@ -278,93 +318,5 @@ function Expedientes_Eliminar(ID_EXPEDIENTE) {
             }
         }
     });
-}
-
-/*********************************************** ----------------- *************************************************/
-
-
-
-
-
-///*********************************************** ----------------- **********************************************************************/
-
-function Provincia_Listar(COD_UBIGEO) {
-    if (COD_UBIGEO == '') {
-        ReiniciarProvinciaListar();
-        ReiniciarDistritoListar();
-    } else {
-        var item =
-        {
-            COD_UBIGEO: COD_UBIGEO,
-
-        };
-        var url = baseUrl + 'Seguridad/Ubigeo/Provincia_Listar';
-        var auditoria = SICA.Ajax(url, item, false);
-        if (auditoria != null) {
-            if (auditoria.EJECUCION_PROCEDIMIENTO) {
-                var items = "<select class=\"form-control\" id=\"ID_PROVINCIA\">";
-                items += "<option value=\"" + "" + "\"> --Seleccione-- </option>";
-                for (i_ = 0; i_ < auditoria.OBJETO.length; i_++) {
-                    items += "<option value=\"" + auditoria.OBJETO[i_].COD_UBIGEO + "\" > " + auditoria.OBJETO[i_].DESC_UBIGEO + " </option>";
-                }
-                items += "</select>";
-                $("#ID_PROVINCIA").html(items);
-                if (!combo1 && $('#AccionExpedientes').val() == "M") {
-                    $("#ID_PROVINCIA").val($("#hdfID_PROVINCIA").val());
-                    Distrito_Listar($("#hdfID_PROVINCIA").val());
-                    combo1 = true;
-                } else {
-                    ReiniciarDistritoListar();
-                }
-            } else {
-                jAlert(auditoria.MENSAJE_SALIDA, 'Atención');
-            }
-        }
-
-    }
-}
-
-function ReiniciarProvinciaListar() {
-    var items = "<select class=\"form-control\" id=\"ID_PROVINCIA\">";
-    items += "<option value=\"" + "" + "\"> --Seleccione-- </option>";
-    items += "</select>";
-    $("#ID_PROVINCIA").html(items);
-}
-
-function ReiniciarDistritoListar() {
-    var items = "<select class=\"form-control\" id=\"ID_DISTRITO\">";
-    items += "<option value=\"" + "" + "\"> --Seleccione-- </option>";
-    items += "</select>";
-    $("#ID_DISTRITO").html(items);
-}
-
-function Distrito_Listar(COD_UBIGEO) {
-    if (COD_UBIGEO != '') {
-        var item =
-        {
-            COD_UBIGEO: COD_UBIGEO,
-
-        };
-        var url = baseUrl + 'Seguridad/Ubigeo/Distrito_Listar';
-        var auditoria = SICA.Ajax(url, item, false);
-        if (auditoria != null) {
-            if (auditoria.EJECUCION_PROCEDIMIENTO) {
-                var items = "<select class=\"form-control\" id=\"ID_DISTRITO\">";
-                items += "<option value=\"" + "" + "\"> --Seleccione-- </option>";
-                for (i_ = 0; i_ < auditoria.OBJETO.length; i_++) {
-                    items += "<option value=\"" + auditoria.OBJETO[i_].COD_UBIGEO + "\" > " + auditoria.OBJETO[i_].DESC_UBIGEO + " </option>";
-                }
-                items += "</select>";
-                $("#ID_DISTRITO").html(items);
-                debugger;
-                if (!combo2 && $('#AccionExpedientes').val() == "M") {
-                    $("#ID_DISTRITO").val($("#hdfID_DISTRITO").val());
-                    combo2 = true;
-                }
-            } else {
-                jAlert(auditoria.MENSAJE_SALIDA, 'Atención');
-            }
-        }
-    }
 }
 

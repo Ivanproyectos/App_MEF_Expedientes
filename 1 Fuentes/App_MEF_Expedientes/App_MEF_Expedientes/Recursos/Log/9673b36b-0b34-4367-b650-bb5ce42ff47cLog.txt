@@ -1,0 +1,4 @@
+System.ArgumentOutOfRangeException: La longitud no puede ser inferior a cero.
+Nombre del parámetro: length
+   en System.String.Substring(Int32 startIndex, Int32 length)
+   en MEF.Expedientes.Service.Maestras.Cls_Serv_Expedientes.Expedientes_Agregar_Expedientes(Cls_Ent_Expedientes entidad, Cls_Ent_Auditoria& auditoria) en C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Service\Maestras\Cls_Serv_Expedientes.cs:línea 366
