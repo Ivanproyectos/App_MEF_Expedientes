@@ -45,6 +45,7 @@
     <Compile Include="Maestras\ICls_Serv_Oficina.cs" />
     <Compile Include="Maestras\ICls_Serv_Personal.cs" />
     <Compile Include="Maestras\ICls_Serv_Expedientes.cs" />
+    <Compile Include="Maestras\Vista\ICls_V_Serv_Expedientes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

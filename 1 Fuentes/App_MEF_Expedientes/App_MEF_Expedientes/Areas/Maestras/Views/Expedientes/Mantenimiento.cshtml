@@ -13,7 +13,6 @@
             //$('#ID_DEPARTAMENTO').select2();
           //Expedientes_Codigo_Listar();
             if ($('#AccionExpedientes').val() == "M") {
-                Provincia_Listar($('#ID_DEPARTAMENTO').val());
 
             }
         });
@@ -148,7 +147,7 @@
             }
             else
             {
-                <h4 class="modal-title"><i class="clip-pencil"></i>&nbsp Edición - Expediente</h4>
+                <h4 class="modal-title"><i class="clip-pencil"></i>&nbsp Edición - @Model.COD_EXPEDIENTE</h4>
             }
         </div>
         <div class="modal-body">
@@ -271,9 +270,9 @@
                         <div style="font-weight:bold;background:silver; color:white;padding:5px;"> ETAPA INSTRUCTORA</div>
                         <div class="row" style="padding:10px">
                             <div class="form-row col-sm-4">
-                                @Html.LabelFor(model => model.ID_ACTO, new { @class = "" })
-                                @Html.DropDownListFor(x => x.ID_ACTO, Model.Lista_Acto, new { @class = "form-control", @maxlength = "50", @style = "width:100%" })
-                                @Html.ValidationMessageFor(model => model.ID_ACTO, string.Empty, new { @class = "cssMessageError" })
+                                @Html.LabelFor(model => model.ID_FALTA, new { @class = "" })
+                                @Html.DropDownListFor(x => x.ID_FALTA, Model.Lista_Falta, new { @class = "form-control", @maxlength = "50", @style = "width:100%" })
+                                @Html.ValidationMessageFor(model => model.ID_FALTA, string.Empty, new { @class = "cssMessageError" })
                             </div>
 
                             <div class="form-row  col-sm-4">
@@ -291,7 +290,7 @@
 
                             <div class="form-row  col-sm-4">
                                 @Html.LabelFor(model => model.ID_PRECALIFICACION, new { @class = "" })
-                                @Html.DropDownListFor(x => x.ID_PRECALIFICACION, Model.Lista_Precalifacion, new { @class = "form-control", @maxlength = "50", @style = "width:100%" })
+                                @Html.DropDownListFor(x => x.ID_PRECALIFICACION, Model.Lista_Falta, new { @class = "form-control", @maxlength = "50", @style = "width:100%" })
                                 @Html.ValidationMessageFor(model => model.ID_PRECALIFICACION, string.Empty, new { @class = "cssMessageError" })
                             </div>
 
@@ -387,9 +386,9 @@
 
 
                                 <div class="form-row col-sm-4">
-                                    @Html.LabelFor(model => model.SACION, new { @class = "" })
-                                    @Html.TextBoxFor(model => model.SACION, new { @class = "form-control", @maxlength = "100" })
-                                    @Html.ValidationMessageFor(model => model.SACION, string.Empty, new { @class = "cssMessageError" })
+                                    @Html.LabelFor(model => model.SANCION, new { @class = "" })
+                                    @Html.TextBoxFor(model => model.SANCION, new { @class = "form-control", @maxlength = "100" })
+                                    @Html.ValidationMessageFor(model => model.SANCION, string.Empty, new { @class = "cssMessageError" })
                                 </div>
 
 

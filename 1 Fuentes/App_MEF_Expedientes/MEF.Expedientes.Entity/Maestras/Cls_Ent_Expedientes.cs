@@ -40,7 +40,7 @@ namespace MEF.Expedientes.Entity.Maestras
 
         public string RECOMENDACION_INSTRUCTOR { get; set; }
         public long ID_ORGANO_SANCIONADOR { get; set; }
-        public string SACION { get; set; }
+        public string SANCION { get; set; }
 
 
         public string OBSERVACION_SANCIONADORA { get; set; }

@@ -18,7 +18,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
         [Required(ErrorMessage = "[Personal] es obligatorio")]
         public string SEARCH_PERSONAL { get; set; }
 
-        public long ID_PERSONAL { get; set; }
+        public string ID_PERSONAL { get; set; }
        
 
         [Display(Name = "N° de Expedientes:")]
@@ -59,7 +59,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
         public string SEARCH_REMITENTE { get; set; }
         public List<SelectListItem> Lista_Remitente { get; set; }
 
-        public int ID_REMITENTE { get; set; }
+        public long ID_REMITENTE { get; set; }
 
         [Display(Name = "Regimen Laboral:")]
         public string REGIMEN_LABORAL { get; set; }
@@ -71,7 +71,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
         [Display(Name = "Acto:")]
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "[Acto] es obligatorio")]
-        public int ID_ACTO { get; set; }
+        public long ID_ACTO { get; set; }
         public List<SelectListItem> Lista_Acto { get; set; }
 
 
@@ -85,9 +85,10 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
         [Display(Name = "Falta:")]
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "[Falta] es obligatorio")]
-        public int ID_FALTA { get; set; }
+        public long ID_FALTA { get; set; }
 
-
+        public List<SelectListItem> Lista_Falta { get; set; }
+        
 
         [Display(Name = "Articulo:")]
         [DataType(DataType.Text)]
@@ -111,7 +112,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
         [Display(Name = "Precalificación:")]
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "[Precalificación] es obligatorio")]
-        public int ID_PRECALIFICACION { get; set; }
+        public long ID_PRECALIFICACION { get; set; }
         public List<SelectListItem> Lista_Precalifacion { get; set; }
 
 
@@ -145,7 +146,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
         [Display(Name = "Sanción Recomenda:")]
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "[Sanción Recomenda] es obligatorio")]
-        public int ID_SANCION_RECOMENDADA { get; set; }
+        public long ID_SANCION_RECOMENDADA { get; set; }
         public List<SelectListItem> Lista_Sacion_Recomendada { get; set; }
 
 
@@ -153,7 +154,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "[Organo Instuctor] es obligatorio")]
         public string SEARCH_ORGANO_INSTRUCTOR { get; set; }
-        public int ID_ORGANO_INSTRUCTOR { get; set; }
+        public long ID_ORGANO_INSTRUCTOR { get; set; }
         public List<SelectListItem> Lista_Organo_Instructor { get; set; }
 
 
@@ -186,7 +187,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "[Organo Sancionador] es obligatorio")]
         public string SEARCH_ORGANO_SANCIONADOR { get; set; }
-        public int ID_ORGANO_SANCIONADOR { get; set; }
+        public long ID_ORGANO_SANCIONADOR { get; set; }
         public List<SelectListItem> Lista_Organo_Sancionador{ get; set; }
 
 
@@ -194,7 +195,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
         [Display(Name = "Sanción")]
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "[Sanción] es obligatorio")]
-        public string SACION { get; set; }
+        public string SANCION { get; set; }
 
 
 
@@ -209,7 +210,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
         [Display(Name = "Situación:")]
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "[Situación] es obligatorio")]
-        public int ID_SITUACION { get; set; }
+        public long ID_SITUACION { get; set; }
         public List<SelectListItem> Lista_Situacion { get; set; }
 
 
@@ -217,15 +218,15 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
         [Display(Name = "Estado:")]
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "[Estado] es obligatorio")]
-        public int ID_ESTADO { get; set; }
+        public long ID_ESTADO { get; set; }
         public List<SelectListItem> Lista_Estado { get; set; }
 
 
         public int ID_SITUACION_SEARCH { get; set; }
         public string Accion { get; set; }
 
-
-
+        public int ID_ESTADO_SEARCH { get; set; }
+        
 
     }
 }

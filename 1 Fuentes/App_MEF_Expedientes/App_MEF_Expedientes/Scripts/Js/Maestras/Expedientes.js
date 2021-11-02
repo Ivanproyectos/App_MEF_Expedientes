@@ -1,16 +1,12 @@
 ﻿var Expedientes_grilla = 'Expedientes_grilla';
 var Expedientes_barra = 'Expedientes_barra';
-var id;
 
-//$(document).ready(function () {
-//    Expedientes_ConfigurarGrilla();
-//    //Expedientes_CargarGrilla();
-//});
 
 function LimpiarExpedientes() {
-    $("#txt_empresa").val('');
-    $("#txt_Ruc").val('');
-    $("#CBO_TIPOEMPRESA").val('');
+    $("#txt_Expediente").val('');
+    $("#txt_dni").val('');
+    $("#ID_SITUACION_SEARCH").val('');
+    $("#ID_ESTADO_SEARCH").val('');
     $('#CBOESTADO').val('');
     Expedientes_ConfigurarGrilla();
 }
@@ -18,23 +14,23 @@ function LimpiarExpedientes() {
 function Expedientes_ConfigurarGrilla() {
     var url = baseUrl + 'Maestras/Expedientes/Expedientes_Paginado';
     $("#" + Expedientes_grilla).GridUnload();
-    var colNames = ['Editar', 'Eliminar', 'Activo', 'ID_EXPEDIENTE', 'Nro. Expediente', 'Personal', 'Oficina', 'Reg. Laboral', 'Cargo', 'Falta', 'Sanción',
+    var colNames = ['Editar', 'Eliminar', 'Activo','Archivos', 'ID_EXPEDIENTE', 'Nro. Expediente', 'Personal', 'Oficina', 'Reg. Laboral', 'Falta', 'Sanción',
         'Hechos', 'Situación','Estado', 'FLG_ESTADO', 'Usuario Creación', 'Fecha Creación', 'Usuario Modificación', 'Fecha Modificación'];
     var colModels = [
         { name: 'EDITAR', index: 'EDITAR', align: 'center', width: 60, hidden: false, sortable: false, formatter: Expedientes_actionEditar },
         { name: 'ELIMINAR', index: 'ELIMINAR', align: 'center', width: 70, hidden: false, sortable: false, formatter: Expedientes_actionEliminar },
         { name: 'ACTIVO', index: 'ACTIVO', align: 'center', width: 55, hidden: false, sortable: false, formatter: Expedientes_actionActivo },
+        { name: 'ARCHIVO', index: 'ARCHIVO', align: 'center', width: 80, hidden: false, sortable: false, formatter: Expedientes_actionArchivos },
         { name: 'ID_EXPEDIENTE', index: 'ID_EXPEDIENTE', align: 'center', width: 50, hidden: true },
         { name: 'COD_EXPEDIENTE', index: 'COD_EXPEDIENTE', align: 'center', width: 150, hidden: false },
-        { name: 'PERSONAL', index: 'PERSONAL', align: 'center', width: 200, hidden: false },
-        { name: 'OFICINA', index: 'OFICINA', align: 'center', width: 200, hidden: false },
+        { name: 'PERSONAL', index: 'PERSONAL', align: 'center', width: 200, hidden: false, resizable: true },
+        { name: 'OFICINA', index: 'OFICINA', align: 'center', width: 200, hidden: false, resizable: true },
         { name: 'REGIMEN_LABORAL', index: 'REGIMEN_LABORAL', width: 200, align: 'center', hidden: false},
-        { name: 'CARGO', index: 'CARGO', align: 'center', width: 100, hidden: false },
-        { name: 'CORREO', index: 'CORREO', align: 'center', width: 200, hidden: false, resizable: true },
-        { name: 'DIRECCION', index: 'DIRECCION', align: 'center', width: 120, hidden: false, hidden: false },
-        { name: 'DEPARTAMENTO', index: 'DEPARTAMENTO', align: 'center', width: 140, hidden: false, hidden: false },
-        { name: 'PROVINCIA', index: 'PROVINCIA', align: 'center', width: 140, hidden: false, hidden: false },
-        { name: 'DISTRITO', index: 'DISTRITO', align: 'center', width: 140, hidden: false, hidden: false },
+        { name: 'FALTA', index: 'FALTA', align: 'center', width: 200, hidden: false, resizable: true },
+        { name: 'SANCION', index: 'SANCION', align: 'center', width: 120, hidden: false, hidden: false },
+        { name: 'HECHOS', index: 'HECHOS', align: 'center', width: 140, hidden: false, hidden: false },
+        { name: 'SITUACION', index: 'SITUACION', align: 'center', width: 140, hidden: false, hidden: false },
+        { name: 'ESTADO', index: 'ESTADO', align: 'center', width: 140, hidden: false, hidden: false },
         { name: 'FLG_ESTADO', index: 'FLG_ESTADO', align: 'center', width: 140, hidden: true, sortable: true },
         { name: 'USU_CREACION', index: 'USU_CREACION', align: 'center', width: 140, hidden: false, sortable: true },
         { name: 'FEC_CREACION', index: 'FEC_CREACION', align: 'center', width: 160, hidden: false, sortable: true },
@@ -45,16 +41,7 @@ function Expedientes_ConfigurarGrilla() {
         GridLocal: false, multiselect: false, CellEdit: false, Editar: false, nuevo: false, eliminar: false, search: false, sort: 'DESC', rules: true,
         gridCompleteFunc: function () {
             $('#Grilla_Load').hide();
-            debugger;
-            var filas = $("#Expedientes_grilla").jqGrid('getGridParam', 'records');
-            if (filas == 0) {
-                //BockGrilla(Expedientes_grilla);
-            } else {
-                //DescbockGrilla(Expedientes_grilla);
-            }
-
-
-
+ 
         },
 
     };
@@ -63,11 +50,11 @@ function Expedientes_ConfigurarGrilla() {
 
 function Expedientes_actionActivo(cellvalue, options, rowObject) {
     var check_ = 'check';
-    if (rowObject[13] == 1)
+    if (rowObject[14] == 1)
         check_ = 'checked';
 
     var _btn = "<label class=\"switch\">"
-        + "<input id=\"Expedientes_chk_" + rowObject[3] + "\" type=\"checkbox\" onchange=\"Expedientes_CambiarEstado(" + rowObject[3] + ",this)\" " + check_ + ">"
+        + "<input id=\"Expedientes_chk_" + rowObject[3] + "\" type=\"checkbox\" onchange=\"Expedientes_CambiarEstado(" + rowObject[4] + ",this)\" " + check_ + ">"
         + "<span class=\"slider round\"></span>"
         + "</label>";
     return _btn;
@@ -76,16 +63,22 @@ function Expedientes_actionActivo(cellvalue, options, rowObject) {
 
 function GetRules(Usuario_Grilla) {
     var rules = new Array();
-    var EMPRESA = "'" + jQuery('#txt_empresa').val() + "'";
-    var RUC = "'" + jQuery('#txt_Ruc').val() + "'";
-    var TIPO_EMPRESA = jQuery('#CBO_TIPOEMPRESA').val() == '' ? null : "'" + jQuery('#CBO_TIPOEMPRESA').val() + "'";
+    
+
+    var COD_EXPEDIENTE = jQuery('#txt_Expediente').val() == '' || jQuery('#txt_Expediente').val() == undefined ? null : "'" + jQuery('#txt_Expediente').val() + "'";
+    var DNI = jQuery('#txt_dni').val() == '' || jQuery('#txt_dni').val() == undefined ? null : "'" + jQuery('#txt_dni').val() + "'";
+    var ID_ESTADO = jQuery('#ID_ESTADO_SEARCH').val() == '' ? null : "'" + jQuery('#ID_ESTADO_SEARCH').val() + "'";
+    var ID_SITUACION = jQuery('#ID_SITUACION_SEARCH').val() == '' ? null : "'" + jQuery('#ID_SITUACION_SEARCH').val() + "'";
     var FLG_ESTADO = jQuery('#CBOESTADO').val() == '' ? null : "'" + jQuery('#CBOESTADO').val() + "'";
+
     var POR = "'%'";
     rules = []
-    rules.push({ field: 'UPPER(DESC_EMPRESA)', data: POR + ' + ' + EMPRESA + ' + ' + POR, op: " LIKE " });
-    rules.push({ field: 'UPPER(RUC)', data: POR + ' + ' + RUC + ' + ' + POR, op: " LIKE " });
-    rules.push({ field: 'FLG_ESTADO', data: '  ISNULL(' + FLG_ESTADO + ',FLG_ESTADO) ', op: " = " });
-    rules.push({ field: 'FLG_TIPO', data: '  ISNULL(' + TIPO_EMPRESA + ',FLG_TIPO) ', op: " = " });
+    rules.push({ field: 'FLG_ESTADO', data: '  NVL(' + FLG_ESTADO + ',FLG_ESTADO) ', op: " = " });
+    rules.push({ field: 'ID_ESTADO', data: '  NVL(' + ID_ESTADO + ',ID_ESTADO) ', op: " = " });
+    rules.push({ field: 'ID_SITUACION', data: '  NVL(' + ID_SITUACION + ',ID_SITUACION) ', op: " = " });
+    rules.push({ field: 'DNI', data: POR + ' || ' + DNI + ' || ' + POR, op: " LIKE " });
+    rules.push({ field: 'COD_EXPEDIENTE', data: POR + ' || ' + COD_EXPEDIENTE + ' || ' + POR, op: " LIKE " });
+
 
     return rules;
 }
@@ -96,16 +89,19 @@ function GetRules(Usuario_Grilla) {
 /*********************************************** Editar el Expedientes *************************************************/
 
 
-
+function Expedientes_actionArchivos(cellvalue, options, rowObject) {
+    var _btn = "<button title='Subir Archivo' onclick=\"Expedientes_SubirArchivo(" + rowObject[4] + ");\" class=\"btn btn-link\" type=\"button\" style=\"text-decoration: none !important;\"> <i class=\"clip-stack-empty\" style=\"color:#c35245;font-size:17px\"></i></button>";
+    return _btn;
+}
 
 function Expedientes_actionEliminar(cellvalue, options, rowObject) {
-    var _btn = "<button title='Eliminar' onclick=\"Expedientes_Eliminar(" + rowObject[3]  + ");\" class=\"btn btn-link\" type=\"button\" style=\"text-decoration: none !important;\"> <i class=\"clip-cancel-circle-2\" style=\"color:#c35245;font-size:17px\"></i></button>";
+    var _btn = "<button title='Eliminar' onclick=\"Expedientes_Eliminar(" + rowObject[4]  + ");\" class=\"btn btn-link\" type=\"button\" style=\"text-decoration: none !important;\"> <i class=\"clip-cancel-circle-2\" style=\"color:#c35245;font-size:17px\"></i></button>";
     return _btn;
 }
 
 
 function Expedientes_actionEditar(cellvalue, options, rowObject) {
-    var _btn = "<button title='Editar' onclick='Expedientes_Editar(" + rowObject[3] + ");' class=\"btn btn-link\" type=\"button\" data-toggle=\"modal\"  style=\"text-decoration: none !important;\" data-target=\"#myModalNuevo\"> <i class=\"clip-pencil-3\" style=\"color:#e68c1b;font-size:17px\"></i></button>";
+    var _btn = "<button title='Editar' onclick='Expedientes_Editar(" + rowObject[4] + ");' class=\"btn btn-link\" type=\"button\" data-toggle=\"modal\"  style=\"text-decoration: none !important;\" data-target=\"#myModalNuevo\"> <i class=\"clip-pencil-3\" style=\"color:#e68c1b;font-size:17px\"></i></button>";
     return _btn;
 }
 
@@ -143,7 +139,8 @@ function Expedientes_Actualizar() {
             FECHA_PRESCRIPCION: $("#FECHA_PRESCRIPCION").val(),
             FECHA_HECHO: $("#FECHA_HECHO").val(),
             ID_ACTO: $("#ID_ACTO").val(),
-            //OBSERVACION_INVESTIGADORA: $("#OBSERVACION_INVESTIGADORA").val(),
+            OBSERVACION_INVESTIGADORA: $("#OBSERVACION_INVESTIGADORA").val(),
+            ID_FALTA: $("#ID_FALTA").val(),
             ARTICULO: $("#ARTICULO").val(),
             INC: $("#INC").val(),
             ID_PRECALIFICACION: $("#ID_PRECALIFICACION").val(),
@@ -156,7 +153,7 @@ function Expedientes_Actualizar() {
             FECHA_NOTIFICACION_INICIO: $("#FECHA_NOTIFICACION_INICIO").val(),
             DOCUMENTO_FINALIZACION: $("#DOCUMENTO_FINALIZACION").val(),
             RECOMENDACION_INSTRUCTOR: $("#RECOMENDACION_INSTRUCTOR").val(),
-            SACION: $("#SACION").val(),
+            SANCION: $("#SANCION").val(),
             ID_SITUACION: $("#ID_SITUACION").val(),
             ID_ESTADO: $("#ID_ESTADO").val(),
             OBSERVACION_SANCIONADORA: $("#OBSERVACION_SANCIONADORA").val(),
@@ -218,7 +215,8 @@ function Expedientes_Registrar() {
                         FECHA_PRESCRIPCION: $("#FECHA_PRESCRIPCION").val(),
                         FECHA_HECHO: $("#FECHA_HECHO").val(),
                         ID_ACTO: $("#ID_ACTO").val(),
-                        //OBSERVACION_INVESTIGADORA: $("#OBSERVACION_INVESTIGADORA").val(),
+                        OBSERVACION_INVESTIGADORA: $("#OBSERVACION_INVESTIGADORA").val(),
+                        ID_FALTA: $("#ID_FALTA").val(),
                         ARTICULO: $("#ARTICULO").val(),
                         INC: $("#INC").val(),
                         ID_PRECALIFICACION: $("#ID_PRECALIFICACION").val(),
@@ -231,7 +229,7 @@ function Expedientes_Registrar() {
                         FECHA_NOTIFICACION_INICIO: $("#FECHA_NOTIFICACION_INICIO").val(),
                         DOCUMENTO_FINALIZACION: $("#DOCUMENTO_FINALIZACION").val(),
                         RECOMENDACION_INSTRUCTOR: $("#RECOMENDACION_INSTRUCTOR").val(),
-                        SACION: $("#SACION").val(),
+                        SANCION: $("#SANCION").val(),
                         ID_SITUACION: $("#ID_SITUACION").val(),
                         ID_ESTADO: $("#ID_ESTADO").val(),
                         OBSERVACION_SANCIONADORA: $("#OBSERVACION_SANCIONADORA").val(),
@@ -306,8 +304,8 @@ function Expedientes_Eliminar(ID_EXPEDIENTE) {
             if (auditoria != null) {
                 if (auditoria.EJECUCION_PROCEDIMIENTO) {
                     if (!auditoria.RECHAZAR) {
-                        jAlert("Tipo Archivo eliminado", "Proceso");
-                        Expedientes_CargarGrilla();
+                        jAlert("Expediente eliminado", "Proceso");
+                        Expedientes_ConfigurarGrilla();
                     } else {
                         jAlert(auditoria.MENSAJE_SALIDA, 'Atención');
                     }

@@ -46,6 +46,7 @@
     <Compile Include="Cls_Ent_Auditoria.cs" />
     <Compile Include="Maestras\Cls_Ent_Expedientes.cs" />
     <Compile Include="Maestras\Cls_Ent_Oficina.cs" />
+    <Compile Include="Maestras\Cls_Ent_Adjuntos.cs" />
     <Compile Include="Maestras\Cls_Ent_Personal.cs" />
     <Compile Include="Maestras\Vistas\Cls_v_Expedientes.cs" />
     <Compile Include="Models\PagedResultBase.cs" />

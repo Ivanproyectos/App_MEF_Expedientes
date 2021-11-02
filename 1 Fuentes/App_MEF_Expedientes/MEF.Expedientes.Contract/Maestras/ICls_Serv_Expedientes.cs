@@ -7,7 +7,6 @@ namespace MEF.Expedientes.Contract.Maestras
     public interface ICls_Serv_Expedientes
     {
         //IEnumerable<Cls_Ent_Expedientes> Expedientes_Listar(Cls_Ent_Expedientes entidad, ref Cls_Ent_Auditoria auditoria);
-        List<Cls_Ent_Expedientes> Expedientes_Listar_Todo(string ORDEN_COLUMNA, string ORDEN, int FILAS, int PAGINA, string @WHERE, ref Cls_Ent_Auditoria auditoria);
 
         void Expedientes_Registrar(Cls_Ent_Expedientes entExpedientes, ref Cls_Ent_Auditoria auditoria);
         IEnumerable<Cls_Ent_Expedientes> Expedientes_Buscar(ref Cls_Ent_Auditoria auditoria, long id = 0, string descripcion = null);

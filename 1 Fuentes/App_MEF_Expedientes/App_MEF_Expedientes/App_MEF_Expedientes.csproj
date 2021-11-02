@@ -193,6 +193,7 @@
     <Compile Include="Areas\Administracion\Models\FormatosModelView.cs" />
     <Compile Include="Areas\Maestras\Controllers\ExpedientesController.cs" />
     <Compile Include="Areas\Maestras\MaestrasAreaRegistration.cs" />
+    <Compile Include="Areas\Maestras\Models\AdjuntosModelView.cs" />
     <Compile Include="Areas\Maestras\Models\ExpedientesModelView.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -208,6 +209,12 @@
     <Compile Include="Recursos\Clases\Css_Encriptar.cs" />
     <Compile Include="Recursos\Clases\Css_IP.cs" />
     <Compile Include="Recursos\Clases\Css_Log.cs" />
+    <Compile Include="Recursos\Paginacion\Css_Filter.cs" />
+    <Compile Include="Recursos\Paginacion\Css_Paginacion.cs" />
+    <Compile Include="Recursos\Paginacion\Css_Row.cs" />
+    <Compile Include="Recursos\Paginacion\Css_Rule.cs" />
+    <Compile Include="Recursos\Paginacion\GridTable.cs" />
+    <Compile Include="Recursos\Paginacion\JQgrid.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\bootstrap.css" />
@@ -593,6 +600,7 @@
     <Content Include="assets\summernote\font\summernote.ttf" />
     <Content Include="assets\summernote\font\summernote.woff" />
     <Content Include="assets\summernote\font\summernote.woff2" />
+    <Content Include="Areas\Maestras\Views\Expedientes\Mantenimiento_Archivos.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\autocomplete.js" />
     <Content Include="Scripts\Autorizacion.js" />
