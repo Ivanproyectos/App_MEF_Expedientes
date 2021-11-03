@@ -63,14 +63,11 @@ function Expedientes_actionActivo(cellvalue, options, rowObject) {
 
 function GetRules(Usuario_Grilla) {
     var rules = new Array();
-    
-
     var COD_EXPEDIENTE = jQuery('#txt_Expediente').val() == '' || jQuery('#txt_Expediente').val() == undefined ? null : "'" + jQuery('#txt_Expediente').val() + "'";
     var DNI = jQuery('#txt_dni').val() == '' || jQuery('#txt_dni').val() == undefined ? null : "'" + jQuery('#txt_dni').val() + "'";
     var ID_ESTADO = jQuery('#ID_ESTADO_SEARCH').val() == '' ? null : "'" + jQuery('#ID_ESTADO_SEARCH').val() + "'";
     var ID_SITUACION = jQuery('#ID_SITUACION_SEARCH').val() == '' ? null : "'" + jQuery('#ID_SITUACION_SEARCH').val() + "'";
     var FLG_ESTADO = jQuery('#CBOESTADO').val() == '' ? null : "'" + jQuery('#CBOESTADO').val() + "'";
-
     var POR = "'%'";
     rules = []
     rules.push({ field: 'FLG_ESTADO', data: '  NVL(' + FLG_ESTADO + ',FLG_ESTADO) ', op: " = " });
@@ -79,11 +76,8 @@ function GetRules(Usuario_Grilla) {
     rules.push({ field: 'DNI', data: POR + ' || ' + DNI + ' || ' + POR, op: " LIKE " });
     rules.push({ field: 'COD_EXPEDIENTE', data: POR + ' || ' + COD_EXPEDIENTE + ' || ' + POR, op: " LIKE " });
 
-
     return rules;
 }
-
-
 
 
 /*********************************************** Editar el Expedientes *************************************************/
@@ -91,7 +85,6 @@ function GetRules(Usuario_Grilla) {
 
 function Expedientes_actionArchivos(cellvalue, options, rowObject) {
     var COD_EXPEDIENTE = "'" + rowObject[5] + "'"; 
-
     var _btn = "<button title='Subir Archivo' onclick=\"Expedientes_SubirArchivo(" + rowObject[4] + "," + COD_EXPEDIENTE +");\" class=\"btn btn-link\" type=\"button\" style=\"text-decoration: none !important;\" data-toggle=\"modal\"  style=\"text-decoration: none !important;\" data-target=\"#myModalNuevo\"> <i class=\"clip-stack-empty\" style=\"color:#c35245;font-size:17px\"></i></button>";
     return _btn;
 }
@@ -197,10 +190,6 @@ function Expedientes_Actualizar() {
 
     }
 }
-
-
-
-
 
 
 

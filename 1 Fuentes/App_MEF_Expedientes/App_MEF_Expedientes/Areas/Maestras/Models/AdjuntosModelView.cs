@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MEF.Expedientes.Entity; 
 
 namespace App_MEF_Expedientes.Areas.Maestras.Models
 {
@@ -42,5 +43,11 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
 
         public string COD_EXPEDIENTE { get; set; }
         public string Accion { get; set; }
+
+        public Cls_Ent_Archivo MiArchivo { get; set; }
+        public string USU_CREACION { get; set; }
+
+
+
     }
 }

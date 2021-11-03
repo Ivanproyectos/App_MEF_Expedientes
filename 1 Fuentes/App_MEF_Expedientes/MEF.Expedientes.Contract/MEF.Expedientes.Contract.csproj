@@ -42,10 +42,12 @@
   <ItemGroup>
     <Compile Include="Administracion\ICls_Serv_FormatoCorreo.cs" />
     <Compile Include="Administracion\ICls_Serv_Dominio.cs" />
+    <Compile Include="Maestras\ICls_Serv_Adjuntos.cs" />
     <Compile Include="Maestras\ICls_Serv_Oficina.cs" />
     <Compile Include="Maestras\ICls_Serv_Personal.cs" />
     <Compile Include="Maestras\ICls_Serv_Expedientes.cs" />
     <Compile Include="Maestras\Vista\ICls_V_Serv_Expedientes.cs" />
+    <Compile Include="Maestras\Vista\ICls_V_Serv_Adjuntos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

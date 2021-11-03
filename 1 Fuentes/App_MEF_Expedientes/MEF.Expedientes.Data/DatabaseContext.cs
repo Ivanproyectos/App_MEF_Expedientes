@@ -35,7 +35,9 @@ namespace MEF.Expedientes.Data
 
         public virtual DbSet<Cls_Ent_FormatoCorreo> Cls_Ent_FormatoCorreo { get; set; }
         public virtual DbSet<Cls_v_Expedientes> Cls_v_Expedientes { get; set; }
-        
+        public virtual DbSet<Cls_Ent_Adjuntos> Cls_Ent_Adjuntos { get; set; }
+
+        public virtual DbSet<Cls_v_Adjuntos> Cls_v_Adjuntos { get; set; }
 
         //public virtual DbSet<Cls_Ent_Tabla> cls_Ent_Tabla { get; set; }
         //public virtual DbSet<Cls_Ent_Campo> cls_Ent_Campo { get; set; }

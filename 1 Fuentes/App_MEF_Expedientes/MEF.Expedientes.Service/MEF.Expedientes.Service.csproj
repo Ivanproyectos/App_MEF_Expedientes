@@ -55,9 +55,11 @@
   <ItemGroup>
     <Compile Include="Administracion\Cls_Serv_FormatoCorreo.cs" />
     <Compile Include="Administracion\Cls_Serv_Dominio.cs" />
+    <Compile Include="Maestras\Cls_Serv_Adjuntos.cs" />
     <Compile Include="Maestras\Cls_Serv_Oficina.cs" />
     <Compile Include="Maestras\Cls_Serv_Personal.cs" />
     <Compile Include="Maestras\Cls_Serv_Expedientes.cs" />
+    <Compile Include="Maestras\Vista\Cls_V_Serv_Adjuntos.cs" />
     <Compile Include="Maestras\Vista\Cls_V_Serv_Expedientes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

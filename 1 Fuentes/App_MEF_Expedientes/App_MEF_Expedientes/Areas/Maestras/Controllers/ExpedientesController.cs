@@ -418,7 +418,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
 
 
 
-            public ActionResult Expedientes_Insertar(Cls_Ent_Expedientes entidad)
+        public ActionResult Expedientes_Insertar(Cls_Ent_Expedientes entidad)
         {
             Cls_Ent_Auditoria auditoria = new Cls_Ent_Auditoria();
             entidad.IP_CREACION = Recursos.Clases.Css_IP.Obtener_IP();

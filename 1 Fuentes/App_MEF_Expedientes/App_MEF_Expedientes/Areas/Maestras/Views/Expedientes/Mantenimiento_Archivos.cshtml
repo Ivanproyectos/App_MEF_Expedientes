@@ -1,14 +1,15 @@
 ﻿@model App_MEF_Expedientes.Areas.Maestras.Models.AdjuntosModelView
 
 <script type="text/javascript">
-    var f = new Date();
+    var today = new Date();
+    var year = today.getFullYear();
     var Archivo_cambiado = false;
     var ArchivoNuevo_Array = new Array();
-
+    var Tamanio_Valido = 314572800; // 300MB -- Cantidad en MB
     $(document).ready(function () {
         $('#NUMERO').val(''); 
         Adjuntos_ConfigurarGrilla();
-        //Adjuntos_CargarGrilla();
+        Adjuntos_Listar(); 
     });
 
     $("#file-upload_Adjuntos").change(function () {
@@ -54,7 +55,7 @@
     function Nuevo_GuardarTemporalAdjuntos() {
         //$("#FrmNuevoArchivo").show();
         var ErrorUrl = '';
-        var url = baseUrl + "Seguridad/Archivo/Guardar_Temporal_Archivo";
+        var url = baseUrl + "Maestras/Archivo/Guardar_Temporal_Archivo";
         var options = {
             type: "POST",
             dataType: "json",
@@ -102,6 +103,22 @@
     });
 
 
+    $("#btnFecha").click(function () {
+        $("#FECHA").datepicker({
+            dateFormat: "dd/mm/yy",
+            constrainInput: true,
+            // showButtonPanel: true,
+            autoSize: true,
+            //maxDate: dateToday,
+            changeMonth: true,
+            changeYear: true,
+            showAnim: 'slideDown',
+            yearRange: '' + 1990 + ':' + (year + 5) + ''
+        }).css("z-index", 90000);
+        $("#FECHA").datepicker("show");
+    });
+
+
 </script>
 <style>
     .modal-dialogOrden1 {
@@ -110,7 +127,7 @@
     }
 </style>
 
-
+<div class="modal fade" id="myModalNuevoAdjuntos" tabindex="" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  data-backdrop="static" data-keyboard="false"></div>
 <div class="modal fade" id="myModalDescargar" tabindex="" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 
 <div class="modal-dialogOrden1">
@@ -145,10 +162,13 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.FECHA, new { @class = "col-sm-4 control-label" })
                         <div class="col-sm-7">
-                            @Html.TextBoxFor(model => model.FECHA, new { @class = "form-control", @maxlength = "100" })
-                            @Html.ValidationMessageFor(model => model.FECHA, string.Empty, new { @class = "cssMessageError" })
+                            <div class="input-group">
+                                @Html.TextBoxFor(model => model.FECHA, new { @class = "form-control", @maxlength = "100",@readOnly="true" })
+                                <span title="Calendario" class="input-group-addon" id="btnFecha" style="border: 1px solid #c42e32;  cursor: pointer; background:white;"><i class="fa fa-calendar-o"></i></span>
+                            </div>
+                                @Html.ValidationMessageFor(model => model.FECHA, string.Empty, new { @class = "cssMessageError" })
+                            </div>
                         </div>
-                    </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.OBSERVACION, new { @class = "col-sm-4 control-label" })
