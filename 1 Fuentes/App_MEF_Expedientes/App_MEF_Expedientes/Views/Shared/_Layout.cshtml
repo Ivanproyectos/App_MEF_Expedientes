@@ -174,7 +174,7 @@
                     <li id="liReportes">
                         <a style="height: 38px; padding-top: 9px;cursor:pointer"><i class="clip-stats"></i><span class="title"> Reportes</span><i class="icon-arrow"></i><span class="selected"></span></a>
                         <ul class="sub-menu">
-                            <li id="liReporte" style=""> <a id="aReporte" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Solicitudes</span></a></li>
+                            <li id="liRe_Expedientes" style=""> <a id="aRe_Expedientes" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Expedientes</span></a></li>
                         </ul>
                     </li>
                 </ul>
@@ -286,8 +286,10 @@
             var rutaSancion= baseUrl + "Administracion/Sancion/";
             var rutaSituacion = baseUrl + "Administracion/Situacion/";
             var rutaFormatoCorreo = baseUrl + "Administracion/FormatosCorreo/";
+
+            var rutaRe_Expedientes = baseUrl + "Reportes/Expedientes/";
             
-            
+
             $("#Frm_General").hide();
             ///InvocarVista(rutaRecepcion + "Index", item_);
 
@@ -347,6 +349,15 @@
                 };
                 InvocarVista(rutaFormatoCorreo + "Index", item);
             });
+
+
+            jQuery('#aRe_Expedientes').click(function (e) {
+                var item =
+                {
+                };
+                InvocarVista(rutaRe_Expedientes + "Index", item);
+            });
+
 
         }
 

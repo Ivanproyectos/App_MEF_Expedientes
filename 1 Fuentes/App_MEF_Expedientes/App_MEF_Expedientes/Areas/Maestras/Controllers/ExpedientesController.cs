@@ -209,7 +209,11 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
             if (Accion == "M")
             {
                 IEnumerable<Cls_v_Expedientes> lista;
-                lista = _cls_V_Serv_Expedientes.Expedientes_V_Buscar(ref auditoria, id);
+                Cls_v_Expedientes entidad = new Cls_v_Expedientes
+                {
+                    ID_EXPEDIENTE = id
+                };
+                lista = _cls_V_Serv_Expedientes.Expedientes_V_Buscar(ref auditoria, entidad);
                 if (!auditoria.EJECUCION_PROCEDIMIENTO)
                 {
                     if (auditoria.RECHAZAR)

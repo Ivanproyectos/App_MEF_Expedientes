@@ -154,17 +154,17 @@ namespace MEF.Expedientes.Service.Maestras.Vista
 
 
 
-        public IEnumerable<Cls_v_Expedientes> Expedientes_V_Buscar(ref Cls_Ent_Auditoria auditoria, long id = 0, string descripcion = null)
+        public IEnumerable<Cls_v_Expedientes> Expedientes_V_Buscar(ref Cls_Ent_Auditoria auditoria, Cls_v_Expedientes Param)
         {
             auditoria.Limpiar();
             IEnumerable<Cls_v_Expedientes> entidad = new List<Cls_v_Expedientes>();
 
             try
             {
-                if (id != 0)
-                    entidad = FindAll(w => w.ID_EXPEDIENTE == id);
-                else if (descripcion != null)
-                    entidad = FindAll(e => e.COD_EXPEDIENTE.ToUpper() == descripcion.ToUpper());
+                if (Param.ID_EXPEDIENTE != 0)
+                    entidad = FindAll(w => w.ID_EXPEDIENTE == Param.ID_EXPEDIENTE);
+                else if (Param.COD_EXPEDIENTE != null)
+                    entidad = FindAll(e => e.COD_EXPEDIENTE.ToUpper() == Param.COD_EXPEDIENTE.ToUpper());
             }
             catch (Exception ex)
             {

@@ -49,6 +49,7 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebHelpers.3.2.7\lib\net45\Microsoft.Web.Helpers.dll</HintPath>
     </Reference>
@@ -197,6 +198,8 @@
     <Compile Include="Areas\Maestras\MaestrasAreaRegistration.cs" />
     <Compile Include="Areas\Maestras\Models\AdjuntosModelView.cs" />
     <Compile Include="Areas\Maestras\Models\ExpedientesModelView.cs" />
+    <Compile Include="Areas\Reportes\Controllers\ExpedientesController.cs" />
+    <Compile Include="Areas\Reportes\ReportesAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -218,6 +221,13 @@
     <Compile Include="Recursos\Paginacion\Css_Rule.cs" />
     <Compile Include="Recursos\Paginacion\GridTable.cs" />
     <Compile Include="Recursos\Paginacion\JQgrid.cs" />
+    <Compile Include="Reportes\Fmr_Expedientes.aspx.cs">
+      <DependentUpon>Fmr_Expedientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\Fmr_Expedientes.aspx.designer.cs">
+      <DependentUpon>Fmr_Expedientes.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\bootstrap.css" />
@@ -605,8 +615,11 @@
     <Content Include="assets\summernote\font\summernote.woff2" />
     <Content Include="Areas\Maestras\Views\Expedientes\Mantenimiento_Archivos.cshtml" />
     <Content Include="Areas\Maestras\Views\Adjuntos\Mantenimiento_Ver.cshtml" />
+    <Content Include="Areas\Reportes\Views\web.config" />
+    <Content Include="Areas\Reportes\Views\Expedientes\Index.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Recursos\Temporales\NoBorrar.js" />
+    <Content Include="Reportes\Fmr_Expedientes.aspx" />
     <Content Include="Scripts\autocomplete.js" />
     <Content Include="Scripts\Autorizacion.js" />
     <Content Include="Scripts\bootbox.min.js" />
@@ -711,6 +724,8 @@
     <Folder Include="Areas\Administracion\Views\Shared\" />
     <Folder Include="Areas\Maestras\Views\Archivo\" />
     <Folder Include="Areas\Maestras\Views\Shared\" />
+    <Folder Include="Areas\Reportes\Data\" />
+    <Folder Include="Areas\Reportes\Views\Shared\" />
     <Folder Include="Recursos\Log\" />
   </ItemGroup>
   <ItemGroup>
@@ -733,6 +748,9 @@
       <Project>{de461f5f-2183-4c49-ae5a-5853119ada02}</Project>
       <Name>MEF.Expedientes.Service</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reportes\Expedientes.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
