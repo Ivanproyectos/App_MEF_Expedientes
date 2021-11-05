@@ -70,13 +70,39 @@ namespace App_MEF_Expedientes.Reportes
                         this.ReportViewer1.LocalReport.Refresh();
 
                     }
-                } else if (TIPO_REPORTE == 2) { 
-                
-                
-                }
+                } else if (TIPO_REPORTE == 2) {
 
+                    _cls_V_Serv_Expedientes = new Cls_V_Serv_Expedientes();
+                    IEnumerable<Cls_v_Expedientes> lista = null;
+                    Cls_v_Expedientes entidad = new Cls_v_Expedientes();
+                    entidad.DNI= DNI;
+                    entidad.ID_SITUACION = ID_SITUACION;
+                    entidad.ID_ESTADO = ID_ESTADO;
+
+                    ReportViewer1.LocalReport.DataSources.Clear();
+                    lista = _cls_V_Serv_Expedientes.Expedientes_V_GetAll(ref auditoria, entidad);
+                    if (!auditoria.EJECUCION_PROCEDIMIENTO)
+                    {
+                        Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
+                    }
+                    else
+                    {
+                        this.ReportViewer1.LocalReport.DataSources.Clear();
+                        if (lista.Count() > 0)
+                        {
+                            ReportViewer1.ProcessingMode = ProcessingMode.Local;
+                            ReportViewer1.LocalReport.ReportPath = Server.MapPath("Expedientes_Listado.rdlc");
+                            ReportParameter[] parameters = new ReportParameter[0];
+                            //parameters[0] = new ReportParameter("ID_PERSONAL", entidad.id_cargo_digi.ToString());
+                            ReportViewer1.LocalReport.SetParameters(parameters);
+                            ReportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Ds_LIstadoExpediente", lista));
+
+                        }
+                        this.ReportViewer1.LocalReport.Refresh();
+                    }
+                }
             }
-            catch (Exception ex)
+            catch (Exception ex)    
             {
                 Response.Write(ex.Message);
                 Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);

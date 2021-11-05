@@ -18,18 +18,19 @@
 
     $("#btnBuscar_Reporte").click(function (e) {
 
-        var TipoReporte = $('input[type=radio][name=Expediente_R]').val();
+        var TipoReporte = $('input[type=radio][name=Expediente_R]:checked').val();
         var NRO_EXPEDIENTE = $("#txt_nroExpediente").val();
         var DNI = $('#txt_dni').val();
         var SITUACION = $('#ID_SITUACION_SEARCH').val() == "" ? 0 : $('#ID_SITUACION_SEARCH').val();
         var ESTADO = $('#ID_ESTADO_SEARCH').val() == "" ? 0 : $('#ID_ESTADO_SEARCH').val();
+        debugger;
 
         if (TipoReporte == 1) {
             if (NRO_EXPEDIENTE == "") {
                 jAlert('Ingrese un expediente para buscar.', 'Atención')
             } else {
-       $("#iframeReporte").attr("src", '@Url.Content("~/Reportes/Fmr_Expedientes.aspx?NRO_EXPEDIENTE=")' + NRO_EXPEDIENTE + "&DNI=" + DNI + "&ID_SITUACION=" + SITUACION + "&ID_ESTADO=" + ESTADO + "&TIPO_REPORTE="+ TipoReporte );
-            }
+             $("#iframeReporte").attr("src", '@Url.Content("~/Reportes/Fmr_Expedientes.aspx?NRO_EXPEDIENTE=")' + NRO_EXPEDIENTE + "&DNI=" + DNI + "&ID_SITUACION=" + SITUACION + "&ID_ESTADO=" + ESTADO + "&TIPO_REPORTE="+ TipoReporte );
+             }
             } else if (TipoReporte == 2) {
                 $("#iframeReporte").attr("src", '@Url.Content("~/Reportes/Fmr_Expedientes.aspx?NRO_EXPEDIENTE=")' + NRO_EXPEDIENTE + "&DNI=" + DNI + "&ID_SITUACION=" + SITUACION + "&ID_ESTADO=" + ESTADO + "&TIPO_REPORTE="+ TipoReporte );
             }
@@ -80,7 +81,7 @@
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="Expediente_R" id="exampleRadios1" value="2" >
+                    <input class="form-check-input" type="radio" name="Expediente_R" id="exampleRadios2" value="2" >
                     <label class="form-check-label" for="exampleRadios1">
                         Listado Expedientes
                     </label>

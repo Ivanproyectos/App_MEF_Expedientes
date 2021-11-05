@@ -68,7 +68,7 @@ namespace MEF.Expedientes.Entity.Maestras.Vistas
         public int FLG_ESTADO { get; set; }
 
 
-
+        public string DNI { get; set; }
         public string USU_CREACION { get; set; }
 
 
