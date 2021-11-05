@@ -28,7 +28,7 @@
             }
             else {
                 var valido = false;
-                if (ext.toLowerCase() == "pdf")
+                //if (ext.toLowerCase() == "pdf")
                     valido = true;
                 if (PesodeArchivo > Tamanio_Valido || !valido) {
                     $(this).val('');
@@ -190,7 +190,7 @@
                                 <label for="file-upload_Adjuntos" class="custom-file-upload" style="cursor: pointer; width: 100%; margin-bottom: 0px;">
                                     <i class="clip-file-pdf"></i>&nbsp; <span id="lbl_file">Seleccionar archivo</span>
                                 </label>
-                                <input type="file" id="file-upload_Adjuntos" name="MifileArchivo" accept=".pdf">
+                                <input type="file" id="file-upload_Adjuntos" name="MifileArchivo" accept="*">
                             </div>
                             <span id="validar_file" class="cssMessageError field-validation-error" data-valmsg-for="file-upload" data-valmsg-replace="true" style="display: none;">
                                 <span for="file-upload" generated="true" class="">[Archivo] es obligatorio </span>

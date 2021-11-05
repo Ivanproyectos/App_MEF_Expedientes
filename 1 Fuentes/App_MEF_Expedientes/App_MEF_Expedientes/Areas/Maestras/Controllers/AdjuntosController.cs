@@ -83,6 +83,20 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
             return View(model);
         }
 
+
+
+        public ActionResult Descargar_Archivo(int id)
+        {
+            AdjuntosModelView model = new AdjuntosModelView();
+            model.ID_ADJUNTO = id;
+            return View(model);
+        }
+
+
+        
+
+
+
         public ActionResult Adjuntos_Insertar(AdjuntosModelView param)
         {
 

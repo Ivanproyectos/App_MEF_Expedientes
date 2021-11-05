@@ -215,6 +215,13 @@
     <Compile Include="Recursos\Clases\Css_IP.cs" />
     <Compile Include="Recursos\Clases\Css_Log.cs" />
     <Compile Include="Recursos\Clases\Css_Ruta.cs" />
+    <Compile Include="Recursos\Form\DescargarAdjuntos.aspx.cs">
+      <DependentUpon>DescargarAdjuntos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Recursos\Form\DescargarAdjuntos.aspx.designer.cs">
+      <DependentUpon>DescargarAdjuntos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Recursos\Paginacion\Css_Filter.cs" />
     <Compile Include="Recursos\Paginacion\Css_Paginacion.cs" />
     <Compile Include="Recursos\Paginacion\Css_Row.cs" />
@@ -617,7 +624,9 @@
     <Content Include="Areas\Maestras\Views\Adjuntos\Mantenimiento_Ver.cshtml" />
     <Content Include="Areas\Reportes\Views\web.config" />
     <Content Include="Areas\Reportes\Views\Expedientes\Index.cshtml" />
+    <Content Include="Areas\Maestras\Views\Adjuntos\Descargar_Archivo.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Recursos\Form\DescargarAdjuntos.aspx" />
     <Content Include="Recursos\Temporales\NoBorrar.js" />
     <Content Include="Reportes\Fmr_Expedientes.aspx" />
     <Content Include="Scripts\autocomplete.js" />

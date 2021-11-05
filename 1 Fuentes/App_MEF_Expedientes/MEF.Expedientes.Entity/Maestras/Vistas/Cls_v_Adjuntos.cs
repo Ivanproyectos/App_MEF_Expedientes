@@ -16,7 +16,7 @@ namespace MEF.Expedientes.Entity.Maestras.Vistas
         public string FECHA { get; set; }
         public string OBSERVACION { get; set; }
         public string NOMBRE_ARCHIVO { get; set; }
- 
+        public string EXTENSION_ARCHIVO { get; set; }
         public int FLG_ESTADO { get; set; }
         public string USU_CREACION { get; set; }
 

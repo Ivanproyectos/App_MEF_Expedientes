@@ -15,7 +15,7 @@ function LimpiarAdjuntos() {
 
 function Adjuntos_ConfigurarGrilla() {
     $("#" + Adjuntos_grilla).GridUnload();
-    var colNames = ['Eliminar','Ver','id_archivo', 'Tipo Documento','Número','Fecha' ,'Observación','FLG_ESTADO', 'Usuario Creación', 'Fecha Creación'];
+    var colNames = ['Eliminar','Ver','id_archivo', 'Tipo Documento','Número','Fecha' ,'Observación','FLG_ESTADO', 'Usuario Creación', 'Fecha Creación','EXTENSION'];
     var colModels = [
         { name: 'ELIMINAR', index: 'ELIMINAR', align: 'center', width: 65, hidden: false, sortable: false, formatter: Adjuntos_actionEliminar },
         { name: 'DESCARGAR', index: 'DESCARGAR', align: 'center', width: 80, hidden: false, sortable: false, formatter: Adjuntos_actionDescargar },
@@ -27,7 +27,8 @@ function Adjuntos_ConfigurarGrilla() {
         { name: 'FLG_ESTADO', index: 'FLG_ESTADO', align: 'center', width: 140, hidden: true, sortable: true },
         { name: 'USU_CREACION', index: 'USU_CREACION', align: 'center', width: 140, hidden: false, sortable: true },
         { name: 'FEC_CREACION', index: 'FEC_CREACION', align: 'center', width: 160, hidden: false, sortable: true, formatter: 'date', formatoptions: { srcformat: 'd/m/Y h:i A', newformat: 'd/m/Y h:i A' } },
-,
+        { name: 'EXTENSION_ARCHIVO', index: 'EXTENSION_ARCHIVO', align: 'center', width: 300, hidden: true }, 
+        
     ];
     var opciones = {
         GridLocal: true, multiselect: false, CellEdit: false, Editar: false, nuevo: false, eliminar: false, search: false, sort: 'DESC', rules: true,
@@ -38,7 +39,11 @@ function Adjuntos_ConfigurarGrilla() {
 }
 
 function Adjuntos_actionDescargar(cellvalue, options, rowObject) {
-    var _btn = "<button title='Descargar' onclick='Adjuntos_Ver(" + rowObject.ID_ARCHIVO + ");' class=\"btn btn-link\" type=\"button\" style=\"text-decoration: none !important;\" data-toggle=\"modal\"  style=\"text-decoration: none !important;\" data-target=\"#myModalNuevoAdjuntos\"> <i class=\"clip-file-pdf\" style=\"color:#c35245;font-size:17px\"></i></button>";
+    if (rowObject.EXTENSION_ARCHIVO ==".pdf") {
+        var _btn = "<button title='Descargar' onclick='Adjuntos_Ver(" + rowObject.ID_ARCHIVO + ");' class=\"btn btn-link\" type=\"button\" style=\"text-decoration: none !important;\" data-toggle=\"modal\"  style=\"text-decoration: none !important;\" data-target=\"#myModalNuevoAdjuntos\"> <i class=\"clip-file-pdf\" style=\"color:#c35245;font-size:17px\"></i></button>";
+    } else {
+        var _btn = "<button title='Descargar' onclick='Adjuntos_Descargar(" + rowObject.ID_ARCHIVO + ");' class=\"btn btn-link\" type=\"button\" style=\"text-decoration: none !important;\" > <i class=\"clip-download\" style=\"color:#c35245;font-size:17px\"></i></button>";
+    }
     return _btn;
 }
 
@@ -46,6 +51,16 @@ function Adjuntos_Ver(ID_ARCHIVO) {
     jQuery("#myModalNuevoAdjuntos").html('');
     jQuery("#myModalNuevoAdjuntos").load(baseUrl + "Maestras/Adjuntos/Mantenimiento_Ver?id=" + ID_ARCHIVO, function (responseText, textStatus, request) {
         $.validator.unobtrusive.parse('#myModalNuevoAdjuntos');
+        if (request.status != 200) return;
+    });
+}
+
+
+
+function Adjuntos_Descargar(ID_ARCHIVO) {
+    jQuery("#myModalDescargar").html('');
+    jQuery("#myModalDescargar").load(baseUrl + "Maestras/Adjuntos/Descargar_Archivo?id=" + ID_ARCHIVO, function (responseText, textStatus, request) {
+        $.validator.unobtrusive.parse('#myModalDescargar');
         if (request.status != 200) return;
     });
 }
@@ -76,6 +91,7 @@ function Adjuntos_Listar() {;
                      NUMERO: v.NUMERO,
                      USU_CREACION: v.USU_CREACION,
                     FEC_CREACION: v.FEC_CREACION,
+                    EXTENSION_ARCHIVO: v.EXTENSION_ARCHIVO
 
 
                  };
