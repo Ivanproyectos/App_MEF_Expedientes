@@ -623,8 +623,8 @@
     <Content Include="Areas\Maestras\Views\Expedientes\Mantenimiento_Archivos.cshtml" />
     <Content Include="Areas\Maestras\Views\Adjuntos\Mantenimiento_Ver.cshtml" />
     <Content Include="Areas\Reportes\Views\web.config" />
-    <Content Include="Areas\Reportes\Views\Expedientes\Index.cshtml" />
     <Content Include="Areas\Maestras\Views\Adjuntos\Descargar_Archivo.cshtml" />
+    <Content Include="Areas\Reportes\Views\Expedientes\Index.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Recursos\Form\DescargarAdjuntos.aspx" />
     <Content Include="Recursos\Temporales\NoBorrar.js" />

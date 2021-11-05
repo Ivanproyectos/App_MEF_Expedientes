@@ -1,15 +1,13 @@
-﻿@{
+﻿@model App_MEF_Expedientes.Areas.Maestras.Models.ExpedientesModelView
+
+@{
     ViewBag.Title = "Index";
 }
 <link href="~/assets/Switch_Toggle.css" rel="stylesheet" />
 <script src="@Url.Content("~/Scripts/Js/Remove.js")" type="text/javascript"></script>
-@*<script src="@Url.Content("~/Scripts/Js/Administracion/Actos.js")" type="text/javascript"></script>*@
-
 
 <script type="text/javascript">
     $(document).ready(function () {
-        //Remove_RemoverClases("liActos");
-        //$('#Grilla_Load').show();
         Remove_RemoverClases("liRe_Expedientes");
     });
 
@@ -19,18 +17,40 @@
 
 
     $("#btnBuscar_Reporte").click(function (e) {
+
+        var TipoReporte = $('input[type=radio][name=Expediente_R]').val();
         var NRO_EXPEDIENTE = $("#txt_nroExpediente").val();
+        var DNI = $('#txt_dni').val();
+        var SITUACION = $('#ID_SITUACION_SEARCH').val() == "" ? 0 : $('#ID_SITUACION_SEARCH').val();
+        var ESTADO = $('#ID_ESTADO_SEARCH').val() == "" ? 0 : $('#ID_ESTADO_SEARCH').val();
 
-        //var cod_persona1 = '002434';
-
-        var cod_persona = $("#ID_PERSONAL").val();
-        if (cod_persona == "") {
-            jAlert('Ingrese un personal', 'Atención')
-        } else {
-            $("#iframeReporte").attr("src", '@Url.Content("~/Reportes/Fmr_Expedientes.aspx?NRO_EXPEDIENTE=")' + NRO_EXPEDIENTE);
-        }
+        if (TipoReporte == 1) {
+            if (NRO_EXPEDIENTE == "") {
+                jAlert('Ingrese un expediente para buscar.', 'Atención')
+            } else {
+       $("#iframeReporte").attr("src", '@Url.Content("~/Reportes/Fmr_Expedientes.aspx?NRO_EXPEDIENTE=")' + NRO_EXPEDIENTE + "&DNI=" + DNI + "&ID_SITUACION=" + SITUACION + "&ID_ESTADO=" + ESTADO + "&TIPO_REPORTE="+ TipoReporte );
+            }
+            } else if (TipoReporte == 2) {
+                $("#iframeReporte").attr("src", '@Url.Content("~/Reportes/Fmr_Expedientes.aspx?NRO_EXPEDIENTE=")' + NRO_EXPEDIENTE + "&DNI=" + DNI + "&ID_SITUACION=" + SITUACION + "&ID_ESTADO=" + ESTADO + "&TIPO_REPORTE="+ TipoReporte );
+            }
 
     });
+
+
+
+
+
+    $('input[type=radio][name=Expediente_R]').change(function () {
+        var tipo = $(this).val();
+        if (tipo == '1') {
+            $('#Busqueda_1').show(); $('#Busqueda_2').hide();
+        }
+        else {
+            $('#Busqueda_2').show(); $('#Busqueda_1').hide();
+        }
+    });
+
+
 
 
 </script>
@@ -50,17 +70,64 @@
 <div class="tab-content">
 
     <div id="panel_tab_1" class="tab-pane active">
+        <div class="col-sm-12 inline-container-Group" style="margin-bottom:5px;">
+            <p class="modal-title" style="color: #999; font-size: 15px; margin-bottom: 5px; margin-top: -5px">Tipo Reporte: </p>
+            <div class="row" style="padding:0px 20px 0px 20px;">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Expediente_R" id="exampleRadios1" value="1" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        Expedientes
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Expediente_R" id="exampleRadios1" value="2" >
+                    <label class="form-check-label" for="exampleRadios1">
+                        Listado Expedientes
+                    </label>
+                </div>
+
+            </div>
+
+        </div>
+
+
         <div class="col-sm-12 inline-container-Group">
             <p class="modal-title" style="color: #999; font-size: 15px; margin-bottom: 5px; margin-top: -5px">Criterios de búsqueda: </p>
             <fieldset style="width: 100%;">
                 <div class="row">
-                    <div class="col-sm-1">
-                        <label class="col-sm-15 control-label" for="form-field-1" style="width: 100%; margin-top: 5px; text-align: right;">Nro. Expediente:</label>
+
+                    <div id="Busqueda_1">
+                        <div class="col-sm-1">
+                            <label class="col-sm-15 control-label" for="form-field-1" style="width: 100%; margin-top: 5px; text-align: right;">Nro. Expediente:</label>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" id="txt_nroExpediente" name="txt_nroExpediente" maxlength="30" class="form-control" style="width: 100%" />
+                        </div>
                     </div>
-                    <div class="col-sm-2">
-                        <input type="text" id="txt_nroExpediente" name="txt_nroExpediente" maxlength="30" class="form-control" style="width: 100%" />
+                    <div id="Busqueda_2" style="display:none;">
+                        <div class="col-sm-1">
+                            <label class="col-sm-15 control-label" for="form-field-1" style="width: 100%; margin-top: 5px; text-align: right;">Dni:</label>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" id="txt_dni" name="txt_dni" maxlength="30" class="form-control" style="width: 100%" />
+                        </div>
+
+                        <div class="col-sm-1">
+                            <label class="col-sm-15 control-label" for="form-field-1" style="width: 100%; margin-top: 5px; text-align: right;">Situación:</label>
+                        </div>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(x => x.ID_SITUACION_SEARCH, Model.Lista_Situacion, new { @class = "form-control", @maxlength = "50", @style = "width:100%" })
+                        </div>
+
+
+                        <div class="col-sm-1">
+                            <label class="col-sm-15 control-label" for="form-field-1" style="width: 100%; margin-top: 5px; text-align: right;">Estado:</label>
+                        </div>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(x => x.ID_ESTADO_SEARCH, Model.Lista_Estado, new { @class = "form-control", @maxlength = "50", @style = "width:100%" })
+                        </div>
+
                     </div>
-                 
 
                     <div class="col-sm-3">
                         <button id="btnBuscar_Reporte" class="btn btn-red" type="button"><i class="clip-search"></i>&nbsp  Generar Reporte</button>
@@ -71,14 +138,9 @@
         </div>
 
         <div class="row">
-            @*<div class="col-sm-7" style="margin-top: 10px">
-                <button id="btnNuevoActos" class="btn btn-red" type="button" data-toggle="modal" data-target="#myModalNuevo"><i class="fa fa-plus"></i>&nbsp  Nuevo Acto </button>
-            </div>*@
             <div class="col-sm-12" style="margin-top: 10px">
                 <iframe id="iframeReporte" src="" width="100%" style="height:700px"> </iframe>
             </div>
         </div>
     </div>
 </div>
-
-

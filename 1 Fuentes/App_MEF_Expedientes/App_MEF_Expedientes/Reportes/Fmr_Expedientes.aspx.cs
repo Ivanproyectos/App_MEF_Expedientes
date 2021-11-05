@@ -26,50 +26,53 @@ namespace App_MEF_Expedientes.Reportes
             if (!IsPostBack)
             {
                 string NRO_EXPEDIENTE = Request.QueryString["NRO_EXPEDIENTE"].ToString();
-                GenerarReporte(NRO_EXPEDIENTE);
+                string DNI = Request.QueryString["DNI"].ToString();
+                long ID_SITUACION = long.Parse(Request.QueryString["ID_SITUACION"].ToString());
+                long ID_ESTADO = long.Parse(Request.QueryString["ID_ESTADO"].ToString());
+                int TIPO_REPORTE = int.Parse(Request.QueryString["TIPO_REPORTE"].ToString());
+
+                GenerarReporte(NRO_EXPEDIENTE, DNI ,ID_SITUACION, ID_ESTADO, TIPO_REPORTE);
 
             }
         }
 
-        private void GenerarReporte(string NRO_EXPEDIENTE)
+        private void GenerarReporte(string NRO_EXPEDIENTE, string DNI , long ID_SITUACION, long ID_ESTADO, long TIPO_REPORTE)
         {
 
             Cls_Ent_Auditoria auditoria = new Cls_Ent_Auditoria();
 
             try
             {
-                _cls_V_Serv_Expedientes = new Cls_V_Serv_Expedientes();
-
-                IEnumerable<Cls_v_Expedientes> lista = null;
-
-
-                Cls_v_Expedientes entidad = new Cls_v_Expedientes();
-                entidad.COD_EXPEDIENTE = NRO_EXPEDIENTE;
-       
-                ReportViewer1.LocalReport.DataSources.Clear();
-                lista = _cls_V_Serv_Expedientes.Expedientes_V_Buscar(ref auditoria, entidad);
-                if (!auditoria.EJECUCION_PROCEDIMIENTO)
-                {
-                    Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
-                }
-                else
-                {
-
-               
-                    this.ReportViewer1.LocalReport.DataSources.Clear();
-                    if (lista.Count() > 0)
+                if (TIPO_REPORTE == 1) {
+                    _cls_V_Serv_Expedientes = new Cls_V_Serv_Expedientes();
+                    IEnumerable<Cls_v_Expedientes> lista = null;
+                    Cls_v_Expedientes entidad = new Cls_v_Expedientes();
+                    entidad.COD_EXPEDIENTE = NRO_EXPEDIENTE;
+                    ReportViewer1.LocalReport.DataSources.Clear();
+                    lista = _cls_V_Serv_Expedientes.Expedientes_V_Buscar(ref auditoria, entidad);
+                    if (!auditoria.EJECUCION_PROCEDIMIENTO)
                     {
-                        ReportViewer1.ProcessingMode = ProcessingMode.Local;
-                        ReportViewer1.LocalReport.ReportPath = Server.MapPath("Expedientes.rdlc");
-                        ReportParameter[] parameters = new ReportParameter[0];
-                        //parameters[0] = new ReportParameter("ID_PERSONAL", entidad.id_cargo_digi.ToString());
-                        ReportViewer1.LocalReport.SetParameters(parameters);
-
-                        ReportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Ds_Expedientes", lista));
-                  
+                        Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
                     }
-                    this.ReportViewer1.LocalReport.Refresh();
+                    else
+                    {
+                        this.ReportViewer1.LocalReport.DataSources.Clear();
+                        if (lista.Count() > 0)
+                        {
+                            ReportViewer1.ProcessingMode = ProcessingMode.Local;
+                            ReportViewer1.LocalReport.ReportPath = Server.MapPath("Expedientes.rdlc");
+                            ReportParameter[] parameters = new ReportParameter[0];
+                            //parameters[0] = new ReportParameter("ID_PERSONAL", entidad.id_cargo_digi.ToString());
+                            ReportViewer1.LocalReport.SetParameters(parameters);
+                            ReportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WebForms.ReportDataSource("Ds_Expedientes", lista));
 
+                        }
+                        this.ReportViewer1.LocalReport.Refresh();
+
+                    }
+                } else if (TIPO_REPORTE == 2) { 
+                
+                
                 }
 
             }
