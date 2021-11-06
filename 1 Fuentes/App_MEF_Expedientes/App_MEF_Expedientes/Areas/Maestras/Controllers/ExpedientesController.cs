@@ -277,12 +277,12 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
                         Text = x.DESC_CORTA_DOMINIO.ToString(),
                         Value = x.ID_DOMINIO.ToString()
                     }).ToList();
-                    modelo.Lista_Acto.Insert(0, new SelectListItem() { Value = "", Text = "-- Seleccione --" });
+                    modelo.Lista_Acto.Insert(0, new SelectListItem() { Value = "0", Text = "-- Seleccione --" });
                 }
             }
             else
             {
-                modelo.Lista_Acto.Insert(0, new SelectListItem() { Value = "", Text = "-- Seleccione --" });
+                modelo.Lista_Acto.Insert(0, new SelectListItem() { Value = "0", Text = "-- Seleccione --" });
                 Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
             }
 
@@ -299,12 +299,12 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
                         Text = x.DESC_CORTA_DOMINIO.ToString(),
                         Value = x.ID_DOMINIO.ToString()
                     }).ToList();
-                    modelo.Lista_Estado.Insert(0, new SelectListItem() { Value = "", Text = "-- Seleccione --" });
+                    modelo.Lista_Estado.Insert(0, new SelectListItem() { Value = "0", Text = "-- Seleccione --" });
                 }
             }
             else
             {
-                modelo.Lista_Estado.Insert(0, new SelectListItem() { Value = "", Text = "-- Seleccione --" });
+                modelo.Lista_Estado.Insert(0, new SelectListItem() { Value = "0", Text = "-- Seleccione --" });
                 Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
             }
 
@@ -323,12 +323,12 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
                         Text = x.DESC_CORTA_DOMINIO.ToString(),
                         Value = x.ID_DOMINIO.ToString()
                     }).ToList();
-                    modelo.Lista_Situacion.Insert(0, new SelectListItem() { Value = "", Text = "-- Seleccione --" });
+                    modelo.Lista_Situacion.Insert(0, new SelectListItem() { Value = "0", Text = "-- Seleccione --" });
                 }
             }
             else
             {
-                modelo.Lista_Situacion.Insert(0, new SelectListItem() { Value = "", Text = "-- Seleccione --" });
+                modelo.Lista_Situacion.Insert(0, new SelectListItem() { Value = "0", Text = "-- Seleccione --" });
                 Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
             }
 
@@ -346,12 +346,12 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
                         Text = x.DESC_CORTA_DOMINIO.ToString(),
                         Value = x.ID_DOMINIO.ToString()
                     }).ToList();
-                    modelo.Lista_Sacion_Recomendada.Insert(0, new SelectListItem() { Value = "", Text = "-- Seleccione --" });
+                    modelo.Lista_Sacion_Recomendada.Insert(0, new SelectListItem() { Value = "0", Text = "-- Seleccione --" });
                 }
             }
             else
             {
-                modelo.Lista_Sacion_Recomendada.Insert(0, new SelectListItem() { Value = "", Text = "-- Seleccione --" });
+                modelo.Lista_Sacion_Recomendada.Insert(0, new SelectListItem() { Value = "0", Text = "-- Seleccione --" });
                 Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
             }
 
@@ -369,12 +369,12 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
                         Text = x.DESC_CORTA_DOMINIO.ToString(),
                         Value = x.ID_DOMINIO.ToString()
                     }).ToList();
-                    modelo.Lista_Falta.Insert(0, new SelectListItem() { Value = "", Text = "-- Seleccione --" });
+                    modelo.Lista_Falta.Insert(0, new SelectListItem() { Value = "0", Text = "-- Seleccione --" });
                 }
             }
             else
             {
-                modelo.Lista_Falta.Insert(0, new SelectListItem() { Value = "", Text = "-- Seleccione --" });
+                modelo.Lista_Falta.Insert(0, new SelectListItem() { Value = "0", Text = "-- Seleccione --" });
                 Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
             }
 

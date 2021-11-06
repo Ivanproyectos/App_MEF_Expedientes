@@ -16,15 +16,15 @@ namespace MEF.Expedientes.Service.Maestras.Vista
     {
 
      
-        public IEnumerable<Cls_v_Adjuntos> Adjuntos_Listar(long id,ref Cls_Ent_Auditoria auditoria)
+        public IEnumerable<Cls_v_Adjuntos> Adjuntos_Listar(Cls_v_Adjuntos param, ref Cls_Ent_Auditoria auditoria)
         {
             auditoria.Limpiar();
             IEnumerable<Cls_v_Adjuntos> entidad = new List<Cls_v_Adjuntos>();
 
             try
             {
-                if (id != 0)
-                    entidad = FindAll(w => w.ID_MAESTRA == id);
+                if (param.ID_MAESTRA != 0)
+                    entidad = FindAll(w => w.ID_MAESTRA == param.ID_MAESTRA && w.ID_SISTEMA == param.ID_SISTEMA);
             }
             catch (Exception ex)
             {

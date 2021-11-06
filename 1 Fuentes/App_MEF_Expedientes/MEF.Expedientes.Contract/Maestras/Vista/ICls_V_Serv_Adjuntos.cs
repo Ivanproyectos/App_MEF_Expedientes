@@ -5,7 +5,7 @@ namespace MEF.Expedientes.Contract.Maestras.Vista
 {
     public interface  ICls_V_Serv_Adjuntos
     {
-        IEnumerable<Cls_v_Adjuntos> Adjuntos_Listar(long id, ref Cls_Ent_Auditoria auditoria);
+        IEnumerable<Cls_v_Adjuntos> Adjuntos_Listar(Cls_v_Adjuntos param, ref Cls_Ent_Auditoria auditoria);
 
     }
 }

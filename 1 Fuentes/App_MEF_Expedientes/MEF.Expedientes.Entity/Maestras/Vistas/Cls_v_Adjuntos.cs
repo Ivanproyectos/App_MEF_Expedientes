@@ -23,8 +23,8 @@ namespace MEF.Expedientes.Entity.Maestras.Vistas
         public string FEC_CREACION { get; set; }
 
         public string USU_MODIFICACION { get; set; }
-  
-
+        public int ID_SISTEMA { get; set; }
+        
         public string FEC_MODIFICACION { get; set; }
 
   

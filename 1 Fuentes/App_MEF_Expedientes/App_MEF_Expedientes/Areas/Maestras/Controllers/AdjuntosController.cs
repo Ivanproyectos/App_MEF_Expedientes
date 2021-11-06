@@ -41,7 +41,8 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
         {
             Cls_Ent_Auditoria auditoria = new Cls_Ent_Auditoria();
             auditoria.Limpiar();
-            IEnumerable<Cls_v_Adjuntos> lista = _cls_V_Serv_Adjuntos.Adjuntos_Listar(entidad.ID_MAESTRA, ref auditoria);
+            entidad.ID_SISTEMA = int.Parse(ConfigurationManager.AppSettings["Codigo_Sistema"].ToString()); 
+            IEnumerable<Cls_v_Adjuntos> lista = _cls_V_Serv_Adjuntos.Adjuntos_Listar(entidad, ref auditoria);
             if (!auditoria.EJECUCION_PROCEDIMIENTO)
             {
                 Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);

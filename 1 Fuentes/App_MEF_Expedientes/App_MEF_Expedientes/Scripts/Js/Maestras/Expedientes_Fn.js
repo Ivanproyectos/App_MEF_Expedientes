@@ -44,7 +44,8 @@ $('#SEARCH_PERSONAL').autocomplete(
             $("#SEARCH_PERSONAL").val(ui.item.NOMBRE_COMPLETO);
             $("#REGIMEN_LABORAL").val(ui.item.REGIMEN_LABORAL);
             $("#OFICINA").val(ui.item.OFICINA);
-
+            $("#CARGO").val(ui.item.DESC_PUESTO);
+       
             $("#ID_PERSONAL").val(ui.item.ID_PERSONAL);
             return false;
         },

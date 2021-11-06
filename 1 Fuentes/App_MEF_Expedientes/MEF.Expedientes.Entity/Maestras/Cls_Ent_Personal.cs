@@ -12,8 +12,8 @@ namespace MEF.Expedientes.Entity.Maestras
         public string NOMBRE_COMPLETO { get; set; }
         public string REGIMEN_LABORAL { get; set; }
         public string OFICINA { get; set; }
-
-
+        public string DESC_PUESTO { get; set; }
+        
 
     }
 }

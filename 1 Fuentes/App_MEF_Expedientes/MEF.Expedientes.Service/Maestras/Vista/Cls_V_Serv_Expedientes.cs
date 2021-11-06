@@ -188,7 +188,7 @@ namespace MEF.Expedientes.Service.Maestras.Vista
                 else if (Param.ID_SITUACION != 0)
                     entidad = FindAll(e => e.ID_SITUACION == Param.ID_SITUACION);
                 else
-                    entidad = GetAll();
+                    entidad = GetAll().OrderByDescending(w => w.ID_EXPEDIENTE);
             }
             catch (Exception ex)
             {

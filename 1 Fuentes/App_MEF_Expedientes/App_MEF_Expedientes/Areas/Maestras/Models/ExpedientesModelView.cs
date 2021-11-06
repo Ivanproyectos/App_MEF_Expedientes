@@ -23,7 +23,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
 
         [Display(Name = "N° de Expedientes:")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "[N° de Expedientes] es obligatorio")]
+        //[Required(ErrorMessage = "[N° de Expedientes] es obligatorio")]
         public string COD_EXPEDIENTE { get; set; }
 
 
@@ -70,21 +70,21 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
 
         [Display(Name = "Acto:")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "[Acto] es obligatorio")]
+        //[Required(ErrorMessage = "[Acto] es obligatorio")]
         public long ID_ACTO { get; set; }
         public List<SelectListItem> Lista_Acto { get; set; }
 
 
         [Display(Name = "Observación:")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "[Observación] es obligatorio")]
+        //[Required(ErrorMessage = "[Observación] es obligatorio")]
         public string OBSERVACION_INVESTIGADORA { get; set; }
 
 
 
         [Display(Name = "Falta:")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "[Falta] es obligatorio")]
+        //[Required(ErrorMessage = "[Falta] es obligatorio")]
         public long ID_FALTA { get; set; }
 
         public List<SelectListItem> Lista_Falta { get; set; }
@@ -92,26 +92,26 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
 
         [Display(Name = "Articulo:")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "[Articulo] es obligatorio")]
+        //[Required(ErrorMessage = "[Articulo] es obligatorio")]
         public string ARTICULO { get; set; }
 
 
 
         [Display(Name = "Inc:")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "[Inc] es obligatorio")]
+        //[Required(ErrorMessage = "[Inc] es obligatorio")]
         public string INC { get; set; }
 
 
         [Display(Name = "Observación:")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "[Observación] es obligatorio")]
+        //[Required(ErrorMessage = "[Observación] es obligatorio")]
         public string OBSERVACION_INSTRUCTORA { get; set; }
 
 
         [Display(Name = "Precalificación:")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "[Precalificación] es obligatorio")]
+        //[Required(ErrorMessage = "[Precalificación] es obligatorio")]
         public long ID_PRECALIFICACION { get; set; }
         public List<SelectListItem> Lista_Precalifacion { get; set; }
 
@@ -120,39 +120,39 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
 
         [Display(Name = "Tipo sanción Recomendada:")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "[Tipo sanción Recomendada] es obligatorio")]
+        //[Required(ErrorMessage = "[Tipo sanción Recomendada] es obligatorio")]
         public string TIPO_SANCION_RECOMENDADA { get; set; }
 
 
 
         [Display(Name = "Acto Inicio:")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "[Acto Inicio] es obligatorio")]
+        //[Required(ErrorMessage = "[Acto Inicio] es obligatorio")]
         public string ACTO_INICIO { get; set; }
 
 
         [Display(Name = "Fecha Notificación:")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "[Fecha Notificación] es obligatorio")]
+        //[Required(ErrorMessage = "[Fecha Notificación] es obligatorio")]
         public string FECHA_NOTIFICACION { get; set; }
 
 
         [Display(Name = "Recomendación Preinforme:")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "[Recomendación Preinforme] es obligatorio")]
+        //[Required(ErrorMessage = "[Recomendación Preinforme] es obligatorio")]
         public string RECOMENDACION_PREINFORME { get; set; }
 
 
         [Display(Name = "Sanción Recomenda:")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "[Sanción Recomenda] es obligatorio")]
+        //[Required(ErrorMessage = "[Sanción Recomenda] es obligatorio")]
         public long ID_SANCION_RECOMENDADA { get; set; }
         public List<SelectListItem> Lista_Sacion_Recomendada { get; set; }
 
 
         [Display(Name = "Organo Instuctor:")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "[Organo Instuctor] es obligatorio")]
+        //[Required(ErrorMessage = "[Organo Instuctor] es obligatorio")]
         public string SEARCH_ORGANO_INSTRUCTOR { get; set; }
         public long ID_ORGANO_INSTRUCTOR { get; set; }
         public List<SelectListItem> Lista_Organo_Instructor { get; set; }
@@ -161,7 +161,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
 
         [Display(Name = "Fecha Noticación:")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "[Fecha Noticación] es obligatorio")]
+        //[Required(ErrorMessage = "[Fecha Noticación] es obligatorio")]
         public string FECHA_NOTIFICACION_INICIO { get; set; }
 
 
@@ -169,7 +169,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
 
         [Display(Name = "Documento Finalizción:")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "[Documento Finalizción] es obligatorio")]
+        //[Required(ErrorMessage = "[Documento Finalizción] es obligatorio")]
         public string DOCUMENTO_FINALIZACION { get; set; }
 
 
@@ -177,7 +177,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
 
         [Display(Name = "Recomendación Instructor:")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "[Recomendación Instructor] es obligatorio")]
+        //[Required(ErrorMessage = "[Recomendación Instructor] es obligatorio")]
         public string RECOMENDACION_INSTRUCTOR { get; set; }
 
 
@@ -185,7 +185,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
 
         [Display(Name = "Organo Sancionador:")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "[Organo Sancionador] es obligatorio")]
+        //[Required(ErrorMessage = "[Organo Sancionador] es obligatorio")]
         public string SEARCH_ORGANO_SANCIONADOR { get; set; }
         public long ID_ORGANO_SANCIONADOR { get; set; }
         public List<SelectListItem> Lista_Organo_Sancionador{ get; set; }
@@ -194,14 +194,14 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
 
         [Display(Name = "Sanción")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "[Sanción] es obligatorio")]
+        //[Required(ErrorMessage = "[Sanción] es obligatorio")]
         public string SANCION { get; set; }
 
 
 
         [Display(Name = "Observación:")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "[Observación] es obligatorio")]
+        //[Required(ErrorMessage = "[Observación] es obligatorio")]
         public string OBSERVACION_SANCIONADORA { get; set; }
 
 
@@ -209,7 +209,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
 
         [Display(Name = "Situación:")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "[Situación] es obligatorio")]
+        //[Required(ErrorMessage = "[Situación] es obligatorio")]
         public long ID_SITUACION { get; set; }
         public List<SelectListItem> Lista_Situacion { get; set; }
 
@@ -217,7 +217,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
 
         [Display(Name = "Estado:")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "[Estado] es obligatorio")]
+        //[Required(ErrorMessage = "[Estado] es obligatorio")]
         public long ID_ESTADO { get; set; }
         public List<SelectListItem> Lista_Estado { get; set; }
 
