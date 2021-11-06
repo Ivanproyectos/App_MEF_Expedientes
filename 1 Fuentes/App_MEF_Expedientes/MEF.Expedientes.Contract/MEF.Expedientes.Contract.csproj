@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Administracion\ICls_Serv_FormatoCorreo.cs" />
     <Compile Include="Administracion\ICls_Serv_Dominio.cs" />
+    <Compile Include="Login\ICls_Serv_Login.cs" />
     <Compile Include="Maestras\ICls_Serv_Adjuntos.cs" />
     <Compile Include="Maestras\ICls_Serv_Oficina.cs" />
     <Compile Include="Maestras\ICls_Serv_Personal.cs" />

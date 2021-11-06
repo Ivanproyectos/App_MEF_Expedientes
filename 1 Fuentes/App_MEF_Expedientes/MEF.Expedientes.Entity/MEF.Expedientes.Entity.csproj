@@ -45,6 +45,7 @@
     <Compile Include="Administracion\Cls_Ent_FormatoCorreo.cs" />
     <Compile Include="Cls_Ent_Archivo.cs" />
     <Compile Include="Cls_Ent_Auditoria.cs" />
+    <Compile Include="Login\Cls_Ent_Usuario.cs" />
     <Compile Include="Maestras\Cls_Ent_Expedientes.cs" />
     <Compile Include="Maestras\Cls_Ent_Oficina.cs" />
     <Compile Include="Maestras\Cls_Ent_Adjuntos.cs" />

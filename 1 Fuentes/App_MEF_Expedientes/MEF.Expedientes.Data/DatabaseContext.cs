@@ -1,10 +1,8 @@
 ﻿using MEF.Expedientes.Entity;
 using MEF.Expedientes.Entity.Maestras;
 using MEF.Expedientes.Entity.Maestras.Vistas;
-//using MEF.Microformas.Entity.Carga.Vistas;
-//using MEF.Microformas.Entity.Proceso;
-//using MEF.Microformas.Entity.Proceso.Vistas;
 using MEF.Expedientes.Entity.Administracion;
+using MEF.Expedientes.Entity.Login;
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
@@ -38,6 +36,9 @@ namespace MEF.Expedientes.Data
         public virtual DbSet<Cls_Ent_Adjuntos> Cls_Ent_Adjuntos { get; set; }
 
         public virtual DbSet<Cls_v_Adjuntos> Cls_v_Adjuntos { get; set; }
+
+        public virtual DbSet<Cls_Ent_Usuario> Cls_Ent_Usuario { get; set; }
+        
 
         //public virtual DbSet<Cls_Ent_Tabla> cls_Ent_Tabla { get; set; }
         //public virtual DbSet<Cls_Ent_Campo> cls_Ent_Campo { get; set; }
