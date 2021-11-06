@@ -20,8 +20,11 @@ namespace MEF.Expedientes.Entity.Login
         public string SIGLA { get; set; }
 
         public string NOMBRE_PERSONA { get; set; }
-        public string ID_SISTEMA { get; set; }
+        public int ID_SISTEMA { get; set; }
 
-        
+        public List<Cls_Ent_Usuario> Perfil { get; set; }
+
+
+
     }
 }

@@ -38,8 +38,8 @@ namespace App_MEF_Expedientes.Controllers
                 //    {
                 //        if (!auditoria.RECHAZAR)
                 //        {
-                string ENCRIPTADO = Recursos.Clases.Css_Encriptar.Encrypt(USUARIO);
-                auditoria.OBJETO = ENCRIPTADO;
+                            string ENCRIPTADO = Recursos.Clases.Css_Encriptar.Encrypt(USUARIO);
+                            auditoria.OBJETO = ENCRIPTADO;
                 //        }
                 //    }
                 //}

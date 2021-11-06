@@ -90,12 +90,11 @@
                             <label style="margin-bottom: 0px;">
                                 Perfil:
                             </label>
-                            <select class = "form-control" style = "margin-top:0px"> 
+                            @*<select class = "form-control" style = "margin-top:0px"> 
                                 <option>--Selecione--</option>
-                            </select>
-
-                            @*@Html.DropDownList("SelectPerfiles", new SelectList((System.Collections.IEnumerable)ViewData["Seg_Perfiles"], "ID_PERFIL", "DESC_PERFIL"), new { @class = "form-control", @style = "margin-top:0px", @ID = "SelectPerfiles" })
-                            <input type="hidden" id="inputHddid_perfil" value="@ViewBag.id_perfil" />*@
+                            </select>*@
+                            @Html.DropDownList("SelectPerfiles", new SelectList((System.Collections.IEnumerable)ViewData["Seg_Perfiles"], "ID_PERFIL", "DESC_PERFIL"), new { @class = "form-control", @style = "margin-top:0px", @ID = "SelectPerfiles" })
+                            <input type="hidden" id="inputHddid_perfil" value="@ViewBag.id_perfil" />
                         </a>
                     </li>
 
@@ -112,11 +111,11 @@
                                     <small class="nav-text ml-2 d-none d-md-inline-block ng-binding" style="font-size: 13px" id="small_unidad">Unidad Orgánica: @ViewBag.Desc_Oficina</small>
                                 </span>
                             </span>
-                           <input type="hidden" id="inputHddcod_usuario" value="IPEREZ" />
+                           @*<input type="hidden" id="inputHddcod_usuario" value="IPEREZ" />*@
 
-                            @*<input type="hidden" id="inputHddcod_usuario" value="@ViewBag.Usuario_Codigo" />
+                            <input type="hidden" id="inputHddcod_usuario" value="@ViewBag.Usuario_Codigo" />
                             <input type="hidden" id="inputHddNombre_Sistema" value="@System.Configuration.ConfigurationManager.AppSettings["Nombre_Sistema"].ToString()" />
-                            <input type="hidden" id="input_hd_CodAdmin" value="@System.Configuration.ConfigurationManager.AppSettings["Codigo_Administrador"].ToString()" />
+                            @*<input type="hidden" id="input_hd_CodAdmin" value="@System.Configuration.ConfigurationManager.AppSettings["Codigo_Administrador"].ToString()" />
                             <input type="hidden" id="input_hd_CodSuper" value="@System.Configuration.ConfigurationManager.AppSettings["Codigo_Supervisor"].ToString()" />*@
                             <i class="clip-chevron-down"></i>
                         </a>
