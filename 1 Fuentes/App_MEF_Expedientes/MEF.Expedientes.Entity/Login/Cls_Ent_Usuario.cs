@@ -8,6 +8,11 @@ namespace MEF.Expedientes.Entity.Login
 {
    public class Cls_Ent_Usuario
     {
+
+        public Cls_Ent_Usuario()
+        {
+            Perfil = new List<Cls_Ent_Usuario>();
+        }
         public long ID_PERFIL { get; set; }
         public string DESC_PERFIL { get; set; }
         public long ID_USUARIO { get; set; }

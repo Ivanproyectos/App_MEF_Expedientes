@@ -38,6 +38,7 @@ namespace App_MEF_Expedientes.Controllers
                     @ViewBag.Usuario_Nombre = MiUsuario.NOMBRE_PERSONA;
                     @ViewBag.Usuario_Codigo = MiUsuario.LOGIN_USUARIO;
                     @ViewBag.Desc_Oficina = MiUsuario.NOMBRE_OFICINA;
+                    @ViewBag.Id_Usuario = MiUsuario.ID_USUARIO;
                     ViewData["Seg_Perfiles"] = MiUsuario.Perfil;
                     Valido = true;
                 }

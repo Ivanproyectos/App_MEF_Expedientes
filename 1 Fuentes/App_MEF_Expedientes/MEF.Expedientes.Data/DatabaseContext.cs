@@ -37,7 +37,7 @@ namespace MEF.Expedientes.Data
 
         public virtual DbSet<Cls_v_Adjuntos> Cls_v_Adjuntos { get; set; }
 
-        public virtual DbSet<Cls_Ent_Usuario> Cls_Ent_Usuario { get; set; }
+        //public virtual DbSet<Cls_Ent_Usuario> Cls_Ent_Usuario { get; set; }
         
 
         //public virtual DbSet<Cls_Ent_Tabla> cls_Ent_Tabla { get; set; }

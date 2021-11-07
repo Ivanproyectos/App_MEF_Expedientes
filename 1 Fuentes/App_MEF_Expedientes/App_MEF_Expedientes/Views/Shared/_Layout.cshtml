@@ -114,9 +114,9 @@
                            @*<input type="hidden" id="inputHddcod_usuario" value="IPEREZ" />*@
 
                             <input type="hidden" id="inputHddcod_usuario" value="@ViewBag.Usuario_Codigo" />
-                            <input type="hidden" id="inputHddNombre_Sistema" value="@System.Configuration.ConfigurationManager.AppSettings["Nombre_Sistema"].ToString()" />
-                            @*<input type="hidden" id="input_hd_CodAdmin" value="@System.Configuration.ConfigurationManager.AppSettings["Codigo_Administrador"].ToString()" />
-                            <input type="hidden" id="input_hd_CodSuper" value="@System.Configuration.ConfigurationManager.AppSettings["Codigo_Supervisor"].ToString()" />*@
+                            @*<input type="hidden" id="inputHddNombre_Sistema" value="@System.Configuration.ConfigurationManager.AppSettings["Nombre_Sistema"].ToString()" />
+                            <input type="hidden" id="input_hd_CodAdmin" value="@System.Configuration.ConfigurationManager.AppSettings["Codigo_Administrador"].ToString()" />*@
+                            <input type="hidden" id="input_hd_IdUsuario" value="@ViewBag.Id_Usuario" />
                             <i class="clip-chevron-down"></i>
                         </a>
                         <ul class="dropdown-menu">
@@ -137,17 +137,7 @@
                 <ul class="main-navigation-menu">
                     <li><a><i class="clip-list"></i><span class="title">Menú </span></a></li>
 
-                    @*<li id="liProceso" class="active open">
-            <a style="height: 38px; padding-top: 9px;cursor:pointer"><i class="clip-file-pdf"></i><span class="title"> Proceso Digitalización</span><i class="icon-arrow"></i><span class="selected"></span></a><ul class="sub-menu" style="display: block;">
-                <li id="liRecepcion" style=""> <a id="aRecepcion" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Recepción</span></a></li>
-                <li id="liDigitalizacion" style=""> <a id="aDigitalizacion" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Digitalización</span></a></li>
-                <li id="liControlCalidad" style=""> <a id="aControlCalidad" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Control de Calidad</span></a></li>
-                <li id="liReproceso" style=""> <a id="aReproceso" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Reproceso</span></a></li>
-                <li id="liFedatario" style=""> <a id="aFedatario" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Fedatario</span></a></li>
-                <li id="liControlMicroformas" style=""> <a id="aControlMicroformas" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Control de Microformas</span></a></li>
-            </ul>
-        </li>*@
-  
+       
                         <li id="liExpedientes" class="liExpedientes">
                             <a href="javascript:void(0)" id="aExpedientes">
                                 <i class="clip-stack"></i>
@@ -176,6 +166,7 @@
                             <li id="liRe_Expedientes" style=""> <a id="aRe_Expedientes" style="height: 35px; padding-top: 9px;cursor:pointer"><i class=""></i><span class="title">Expedientes</span></a></li>
                         </ul>
                     </li>
+
                 </ul>
             </div>
         </div>
@@ -225,25 +216,24 @@
     <script type="text/javascript">
         var baseUrl = '@Url.Content("~")';
         var indicadorParametro = "0";
-        var Digitalizar_Int_Documento;
+
         function ListarMenu(ID_PERFIL) {
             var item =
                    {
-                       CODIGO: 322,
-                       ID_PERFIL: ID_PERFIL
+                       //CODIGO: 322,
+                  ID_PERFIL: ID_PERFIL,
+                  ID_USUARIO: $('#input_hd_IdUsuario').val()
                    };
-            var url = baseUrl + 'Modulo/Modulos_Listar?ID_PERFIL=' + ID_PERFIL;
+            var url = baseUrl + 'Modulos/Modulos_Listar';
             var auditoria = Autorizacion.Ajax(url, item, false);
             if (auditoria.EJECUCION_PROCEDIMIENTO) {
                 $('#menuPrincipal').html('');
-                $('#menuPrincipal').append(auditoria.OBJETO.ModulosHtml);
+                $('#menuPrincipal').append(auditoria.OBJETO);
             }
         }
-        function setCookieEx(name, value, days) {
-            var d = new Date;
-            d.setTime(d.getTime() + 24*60*60*1000*days);
-            document.cookie = name + "=" + value + ";path=/;expires=" + d.toGMTString();
-        }
+
+   
+
         function CerrarSesion() {
             var item =
                    {
@@ -255,6 +245,7 @@
                 window.location = baseUrl;
             }
         }
+
         function VerificarSesion() {
             var item =
                    {
@@ -262,19 +253,14 @@
             var url = baseUrl + 'Sesion/Verificar';
             Autorizacion.Ajax(url, item, false);
         }
+
     </script>
     <script type="text/javascript">
 
         var Perfiles;
-
-        //var mi_interval = setInterval(function () {
-        //    VerificarSesion();
-        //}, 5000);
-
         function Iniciar(ID_PERFIL) {
-            //ListarMenu(ID_PERFIL);
+            ListarMenu(ID_PERFIL);
             Main.init();
-
             var rutaExpedientes = baseUrl + "Maestras/Expedientes/";
 
             // ADMINISTRACION 
@@ -360,18 +346,9 @@
 
         }
 
-        function setCookie(name, value, days) {
-            var expires = "";
-            if (days) {
-                var date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
-            }
-            document.cookie = name + "=" + (value || "") + expires + "; path=/";
-        }
+
 
         $(document).ready(function () {
-            setCookie('MEF-CyberToken', '@ViewBag.Token', 1);
             var idperfil = $("#SelectPerfiles option:selected").val();
             $("#inputHddid_perfil").val(idperfil);
             $("#Frm_General").show();
@@ -390,6 +367,7 @@
             $("#Frm_General").show();
             setTimeout("Iniciar('" + idperfil + "')", 1000);
         });
+
     </script>
     <input type="hidden" id="hdfcounter" />
 </body>

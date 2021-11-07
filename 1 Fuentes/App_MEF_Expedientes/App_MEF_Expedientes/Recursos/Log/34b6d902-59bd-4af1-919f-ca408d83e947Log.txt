@@ -1,0 +1,20 @@
+System.Data.Entity.ModelConfiguration.ModelValidationException: Se han detectado uno o varios errores de validación durante la generación del modelo:
+
+MEF.Expedientes.Data.Cls_Ent_Usuario: : EntityType 'Cls_Ent_Usuario' no tiene ninguna clave definida. Defina la clave para este EntityType.
+Cls_Ent_Usuario: EntityType: EntitySet 'Cls_Ent_Usuario' se basa en el tipo 'Cls_Ent_Usuario' que no tiene claves definidas.
+
+   en System.Data.Entity.Core.Metadata.Edm.EdmModel.Validate()
+   en System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   en System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   en System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   en System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   en System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   en System.Data.Entity.Internal.InternalContext.Initialize()
+   en System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   en System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   en System.Data.Entity.Internal.Linq.InternalSet`1.GetEnumerator()
+   en System.Data.Entity.Infrastructure.DbQuery`1.System.Collections.Generic.IEnumerable<TResult>.GetEnumerator()
+   en System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   en System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   en MEF.Expedientes.Repository.Repository`1.GetAll() en C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Repository\Repository.cs:línea 27
+   en MEF.Expedientes.Service.Administracion.Cls_Serv_Dominio.Dominio_Listar(Cls_Ent_Dominio entidad, Cls_Ent_Auditoria& auditoria)
