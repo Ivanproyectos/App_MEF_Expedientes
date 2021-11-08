@@ -1,0 +1,30 @@
+﻿@model App_MEF_Expedientes.Areas.Maestras.Models.AdjuntosModelView
+@{
+    ViewBag.Title = "PDF";
+}
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        Generar();
+    });
+
+    function Generar() {
+        var ID_ARCHIVO = $("#Archivo_hd_CODIGO").val();
+        $("#iframeReporte").attr("src", '@Url.Content("~/Recursos/Form/DescargarAdjuntos.aspx?ID_ARCHIVO=")' + ID_ARCHIVO);
+    }
+
+</script>
+<style>
+    .modal-dialog2 {
+        width: 60%;
+        margin: 30px auto
+    }
+</style>
+<div class="modal-dialog2">
+    <iframe id="iframeReporte" style="background-color:white;width:99%;height:570px;" src=""></iframe>
+</div>
+
+@Html.Hidden("Archivo_hd_CODIGO", Model.ID_ADJUNTO)
+
+

@@ -1,0 +1,38 @@
+﻿#leyenda {
+    width: 30%;
+    border-left: 0.5px solid #808080;
+    border-right: 0.5px solid #808080;
+    border-top: 0.5px solid #808080;
+    padding-left: 10px;
+}
+
+    #leyenda tr {
+        margin-top: 100px;
+    }
+
+td {
+    padding-left: 10px;
+    border: 0px solid black;
+    margin: auto;
+}
+
+#titu {
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.color_1 {
+    background: #EC7063;
+    width: 5%;
+}
+
+.color_2 {
+    background: #ABEBC6;
+    width: 5%;
+}
+
+.color_3 {
+    background: #D6EAF8;
+    width: 5%;
+}

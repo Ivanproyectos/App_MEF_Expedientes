@@ -1,0 +1,80 @@
+﻿@model App_MEF_Expedientes.Areas.Maestras.Models.AdjuntosModelView
+
+<script type="text/javascript">
+    var Archivo_Array = new Array();
+    var AnexosArchivo_Array = new Array();
+    var Frm_Archivo_Archivo = @Html.Raw(Json.Encode(Model.MiArchivo));
+    $(document).ready(function () {
+        debugger;
+        if (Frm_Archivo_Archivo != null) {
+            Archivo_Array.push(Frm_Archivo_Archivo);
+            $('#DocumentoArchivo_iframeVistaPrevia').prop('src', '@Url.Content("~/Recursos/Temporales/")' + Archivo_Array[0].CODIGO_ARCHIVO + Archivo_Array[0].EXTENSION);
+            //var codigo_img = '"' + Archivo_Array[0].CODIGO_ARCHIVO + Archivo_Array[0].EXTENSION + '"';
+            //Archivo_Array.pop();
+            //setTimeout("EliminartTemporal(" + codigo_img + ")", 500);
+        }
+
+    });
+
+
+
+
+    function EliminartTemporal(CODIGO_ARCHIVO) {
+        var EXTENSION = "";
+        var item =
+            {
+                CODIGO: CODIGO_ARCHIVO,
+                EXTENSION: EXTENSION
+            };
+        var url = baseUrl + 'Maestras/Archivo/Archivo_Eliminar_Temporal';
+
+        var respuesta = SICA.Ajax(url, item, false);
+        if (respuesta != null && respuesta != "") {
+
+        }
+    }
+    $(function () {
+        $(".modal-content").draggable();
+    });
+
+
+    $('#Btn_CerrarAdjunto').click(function () {
+       $('#myModalNuevoAdjuntos').modal('hide');
+        var codigo_img = Archivo_Array[0].CODIGO_ARCHIVO + Archivo_Array[0].EXTENSION;
+        EliminartTemporal(codigo_img); 
+    }); 
+
+</script>
+<style>
+    .modal-dialogOrden2 {
+        width: 45%;
+        margin: 30px auto;
+    }
+</style>
+@*<div class="modal fade" id="myModalNuevoAdjuntos" tabindex="" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>*@
+<div class="modal-dialogOrden2">
+    <div class="modal-content" style="width: 100%;">
+        <div class="modal-header" style="   cursor: move;  background-color: #c42e32;">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title"><i class="clip-file-pdf"></i>&nbsp Documento</h4>
+        </div>
+
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="col-sm-12">
+                        <iframe id="DocumentoArchivo_iframeVistaPrevia" style="background-color: white; width: 100%; height: 680px;" src=""></iframe>
+                    </div>
+
+                    <div class="col-sm-12" id="Div_Adjuntos">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-grey" id="Btn_CerrarAdjunto"><i class="fa fa-share-square-o"></i>&nbsp Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Hidden("hdfID_ADJUNTO", Model.ID_ADJUNTO)

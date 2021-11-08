@@ -1,0 +1,88 @@
+﻿
+@model App_MEF_Expedientes.Areas.Administracion.Models.DominioModelView
+
+<script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+
+
+        jQuery('#btnGrabar').click(function (e) {
+            Sancion_Registrar();
+        });
+
+
+</script>
+<style>
+    .modal-dialogOrden1 {
+        width: 35%;
+        margin: 30px auto;
+    }
+</style>
+
+@{
+    var htmlLarge = new Dictionary<string, object> { { "style", "width:350px; font-family:verdana; font-size:.8em" } };
+    var htmlShort = new Dictionary<string, object> { { "style", "width:300px; font-family:verdana; font-size:.8em" } };
+}
+
+@using (Html.BeginForm("Proceso", "Sancion", new { @area = "Sancion" }, FormMethod.Post, new { @id = "frmMantenimientoSancion", @class = "form-horizontal" }))
+{
+    @Html.ValidationSummary(true)
+
+    <div class="modal-dialogOrden1">
+        <div class="modal-content" style="width: 100%;">
+            <div class="modal-header" style="cursor: move; background-color: #c42e32;">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                @if (Model.ID_DOMINIO == 0)
+                {
+                    <h4 class="modal-title"><i class="clip-pencil"></i>&nbsp Nuevo - Sancion</h4>
+                }
+                else
+                {
+                    <h4 class="modal-title"><i class="clip-pencil"></i>&nbsp Edición - Sancion</h4>
+                }
+            </div>
+            <div class="modal-body">
+                <div class="row">
+
+                    <div class="form-group ">
+                        @Html.LabelFor(model => model.COD_DOMINIO, new { @class = "col-sm-4 control-label" })
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(model => model.COD_DOMINIO, new { @class = "form-control", @maxlength = "100", })
+                            @Html.ValidationMessageFor(model => model.COD_DOMINIO, string.Empty, new { @class = "cssMessageError" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DESC_CORTA_DOMINIO, new { @class = "col-sm-4 control-label" })
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(model => model.DESC_CORTA_DOMINIO, new { @class = "form-control", @maxlength = "100" })
+                            @Html.ValidationMessageFor(model => model.DESC_CORTA_DOMINIO, string.Empty, new { @class = "cssMessageError" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DESC_LARGA_DOMINIO, new { @class = "col-sm-4 control-label" })
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(model => model.DESC_LARGA_DOMINIO, new { @class = "form-control", @maxlength = "500" })
+                            @Html.ValidationMessageFor(model => model.DESC_LARGA_DOMINIO, string.Empty, new { @class = "cssMessageError" })
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button id="btnGrabar" class="btn btn-red" type="button" data-toggle="modal"><i class="fa fa-save" />&nbsp Grabar</button>
+                    <button type="button" class="btn btn-light-grey" data-dismiss="modal"><i class="fa fa-share-square-o"></i>&nbsp Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Hidden("hdfID_DOMINIO", Model.ID_DOMINIO)
+    @Html.Hidden("AccionSancion", Model.Accion)
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}

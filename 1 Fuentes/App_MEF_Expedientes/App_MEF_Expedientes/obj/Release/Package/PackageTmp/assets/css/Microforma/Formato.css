@@ -1,0 +1,42 @@
+﻿
+.modal-dialogformato {
+    width: 808px;
+    margin: 30px auto
+}
+
+
+@media (min-width: 0px) and (max-width: 916px) {
+    .modal-dialogformato {
+        width: 90%;
+        margin: 30px auto
+    }
+}
+
+/*@media (min-width: 916px) and (max-width: 1400px) {
+    .modal-dialogformato {
+        width: 70%;
+        margin: 30px auto
+    }
+} */
+/*@media (max-width: 916px) {
+    .modal-dialogformato {
+        width: 90%;
+        margin: 30px auto
+    } 
+}
+
+
+@media (max-width: 1200px) {
+    .modal-dialogformato {
+        width: 65%;
+        margin: 30px auto
+    }
+}*/
+
+/*
+@media (max-width: 1200px) {
+    .modal-dialogformato {
+        width: 58%;
+        margin: 30px auto
+    }
+}*/
