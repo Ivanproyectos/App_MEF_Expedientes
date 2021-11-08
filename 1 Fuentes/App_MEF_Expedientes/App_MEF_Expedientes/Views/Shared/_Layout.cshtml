@@ -121,7 +121,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a onclick="CerrarSesion()" style="cursor: pointer">
+                                <a onclick="_LayoutCerrarSesion()" style="cursor: pointer">
                                     <i class="clip-exit"></i>&nbsp;Cerrar Sesión
                                 </a>
                             </li>
@@ -232,7 +232,10 @@
             }
         }
 
-   
+        function _LayoutCerrarSesion() {
+            window.location = baseUrl;
+        }
+
 
         function CerrarSesion() {
             var item =

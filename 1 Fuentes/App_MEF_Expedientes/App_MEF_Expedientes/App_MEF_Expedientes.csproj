@@ -627,6 +627,7 @@
     <Content Include="Areas\Maestras\Views\Adjuntos\Descargar_Archivo.cshtml" />
     <Content Include="Areas\Reportes\Views\Expedientes\Index.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Images\block.jpg" />
     <Content Include="Recursos\Form\DescargarAdjuntos.aspx" />
     <Content Include="Recursos\Temporales\NoBorrar.js" />
     <Content Include="Reportes\Fmr_Expedientes.aspx" />
@@ -686,6 +687,7 @@
     <Content Include="Scripts\SITRADOC.js" />
     <Content Include="Scripts\ui.datepicker-es.js" />
     <Content Include="Scripts\ui.datepicker-pt.js" />
+    <Content Include="UsuarioNoAutorizado.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
