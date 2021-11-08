@@ -22,38 +22,40 @@ namespace App_MEF_Expedientes.Controllers
 
         public ActionResult Index(string usuario)
         {
-
-            
             try
             {
-                bool Valido = false;
-                string DESENCRIPTADO = Recursos.Clases.Css_Encriptar.Decrypt(usuario);
-                int ID_SISTEMA = int.Parse(ConfigurationManager.AppSettings["Codigo_Sistema"].ToString());
-
-                Cls_Ent_Auditoria auditoria = new Cls_Ent_Auditoria();
-                Cls_Ent_Usuario MiUsuario = new Cls_Ent_Usuario(); 
-                MiUsuario = _cls_Serv_Login.Usuario( new Cls_Ent_Usuario { LOGIN_USUARIO = DESENCRIPTADO, ID_SISTEMA = ID_SISTEMA }, ref auditoria);
-                if (MiUsuario.ID_USUARIO  != 0)
+                if (Session["USUARIO"] != null)
                 {
-                    @ViewBag.Usuario_Nombre = MiUsuario.NOMBRE_PERSONA;
-                    @ViewBag.Usuario_Codigo = MiUsuario.LOGIN_USUARIO;
-                    @ViewBag.Desc_Oficina = MiUsuario.NOMBRE_OFICINA;
-                    @ViewBag.Id_Usuario = MiUsuario.ID_USUARIO;
-                    ViewData["Seg_Perfiles"] = MiUsuario.Perfil;
+                    bool Valido = false;
+                    string DESENCRIPTADO = Recursos.Clases.Css_Encriptar.Decrypt(usuario);
+                    int ID_SISTEMA = int.Parse(ConfigurationManager.AppSettings["Codigo_Sistema"].ToString());
 
-                    Valido = true;
+                    Cls_Ent_Auditoria auditoria = new Cls_Ent_Auditoria();
+                    Cls_Ent_Usuario MiUsuario = new Cls_Ent_Usuario();
+                    MiUsuario = _cls_Serv_Login.Usuario(new Cls_Ent_Usuario { LOGIN_USUARIO = DESENCRIPTADO, ID_SISTEMA = ID_SISTEMA }, ref auditoria);
+                    if (MiUsuario.ID_USUARIO != 0)
+                    {
+                        @ViewBag.Usuario_Nombre = MiUsuario.NOMBRE_PERSONA;
+                        @ViewBag.Usuario_Codigo = MiUsuario.LOGIN_USUARIO;
+                        @ViewBag.Desc_Oficina = MiUsuario.NOMBRE_OFICINA;
+                        @ViewBag.Id_Usuario = MiUsuario.ID_USUARIO;
+                        ViewData["Seg_Perfiles"] = MiUsuario.Perfil;
+                        Valido = true;
+                    }
+                    if (!Valido)
+                    {
+                        //return RedirectToAction("Index", "Login");
+                        HttpContext.Response.Redirect(ConfigurationManager.AppSettings["NoAutorizado"].ToString());
+                        return null;
+                    }
+                    else
+                    {
+                        return View();
+                    }
                 }
-                if (!Valido)
-                {
-                    //return RedirectToAction("Index", "Login");
-                    HttpContext.Response.Redirect(ConfigurationManager.AppSettings["NoAutorizado"].ToString());
-                    return null;
+                else {
+                   return RedirectToAction("Index", "Login");
                 }
-                else
-                {
-                    return View();
-                }
-
             }
             catch (Exception ex)
             {
@@ -62,6 +64,20 @@ namespace App_MEF_Expedientes.Controllers
             }
         }
 
-    
+     
+
+
+        public ActionResult Verificar()
+        {
+            Cls_Ent_Auditoria auditoria = new Cls_Ent_Auditoria();
+            auditoria.Limpiar();
+            if (Session["USUARIO"] == null)
+            {
+                auditoria.NoAutorizado("~/");
+            }
+            return Json(auditoria, JsonRequestBehavior.AllowGet);
+        }
+
+
     }
 }

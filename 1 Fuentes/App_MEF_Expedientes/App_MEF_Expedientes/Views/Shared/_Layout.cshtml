@@ -121,7 +121,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a onclick="_LayoutCerrarSesion()" style="cursor: pointer">
+                                <a  href="../Login/CerrarSession" style="cursor: pointer">
                                     <i class="clip-exit"></i>&nbsp;Cerrar Sesión
                                 </a>
                             </li>
@@ -232,19 +232,18 @@
             }
         }
 
+        //function _LayoutCerrarSesion() {
+        //    window.location = baseUrl;
+        //}
+
+
         function _LayoutCerrarSesion() {
-            window.location = baseUrl;
-        }
-
-
-        function CerrarSesion() {
             var item =
                    {
                    };
-            var url = baseUrl + 'Home/Borrar_Token';
+            var url = baseUrl + 'Home/CerrarSession';
             var auditoria = Autorizacion.Ajax(url, item, false);
             if (auditoria.EJECUCION_PROCEDIMIENTO) {
-                setCookieEx('MEF-CyberToken', '', -1);
                 window.location = baseUrl;
             }
         }
@@ -253,7 +252,7 @@
             var item =
                    {
                    };
-            var url = baseUrl + 'Sesion/Verificar';
+            var url = baseUrl + 'Home/Verificar';
             Autorizacion.Ajax(url, item, false);
         }
 
@@ -261,6 +260,7 @@
     <script type="text/javascript">
 
         var Perfiles;
+        //var Session = VerificarSesion(); 
         function Iniciar(ID_PERFIL) {
             ListarMenu(ID_PERFIL);
             Main.init();
@@ -352,6 +352,7 @@
 
 
         $(document).ready(function () {
+            //VerificarSesion(); 
             var idperfil = $("#SelectPerfiles option:selected").val();
             $("#inputHddid_perfil").val(idperfil);
             $("#Frm_General").show();

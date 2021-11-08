@@ -29,7 +29,6 @@ namespace App_MEF_Expedientes.Controllers
                 //bool autorizado = AuthenticateUser(USUARIO, CLAVE, ref auditoria);
                 //if (autorizado)
                 //{
-                //    //int ID_SISTEMA = int.Parse(ConfigurationManager.AppSettings["Codigo_Sistema"].ToString());
                 //    if (!auditoria.EJECUCION_PROCEDIMIENTO)
                 //    {
                 //        Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
@@ -40,6 +39,7 @@ namespace App_MEF_Expedientes.Controllers
                 //        {
                             string ENCRIPTADO = Recursos.Clases.Css_Encriptar.Encrypt(USUARIO);
                             auditoria.OBJETO = ENCRIPTADO;
+                            Session["USUARIO"] = ENCRIPTADO; 
                 //        }
                 //    }
                 //}
@@ -60,7 +60,6 @@ namespace App_MEF_Expedientes.Controllers
         {
             bool respuesta = false; 
             string ldap = ConfigurationManager.AppSettings["LDAP"].ToString();
-
             try
             {
                 if (string.IsNullOrEmpty(ldap))
@@ -70,8 +69,8 @@ namespace App_MEF_Expedientes.Controllers
                 else { 
                 DirectoryEntry de = new DirectoryEntry("LDAP://" + ldap, user, password, System.DirectoryServices.AuthenticationTypes.Secure);
                 DirectorySearcher ds = new DirectorySearcher(de);
-                    ds.Filter = "(SAMAccountName=" + user + ")";
-                    ds.PropertiesToLoad.Add("cn");
+                    //ds.Filter = "(SAMAccountName=" + user + ")";
+                    //ds.PropertiesToLoad.Add("cn");
                     SearchResult result = ds.FindOne();
                  respuesta = true;
                 //return respuesta;
@@ -91,71 +90,19 @@ namespace App_MEF_Expedientes.Controllers
         }
 
 
+        public ActionResult CerrarSession()
+        {
+            Cls_Ent_Auditoria auditoria = new Cls_Ent_Auditoria();
+            auditoria.Limpiar();
+            Session["USUARIO"] = null;
+            return RedirectToAction("Index", "Home");
+        }
 
 
-        //public bool CheckUserInGroup(string group)
 
-        //{
 
-        //    string serverName = ConfigurationManager.AppSettings["ADServer"];
 
-        //    string userName = ConfigurationManager.AppSettings["ADUserName"];
 
-        //    string password = ConfigurationManager.AppSettings["ADPassword"];
-
-        //    bool result = false;
-
-        //    SecureString securePwd = null;
-
-        //    if (password != null)
-
-        //    {
-
-        //        securePwd = new SecureString();
-
-        //        foreach (char chr in password.ToCharArray())
-
-        //        {
-
-        //            securePwd.AppendChar(chr);
-
-        //        }
-
-        //    }
-
-        //    try
-
-        //    {
-
-        //        ActiveDirectory adConnectGroup = new ActiveDirectory(serverName, userName, securePwd);
-
-        //        SearchResultEntry groupResult = adConnectGroup.GetEntryByCommonName(group);
-
-        //        Group grp = new Group(adConnectGroup, groupResult);
-
-        //        SecurityPrincipal userPrincipal = grp.Members.Find(sp => sp.SAMAccountName.ToLower() == User.Identity.Name.ToLower());
-
-        //        if (userPrincipal != null)
-
-        //        {
-
-        //            result = true;
-
-        //        }
-
-        //    }
-
-        //    catch
-
-        //    {
-
-        //        result = false;
-
-        //    }
-
-        //    return result;
-
-        //}
 
     }
 }
