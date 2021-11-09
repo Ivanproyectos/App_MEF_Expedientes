@@ -13,6 +13,15 @@ function LimpiarAdjuntos() {
     Adjuntos_ConfigurarGrilla();
 }
 
+function Adujuntos_Limpiar(){
+    $("#ID_TIPO_ARCHIVO").val('');
+    $("#NUMERO").val('');
+    $("#FECHA").val('');
+    $("#OBSERVACION").val('');
+    Archivo_cambiado = false;
+    $("#lbl_file").html("Seleccionar archivo");
+}
+
 function Adjuntos_ConfigurarGrilla() {
     $("#" + Adjuntos_grilla).GridUnload();
     var colNames = ['Eliminar','Ver','id_archivo', 'Tipo Documento','Número','Fecha' ,'Observación','FLG_ESTADO', 'Usuario Creación', 'Fecha Creación','EXTENSION'];
@@ -119,7 +128,6 @@ function Adjuntos_Registrar() {
                 if (r) {
                     var item =
                     {
-                        
                             ID_MAESTRA: $("#hdfID_EXPEDIENTE").val(),
                             ID_TIPO_ARCHIVO: $("#ID_TIPO_ARCHIVO").val(),
                             NUMERO: $("#NUMERO").val(),
@@ -136,8 +144,8 @@ function Adjuntos_Registrar() {
                             if (!auditoria.RECHAZAR) {
                                 Adjuntos_Listar();
                                 jAlert("Datos guardados satisfactoriamente", "Proceso");
-                                //$('#myModalNuevo').modal('hide');
-                                //jQuery("#myModalNuevo").html('');
+                                Adujuntos_Limpiar(); 
+                               
                             } else {
                                 jAlert(auditoria.MENSAJE_SALIDA, 'Atención');
                             }

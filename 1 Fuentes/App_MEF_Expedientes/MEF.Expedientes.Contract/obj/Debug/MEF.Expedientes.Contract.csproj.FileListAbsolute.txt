@@ -8,12 +8,12 @@ C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Contract\bin\Debug\Oracle.ManagedDataAccess.EntityFramework.dll
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Contract\bin\Debug\MEF.Expedientes.Entity.pdb
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Contract\bin\Debug\MEF.Expedientes.Repository.pdb
-C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Contract\bin\Debug\MEF.Expedientes.Repository.dll.config
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Contract\bin\Debug\MEF.Expedientes.Data.pdb
-C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Contract\bin\Debug\MEF.Expedientes.Data.dll.config
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Contract\bin\Debug\EntityFramework.xml
+C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Contract\obj\Debug\MEF.Expedientes.Contract.dll
+C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Contract\obj\Debug\MEF.Expedientes.Contract.pdb
+C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Contract\bin\Debug\MEF.Expedientes.Repository.dll.config
+C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Contract\bin\Debug\MEF.Expedientes.Data.dll.config
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Contract\obj\Debug\MEF.Expedientes.Contract.csprojAssemblyReference.cache
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Contract\obj\Debug\MEF.Expedientes.Contract.csproj.CoreCompileInputs.cache
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Contract\obj\Debug\MEF.Expedientes.Contract.csproj.CopyComplete
-C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Contract\obj\Debug\MEF.Expedientes.Contract.dll
-C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Contract\obj\Debug\MEF.Expedientes.Contract.pdb

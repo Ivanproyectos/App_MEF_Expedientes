@@ -629,6 +629,7 @@
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Images\block.jpg" />
     <Content Include="Recursos\Form\DescargarAdjuntos.aspx" />
+    <Content Include="Recursos\Log\NoBorrar.js" />
     <Content Include="Recursos\Temporales\NoBorrar.js" />
     <Content Include="Reportes\Fmr_Expedientes.aspx" />
     <Content Include="Scripts\autocomplete.js" />
@@ -738,7 +739,6 @@
     <Folder Include="Areas\Maestras\Views\Shared\" />
     <Folder Include="Areas\Reportes\Data\" />
     <Folder Include="Areas\Reportes\Views\Shared\" />
-    <Folder Include="Recursos\Log\" />
     <Folder Include="Views\Modulos\" />
   </ItemGroup>
   <ItemGroup>

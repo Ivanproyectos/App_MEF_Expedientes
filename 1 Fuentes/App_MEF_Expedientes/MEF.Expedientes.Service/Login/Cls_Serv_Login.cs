@@ -28,8 +28,7 @@ namespace MEF.Expedientes.Service.Login
                 //new OracleParameter("PI_Results", OracleDbType.Int32, ParameterDirection.Output),
                 null))
                 {
-                    try
-                    {
+            
                         dr = cmd.ExecuteReader();
                         int pos_ID_USUARIO = dr.GetOrdinal("ID_USUARIO");
                         int pos_LOGIN_USUARIO = dr.GetOrdinal("LOGIN_USUARIO");
@@ -82,11 +81,6 @@ namespace MEF.Expedientes.Service.Login
                                 //lista.Add(entidad);
                             }
                         dr.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        auditoria.Error(ex);
-                    }
                 }
             }
             catch (Exception ex)

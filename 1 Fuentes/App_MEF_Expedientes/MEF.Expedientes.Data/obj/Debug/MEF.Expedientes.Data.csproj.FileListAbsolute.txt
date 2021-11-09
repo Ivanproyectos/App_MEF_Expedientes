@@ -47,8 +47,8 @@ C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Data\bin\Debug\EntityFramework.xml
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Data\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Data\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Data\obj\Debug\MEF.Expedientes.Data.dll
+C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Data\obj\Debug\MEF.Expedientes.Data.pdb
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Data\obj\Debug\MEF.Expedientes.Data.csprojAssemblyReference.cache
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Data\obj\Debug\MEF.Expedientes.Data.csproj.CoreCompileInputs.cache
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Data\obj\Debug\MEF.Expedientes.Data.csproj.CopyComplete
-C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Data\obj\Debug\MEF.Expedientes.Data.dll
-C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Data\obj\Debug\MEF.Expedientes.Data.pdb

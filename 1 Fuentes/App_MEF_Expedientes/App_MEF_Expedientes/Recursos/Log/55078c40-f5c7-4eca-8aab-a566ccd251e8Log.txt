@@ -1,6 +1,0 @@
-System.ArgumentNullException: El valor no puede ser nulo.
-Nombre del parámetro: entity
-   en System.Data.Entity.Utilities.Check.NotNull[T](T value, String parameterName)
-   en System.Data.Entity.DbContext.Entry[TEntity](TEntity entity)
-   en MEF.Expedientes.Repository.Repository`1.DeleteUno(Int64 ID) en C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Repository\Repository.cs:línea 182
-   en MEF.Expedientes.Service.Maestras.Cls_Serv_Adjuntos.Adjuntos_Eliminar(Cls_Ent_Adjuntos entidad, Cls_Ent_Auditoria& auditoria) en C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Service\Maestras\Cls_Serv_Adjuntos.cs:línea 159

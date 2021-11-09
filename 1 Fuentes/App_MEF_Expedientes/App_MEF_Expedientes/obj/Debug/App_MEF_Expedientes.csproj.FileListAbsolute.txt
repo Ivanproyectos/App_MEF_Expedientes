@@ -228,7 +228,6 @@ C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\WebMatrix.Data.xml
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\WebMatrix.WebData.xml
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\MEF.Expedientes.Data.pdb
-C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\MEF.Expedientes.Data.dll.config
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\es\Microsoft.Web.WebPages.OAuth.resources.dll
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\es\System.Web.Helpers.resources.dll
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\es\System.Web.Mvc.resources.dll
@@ -261,3 +260,4 @@ C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\ru\Microsoft.ReportViewer.WebForms.resources.dll
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\zh-CHS\Microsoft.ReportViewer.WebForms.resources.dll
 C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\zh-CHT\Microsoft.ReportViewer.WebForms.resources.dll
+C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\bin\MEF.Expedientes.Data.dll.config

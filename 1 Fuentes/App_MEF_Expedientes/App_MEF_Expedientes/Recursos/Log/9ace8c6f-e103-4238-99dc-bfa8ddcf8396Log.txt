@@ -1,8 +1,0 @@
-System.IO.DirectoryNotFoundException: No se puede encontrar una parte de la ruta de acceso 'C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\Recursos\Temporales\56cadc3c-8330-4939-a051-36022f8a7a21.pdf'.
-   en System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
-   en System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
-   en System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
-   en System.IO.FileStream..ctor(String path, FileMode mode)
-   en System.Web.HttpPostedFile.SaveAs(String filename)
-   en System.Web.HttpPostedFileWrapper.SaveAs(String filename)
-   en App_MEF_Expedientes.Areas.Maestras.Controllers.ArchivoController.Guardar_Temporal_Archivo(HttpPostedFileBase MifileArchivo) en C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\Areas\Maestras\Controllers\ArchivoController.cs:línea 32

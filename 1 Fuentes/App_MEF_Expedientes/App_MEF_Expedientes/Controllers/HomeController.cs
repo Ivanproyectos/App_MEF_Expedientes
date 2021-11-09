@@ -33,15 +33,26 @@ namespace App_MEF_Expedientes.Controllers
                     Cls_Ent_Auditoria auditoria = new Cls_Ent_Auditoria();
                     Cls_Ent_Usuario MiUsuario = new Cls_Ent_Usuario();
                     MiUsuario = _cls_Serv_Login.Usuario(new Cls_Ent_Usuario { LOGIN_USUARIO = DESENCRIPTADO, ID_SISTEMA = ID_SISTEMA }, ref auditoria);
-                    if (MiUsuario.ID_USUARIO != 0)
+                    if (auditoria.EJECUCION_PROCEDIMIENTO)
                     {
-                        @ViewBag.Usuario_Nombre = MiUsuario.NOMBRE_PERSONA;
-                        @ViewBag.Usuario_Codigo = MiUsuario.LOGIN_USUARIO;
-                        @ViewBag.Desc_Oficina = MiUsuario.NOMBRE_OFICINA;
-                        @ViewBag.Id_Usuario = MiUsuario.ID_USUARIO;
-                        ViewData["Seg_Perfiles"] = MiUsuario.Perfil;
-                        Valido = true;
-                    }
+                        if (!auditoria.RECHAZAR)
+                        {   
+                            if (MiUsuario.ID_USUARIO != 0)
+                            {
+                                @ViewBag.Usuario_Nombre = MiUsuario.NOMBRE_PERSONA;
+                                @ViewBag.Usuario_Codigo = MiUsuario.LOGIN_USUARIO;
+                                @ViewBag.Desc_Oficina = MiUsuario.NOMBRE_OFICINA;
+                                @ViewBag.Id_Usuario = MiUsuario.ID_USUARIO;
+                                ViewData["Seg_Perfiles"] = MiUsuario.Perfil;
+                                Valido = true;
+                            }
+                        }
+                        else
+                        {
+                            Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
+                            return RedirectToAction("Index", "Login");
+                        }
+                    }     
                     if (!Valido)
                     {
                         //return RedirectToAction("Index", "Login");
@@ -60,6 +71,7 @@ namespace App_MEF_Expedientes.Controllers
             catch (Exception ex)
             {
                 string CodigoLog = Recursos.Clases.Css_Log.Guardar(ex.ToString());
+
                 return View();
             }
         }

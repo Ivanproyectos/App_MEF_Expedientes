@@ -1,7 +1,0 @@
-System.IO.FileNotFoundException: No se pudo encontrar el archivo 'C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\Recursos\Temporales\9cadba4e-34fa-4d18-aff8-197dea22f567'.
-Nombre de archivo: 'C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\App_MEF_Expedientes\Recursos\Temporales\9cadba4e-34fa-4d18-aff8-197dea22f567'
-   en System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
-   en System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
-   en System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)
-   en MEF.Expedientes.Service.Maestras.Cls_Serv_Adjuntos.Foto(String SourceLoc) en C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Service\Maestras\Cls_Serv_Adjuntos.cs:línea 229
-   en MEF.Expedientes.Service.Maestras.Cls_Serv_Adjuntos.Adjuntos_Agregar_Adjuntos(Cls_Ent_Adjuntos entidad, Cls_Ent_Auditoria& auditoria) en C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Service\Maestras\Cls_Serv_Adjuntos.cs:línea 202

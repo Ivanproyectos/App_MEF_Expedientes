@@ -1,5 +1,4 @@
-System.Data.Entity.Infrastructure.DbUpdateException: Error al actualizar las entradas. Vea la excepción interna para obtener detalles. ---> System.Data.Entity.Core.UpdateException: Error al actualizar las entradas. Vea la excepción interna para obtener detalles. ---> Oracle.ManagedDataAccess.Client.OracleException: ORA-01400: no se puede realizar una inserción NULL en ("EXPEDIENTES"."T_EXPM_DOMINIO"."ID_DOMINIO")
-ORA-06512: en línea 4
+System.Data.Entity.Core.EntityCommandExecutionException: Error al ejecutar la definición del comando. Vea la excepción interna para obtener detalles. ---> Oracle.ManagedDataAccess.Client.OracleException: ORA-00942: la tabla o vista no existe
    en OracleInternal.ServiceObjects.OracleConnectionImpl.VerifyExecution(Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, SqlStatementType sqlStatementType, Int32 arrayBindCount, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
    en OracleInternal.ServiceObjects.OracleCommandImpl.VerifyExecution(OracleConnectionImpl connectionImpl, Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
    en OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, OracleException& exceptionForArrayBindDML, OracleConnection connection, OracleLogicalTransaction& oracleLogicalTransaction, IEnumerable`1 adrianParsedStmt, Boolean isDescribeOnly, Boolean isFromEF)
@@ -11,24 +10,18 @@ ORA-06512: en línea 4
    en System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
    en System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
    en System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
-   en System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)
-   en System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   en System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
    --- Fin del seguimiento de la pila de la excepción interna ---
-   en System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
-   en System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.<Update>b__2(UpdateTranslator ut)
-   en System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)
-   en System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()
-   en System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStore>b__35()
+   en System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   en System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   en System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
    en System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
-   en System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
-   en System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass2a.<SaveChangesInternal>b__27()
+   en System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
    en System.Data.Entity.Infrastructure.DefaultExecutionStrategy.Execute[TResult](Func`1 operation)
-   en System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
-   en System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
-   en System.Data.Entity.Internal.InternalContext.SaveChanges()
-   --- Fin del seguimiento de la pila de la excepción interna ---
-   en System.Data.Entity.Internal.InternalContext.SaveChanges()
-   en System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
-   en System.Data.Entity.DbContext.SaveChanges()
-   en MEF.Expedientes.Repository.Repository`1.Add(T entity) en C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Repository\Repository.cs:línea 62
-   en MEF.Expedientes.Service.Administracion.Cls_Serv_Dominio.Dominio_Registrar(Cls_Ent_Dominio entDominio, Cls_Ent_Auditoria& auditoria) en C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Service\Administracion\Cls_Serv_Dominio.cs:línea 68
+   en System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   en System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   en System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   en System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   en System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   en MEF.Expedientes.Repository.Repository`1.GetAll() en C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Repository\Repository.cs:línea 27
+   en MEF.Expedientes.Service.Administracion.Cls_Serv_Dominio.Dominio_Listar(Cls_Ent_Dominio entidad, Cls_Ent_Auditoria& auditoria) en C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Service\Administracion\Cls_Serv_Dominio.cs:línea 32
