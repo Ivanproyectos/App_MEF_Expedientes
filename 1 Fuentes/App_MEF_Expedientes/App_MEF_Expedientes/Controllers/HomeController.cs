@@ -12,7 +12,7 @@ using System.Configuration;
 
 namespace App_MEF_Expedientes.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : Controller  
     {
         private ICls_Serv_Login _cls_Serv_Login;
         public HomeController()
@@ -55,7 +55,6 @@ namespace App_MEF_Expedientes.Controllers
                     }     
                     if (!Valido)
                     {
-                        //return RedirectToAction("Index", "Login");
                         HttpContext.Response.Redirect(ConfigurationManager.AppSettings["NoAutorizado"].ToString());
                         return null;
                     }
@@ -77,7 +76,6 @@ namespace App_MEF_Expedientes.Controllers
         }
 
      
-
 
         public ActionResult Verificar()
         {

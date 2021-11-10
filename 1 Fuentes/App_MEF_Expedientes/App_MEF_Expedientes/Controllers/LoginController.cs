@@ -26,23 +26,23 @@ namespace App_MEF_Expedientes.Controllers
             try
             {
                 auditoria.Limpiar();
-                //bool autorizado = AuthenticateUser(USUARIO, CLAVE, ref auditoria);
-                //if (autorizado)
-                //{
-                //    if (!auditoria.EJECUCION_PROCEDIMIENTO)
-                //    {
-                //        Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
-                //    }
-                //    else
-                //    {
-                //        if (!auditoria.RECHAZAR)
-                //        {
+                bool autorizado = AuthenticateUser(USUARIO, CLAVE, ref auditoria);
+                if (autorizado)
+                {
+                    if (!auditoria.EJECUCION_PROCEDIMIENTO)
+                    {
+                        Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
+                    }
+                    else
+                    {
+                        if (!auditoria.RECHAZAR)
+                        {
                             string ENCRIPTADO = Recursos.Clases.Css_Encriptar.Encrypt(USUARIO);
                             auditoria.OBJETO = ENCRIPTADO;
-                            Session["USUARIO"] = ENCRIPTADO; 
-                //        }
-                //    }
-                //}
+                            Session["USUARIO"] = ENCRIPTADO;
+                        }
+                    }
+                }
 
             }
             catch (Exception ex)
@@ -69,11 +69,8 @@ namespace App_MEF_Expedientes.Controllers
                 else { 
                 DirectoryEntry de = new DirectoryEntry("LDAP://" + ldap, user, password, System.DirectoryServices.AuthenticationTypes.Secure);
                 DirectorySearcher ds = new DirectorySearcher(de);
-                    //ds.Filter = "(SAMAccountName=" + user + ")";
-                    //ds.PropertiesToLoad.Add("cn");
-                    SearchResult result = ds.FindOne();
+                SearchResult result = ds.FindOne();
                  respuesta = true;
-                //return respuesta;
                }
             }
             catch (Exception ex)
