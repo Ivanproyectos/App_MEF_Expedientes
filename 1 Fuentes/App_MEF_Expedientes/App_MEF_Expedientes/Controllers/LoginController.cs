@@ -26,23 +26,23 @@ namespace App_MEF_Expedientes.Controllers
             try
             {
                 auditoria.Limpiar();
-                bool autorizado = AuthenticateUser(USUARIO, CLAVE, ref auditoria);
-                if (autorizado)
-                {
-                    if (!auditoria.EJECUCION_PROCEDIMIENTO)
-                    {
-                        Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
-                    }
-                    else
-                    {
-                        if (!auditoria.RECHAZAR)
-                        {
+                ////bool autorizado = AuthenticateUser(USUARIO, CLAVE, ref auditoria);
+                ////if (autorizado)
+                ////{
+                ////    if (!auditoria.EJECUCION_PROCEDIMIENTO)
+                ////    {
+                ////        Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
+                ////    }
+                ////    else
+                ////    {
+                ////        if (!auditoria.RECHAZAR)
+                ////        {
                             string ENCRIPTADO = Recursos.Clases.Css_Encriptar.Encrypt(USUARIO);
                             auditoria.OBJETO = ENCRIPTADO;
                             Session["USUARIO"] = ENCRIPTADO;
-                        }
-                    }
-                }
+                ////        }
+                ////    }
+                ////}
 
             }
             catch (Exception ex)

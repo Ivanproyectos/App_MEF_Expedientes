@@ -17,19 +17,19 @@ namespace MEF.Expedientes.Entity.Maestras
         public DateTime? FECHA_HECHO { get; set; }
         public string HOJA_RUTA { get; set; }
         public long ID_REMITENTE { get; set; }
-        public long ID_ACTO { get; set; }
+        public long? ID_ACTO { get; set; }
         public string OBSERVACION_INVESTIGADORA { get; set; }
-        public long ID_FALTA { get; set; }
+        public long? ID_FALTA { get; set; }
         public string ARTICULO { get; set; }
         public string INC { get; set; }
         public string OBSERVACION_INSTRUCTORA { get; set; }
-        public long ID_PRECALIFICACION { get; set; }
+        public long? ID_PRECALIFICACION { get; set; }
 
         public string TIPO_SANCION_RECOMENDADA { get; set; }
         public string ACTO_INICIO { get; set; }
         public DateTime? FECHA_NOTIFICACION { get; set; }
         public string RECOMENDACION_PREINFORME { get; set; }
-        public long ID_SANCION_RECOMENDADA { get; set; }
+        public long? ID_SANCION_RECOMENDADA { get; set; }
 
         public long ID_ORGANO_INSTRUCTOR { get; set; }
 
@@ -45,8 +45,8 @@ namespace MEF.Expedientes.Entity.Maestras
 
         public string OBSERVACION_SANCIONADORA { get; set; }
 
-        public long ID_SITUACION { get; set; }
-        public long ID_ESTADO { get; set; }
+        public long? ID_SITUACION { get; set; }
+        public long? ID_ESTADO { get; set; }
         public int FLG_ESTADO { get; set; }
 
 

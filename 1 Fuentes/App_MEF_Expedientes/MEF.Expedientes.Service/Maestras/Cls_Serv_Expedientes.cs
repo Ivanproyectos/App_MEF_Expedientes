@@ -95,27 +95,59 @@ namespace MEF.Expedientes.Service.Maestras
                     Mientidad[0].FECHA_HECHO = entExpedientes.FECHA_HECHO;
                     Mientidad[0].HOJA_RUTA = entExpedientes.HOJA_RUTA;
                     Mientidad[0].ID_REMITENTE = entExpedientes.ID_REMITENTE;
-                    Mientidad[0].ID_ACTO = entExpedientes.ID_ACTO;
+                    //Mientidad[0].ID_ACTO = entExpedientes.ID_ACTO;
+                    if (entExpedientes.ID_ACTO == 0)
+                        Mientidad[0].ID_ACTO = null; 
+                    else
+                        entExpedientes.ID_ACTO = entExpedientes.ID_ACTO;
+
                     Mientidad[0].OBSERVACION_INVESTIGADORA = entExpedientes.OBSERVACION_INVESTIGADORA;
-                    Mientidad[0].ID_FALTA = entExpedientes.ID_FALTA;
+                    //Mientidad[0].ID_FALTA = entExpedientes.ID_FALTA;
+                    if (entExpedientes.ID_FALTA == 0)
+                        Mientidad[0].ID_FALTA = null;
+                    else
+                       Mientidad[0].ID_FALTA = entExpedientes.ID_FALTA;
+
                     Mientidad[0].ARTICULO = entExpedientes.ARTICULO;
                     Mientidad[0].INC = entExpedientes.INC;
                     Mientidad[0].OBSERVACION_INSTRUCTORA = entExpedientes.OBSERVACION_INSTRUCTORA;
-                    Mientidad[0].ID_PRECALIFICACION = entExpedientes.ID_PRECALIFICACION;
+                    //Mientidad[0].ID_PRECALIFICACION = entExpedientes.ID_PRECALIFICACION;
+                    if (entExpedientes.ID_PRECALIFICACION == 0)
+                        Mientidad[0].ID_PRECALIFICACION = null;
+                    else
+                        Mientidad[0].ID_PRECALIFICACION = entExpedientes.ID_PRECALIFICACION;
+
                     Mientidad[0].TIPO_SANCION_RECOMENDADA = entExpedientes.TIPO_SANCION_RECOMENDADA;
                     Mientidad[0].ACTO_INICIO = entExpedientes.ACTO_INICIO;
                     Mientidad[0].FECHA_NOTIFICACION = entExpedientes.FECHA_NOTIFICACION;
                     Mientidad[0].RECOMENDACION_PREINFORME = entExpedientes.RECOMENDACION_PREINFORME;
-                    Mientidad[0].ID_SANCION_RECOMENDADA = entExpedientes.ID_SANCION_RECOMENDADA;
+                    //Mientidad[0].ID_SANCION_RECOMENDADA = entExpedientes.ID_SANCION_RECOMENDADA;
+                    if (entExpedientes.ID_SANCION_RECOMENDADA == 0)
+                        Mientidad[0].ID_SANCION_RECOMENDADA = null;
+                    else
+                        Mientidad[0].ID_SANCION_RECOMENDADA = entExpedientes.ID_SANCION_RECOMENDADA;
+
                     Mientidad[0].ID_ORGANO_INSTRUCTOR = entExpedientes.ID_ORGANO_INSTRUCTOR;
                     Mientidad[0].FECHA_NOTIFICACION_INICIO = entExpedientes.FECHA_NOTIFICACION_INICIO;
                     Mientidad[0].DOCUMENTO_FINALIZACION = entExpedientes.DOCUMENTO_FINALIZACION;
                     Mientidad[0].RECOMENDACION_INSTRUCTOR = entExpedientes.RECOMENDACION_INSTRUCTOR;
                     Mientidad[0].ID_ORGANO_SANCIONADOR = entExpedientes.ID_ORGANO_SANCIONADOR;
                     Mientidad[0].SANCION = entExpedientes.SANCION;
+
                     Mientidad[0].OBSERVACION_SANCIONADORA = entExpedientes.OBSERVACION_SANCIONADORA;
-                    Mientidad[0].ID_SITUACION = entExpedientes.ID_SITUACION;
-                    Mientidad[0].ID_ESTADO = entExpedientes.ID_ESTADO;
+                    //Mientidad[0].ID_SITUACION = entExpedientes.ID_SITUACION;
+
+                    if (entExpedientes.ID_SITUACION == 0)
+                        Mientidad[0].ID_SITUACION = null;
+                    else
+                        Mientidad[0].ID_SITUACION = entExpedientes.ID_SITUACION;
+
+                    //Mientidad[0].ID_ESTADO = entExpedientes.ID_ESTADO;
+                    if (entExpedientes.ID_ESTADO == 0)
+                        Mientidad[0].ID_ESTADO = null;
+                    else
+                        Mientidad[0].ID_ESTADO = entExpedientes.ID_ESTADO;
+
                     Mientidad[0].IP_MODIFICACION = entExpedientes.IP_MODIFICACION;
                     Mientidad[0].FEC_MODIFICACION = DateTime.Now;
                     Mientidad[0].USU_MODIFICACION = entExpedientes.USU_MODIFICACION;
@@ -199,6 +231,25 @@ namespace MEF.Expedientes.Service.Maestras
                         entidad.COD_EXPEDIENTE = CODIGO_EXP; 
                         entidad.FLG_ESTADO = 1;
                         entidad.FEC_CREACION = DateTime.Now;
+                        if (entidad.ID_ACTO == 0)
+                            entidad.ID_ACTO = null;
+
+                        if (entidad.ID_FALTA == 0)
+                            entidad.ID_FALTA = null;
+
+                        if (entidad.ID_PRECALIFICACION == 0)
+                            entidad.ID_PRECALIFICACION = null;
+
+                        if (entidad.ID_SITUACION == 0)
+                            entidad.ID_SITUACION = null;
+
+
+                        if (entidad.ID_ESTADO == 0)
+                            entidad.ID_ESTADO = null;
+
+                        if (entidad.ID_SANCION_RECOMENDADA == 0)
+                            entidad.ID_SANCION_RECOMENDADA = null;
+
                         Expedientes_Registrar(entidad, ref auditoria);
                     }
                     else {

@@ -167,7 +167,7 @@ function Expedientes_Actualizar() {
             TIPO: $("#HDF_Tipo_Expedientes").val(),
             Accion: $("#AccionExpedientes").val()
         };
-        jConfirm("¿ Desea actualizar este tipo archivo ?", "Atención", function (r) {
+        jConfirm("¿ Desea actualizar este registro ?", "Atención", function (r) {
             if (r) {
                 var url = baseUrl + 'Maestras/Expedientes/Expedientes_Actualizar';
                 var auditoria = Autorizacion.Ajax(url, item, false);
