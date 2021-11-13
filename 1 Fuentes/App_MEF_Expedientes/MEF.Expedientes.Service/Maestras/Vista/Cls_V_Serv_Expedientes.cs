@@ -198,6 +198,24 @@ namespace MEF.Expedientes.Service.Maestras.Vista
         }
 
 
+        public IEnumerable<Cls_v_Expedientes> Expedientes_V_Sanciones(ref Cls_Ent_Auditoria auditoria, Cls_v_Expedientes Param)
+        {
+            auditoria.Limpiar();
+            IEnumerable<Cls_v_Expedientes> entidad = new List<Cls_v_Expedientes>();
+            try
+            {
+                if  (Param.ID_SANCION_RECOMENDADA != 0)
+                    entidad = FindAll(e => e.ID_SANCION_RECOMENDADA == Param.ID_SANCION_RECOMENDADA); 
+                else
+                   entidad = FindAll(e => e.ID_SANCION_RECOMENDADA != 0).OrderByDescending(w => w.ID_EXPEDIENTE); ;
+            }
+            catch (Exception ex)
+            {
+                auditoria.Error(ex);
+            }
+            return entidad;
+        }
+
 
     }
 }

@@ -23,16 +23,19 @@
         var DNI = $('#txt_dni').val();
         var SITUACION = $('#ID_SITUACION_SEARCH').val() == "" ? 0 : $('#ID_SITUACION_SEARCH').val();
         var ESTADO = $('#ID_ESTADO_SEARCH').val() == "" ? 0 : $('#ID_ESTADO_SEARCH').val();
+        var ID_SANCION = $('#ID_SANCION_RECOMENDADA').val() == "" ? 0 : $('#ID_SANCION_RECOMENDADA').val();
         debugger;
 
         if (TipoReporte == 1) {
             if (NRO_EXPEDIENTE == "") {
                 jAlert('Ingrese un expediente para buscar.', 'Atención')
             } else {
-             $("#iframeReporte").attr("src", '@Url.Content("~/Reportes/Fmr_Expedientes.aspx?NRO_EXPEDIENTE=")' + NRO_EXPEDIENTE + "&DNI=" + DNI + "&ID_SITUACION=" + SITUACION + "&ID_ESTADO=" + ESTADO + "&TIPO_REPORTE="+ TipoReporte );
+                $("#iframeReporte").attr("src", '@Url.Content("~/Reportes/Fmr_Expedientes.aspx?NRO_EXPEDIENTE=")' + NRO_EXPEDIENTE + "&DNI=" + DNI + "&ID_SITUACION=" + SITUACION + "&ID_ESTADO=" + ESTADO + "&TIPO_REPORTE=" + TipoReporte + "&ID_SANCION=" + ID_SANCION );
              }
             } else if (TipoReporte == 2) {
-                $("#iframeReporte").attr("src", '@Url.Content("~/Reportes/Fmr_Expedientes.aspx?NRO_EXPEDIENTE=")' + NRO_EXPEDIENTE + "&DNI=" + DNI + "&ID_SITUACION=" + SITUACION + "&ID_ESTADO=" + ESTADO + "&TIPO_REPORTE="+ TipoReporte );
+            $("#iframeReporte").attr("src", '@Url.Content("~/Reportes/Fmr_Expedientes.aspx?NRO_EXPEDIENTE=")' + NRO_EXPEDIENTE + "&DNI=" + DNI + "&ID_SITUACION=" + SITUACION + "&ID_ESTADO=" + ESTADO + "&TIPO_REPORTE=" + TipoReporte + "&ID_SANCION=" + ID_SANCION);
+            }else if (TipoReporte == 3) {
+            $("#iframeReporte").attr("src", '@Url.Content("~/Reportes/Fmr_Expedientes.aspx?NRO_EXPEDIENTE=")' + NRO_EXPEDIENTE + "&DNI=" + DNI + "&ID_SITUACION=" + SITUACION + "&ID_ESTADO=" + ESTADO + "&TIPO_REPORTE=" + TipoReporte + "&ID_SANCION=" + ID_SANCION);
             }
 
     });
@@ -44,10 +47,20 @@
     $('input[type=radio][name=Expediente_R]').change(function () {
         var tipo = $(this).val();
         if (tipo == '1') {
-            $('#Busqueda_1').show(); $('#Busqueda_2').hide();
+            $('#Busqueda_1').show();
+            $('#Busqueda_2').hide();
+            $('#Busqueda_3').hide();
         }
-        else {
-            $('#Busqueda_2').show(); $('#Busqueda_1').hide();
+        else if (tipo == '2') {
+            $('#Busqueda_2').show();
+            $('#Busqueda_3').hide();
+            $('#Busqueda_1').hide();
+        }
+        else if (tipo == '3') {
+            $('#Busqueda_2').hide();
+            $('#Busqueda_1').hide();
+            $('#Busqueda_3').show();
+
         }
     });
 
@@ -81,9 +94,16 @@
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="Expediente_R" id="exampleRadios2" value="2" >
-                    <label class="form-check-label" for="exampleRadios1">
+                    <input class="form-check-input" type="radio" name="Expediente_R" id="exampleRadios2" value="2">
+                    <label class="form-check-label" for="exampleRadios2">
                         Listado Expedientes
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Expediente_R" id="exampleRadios3" value="3">
+                    <label class="form-check-label" for="exampleRadios3">
+                        Sanciones Registradas
                     </label>
                 </div>
 
@@ -105,14 +125,15 @@
                             <input type="text" id="txt_nroExpediente" name="txt_nroExpediente" maxlength="30" class="form-control" style="width: 100%" />
                         </div>
                     </div>
-                    <div id="Busqueda_2" style="display:none;">
-                        <div class="col-sm-1">
-                            <label class="col-sm-15 control-label" for="form-field-1" style="width: 100%; margin-top: 5px; text-align: right;">Dni:</label>
-                        </div>
-                        <div class="col-sm-2">
-                            <input type="text" id="txt_dni" name="txt_dni" maxlength="30" class="form-control" style="width: 100%" />
-                        </div>
 
+                    <div class="col-sm-1">
+                        <label class="col-sm-15 control-label" for="form-field-1" style="width: 100%; margin-top: 5px; text-align: right;">Dni:</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" id="txt_dni" name="txt_dni" maxlength="30" class="form-control" style="width: 100%" />
+                    </div>
+
+                    <div id="Busqueda_2" style="display:none;">
                         <div class="col-sm-1">
                             <label class="col-sm-15 control-label" for="form-field-1" style="width: 100%; margin-top: 5px; text-align: right;">Situación:</label>
                         </div>
@@ -127,15 +148,25 @@
                         <div class="col-sm-2">
                             @Html.DropDownListFor(x => x.ID_ESTADO_SEARCH, Model.Lista_Estado, new { @class = "form-control", @maxlength = "50", @style = "width:100%" })
                         </div>
-
                     </div>
 
-                    <div class="col-sm-3">
-                        <button id="btnBuscar_Reporte" class="btn btn-red" type="button"><i class="clip-search"></i>&nbsp  Generar Reporte</button>
-                        <button id="btnLimpiarActos" class="btn btn-grey" type="button"><i class="clip-undo" />&nbsp Limpiar</button>
+
+                    <div id="Busqueda_3" style="display:none;">
+                        <div class="col-sm-1">
+                            <label class="col-sm-15 control-label" for="form-field-1" style="width: 100%; margin-top: 5px; text-align: right;">Sanción:</label>
+                        </div>
+                        <div class="col-sm-2">
+                            @Html.DropDownListFor(x => x.ID_SANCION_RECOMENDADA, Model.Lista_Sacion_Recomendada, new { @class = "form-control", @maxlength = "50", @style = "width:100%" })
+                        </div>
                     </div>
-                </div>
-            </fieldset>
+
+
+                        <div class="col-sm-3">
+                            <button id="btnBuscar_Reporte" class="btn btn-red" type="button"><i class="clip-search"></i>&nbsp  Generar Reporte</button>
+                            <button id="btnLimpiarActos" class="btn btn-grey" type="button"><i class="clip-undo" />&nbsp Limpiar</button>
+                        </div>
+                    </div>
+        </fieldset>
         </div>
 
         <div class="row">

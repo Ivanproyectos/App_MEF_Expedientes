@@ -75,6 +75,29 @@ namespace App_MEF_Expedientes.Areas.Reportes.Controllers
                 Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
             }
 
+            Cls_Ent_Dominio entidad_Sancion = new Cls_Ent_Dominio();
+            entidad_Sancion.NOM_DOMINIO = "TIPSAN";
+            entidad_Sancion.FLG_ESTADO = 1;
+            var Lista_Sancion = _cls_Serv_Dominio.Dominio_Listar(entidad_Sancion, ref auditoria);
+            if (auditoria.EJECUCION_PROCEDIMIENTO)
+            {
+                if (!auditoria.RECHAZAR)
+                {
+                    modelo.Lista_Sacion_Recomendada = Lista_Sancion.Select(x => new SelectListItem()
+                    {
+                        Text = x.DESC_CORTA_DOMINIO.ToString(),
+                        Value = x.ID_DOMINIO.ToString()
+                    }).ToList();
+                    modelo.Lista_Sacion_Recomendada.Insert(0, new SelectListItem() { Value = "0", Text = "-- Seleccione --" });
+                }
+            }
+            else
+            {
+                modelo.Lista_Sacion_Recomendada.Insert(0, new SelectListItem() { Value = "0", Text = "-- Seleccione --" });
+                Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
+            }
+
+            
 
 
             return View(modelo);
