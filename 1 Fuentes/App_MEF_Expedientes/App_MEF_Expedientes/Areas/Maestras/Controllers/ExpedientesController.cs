@@ -257,7 +257,8 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
                         modelo.ID_SITUACION = item.ID_SITUACION;
                         modelo.ID_ESTADO = item.ID_ESTADO;
                         modelo.OBSERVACION_SANCIONADORA = item.OBSERVACION_SANCIONADORA;
-
+                        modelo.DIAS_VIGENTE = item.DIAS_VIGENTE;
+                        modelo.DOCUMENTO_NOTIFICA = item.DOCUMENTO_NOTIFICA;
                     }
                 }
             }

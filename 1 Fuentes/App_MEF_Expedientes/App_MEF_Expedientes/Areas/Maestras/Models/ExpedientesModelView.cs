@@ -137,6 +137,18 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
         public string FECHA_NOTIFICACION { get; set; }
 
 
+        [Display(Name = "Documento Notifica:")]
+        [DataType(DataType.Text)]
+        //[Required(ErrorMessage = "[Fecha Notificación] es obligatorio")]
+        public string DOCUMENTO_NOTIFICA { get; set; }
+
+
+        [Display(Name = "Días Vigente:")]
+        [DataType(DataType.Text)]
+        //[Required(ErrorMessage = "[Fecha Notificación] es obligatorio")]
+        public int? DIAS_VIGENTE { get; set; }
+
+
         [Display(Name = "Recomendación Preinforme:")]
         [DataType(DataType.Text)]
         //[Required(ErrorMessage = "[Recomendación Preinforme] es obligatorio")]

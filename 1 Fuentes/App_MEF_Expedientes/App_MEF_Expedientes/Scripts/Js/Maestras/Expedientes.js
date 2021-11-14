@@ -163,6 +163,8 @@ function Expedientes_Actualizar() {
             ID_SITUACION: $("#ID_SITUACION").val(),
             ID_ESTADO: $("#ID_ESTADO").val(),
             OBSERVACION_SANCIONADORA: $("#OBSERVACION_SANCIONADORA").val(),
+            DIAS_VIGENTE: $("#DIAS_VIGENTE").val(),
+            DOCUMENTO_NOTIFICA: $("#DOCUMENTO_NOTIFICA").val(),
             USU_MODIFICACION: $("#inputHddcod_usuario").val(),
             TIPO: $("#HDF_Tipo_Expedientes").val(),
             Accion: $("#AccionExpedientes").val()
@@ -234,6 +236,8 @@ function Expedientes_Registrar() {
                         SANCION: $("#SANCION").val(),
                         ID_SITUACION: $("#ID_SITUACION").val(),
                         ID_ESTADO: $("#ID_ESTADO").val(),
+                        DIAS_VIGENTE: $("#DIAS_VIGENTE").val(),
+                        DOCUMENTO_NOTIFICA: $("#DOCUMENTO_NOTIFICA").val(),
                         OBSERVACION_SANCIONADORA: $("#OBSERVACION_SANCIONADORA").val(),
                         USU_CREACION: $("#inputHddcod_usuario").val(),
                         Accion: $("#AccionExpedientes").val()

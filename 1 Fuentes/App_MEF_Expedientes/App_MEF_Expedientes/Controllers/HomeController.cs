@@ -27,6 +27,7 @@ namespace App_MEF_Expedientes.Controllers
                 if (Session["USUARIO"] != null)
                 {
                     bool Valido = false;
+                    usuario = usuario.Replace(" ", "+");
                     string DESENCRIPTADO = Recursos.Clases.Css_Encriptar.Decrypt(usuario);
                     int ID_SISTEMA = int.Parse(ConfigurationManager.AppSettings["Codigo_Sistema"].ToString());
 

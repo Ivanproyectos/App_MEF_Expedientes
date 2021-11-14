@@ -148,6 +148,8 @@ namespace MEF.Expedientes.Service.Maestras
                     else
                         Mientidad[0].ID_ESTADO = entExpedientes.ID_ESTADO;
 
+                    Mientidad[0].DOCUMENTO_NOTIFICA = entExpedientes.DOCUMENTO_NOTIFICA;
+                    Mientidad[0].DIAS_VIGENTE = entExpedientes.DIAS_VIGENTE;
                     Mientidad[0].IP_MODIFICACION = entExpedientes.IP_MODIFICACION;
                     Mientidad[0].FEC_MODIFICACION = DateTime.Now;
                     Mientidad[0].USU_MODIFICACION = entExpedientes.USU_MODIFICACION;

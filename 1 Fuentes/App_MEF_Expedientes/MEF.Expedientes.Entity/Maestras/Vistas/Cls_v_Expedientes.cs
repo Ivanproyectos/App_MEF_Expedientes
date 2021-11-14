@@ -12,7 +12,6 @@ namespace MEF.Expedientes.Entity.Maestras.Vistas
         public string ID_PERSONAL { get; set; }
         public string COD_EXPEDIENTE { get; set; }
         public string FECHA_RECEPCION { get; set; }
-
         public string REGIMEN_LABORAL { get; set; }
         public string OFICINA { get; set; }
         public string NOMBRE_COMPLETO { get; set; }
@@ -20,7 +19,6 @@ namespace MEF.Expedientes.Entity.Maestras.Vistas
         public string FECHA_HECHO { get; set; }
         public string HOJA_RUTA { get; set; }
         public long ID_REMITENTE { get; set; }
-
         public string REMITENTE { get; set; }
         public long ID_ACTO { get; set; }
 
@@ -32,7 +30,6 @@ namespace MEF.Expedientes.Entity.Maestras.Vistas
         public string INC { get; set; }
         public string OBSERVACION_INSTRUCTORA { get; set; }
         public long ID_PRECALIFICACION { get; set; }
-
         public string TIPO_SANCION_RECOMENDADA { get; set; }
         public string ACTO_INICIO { get; set; }
         public string FECHA_NOTIFICACION { get; set; }
@@ -55,33 +52,22 @@ namespace MEF.Expedientes.Entity.Maestras.Vistas
 
         public string ORGANO_SANCIONADOR { get; set; }
 
-        
-
         public string OBSERVACION_SANCIONADORA { get; set; }
 
         public long ID_SITUACION { get; set; }
-   
-       public string SITUACION { get; set; }
+        public int? DIAS_VIGENTE { get; set; }
+        public string DOCUMENTO_NOTIFICA { get; set; }
+        public string SITUACION { get; set; }
         public long ID_ESTADO { get; set; }
-
         public string ESTADO { get; set; }
         public int FLG_ESTADO { get; set; }
-
-
         public string DNI { get; set; }
         public string USU_CREACION { get; set; }
-
-
         public string FEC_CREACION { get; set; }
-
-
         public string USU_MODIFICACION { get; set; }
         public string IP_CREACION { get; set; }
-
         public string FEC_MODIFICACION { get; set; }
-
         public string IP_MODIFICACION { get; set; }
-
         public string DESC_PUESTO { get; set; }
         
 

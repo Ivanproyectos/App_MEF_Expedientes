@@ -12,7 +12,6 @@ namespace MEF.Expedientes.Entity.Maestras
         public string ID_PERSONAL { get; set; }
         public string COD_EXPEDIENTE { get; set; }
         public DateTime? FECHA_RECEPCION { get; set; }
-
         public DateTime? FECHA_PRESCRIPCION { get; set; }
         public DateTime? FECHA_HECHO { get; set; }
         public string HOJA_RUTA { get; set; }
@@ -24,39 +23,26 @@ namespace MEF.Expedientes.Entity.Maestras
         public string INC { get; set; }
         public string OBSERVACION_INSTRUCTORA { get; set; }
         public long? ID_PRECALIFICACION { get; set; }
-
         public string TIPO_SANCION_RECOMENDADA { get; set; }
         public string ACTO_INICIO { get; set; }
         public DateTime? FECHA_NOTIFICACION { get; set; }
         public string RECOMENDACION_PREINFORME { get; set; }
         public long? ID_SANCION_RECOMENDADA { get; set; }
-
         public long ID_ORGANO_INSTRUCTOR { get; set; }
-
-
         public DateTime? FECHA_NOTIFICACION_INICIO { get; set; }
-
         public string DOCUMENTO_FINALIZACION { get; set; }
 
         public string RECOMENDACION_INSTRUCTOR { get; set; }
         public long ID_ORGANO_SANCIONADOR { get; set; }
         public string SANCION { get; set; }
-
-
         public string OBSERVACION_SANCIONADORA { get; set; }
-
+        public int? DIAS_VIGENTE { get; set; }
+        public string DOCUMENTO_NOTIFICA { get; set; }
         public long? ID_SITUACION { get; set; }
         public long? ID_ESTADO { get; set; }
         public int FLG_ESTADO { get; set; }
-
-
-
         public string USU_CREACION { get; set; }
-
-
         public DateTime? FEC_CREACION { get; set; }
-
-
         public string USU_MODIFICACION { get; set; }
         public string IP_CREACION { get; set; }
 
