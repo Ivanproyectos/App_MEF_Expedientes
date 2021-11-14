@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MEF.Expedientes.Entity;
 
 namespace App_MEF_Expedientes.Areas.Maestras.Models
 {
@@ -238,6 +239,9 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
         public string Accion { get; set; }
 
         public int ID_ESTADO_SEARCH { get; set; }
+
+
+        public Cls_Ent_Archivo MiArchivo { get; set; }
         
 
     }

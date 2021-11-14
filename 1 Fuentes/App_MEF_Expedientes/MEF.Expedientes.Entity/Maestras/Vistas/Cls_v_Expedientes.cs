@@ -57,6 +57,8 @@ namespace MEF.Expedientes.Entity.Maestras.Vistas
         public long ID_SITUACION { get; set; }
         public int? DIAS_VIGENTE { get; set; }
         public string DOCUMENTO_NOTIFICA { get; set; }
+        public string EXTENSION_ARCHIVO { get; set; }
+
         public string SITUACION { get; set; }
         public long ID_ESTADO { get; set; }
         public string ESTADO { get; set; }

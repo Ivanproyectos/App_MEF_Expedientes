@@ -15,8 +15,8 @@ namespace MEF.Expedientes.Contract.Maestras
         void Expedientes_Estado(Cls_Ent_Expedientes entExpedientes, ref Cls_Ent_Auditoria auditoria);
         void Expedientes_Eliminar(Cls_Ent_Expedientes entExpedientes, ref Cls_Ent_Auditoria auditoria);
         void Expedientes_Agregar_Expedientes(Cls_Ent_Expedientes entExpedientes, ref Cls_Ent_Auditoria auditoria);
+        void Expedientes_InsertarDocumento_Digital(Cls_Ent_Expedientes entExpedientes, ref Cls_Ent_Auditoria auditoria);
 
-
-
+        
     }
 }

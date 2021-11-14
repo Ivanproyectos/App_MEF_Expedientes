@@ -89,6 +89,8 @@ namespace MEF.Expedientes.Service.Maestras
                 }
                 if (Valido)
                 {
+
+
                     Mientidad[0].ID_PERSONAL = entExpedientes.ID_PERSONAL;
                     Mientidad[0].FECHA_RECEPCION = entExpedientes.FECHA_RECEPCION;
                     Mientidad[0].FECHA_PRESCRIPCION = entExpedientes.FECHA_PRESCRIPCION;
@@ -187,6 +189,29 @@ namespace MEF.Expedientes.Service.Maestras
                 auditoria.Error(ex);
             }
         }
+
+
+        public void Expedientes_InsertarDocumento_Digital(Cls_Ent_Expedientes entidad, ref Cls_Ent_Auditoria auditoria)
+        {
+            auditoria.Limpiar();
+            List<Cls_Ent_Expedientes> Mientidad = (List<Cls_Ent_Expedientes>)Expedientes_Buscar(ref auditoria, entidad.ID_EXPEDIENTE);
+            try
+            {
+                if (Mientidad != null)
+                {
+                    Mientidad[0].ARCHIVO_BLOB = entidad.ARCHIVO_BLOB;
+                    Mientidad[0].NOMBRE_ARCHIVO = entidad.NOMBRE_ARCHIVO;
+                    Mientidad[0].EXTENSION_ARCHIVO = entidad.EXTENSION_ARCHIVO;
+
+                    Expedientes_Actualizar(Mientidad[0], ref auditoria);
+                }
+            }
+            catch (Exception ex)
+            {
+                auditoria.Error(ex);
+            }
+        }
+
 
         public void Expedientes_Eliminar(Cls_Ent_Expedientes entidad, ref Cls_Ent_Auditoria auditoria)
         {

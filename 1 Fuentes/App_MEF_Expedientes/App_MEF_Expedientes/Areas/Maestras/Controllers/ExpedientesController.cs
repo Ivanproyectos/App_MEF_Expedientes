@@ -15,6 +15,8 @@ using MEF.Expedientes.Contract.Administracion;
 using System.Data;
 using System.Linq;
 using System;
+using System.IO;
+using System.Configuration;
 
 namespace App_MEF_Expedientes.Areas.Maestras.Controllers
 {
@@ -128,6 +130,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
                         null,
                         null,
                         null,
+                        null,
                         item.ID_EXPEDIENTE.ToString(),
                         item.COD_EXPEDIENTE.ToString(),
                         item.NOMBRE_COMPLETO.ToString(),
@@ -143,6 +146,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
                         item.FEC_CREACION,
                         item.USU_MODIFICACION,
                         item.FEC_MODIFICACION,
+                        item.EXTENSION_ARCHIVO
                    }
                     }).ToArray();
 
@@ -421,8 +425,74 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
             return View(modelo);
         }
 
+        public ActionResult Mantenimiento_Expediente(int id, string COD_EXPEDIENTE)
+        {
+            ExpedientesModelView modelo = new ExpedientesModelView();
+            Cls_Ent_Auditoria auditoria = new Cls_Ent_Auditoria();
+            modelo.ID_EXPEDIENTE = id;
+            modelo.COD_EXPEDIENTE = COD_EXPEDIENTE;
 
+            IEnumerable<Cls_Ent_Expedientes> lista;
+            lista = _cls_Expedientes.Expedientes_Buscar(ref auditoria, id);
+            if (!auditoria.EJECUCION_PROCEDIMIENTO)
+            {
+                if (auditoria.RECHAZAR)
+                    Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
+            }
+            else
+            {
+                foreach (var item in lista)
+                {
+                    if (item.NOMBRE_ARCHIVO != "" || item.NOMBRE_ARCHIVO != null)
+                    {
+                        modelo.MiArchivo = new Cls_Ent_Archivo();
+                        string ID_UNICO_TEMP = Recursos.Clases.Css_Codigo.Generar_Codigo_Temporal();
+                        var ruta_temporal = Recursos.Clases.Css_Ruta.Ruta_Temporal() + ID_UNICO_TEMP + item.EXTENSION_ARCHIVO;
+                        System.IO.File.Create(ruta_temporal).Close();
+                        System.IO.File.WriteAllBytes(ruta_temporal, item.ARCHIVO_BLOB);
+                        modelo.MiArchivo.CODIGO_ARCHIVO = ID_UNICO_TEMP;
+                        modelo.MiArchivo.EXTENSION = item.EXTENSION_ARCHIVO;
+                    }
+                }
+            }
 
+            return View(modelo);
+        }
+
+        
+
+        public ActionResult Expedientes_InsertarDocumento_Digital(ExpedientesModelView param)
+        {
+
+            Cls_Ent_Auditoria auditoria = new Cls_Ent_Auditoria();
+            var ruta_temporal = Recursos.Clases.Css_Ruta.Ruta_Temporal() + param.MiArchivo.CODIGO_ARCHIVO + param.MiArchivo.EXTENSION;
+            if (System.IO.File.Exists(ruta_temporal))
+            {
+                byte[] ARCHIVO_BLOB = Foto(ruta_temporal);
+                System.IO.File.Delete(ruta_temporal);
+                Cls_Ent_Expedientes entidad = new Cls_Ent_Expedientes
+                {
+                    ID_EXPEDIENTE = param.ID_EXPEDIENTE,
+                    EXTENSION_ARCHIVO = param.MiArchivo.EXTENSION,
+                    NOMBRE_ARCHIVO = param.MiArchivo.NOMBRE_ARCHIVO,
+                    ARCHIVO_BLOB = ARCHIVO_BLOB
+                };
+
+                _cls_Expedientes.Expedientes_InsertarDocumento_Digital(entidad, ref auditoria);
+                if (!auditoria.EJECUCION_PROCEDIMIENTO)
+                {
+                    if (auditoria.RECHAZAR)
+                        Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
+                }
+
+            }
+            else
+            {
+                auditoria.Rechazar("Archivo no existe");
+            }
+
+            return Json(auditoria, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult Expedientes_Insertar(Cls_Ent_Expedientes entidad)
         {
             Cls_Ent_Auditoria auditoria = new Cls_Ent_Auditoria();
@@ -478,7 +548,15 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
         }
 
 
+        public byte[] Foto(String SourceLoc)
+        {
+            FileStream fs = new FileStream(SourceLoc, FileMode.Open, FileAccess.Read);
+            byte[] ImageData = new byte[fs.Length];
+            fs.Read(ImageData, 0, System.Convert.ToInt32(fs.Length));
+            fs.Close();
+            return ImageData;
 
+        }
 
 
 

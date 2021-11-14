@@ -41,6 +41,12 @@ namespace MEF.Expedientes.Entity.Maestras
         public long? ID_SITUACION { get; set; }
         public long? ID_ESTADO { get; set; }
         public int FLG_ESTADO { get; set; }
+
+        public string NOMBRE_ARCHIVO { get; set; }
+
+        public string EXTENSION_ARCHIVO { get; set; }
+
+        public Byte[] ARCHIVO_BLOB { get; set; }
         public string USU_CREACION { get; set; }
         public DateTime? FEC_CREACION { get; set; }
         public string USU_MODIFICACION { get; set; }

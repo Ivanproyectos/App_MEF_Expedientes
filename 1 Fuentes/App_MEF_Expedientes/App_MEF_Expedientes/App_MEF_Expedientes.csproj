@@ -627,6 +627,7 @@
     <Content Include="Areas\Reportes\Views\web.config" />
     <Content Include="Areas\Maestras\Views\Adjuntos\Descargar_Archivo.cshtml" />
     <Content Include="Areas\Reportes\Views\Expedientes\Index.cshtml" />
+    <Content Include="Areas\Maestras\Views\Expedientes\Mantenimiento_Expediente.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Images\block.jpg" />
     <Content Include="Recursos\Form\DescargarAdjuntos.aspx" />
