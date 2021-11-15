@@ -105,7 +105,7 @@
               
 
                         <div class="errorHandler alert alert-danger no-display">
-                            <i class="clip-warning"></i>&nbsp El usuario/clave son incorrectos.
+                            <i class="clip-warning"></i> <span id="mensje_login">  </span>
                         </div>
 
 
@@ -170,6 +170,7 @@
                         window.location = baseUrl + 'Home/Index?usuario=' + auditoria.OBJETO;
                     } else {
                         $('.errorHandler').show();
+                        $('#mensje_login').text(auditoria.MENSAJE_SALIDA); 
                     }
                 }
             }

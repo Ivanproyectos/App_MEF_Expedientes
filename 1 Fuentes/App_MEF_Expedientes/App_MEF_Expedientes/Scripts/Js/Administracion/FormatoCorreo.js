@@ -187,24 +187,28 @@ function FormatoCorreo_Registrar() {
                         USU_CREACION: $("#inputHddcod_usuario").val(),
                         Accion: $("#AccionFormatoCorreo").val()
                     };
-                    debugger; 
-                    var url = baseUrl + 'Administracion/FormatosCorreo/FormatoCorreo_Insertar';
-                    var auditoria = Autorizacion.Ajax(url, item, false);
-                    if (auditoria != null) {
-                        if (auditoria.EJECUCION_PROCEDIMIENTO) {
-                            if (!auditoria.RECHAZAR) {
-                                FormatoCorreo_CargarGrilla();
-                                jAlert("Datos guardados satisfactoriamente", "Proceso");
-                                $('#myModalNuevo').modal('hide');
-                                jQuery("#myModalNuevo").html('');
+                    if (item.BODY.length < 4000) {
+                        var url = baseUrl + 'Administracion/FormatosCorreo/FormatoCorreo_Insertar';
+                        var auditoria = Autorizacion.Ajax(url, item, false);
+                        if (auditoria != null) {
+                            if (auditoria.EJECUCION_PROCEDIMIENTO) {
+                                if (!auditoria.RECHAZAR) {
+                                    FormatoCorreo_CargarGrilla();
+                                    jAlert("Datos guardados satisfactoriamente", "Proceso");
+                                    $('#myModalNuevo').modal('hide');
+                                    jQuery("#myModalNuevo").html('');
+                                } else {
+                                    jAlert(auditoria.MENSAJE_SALIDA, 'Atención');
+                                }
                             } else {
                                 jAlert(auditoria.MENSAJE_SALIDA, 'Atención');
                             }
-                        } else {
-                            jAlert(auditoria.MENSAJE_SALIDA, 'Atención');
                         }
+                    } else {
+                        jAlert('El tamaño del contenido formato es demasiado grande, max(4000 caract). ', 'Atención');
                     }
                 }
+
             });
         }
     }

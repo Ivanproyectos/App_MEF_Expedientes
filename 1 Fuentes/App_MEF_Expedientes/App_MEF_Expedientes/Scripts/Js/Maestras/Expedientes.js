@@ -60,7 +60,7 @@ function Documento_ConfigurarColor_FechaPrescripcion(Documento_Color_grilla) {
     for (var i = 0; i < rowKey.length; i++) {
         var data = jQuery("#" + Documento_Color_grilla).jqGrid('getRowData', rowKey[i]);
 
-        if (data.DIAS >= 4 ) {
+        if (data.DIAS >= 300 ) { // 300 dias
             $("#" + Documento_Color_grilla).jqGrid('setRowData', rowKey[i], true, { background: "rgb(243, 220, 22)" });
         }
 

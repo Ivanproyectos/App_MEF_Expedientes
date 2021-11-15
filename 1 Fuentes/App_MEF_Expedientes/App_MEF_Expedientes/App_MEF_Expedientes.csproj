@@ -60,6 +60,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -212,11 +213,13 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\LoginModelView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recursos\Clases\Css_ActiveDirectory.cs" />
     <Compile Include="Recursos\Clases\Css_Codigo.cs" />
     <Compile Include="Recursos\Clases\Css_Encriptar.cs" />
     <Compile Include="Recursos\Clases\Css_IP.cs" />
     <Compile Include="Recursos\Clases\Css_Log.cs" />
     <Compile Include="Recursos\Clases\Css_Ruta.cs" />
+    <Compile Include="Recursos\Clases\UserModel.cs" />
     <Compile Include="Recursos\Form\DescargarAdjuntos.aspx.cs">
       <DependentUpon>DescargarAdjuntos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
