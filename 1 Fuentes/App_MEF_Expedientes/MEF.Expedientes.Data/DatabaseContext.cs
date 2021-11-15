@@ -50,7 +50,7 @@ namespace MEF.Expedientes.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.HasDefaultSchema("EXPEDIENTES");
+            modelBuilder.HasDefaultSchema("APP_GESEXPDIS");
 
             //modelBuilder.Entity<Cls_Ent_Control_Carga>().ha.Property = false;
             //.HasSequence(PersonIdSequence)

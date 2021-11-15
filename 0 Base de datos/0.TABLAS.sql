@@ -1,5 +1,5 @@
 ----------------------------------------------
--- Export file for user EXPEDIENTES         --
+-- Export file for user APP_GESEXPDIS         --
 -- Created by ivans on 15/11/2021, 2:24:27  --
 ----------------------------------------------
 
@@ -9,7 +9,7 @@
 -- prompt Creating table T_EXPM_DOMINIO
 -- prompt =============================
 -- prompt
-create table EXPEDIENTES.T_EXPM_DOMINIO
+create table APP_GESEXPDIS.T_EXPM_DOMINIO
 (
   ID_DOMINIO         NUMBER not null,
   ID_DOMINIO_PADRE   NUMBER,
@@ -26,14 +26,14 @@ create table EXPEDIENTES.T_EXPM_DOMINIO
   IP_MODIFICACION    VARCHAR2(50)
 )
 ;
-alter table EXPEDIENTES.T_EXPM_DOMINIO
+alter table APP_GESEXPDIS.T_EXPM_DOMINIO
   add constraint KEY_DOMINIO primary key (ID_DOMINIO);
 
 -- prompt
 -- prompt Creating table T_EXPM_EXPEDIENTES
 -- prompt =================================
 -- prompt
-create table EXPEDIENTES.T_EXPM_EXPEDIENTES
+create table APP_GESEXPDIS.T_EXPM_EXPEDIENTES
 (
   ID_EXPEDIENTE             NUMBER not null,
   ID_PERSONAL               VARCHAR2(6),
@@ -78,32 +78,32 @@ create table EXPEDIENTES.T_EXPM_EXPEDIENTES
   IP_MODIFICACION           VARCHAR2(50)
 )
 ;
-alter table EXPEDIENTES.T_EXPM_EXPEDIENTES
+alter table APP_GESEXPDIS.T_EXPM_EXPEDIENTES
   add constraint KEY primary key (ID_EXPEDIENTE);
-alter table EXPEDIENTES.T_EXPM_EXPEDIENTES
+alter table APP_GESEXPDIS.T_EXPM_EXPEDIENTES
   add constraint FK_ID_ACTO_DOMINIO foreign key (ID_ACTO)
-  references EXPEDIENTES.T_EXPM_DOMINIO (ID_DOMINIO);
-alter table EXPEDIENTES.T_EXPM_EXPEDIENTES
+  references APP_GESEXPDIS.T_EXPM_DOMINIO (ID_DOMINIO);
+alter table APP_GESEXPDIS.T_EXPM_EXPEDIENTES
   add constraint FK_ID_ESTADO_DOMINIO foreign key (ID_ESTADO)
-  references EXPEDIENTES.T_EXPM_DOMINIO (ID_DOMINIO);
-alter table EXPEDIENTES.T_EXPM_EXPEDIENTES
+  references APP_GESEXPDIS.T_EXPM_DOMINIO (ID_DOMINIO);
+alter table APP_GESEXPDIS.T_EXPM_EXPEDIENTES
   add constraint FK_ID_FALTA_DOMINIO foreign key (ID_FALTA)
-  references EXPEDIENTES.T_EXPM_DOMINIO (ID_DOMINIO);
-alter table EXPEDIENTES.T_EXPM_EXPEDIENTES
+  references APP_GESEXPDIS.T_EXPM_DOMINIO (ID_DOMINIO);
+alter table APP_GESEXPDIS.T_EXPM_EXPEDIENTES
   add constraint FK_ID_PRECALIFCACION_DOMINO foreign key (ID_PRECALIFICACION)
-  references EXPEDIENTES.T_EXPM_DOMINIO (ID_DOMINIO);
-alter table EXPEDIENTES.T_EXPM_EXPEDIENTES
+  references APP_GESEXPDIS.T_EXPM_DOMINIO (ID_DOMINIO);
+alter table APP_GESEXPDIS.T_EXPM_EXPEDIENTES
   add constraint FK_ID_SANCION_DOMINIO foreign key (ID_SANCION_RECOMENDADA)
-  references EXPEDIENTES.T_EXPM_DOMINIO (ID_DOMINIO);
-alter table EXPEDIENTES.T_EXPM_EXPEDIENTES
+  references APP_GESEXPDIS.T_EXPM_DOMINIO (ID_DOMINIO);
+alter table APP_GESEXPDIS.T_EXPM_EXPEDIENTES
   add constraint FK_ID_SITUACION_DOMINIO foreign key (ID_SITUACION)
-  references EXPEDIENTES.T_EXPM_DOMINIO (ID_DOMINIO);
+  references APP_GESEXPDIS.T_EXPM_DOMINIO (ID_DOMINIO);
 
 -- prompt
 -- prompt Creating table T_EXPD_ADJUNTOS
 -- prompt ==============================
 -- prompt
-create table EXPEDIENTES.T_EXPD_ADJUNTOS
+create table APP_GESEXPDIS.T_EXPD_ADJUNTOS
 (
   ID_ADJUNTO        NUMBER not null,
   ID_MAESTRA        NUMBER,
@@ -124,20 +124,20 @@ create table EXPEDIENTES.T_EXPD_ADJUNTOS
   IP_MODIFICACION   VARCHAR2(50)
 )
 ;
-alter table EXPEDIENTES.T_EXPD_ADJUNTOS
+alter table APP_GESEXPDIS.T_EXPD_ADJUNTOS
   add constraint KEY_ADJUNTOS primary key (ID_ADJUNTO);
-alter table EXPEDIENTES.T_EXPD_ADJUNTOS
+alter table APP_GESEXPDIS.T_EXPD_ADJUNTOS
   add constraint FK_ID_MESTRA_EXPEDIENTES foreign key (ID_MAESTRA)
-  references EXPEDIENTES.T_EXPM_EXPEDIENTES (ID_EXPEDIENTE);
-alter table EXPEDIENTES.T_EXPD_ADJUNTOS
+  references APP_GESEXPDIS.T_EXPM_EXPEDIENTES (ID_EXPEDIENTE);
+alter table APP_GESEXPDIS.T_EXPD_ADJUNTOS
   add constraint FK_ID_TIPO_ARCHIVO_DOMINIO foreign key (ID_TIPO_ARCHIVO)
-  references EXPEDIENTES.T_EXPM_DOMINIO (ID_DOMINIO);
+  references APP_GESEXPDIS.T_EXPM_DOMINIO (ID_DOMINIO);
 
 -- prompt
 -- prompt Creating table T_EXPM_FORMATO_CORREO
 -- prompt ====================================
 -- prompt
-create table EXPEDIENTES.T_EXPM_FORMATO_CORREO
+create table APP_GESEXPDIS.T_EXPM_FORMATO_CORREO
 (
   ID_FORMATO       NUMBER not null,
   ASUNTO           VARCHAR2(500) not null,
@@ -151,7 +151,7 @@ create table EXPEDIENTES.T_EXPM_FORMATO_CORREO
   IP_MODIFICACION  VARCHAR2(50)
 )
 ;
-alter table EXPEDIENTES.T_EXPM_FORMATO_CORREO
+alter table APP_GESEXPDIS.T_EXPM_FORMATO_CORREO
   add primary key (ID_FORMATO);
 
 

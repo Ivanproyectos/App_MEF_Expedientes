@@ -1,5 +1,5 @@
 ----------------------------------------------
--- Export file for user EXPEDIENTES         --
+-- Export file for user APP_GESEXPDIS         --
 -- Created by ivans on 15/11/2021, 2:26:32  --
 ----------------------------------------------
 
@@ -9,7 +9,7 @@
 --prompt Creating view V_ADJUNTOS
 --prompt ========================
 --prompt
-CREATE OR REPLACE VIEW EXPEDIENTES.V_ADJUNTOS AS
+CREATE OR REPLACE VIEW APP_GESEXPDIS.V_ADJUNTOS AS
 SELECT
       V.ID_ADJUNTO,
       V.ID_MAESTRA,
@@ -36,7 +36,7 @@ SELECT
 --prompt Creating view V_OFICINA
 --prompt =======================
 --prompt
-CREATE OR REPLACE VIEW EXPEDIENTES.V_OFICINA AS
+CREATE OR REPLACE VIEW APP_GESEXPDIS.V_OFICINA AS
 SELECT
       ID_OFICINA,
       DESC_OFICINA,
@@ -52,7 +52,7 @@ SELECT
 --prompt Creating view V_PERSONAL
 --prompt ========================
 --prompt
-CREATE OR REPLACE VIEW EXPEDIENTES.V_PERSONAL AS
+CREATE OR REPLACE VIEW APP_GESEXPDIS.V_PERSONAL AS
 SELECT
        DISTINCT(P.ID_PERSONAL) ID_PERSONAL,
        CONCAT(CONCAT(P.APELLIDO_PATERNO || ' ' ,P.APELLIDO_MATERNO || ' '),P.NOMBRES)  NOMBRE_COMPLETO,
@@ -79,7 +79,7 @@ SELECT
 --prompt Creating view V_EXPEDIENTES
 --prompt ===========================
 --prompt
-CREATE OR REPLACE VIEW EXPEDIENTES.V_EXPEDIENTES AS
+CREATE OR REPLACE VIEW APP_GESEXPDIS.V_EXPEDIENTES AS
 SELECT
       V.ID_EXPEDIENTE,
       V.ID_PERSONAL,
