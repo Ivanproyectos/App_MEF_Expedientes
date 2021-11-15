@@ -71,7 +71,7 @@ namespace MEF.Expedientes.Entity.Maestras.Vistas
         public string FEC_MODIFICACION { get; set; }
         public string IP_MODIFICACION { get; set; }
         public string DESC_PUESTO { get; set; }
+        public int DIAS { get; set; }
         
-
     }
 }

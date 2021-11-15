@@ -146,7 +146,8 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
                         item.FEC_CREACION,
                         item.USU_MODIFICACION,
                         item.FEC_MODIFICACION,
-                        item.EXTENSION_ARCHIVO
+                        item.EXTENSION_ARCHIVO, 
+                        item.DIAS.ToString(),
                    }
                     }).ToArray();
 

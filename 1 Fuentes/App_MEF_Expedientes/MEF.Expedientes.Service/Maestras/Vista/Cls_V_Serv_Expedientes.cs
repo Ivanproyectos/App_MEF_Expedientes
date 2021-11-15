@@ -73,7 +73,7 @@ namespace MEF.Expedientes.Service.Maestras.Vista
                         int pos_FEC_MODIFICACION = dr.GetOrdinal("FEC_MODIFICACION");
                         int pos_FALTA = dr.GetOrdinal("FALTA");
                         int pos_EXTENSION_ARCHIVO = dr.GetOrdinal("EXTENSION_ARCHIVO");
-
+                        int pos_DIAS = dr.GetOrdinal("DIAS");
                         if (dr.HasRows)
                             while (dr.Read())
                             {
@@ -137,6 +137,10 @@ namespace MEF.Expedientes.Service.Maestras.Vista
 
                                 if (dr.IsDBNull(pos_EXTENSION_ARCHIVO)) entidad.EXTENSION_ARCHIVO = "";
                                 else entidad.EXTENSION_ARCHIVO = dr.GetString(pos_EXTENSION_ARCHIVO);
+
+
+                                if (dr.IsDBNull(pos_DIAS)) entidad.DIAS = 0;
+                                else entidad.DIAS = int.Parse(dr[pos_DIAS].ToString());
 
                                 lista.Add(entidad);
                             }

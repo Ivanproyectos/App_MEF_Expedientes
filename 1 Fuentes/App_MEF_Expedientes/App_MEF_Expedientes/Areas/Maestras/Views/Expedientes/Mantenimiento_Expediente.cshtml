@@ -99,7 +99,7 @@
                 CODIGO: CODIGO_ARCHIVO,
                 EXTENSION: EXTENSION
             };
-        var url = baseUrl + 'Seguridad/Archivo/Archivo_Eliminar_Temporal';
+        var url = baseUrl + 'Maestras/Archivo/Archivo_Eliminar_Temporal';
 
         var respuesta = SICA.Ajax(url, item, false);
         if (respuesta != null && respuesta != "") {
@@ -112,6 +112,11 @@
     });
 
 
+    $('#Btn_CerrarAdjunto').click(function () {
+        $('#myModalNuevo').modal('hide');
+        var codigo_img = Archivo_Array[0].CODIGO_ARCHIVO + Archivo_Array[0].EXTENSION;
+        EliminartTemporal(codigo_img);
+    }); 
 
 
 </script>
@@ -140,7 +145,6 @@
                     {
 
                         <div class="form-group">
-
                             <label class="col-sm-4 control-label">Adjunte Archivo:</label>
                             <div class="col-sm-7" style="margin-bottom: 5px;">
                                 <div class="col-sm-12" style="padding-right: 0px; padding-left: 0px;">
@@ -173,7 +177,7 @@
                 </div>
                 <div class="modal-footer">
 
-                    <button type="button" class="btn btn-light-grey" data-dismiss="modal"><i class="fa fa-share-square-o"></i>&nbsp Cerrar</button>
+                    <button type="button" class="btn btn-light-grey" id="Btn_CerrarAdjunto"><i class="fa fa-share-square-o"></i>&nbsp Cerrar</button>
                 </div>
             </div>
     </div>

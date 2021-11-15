@@ -15,7 +15,7 @@ function Expedientes_ConfigurarGrilla() {
     var url = baseUrl + 'Maestras/Expedientes/Expedientes_Paginado';
     $("#" + Expedientes_grilla).GridUnload();
     var colNames = ['Editar', 'Eliminar', 'Activo','Archivos','Expediente', 'ID_EXPEDIENTE', 'Nro. Expediente', 'Personal', 'Oficina', 'Reg. Laboral', 'Falta', 'Sanción',
-        'Hechos', 'Situación','Estado', 'FLG_ESTADO', 'Usuario Creación', 'Fecha Creación', 'Usuario Modificación', 'Fecha Modificación','Extension'];
+        'Hechos', 'Situación','Estado', 'FLG_ESTADO', 'Usuario Creación', 'Fecha Creación', 'Usuario Modificación', 'Fecha Modificación','Extension','Dias'];
     var colModels = [
         { name: 'EDITAR', index: 'EDITAR', align: 'center', width: 60, hidden: false, sortable: false, formatter: Expedientes_actionEditar },
         { name: 'ELIMINAR', index: 'ELIMINAR', align: 'center', width: 70, hidden: false, sortable: false, formatter: Expedientes_actionEliminar },
@@ -37,18 +37,34 @@ function Expedientes_ConfigurarGrilla() {
         { name: 'FEC_CREACION', index: 'FEC_CREACION', align: 'center', width: 160, hidden: false, sortable: true },
         { name: 'USU_MODIFICACION', index: 'USU_MODIFICACION', align: 'center', width: 150, hidden: false, sortable: true },
         { name: 'FEC_MODIFICACION', index: 'FEC_MODIFICACION', align: 'center', width: 160, hidden: false, sortable: true },
-        { name: 'EXTENSION_ARCHIVO', index: 'EXTENSION_ARCHIVO', align: 'center', width: 160, hidden: false, sortable: true },
-        
+        { name: 'EXTENSION_ARCHIVO', index: 'EXTENSION_ARCHIVO', align: 'center', width: 160, hidden: true, sortable: true },
+        { name: 'DIAS', index: 'DIAS', align: 'center', width: 160, hidden: true, sortable: true },
     ];
     var opciones = {
         GridLocal: false, multiselect: false, CellEdit: false, Editar: false, nuevo: false, eliminar: false, search: false, sort: 'DESC', rules: true,
         gridCompleteFunc: function () {
             $('#Grilla_Load').hide();
+            Documento_ConfigurarColor_FechaPrescripcion(Expedientes_grilla);
  
         },
 
     };
     SICA.Grilla(Expedientes_grilla, Expedientes_barra, '', '400', '', "Lista de Expedientes", url, 'ID_EXPEDIENTE', colNames, colModels, 'ID_EXPEDIENTE', opciones);
+}
+
+
+
+function Documento_ConfigurarColor_FechaPrescripcion(Documento_Color_grilla) {
+    // cambia color cuando el documento paso 48 horas de observados
+    var rowKey = jQuery("#" + Expedientes_grilla).getDataIDs();
+    for (var i = 0; i < rowKey.length; i++) {
+        var data = jQuery("#" + Documento_Color_grilla).jqGrid('getRowData', rowKey[i]);
+
+        if (data.DIAS >= 4 ) {
+            $("#" + Documento_Color_grilla).jqGrid('setRowData', rowKey[i], true, { background: "rgb(243, 220, 22)" });
+        }
+
+    }
 }
 
 
