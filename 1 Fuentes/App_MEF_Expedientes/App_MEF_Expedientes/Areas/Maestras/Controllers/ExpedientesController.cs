@@ -444,7 +444,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
             {
                 foreach (var item in lista)
                 {
-                    if (item.NOMBRE_ARCHIVO != "" || item.NOMBRE_ARCHIVO != null)
+                    if (item.NOMBRE_ARCHIVO != null)
                     {
                         modelo.MiArchivo = new Cls_Ent_Archivo();
                         string ID_UNICO_TEMP = Recursos.Clases.Css_Codigo.Generar_Codigo_Temporal();

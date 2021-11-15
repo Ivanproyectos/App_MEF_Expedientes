@@ -15,7 +15,7 @@ function Expedientes_ConfigurarGrilla() {
     var url = baseUrl + 'Maestras/Expedientes/Expedientes_Paginado';
     $("#" + Expedientes_grilla).GridUnload();
     var colNames = ['Editar', 'Eliminar', 'Activo','Archivos','Expediente', 'ID_EXPEDIENTE', 'Nro. Expediente', 'Personal', 'Oficina', 'Reg. Laboral', 'Falta', 'Sanción',
-        'Hechos', 'Situación','Estado', 'FLG_ESTADO', 'Usuario Creación', 'Fecha Creación', 'Usuario Modificación', 'Fecha Modificación','Extension','Dias'];
+        'Fecha Hecho', 'Situación','Estado', 'FLG_ESTADO', 'Usuario Creación', 'Fecha Creación', 'Usuario Modificación', 'Fecha Modificación','Extension','Dias'];
     var colModels = [
         { name: 'EDITAR', index: 'EDITAR', align: 'center', width: 60, hidden: false, sortable: false, formatter: Expedientes_actionEditar },
         { name: 'ELIMINAR', index: 'ELIMINAR', align: 'center', width: 70, hidden: false, sortable: false, formatter: Expedientes_actionEliminar },

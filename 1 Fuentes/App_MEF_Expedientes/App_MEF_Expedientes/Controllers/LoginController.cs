@@ -9,6 +9,7 @@ using System.Security.Claims;
 using System.DirectoryServices;
 using MEF.Expedientes.Entity; 
 
+
 namespace App_MEF_Expedientes.Controllers
 {
     public class LoginController : Controller
@@ -96,7 +97,7 @@ namespace App_MEF_Expedientes.Controllers
         }
 
 
-
+    
 
 
 
