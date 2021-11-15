@@ -1,14 +1,14 @@
 ----------------------------------------------
 -- Export file for user EXPEDIENTES         --
--- Created by ivans on 11/11/2021, 6:11:20  --
+-- Created by ivans on 15/11/2021, 2:26:32  --
 ----------------------------------------------
 
-spool 4.VISTAS.log
 
-prompt
-prompt Creating view V_ADJUNTOS
-prompt ========================
-prompt
+
+--prompt
+--prompt Creating view V_ADJUNTOS
+--prompt ========================
+--prompt
 CREATE OR REPLACE VIEW EXPEDIENTES.V_ADJUNTOS AS
 SELECT
       V.ID_ADJUNTO,
@@ -32,10 +32,10 @@ SELECT
      INNER JOIN T_EXPM_DOMINIO D ON D.ID_DOMINIO = V.ID_TIPO_ARCHIVO
 /
 
-prompt
-prompt Creating view V_OFICINA
-prompt =======================
-prompt
+--prompt
+--prompt Creating view V_OFICINA
+--prompt =======================
+--prompt
 CREATE OR REPLACE VIEW EXPEDIENTES.V_OFICINA AS
 SELECT
       ID_OFICINA,
@@ -48,10 +48,10 @@ SELECT
       ID_TIPO_OFICINA = '03'
 /
 
-prompt
-prompt Creating view V_PERSONAL
-prompt ========================
-prompt
+--prompt
+--prompt Creating view V_PERSONAL
+--prompt ========================
+--prompt
 CREATE OR REPLACE VIEW EXPEDIENTES.V_PERSONAL AS
 SELECT
        DISTINCT(P.ID_PERSONAL) ID_PERSONAL,
@@ -75,10 +75,10 @@ SELECT
      WHERE P.FLG_ESTADO = 1
 /
 
-prompt
-prompt Creating view V_EXPEDIENTES
-prompt ===========================
-prompt
+--prompt
+--prompt Creating view V_EXPEDIENTES
+--prompt ===========================
+--prompt
 CREATE OR REPLACE VIEW EXPEDIENTES.V_EXPEDIENTES AS
 SELECT
       V.ID_EXPEDIENTE,
@@ -86,6 +86,7 @@ SELECT
       P.NOMBRE_COMPLETO,
       P.REGIMEN_LABORAL,
       P.OFICINA,
+      P.DESC_PUESTO,
       P.DNI,
       V.COD_EXPEDIENTE,
       TO_CHAR(V.FECHA_RECEPCION,'DD/MM/YYYY') FECHA_RECEPCION,
@@ -122,13 +123,17 @@ SELECT
       SIT.DESC_CORTA_DOMINIO SITUACION,
       NVL(V.ID_ESTADO,0) ID_ESTADO,
       ES.DESC_CORTA_DOMINIO ESTADO,
+      V.DOCUMENTO_NOTIFICA,
+      V.DIAS_VIGENTE,
+      V.EXTENSION_ARCHIVO,
       V.FLG_ESTADO,
       TO_CHAR(V.FEC_CREACION,'DD/MM/YYYY hh:mi:ss a.m.') FEC_CREACION,
       TO_CHAR(V.FEC_MODIFICACION,'DD/MM/YYYY hh:mi:ss a.m.') FEC_MODIFICACION,
       V.USU_CREACION,
       V.USU_MODIFICACION,
       V.IP_MODIFICACION,
-      V.IP_CREACION
+      V.IP_CREACION,
+      TO_DATE(SYSDATE,'DD/MM/YYYY') - TO_DATE(V.FECHA_PRESCRIPCION,'DD/MM/YYYY') as DIAS
 
   FROM
      T_EXPM_EXPEDIENTES V
@@ -144,4 +149,4 @@ SELECT
 /
 
 
-spool off
+

@@ -128,7 +128,7 @@ function GetRules(Usuario_Grilla) {
 
 
 function Expedientes_actionArchivos(cellvalue, options, rowObject) {
-    var COD_EXPEDIENTE = "'" + rowObject[5] + "'"; 
+    var COD_EXPEDIENTE = "'" + rowObject[6] + "'"; 
     var _btn = "<button title='Subir Archivo' onclick=\"Expedientes_SubirArchivo(" + rowObject[5] + "," + COD_EXPEDIENTE +");\" class=\"btn btn-link\" type=\"button\" style=\"text-decoration: none !important;\" data-toggle=\"modal\"  style=\"text-decoration: none !important;\" data-target=\"#myModalNuevo\"> <i class=\"clip-stack-empty\" style=\"color:#c35245;font-size:17px\"></i></button>";
     return _btn;
 }

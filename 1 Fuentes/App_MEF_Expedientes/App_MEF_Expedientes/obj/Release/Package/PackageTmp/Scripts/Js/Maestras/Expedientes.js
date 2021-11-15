@@ -14,13 +14,14 @@ function LimpiarExpedientes() {
 function Expedientes_ConfigurarGrilla() {
     var url = baseUrl + 'Maestras/Expedientes/Expedientes_Paginado';
     $("#" + Expedientes_grilla).GridUnload();
-    var colNames = ['Editar', 'Eliminar', 'Activo','Archivos', 'ID_EXPEDIENTE', 'Nro. Expediente', 'Personal', 'Oficina', 'Reg. Laboral', 'Falta', 'Sanción',
-        'Hechos', 'Situación','Estado', 'FLG_ESTADO', 'Usuario Creación', 'Fecha Creación', 'Usuario Modificación', 'Fecha Modificación'];
+    var colNames = ['Editar', 'Eliminar', 'Activo','Archivos','Expediente', 'ID_EXPEDIENTE', 'Nro. Expediente', 'Personal', 'Oficina', 'Reg. Laboral', 'Falta', 'Sanción',
+        'Fecha Hecho', 'Situación','Estado', 'FLG_ESTADO', 'Usuario Creación', 'Fecha Creación', 'Usuario Modificación', 'Fecha Modificación','Extension','Dias'];
     var colModels = [
         { name: 'EDITAR', index: 'EDITAR', align: 'center', width: 60, hidden: false, sortable: false, formatter: Expedientes_actionEditar },
         { name: 'ELIMINAR', index: 'ELIMINAR', align: 'center', width: 70, hidden: false, sortable: false, formatter: Expedientes_actionEliminar },
         { name: 'ACTIVO', index: 'ACTIVO', align: 'center', width: 55, hidden: false, sortable: false, formatter: Expedientes_actionActivo },
         { name: 'ARCHIVO', index: 'ARCHIVO', align: 'center', width: 80, hidden: false, sortable: false, formatter: Expedientes_actionArchivos },
+        { name: 'EXPEDIENTE', index: 'EXPEDIENTE', align: 'center', width: 80, hidden: false, sortable: false, formatter: Expedientes_actionCargaExpediente},
         { name: 'ID_EXPEDIENTE', index: 'ID_EXPEDIENTE', align: 'center', width: 50, hidden: true },
         { name: 'COD_EXPEDIENTE', index: 'COD_EXPEDIENTE', align: 'center', width: 150, hidden: false },
         { name: 'PERSONAL', index: 'PERSONAL', align: 'center', width: 200, hidden: false, resizable: true },
@@ -36,11 +37,14 @@ function Expedientes_ConfigurarGrilla() {
         { name: 'FEC_CREACION', index: 'FEC_CREACION', align: 'center', width: 160, hidden: false, sortable: true },
         { name: 'USU_MODIFICACION', index: 'USU_MODIFICACION', align: 'center', width: 150, hidden: false, sortable: true },
         { name: 'FEC_MODIFICACION', index: 'FEC_MODIFICACION', align: 'center', width: 160, hidden: false, sortable: true },
+        { name: 'EXTENSION_ARCHIVO', index: 'EXTENSION_ARCHIVO', align: 'center', width: 160, hidden: true, sortable: true },
+        { name: 'DIAS', index: 'DIAS', align: 'center', width: 160, hidden: true, sortable: true },
     ];
     var opciones = {
         GridLocal: false, multiselect: false, CellEdit: false, Editar: false, nuevo: false, eliminar: false, search: false, sort: 'DESC', rules: true,
         gridCompleteFunc: function () {
             $('#Grilla_Load').hide();
+            Documento_ConfigurarColor_FechaPrescripcion(Expedientes_grilla);
  
         },
 
@@ -48,13 +52,53 @@ function Expedientes_ConfigurarGrilla() {
     SICA.Grilla(Expedientes_grilla, Expedientes_barra, '', '400', '', "Lista de Expedientes", url, 'ID_EXPEDIENTE', colNames, colModels, 'ID_EXPEDIENTE', opciones);
 }
 
+
+
+function Documento_ConfigurarColor_FechaPrescripcion(Documento_Color_grilla) {
+    // cambia color cuando el documento paso 48 horas de observados
+    var rowKey = jQuery("#" + Expedientes_grilla).getDataIDs();
+    for (var i = 0; i < rowKey.length; i++) {
+        var data = jQuery("#" + Documento_Color_grilla).jqGrid('getRowData', rowKey[i]);
+
+        if (data.DIAS >= 300 ) { // 300 dias
+            $("#" + Documento_Color_grilla).jqGrid('setRowData', rowKey[i], true, { background: "rgb(243, 220, 22)" });
+        }
+
+    }
+}
+
+
+function Expedientes_actionCargaExpediente(cellvalue, options, rowObject) {
+    var COD_EXPEDIENTE = "'" + rowObject[6] + "'";
+    if (rowObject[14] == "Concluido") { // estado admin
+        if (rowObject[20] == "") {
+            var _btn = "<button title='Subir Archivo' onclick=\"Expedientes_SubirExpediente(" + rowObject[5] + "," + COD_EXPEDIENTE + ");\" class=\"btn btn-link\" type=\"button\" style=\"text-decoration: none !important;\" data-toggle=\"modal\"  style=\"text-decoration: none !important;\" data-target=\"#myModalNuevo\"> <i class=\"clip-upload\" style=\"color:#c35245;font-size:17px\"></i></button>";
+          } else {
+            var _btn = "<button title='ver Archivo' onclick=\"Expedientes_SubirExpediente(" + rowObject[5] + "," + COD_EXPEDIENTE + ");\" class=\"btn btn-link\" type=\"button\" style=\"text-decoration: none !important;\" data-toggle=\"modal\"  style=\"text-decoration: none !important;\" data-target=\"#myModalNuevo\"> <i class=\"clip-file-pdf\" style=\"color:#c35245;font-size:17px\"></i></button>";
+        }
+        } else {
+        var _btn = "-"; 
+    }
+    return _btn;
+}
+
+function Expedientes_SubirExpediente(ID_EXPEDIENTE, COD_EXPEDIENTE) {
+    jQuery("#myModalNuevo").html('');
+    jQuery("#myModalNuevo").load(baseUrl + "Maestras/Expedientes/Mantenimiento_Expediente?id=" + ID_EXPEDIENTE + "&COD_EXPEDIENTE=" + COD_EXPEDIENTE, function (responseText, textStatus, request) {
+        $.validator.unobtrusive.parse('#myModalNuevo');
+        if (request.status != 200) return;
+    });
+}
+
+
+
 function Expedientes_actionActivo(cellvalue, options, rowObject) {
     var check_ = 'check';
-    if (rowObject[14] == 1)
+    if (rowObject[15] == 1)
         check_ = 'checked';
 
     var _btn = "<label class=\"switch\">"
-        + "<input id=\"Expedientes_chk_" + rowObject[3] + "\" type=\"checkbox\" onchange=\"Expedientes_CambiarEstado(" + rowObject[4] + ",this)\" " + check_ + ">"
+        + "<input id=\"Expedientes_chk_" + rowObject[5] + "\" type=\"checkbox\" onchange=\"Expedientes_CambiarEstado(" + rowObject[5] + ",this)\" " + check_ + ">"
         + "<span class=\"slider round\"></span>"
         + "</label>";
     return _btn;
@@ -84,19 +128,19 @@ function GetRules(Usuario_Grilla) {
 
 
 function Expedientes_actionArchivos(cellvalue, options, rowObject) {
-    var COD_EXPEDIENTE = "'" + rowObject[5] + "'"; 
-    var _btn = "<button title='Subir Archivo' onclick=\"Expedientes_SubirArchivo(" + rowObject[4] + "," + COD_EXPEDIENTE +");\" class=\"btn btn-link\" type=\"button\" style=\"text-decoration: none !important;\" data-toggle=\"modal\"  style=\"text-decoration: none !important;\" data-target=\"#myModalNuevo\"> <i class=\"clip-stack-empty\" style=\"color:#c35245;font-size:17px\"></i></button>";
+    var COD_EXPEDIENTE = "'" + rowObject[6] + "'"; 
+    var _btn = "<button title='Subir Archivo' onclick=\"Expedientes_SubirArchivo(" + rowObject[5] + "," + COD_EXPEDIENTE +");\" class=\"btn btn-link\" type=\"button\" style=\"text-decoration: none !important;\" data-toggle=\"modal\"  style=\"text-decoration: none !important;\" data-target=\"#myModalNuevo\"> <i class=\"clip-stack-empty\" style=\"color:#c35245;font-size:17px\"></i></button>";
     return _btn;
 }
 
 function Expedientes_actionEliminar(cellvalue, options, rowObject) {
-    var _btn = "<button title='Eliminar' onclick=\"Expedientes_Eliminar(" + rowObject[4]  + ");\" class=\"btn btn-link\" type=\"button\" style=\"text-decoration: none !important;\"> <i class=\"clip-cancel-circle-2\" style=\"color:#c35245;font-size:17px\"></i></button>";
+    var _btn = "<button title='Eliminar' onclick=\"Expedientes_Eliminar(" + rowObject[5]  + ");\" class=\"btn btn-link\" type=\"button\" style=\"text-decoration: none !important;\"> <i class=\"clip-cancel-circle-2\" style=\"color:#c35245;font-size:17px\"></i></button>";
     return _btn;
 }
 
 
 function Expedientes_actionEditar(cellvalue, options, rowObject) {
-    var _btn = "<button title='Editar' onclick='Expedientes_Editar(" + rowObject[4] + ");' class=\"btn btn-link\" type=\"button\" data-toggle=\"modal\"  style=\"text-decoration: none !important;\" data-target=\"#myModalNuevo\"> <i class=\"clip-pencil-3\" style=\"color:#e68c1b;font-size:17px\"></i></button>";
+    var _btn = "<button title='Editar' onclick='Expedientes_Editar(" + rowObject[5] + ");' class=\"btn btn-link\" type=\"button\" data-toggle=\"modal\"  style=\"text-decoration: none !important;\" data-target=\"#myModalNuevo\"> <i class=\"clip-pencil-3\" style=\"color:#e68c1b;font-size:17px\"></i></button>";
     return _btn;
 }
 
@@ -163,11 +207,13 @@ function Expedientes_Actualizar() {
             ID_SITUACION: $("#ID_SITUACION").val(),
             ID_ESTADO: $("#ID_ESTADO").val(),
             OBSERVACION_SANCIONADORA: $("#OBSERVACION_SANCIONADORA").val(),
+            DIAS_VIGENTE: $("#DIAS_VIGENTE").val(),
+            DOCUMENTO_NOTIFICA: $("#DOCUMENTO_NOTIFICA").val(),
             USU_MODIFICACION: $("#inputHddcod_usuario").val(),
             TIPO: $("#HDF_Tipo_Expedientes").val(),
             Accion: $("#AccionExpedientes").val()
         };
-        jConfirm("¿ Desea actualizar este tipo archivo ?", "Atención", function (r) {
+        jConfirm("¿ Desea actualizar este registro ?", "Atención", function (r) {
             if (r) {
                 var url = baseUrl + 'Maestras/Expedientes/Expedientes_Actualizar';
                 var auditoria = Autorizacion.Ajax(url, item, false);
@@ -234,6 +280,8 @@ function Expedientes_Registrar() {
                         SANCION: $("#SANCION").val(),
                         ID_SITUACION: $("#ID_SITUACION").val(),
                         ID_ESTADO: $("#ID_ESTADO").val(),
+                        DIAS_VIGENTE: $("#DIAS_VIGENTE").val(),
+                        DOCUMENTO_NOTIFICA: $("#DOCUMENTO_NOTIFICA").val(),
                         OBSERVACION_SANCIONADORA: $("#OBSERVACION_SANCIONADORA").val(),
                         USU_CREACION: $("#inputHddcod_usuario").val(),
                         Accion: $("#AccionExpedientes").val()
@@ -261,6 +309,42 @@ function Expedientes_Registrar() {
 }
 
 
+
+
+
+
+function Expedientes_Registrar_PDF_Expediente() {
+    if (Archivo_cambiado) {
+        jConfirm("¿Desea guardar este documento digital ?", "Atención", function (r) {
+            if (r) {
+                var item =
+                {
+                    ID_EXPEDIENTE: $("#hdfID_EXPEDIENTE").val(),
+                    MiArchivo: Archivo_cambiado == true ? ArchivoNuevo_Array[0] : '',
+                };
+                var url = baseUrl + 'Maestras/Expedientes/Expedientes_InsertarDocumento_Digital';
+                var auditoria = Autorizacion.Ajax(url, item, false);
+                if (auditoria != null) {
+                    if (auditoria.EJECUCION_PROCEDIMIENTO) {
+                        if (!auditoria.RECHAZAR) {
+                            Archivo_cambiado = false;
+                            $("#lbl_file").html("Seleccionar archivo");
+                            jAlert("Documento guardado satisfactoriamente", "Proceso");
+                            //$('#myModalNuevo').modal('hide');
+                            //jQuery("#myModalNuevo").html('');
+                        } else {
+                            jAlert(auditoria.MENSAJE_SALIDA, 'Atención');
+                        }
+                    } else {
+                        jAlert(auditoria.MENSAJE_SALIDA, 'Atención');
+                    }
+                }
+            }
+        });
+    } else {
+        $('#validar_file').show(); 
+    }
+}
 
 /*********************************************** ----------------- *************************************************/
 

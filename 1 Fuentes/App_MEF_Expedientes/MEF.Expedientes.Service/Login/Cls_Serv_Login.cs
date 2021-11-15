@@ -10,11 +10,16 @@ using MEF.Expedientes.Entity;
 using MEF.Expedientes.Entity.Login;
 using MEF.Expedientes.Repository;
 using MEF.Expedientes.Contract.Login;
+using System.Configuration; 
 
 namespace MEF.Expedientes.Service.Login
 {
     public class Cls_Serv_Login : Repository<Cls_Ent_Usuario>, ICls_Serv_Login
     {
+        private readonly string Owner_Seguridad;
+        public  Cls_Serv_Login(){
+            Owner_Seguridad = ConfigurationManager.AppSettings["OWNER_SEGURIDAD"].ToString();
+        }
         public Cls_Ent_Usuario Usuario(Cls_Ent_Usuario entidad, ref Cls_Ent_Auditoria auditoria)
         {
             auditoria.Limpiar();
@@ -22,7 +27,7 @@ namespace MEF.Expedientes.Service.Login
             Cls_Ent_Usuario lista = new Cls_Ent_Usuario();
             try
             {
-                using (var cmd = _context.GetStoredProcedureCommand("SEGURIDAD.PCK_SEEGURIDAD_LDAP.USP_USUARIO_DET_PERFIL_LISTAR",
+                using (var cmd = _context.GetStoredProcedureCommand(Owner_Seguridad +".PCK_SEEGURIDAD_LDAP.USP_USUARIO_DET_PERFIL_LISTAR",
                 new OracleParameter("PI_ID_SISTEMA", entidad.ID_SISTEMA),
                 new OracleParameter("PI_USUARIO", entidad.LOGIN_USUARIO),
                 //new OracleParameter("PI_Results", OracleDbType.Int32, ParameterDirection.Output),
@@ -99,7 +104,7 @@ namespace MEF.Expedientes.Service.Login
             List<Cls_Ent_Modulos> lista = new List<Cls_Ent_Modulos>();
             try
             {
-                using (var cmd = _context.GetStoredProcedureCommand("SEGURIDAD.PCK_SEEGURIDAD_LDAP.USP_MENU_USUARIO_PERFIL_LISTAR",
+                using (var cmd = _context.GetStoredProcedureCommand(Owner_Seguridad+".PCK_SEEGURIDAD_LDAP.USP_MENU_USUARIO_PERFIL_LISTAR",
                 new OracleParameter("PI_ID_USUARIO", param.ID_USUARIO),
                 new OracleParameter("PI_ID_SISTEMA", param.ID_SISTEMA),
                 new OracleParameter("PI_ID_PERFIL", param.ID_PERFIL),

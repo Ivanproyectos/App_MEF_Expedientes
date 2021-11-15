@@ -56,22 +56,25 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/04/2021 20:17:59</publishTime>
     </File>
     <File Include="Areas/Maestras/Views/Adjuntos/Mantenimiento_Ver.cshtml">
-      <publishTime>11/05/2021 11:12:24</publishTime>
+      <publishTime>11/14/2021 17:55:26</publishTime>
     </File>
     <File Include="Areas/Maestras/Views/Expedientes/Index.cshtml">
-      <publishTime>11/09/2021 11:10:52</publishTime>
+      <publishTime>11/15/2021 10:38:50</publishTime>
     </File>
     <File Include="Areas/Maestras/Views/Expedientes/Mantenimiento.cshtml">
-      <publishTime>11/06/2021 12:10:44</publishTime>
+      <publishTime>11/14/2021 16:01:05</publishTime>
     </File>
     <File Include="Areas/Maestras/Views/Expedientes/Mantenimiento_Archivos.cshtml">
       <publishTime>11/04/2021 19:55:40</publishTime>
+    </File>
+    <File Include="Areas/Maestras/Views/Expedientes/Mantenimiento_Expediente.cshtml">
+      <publishTime>11/14/2021 23:58:39</publishTime>
     </File>
     <File Include="Areas/Maestras/Views/Web.config">
       <publishTime>10/25/2021 10:49:15</publishTime>
     </File>
     <File Include="Areas/Reportes/Views/Expedientes/Index.cshtml">
-      <publishTime>11/05/2021 16:49:05</publishTime>
+      <publishTime>11/12/2021 21:17:19</publishTime>
     </File>
     <File Include="Areas/Reportes/Views/web.config">
       <publishTime>11/05/2021 12:01:34</publishTime>
@@ -1007,10 +1010,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>10/22/2021 21:55:01</publishTime>
     </File>
     <File Include="bin/App_MEF_Expedientes.dll">
-      <publishTime>11/09/2021 11:14:32</publishTime>
+      <publishTime>11/15/2021 14:57:11</publishTime>
     </File>
     <File Include="bin/App_MEF_Expedientes.pdb">
-      <publishTime>11/09/2021 11:14:32</publishTime>
+      <publishTime>11/15/2021 14:57:11</publishTime>
     </File>
     <File Include="bin/de/Microsoft.ReportViewer.WebForms.resources.dll">
       <publishTime>06/24/2012 07:52:52</publishTime>
@@ -1097,43 +1100,43 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>06/24/2012 07:50:38</publishTime>
     </File>
     <File Include="bin/MEF.Expedientes.Contract.dll">
-      <publishTime>11/09/2021 11:14:32</publishTime>
+      <publishTime>11/15/2021 14:57:10</publishTime>
     </File>
     <File Include="bin/MEF.Expedientes.Contract.pdb">
-      <publishTime>11/09/2021 11:14:32</publishTime>
+      <publishTime>11/15/2021 14:57:10</publishTime>
     </File>
     <File Include="bin/MEF.Expedientes.Data.dll">
-      <publishTime>11/09/2021 11:14:32</publishTime>
+      <publishTime>11/15/2021 14:57:10</publishTime>
     </File>
     <File Include="bin/MEF.Expedientes.Data.dll.config">
       <publishTime>10/25/2021 11:04:54</publishTime>
     </File>
     <File Include="bin/MEF.Expedientes.Data.pdb">
-      <publishTime>11/09/2021 11:14:32</publishTime>
+      <publishTime>11/15/2021 14:57:10</publishTime>
     </File>
     <File Include="bin/MEF.Expedientes.Entity.dll">
-      <publishTime>11/08/2021 13:35:43</publishTime>
+      <publishTime>11/15/2021 14:57:09</publishTime>
     </File>
     <File Include="bin/MEF.Expedientes.Entity.pdb">
-      <publishTime>11/08/2021 13:35:43</publishTime>
+      <publishTime>11/15/2021 14:57:09</publishTime>
     </File>
     <File Include="bin/MEF.Expedientes.Repository.dll">
-      <publishTime>11/09/2021 11:14:32</publishTime>
+      <publishTime>11/15/2021 14:57:10</publishTime>
     </File>
     <File Include="bin/MEF.Expedientes.Repository.dll.config">
       <publishTime>10/29/2021 16:36:38</publishTime>
     </File>
     <File Include="bin/MEF.Expedientes.Repository.pdb">
-      <publishTime>11/09/2021 11:14:32</publishTime>
+      <publishTime>11/15/2021 14:57:10</publishTime>
     </File>
     <File Include="bin/MEF.Expedientes.Service.dll">
-      <publishTime>11/09/2021 11:14:32</publishTime>
+      <publishTime>11/15/2021 14:57:10</publishTime>
     </File>
     <File Include="bin/MEF.Expedientes.Service.dll.config">
       <publishTime>10/29/2021 16:59:23</publishTime>
     </File>
     <File Include="bin/MEF.Expedientes.Service.pdb">
-      <publishTime>11/09/2021 11:14:32</publishTime>
+      <publishTime>11/15/2021 14:57:10</publishTime>
     </File>
     <File Include="bin/Microsoft.ReportViewer.WebForms.dll">
       <publishTime>06/24/2012 07:52:52</publishTime>
@@ -1448,7 +1451,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>10/22/2021 21:54:50</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>10/29/2021 17:16:22</publishTime>
+      <publishTime>11/15/2021 13:57:26</publishTime>
     </File>
     <File Include="Recursos/Form/DescargarAdjuntos.aspx">
       <publishTime>11/04/2021 20:04:21</publishTime>
@@ -1574,7 +1577,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>10/30/2021 17:20:55</publishTime>
     </File>
     <File Include="Scripts/Js/Administracion/FormatoCorreo.js">
-      <publishTime>11/01/2021 09:56:45</publishTime>
+      <publishTime>11/15/2021 14:21:18</publishTime>
     </File>
     <File Include="Scripts/Js/Administracion/Sancion.js">
       <publishTime>10/30/2021 17:27:48</publishTime>
@@ -1589,7 +1592,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/09/2021 11:35:42</publishTime>
     </File>
     <File Include="Scripts/Js/Maestras/Expedientes.js">
-      <publishTime>11/02/2021 20:09:44</publishTime>
+      <publishTime>11/15/2021 14:50:12</publishTime>
     </File>
     <File Include="Scripts/Js/Maestras/Expedientes_Fn.js">
       <publishTime>11/06/2021 11:05:00</publishTime>
@@ -1670,13 +1673,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/06/2021 14:35:48</publishTime>
     </File>
     <File Include="Views/Login/Index.cshtml">
-      <publishTime>10/27/2021 23:18:05</publishTime>
+      <publishTime>11/15/2021 14:15:48</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>10/22/2021 21:54:50</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>11/09/2021 11:10:30</publishTime>
+      <publishTime>11/11/2021 15:35:03</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>10/22/2021 21:54:50</publishTime>
@@ -1688,7 +1691,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>10/23/2021 09:17:35</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/08/2021 13:35:46</publishTime>
+      <publishTime>11/15/2021 14:57:11</publishTime>
     </File>
   </ItemGroup>
 </Project>

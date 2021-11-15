@@ -338,11 +338,22 @@
                             <div class="form-row col-sm-4">
                                 @Html.LabelFor(model => model.SEARCH_ORGANO_INSTRUCTOR, new { @class = "" })
                                 <div class="col-sm-12 input-group">
-                                    @Html.TextBoxFor(model => model.SEARCH_ORGANO_INSTRUCTOR, new { @class = "form-control", @maxlength = "100", @placeholder = "Ejm: Perez Galvez Rin..." })
+                                    @Html.TextBoxFor(model => model.SEARCH_ORGANO_INSTRUCTOR, new { @class = "form-control", @maxlength = "100", @placeholder = "Ejm: Consejo fiscal..." })
                                     <span class="input-group-addon" style="cursor: pointer; font-weight: bold;" title="Buscar Remitente" onclick=""><i class=" clip-search-3" style="font-size: 13px;"></i></span>
                                 </div>
                                 @Html.ValidationMessageFor(model => model.SEARCH_ORGANO_INSTRUCTOR, string.Empty, new { @class = "cssMessageError" })
                             </div>
+
+
+                            <div class="form-row col-sm-4">
+                                @Html.LabelFor(model => model.SEARCH_ORGANO_SANCIONADOR, new { @class = "" })
+                                <div class="col-sm-12 input-group">
+                                    @Html.TextBoxFor(model => model.SEARCH_ORGANO_SANCIONADOR, new { @class = "form-control", @maxlength = "100", @placeholder = "Ejm: Consejo fiscal..." })
+                                    <span class="input-group-addon" style="cursor: pointer; font-weight: bold;" title="Buscar Remitente" onclick=""><i class=" clip-search-3" style="font-size: 13px;"></i></span>
+                                </div>
+                                @Html.ValidationMessageFor(model => model.SEARCH_ORGANO_SANCIONADOR, string.Empty, new { @class = "cssMessageError" })
+                            </div>
+
 
                             <div class="form-row col-sm-4">
                                 @Html.LabelFor(model => model.RECOMENDACION_PREINFORME, new { @class = "" })
@@ -367,6 +378,14 @@
                                 @Html.ValidationMessageFor(model => model.FECHA_NOTIFICACION_INICIO, string.Empty, new { @class = "cssMessageError" })
                             </div>
 
+
+                            <div class="form-row col-sm-4">
+                                @Html.LabelFor(model => model.DOCUMENTO_NOTIFICA, new { @class = "" })
+                                @Html.TextBoxFor(model => model.DOCUMENTO_NOTIFICA, new { @class = "form-control", @maxlength = "100" })
+                                @Html.ValidationMessageFor(model => model.DOCUMENTO_NOTIFICA, string.Empty, new { @class = "cssMessageError" })
+                            </div>
+
+
                             <div class="form-row col-sm-4">
                                 @Html.LabelFor(model => model.DOCUMENTO_FINALIZACION, new { @class = "" })
                                 @Html.TextBoxFor(model => model.DOCUMENTO_FINALIZACION, new { @class = "form-control", @maxlength = "100" })
@@ -374,19 +393,18 @@
                             </div>
 
                             <div class="form-row col-sm-4">
+                                @Html.LabelFor(model => model.DIAS_VIGENTE, new { @class = "" })
+                                @Html.TextBoxFor(model => model.DIAS_VIGENTE, new { @class = "form-control", @maxlength = "100" })
+                                @Html.ValidationMessageFor(model => model.DIAS_VIGENTE, string.Empty, new { @class = "cssMessageError" })
+                            </div>
+
+
+                            <div class="form-row col-sm-4">
                                 @Html.LabelFor(model => model.RECOMENDACION_INSTRUCTOR, new { @class = "" })
-                                @Html.TextBoxFor(model => model.RECOMENDACION_INSTRUCTOR, new { @class = "form-control", @maxlength = "100" })
+                                @Html.TextBoxFor(model => model.RECOMENDACION_INSTRUCTOR, new { @class = "form-control", @maxlength = "200" })
                                 @Html.ValidationMessageFor(model => model.RECOMENDACION_INSTRUCTOR, string.Empty, new { @class = "cssMessageError" })
                             </div>
 
-                            <div class="form-row col-sm-4">
-                                @Html.LabelFor(model => model.SEARCH_ORGANO_SANCIONADOR, new { @class = "" })
-                                <div class="col-sm-12 input-group">
-                                    @Html.TextBoxFor(model => model.SEARCH_ORGANO_SANCIONADOR, new { @class = "form-control", @maxlength = "100", @placeholder = "Ejm: Perez Galvez Rin..." })
-                                    <span class="input-group-addon" style="cursor: pointer; font-weight: bold;" title="Buscar Remitente" onclick=""><i class=" clip-search-3" style="font-size: 13px;"></i></span>
-                                </div>
-                                @Html.ValidationMessageFor(model => model.SEARCH_ORGANO_SANCIONADOR, string.Empty, new { @class = "cssMessageError" })
-                            </div>
 
 
                             <div class="form-row col-sm-4">
