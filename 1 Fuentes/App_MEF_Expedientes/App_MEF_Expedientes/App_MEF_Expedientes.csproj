@@ -631,6 +631,9 @@
     <Content Include="Areas\Maestras\Views\Adjuntos\Descargar_Archivo.cshtml" />
     <Content Include="Areas\Reportes\Views\Expedientes\Index.cshtml" />
     <Content Include="Areas\Maestras\Views\Expedientes\Mantenimiento_Expediente.cshtml" />
+    <Content Include="..\..\..\..\..\..\Escritorio\LINK-SOFT\PROYECTOS 2021\MEF\LEJASOS 2021\Documentos Legajo\5. Guía de Instalación y Configuración.docx">
+      <Link>5. Guía de Instalación y Configuración.docx</Link>
+    </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Images\block.jpg" />
     <Content Include="Recursos\Form\DescargarAdjuntos.aspx" />

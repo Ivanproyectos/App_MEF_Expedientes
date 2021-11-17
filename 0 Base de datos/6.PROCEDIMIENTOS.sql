@@ -1,5 +1,5 @@
 ----------------------------------------------
--- Export file for user EXPEDIENTES         --
+-- Export file for user APP_GESEXPDIS         --
 -- Created by ivans on 08/11/2021, 1:22:45  --
 ----------------------------------------------
 
@@ -9,7 +9,7 @@
 --prompt  Creating package PCK_EXPEDIENTES
 --prompt  ================================
 --prompt 
-create or replace package expedientes.PCK_EXPEDIENTES as
+create or replace package APP_GESEXPDIS.PCK_EXPEDIENTES as
 
   PROCEDURE USP_EXPEDIENTE_PAGINACION
   (
@@ -29,7 +29,7 @@ end PCK_EXPEDIENTES;
 --prompt  Creating package body PCK_EXPEDIENTES
 --prompt  =====================================
 --prompt 
-create or replace package body expedientes.PCK_EXPEDIENTES as
+create or replace package body APP_GESEXPDIS.PCK_EXPEDIENTES as
 
   PROCEDURE USP_EXPEDIENTE_PAGINACION
   (

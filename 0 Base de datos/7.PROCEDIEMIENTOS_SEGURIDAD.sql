@@ -9,7 +9,7 @@
 --prompt Creating package PCK_SEEGURIDAD_LDAP
 --prompt ====================================
 --prompt
-create or replace package seguridad.PCK_SEEGURIDAD_LDAP is
+create or replace package SEGURIDAD.PCK_SEEGURIDAD_LDAP is
 
   -- Author  : PERCY LICITO
   -- Created : 27/08/2021 17:41:57
@@ -53,7 +53,7 @@ end ;
 --prompt Creating package body PCK_SEEGURIDAD_LDAP
 --prompt =========================================
 --prompt
-create or replace package body seguridad.PCK_SEEGURIDAD_LDAP is
+create or replace package body SEGURIDAD.PCK_SEEGURIDAD_LDAP is
 
 PROCEDURE USP_USUARIO_DETALLE
 (
