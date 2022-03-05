@@ -252,10 +252,16 @@ function Expedientes_Registrar() {
         } else {
             jConfirm("¿Desea guardar este registro ?", "Atención", function (r) {
                 if (r) {
+                    if (!$('#Check_Codigo_Expdiente').is(":checked"))
+                        FLG_CODIGO = 1
+                    else
+                        FLG_CODIGO = 0; 
+
                     var item =
                     {
                         ID_REMITENTE: $("#ID_REMITENTE").val(),
                         ID_PERSONAL: $("#ID_PERSONAL").val(),
+                        COD_EXPEDIENTE: $("#COD_EXPEDIENTE").val(),
                         ID_ORGANO_INSTRUCTOR: $("#ID_ORGANO_INSTRUCTOR").val(),
                         ID_ORGANO_SANCIONADOR: $("#ID_ORGANO_SANCIONADOR").val(),
                         FECHA_RECEPCION: $("#FECHA_RECEPCION").val(),
@@ -286,7 +292,7 @@ function Expedientes_Registrar() {
                         USU_CREACION: $("#inputHddcod_usuario").val(),
                         Accion: $("#AccionExpedientes").val()
                     };
-                    var url = baseUrl + 'Maestras/Expedientes/Expedientes_Insertar';
+                    var url = baseUrl + 'Maestras/Expedientes/Expedientes_Insertar?FLG_CODIGO=' + FLG_CODIGO;
                     var auditoria = Autorizacion.Ajax(url, item, false);
                     if (auditoria != null) {
                         if (auditoria.EJECUCION_PROCEDIMIENTO) {
@@ -380,7 +386,7 @@ function Expedientes_CambiarEstado(ID_EXPEDIENTE, MiCheck) {
 
 function Expedientes_Eliminar(ID_EXPEDIENTE) {
     //var data = jQuery("#" + Expedientes_grilla).jqGrid('getRowData', CODIGO);
-    jConfirm("¿ Desea eliminar este tipo archivo ?", "Atención", function (r) {
+    jConfirm("¿ Desea eliminar este registro ?", "Atención", function (r) {
         if (r) {
             var url = baseUrl + 'Maestras/Expedientes/Expedientes_Eliminar';
             var item = {

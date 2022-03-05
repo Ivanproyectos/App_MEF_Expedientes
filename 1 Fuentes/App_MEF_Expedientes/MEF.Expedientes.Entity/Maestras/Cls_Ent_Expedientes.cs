@@ -55,6 +55,8 @@ namespace MEF.Expedientes.Entity.Maestras
         public DateTime? FEC_MODIFICACION { get; set; }
 
         public string IP_MODIFICACION { get; set; }
+        public int ANIO_CODIGO { get; set; }
         
+
     }
 }

@@ -21,7 +21,9 @@ namespace MEF.Expedientes.Service.Administracion
 
             try
             {
-                if (!string.IsNullOrEmpty(entidad.DESC_CORTA_DOMINIO))
+                if (!string.IsNullOrEmpty(entidad.COD_DOMINIO)) 
+                    lista = FindAll(w => w.COD_DOMINIO.ToUpper().Contains(entidad.COD_DOMINIO.ToUpper())).Where(w => w.NOM_DOMINIO == entidad.NOM_DOMINIO && w.ID_DOMINIO_PADRE != 0);
+                else if(!string.IsNullOrEmpty(entidad.DESC_CORTA_DOMINIO))
                     lista = FindAll(w => w.DESC_CORTA_DOMINIO.ToUpper().Contains(entidad.DESC_CORTA_DOMINIO.ToUpper())).Where(w => w.NOM_DOMINIO == entidad.NOM_DOMINIO && w.ID_DOMINIO_PADRE != 0);
                 //lista = GetAll().OrderByDescending(w => w.ID_DOMINIO);
                 else if(!string.IsNullOrEmpty(entidad.DESC_LARGA_DOMINIO) )
@@ -40,17 +42,45 @@ namespace MEF.Expedientes.Service.Administracion
         }
 
 
-        public IEnumerable<Cls_Ent_Dominio> Dominio_Buscar(ref Cls_Ent_Auditoria auditoria, long id = 0, string descripcion = null)
+        public Cls_Ent_Dominio Dominio_Listar_MaxId(Cls_Ent_Dominio entidad, ref Cls_Ent_Auditoria auditoria)
+        {
+            auditoria.Limpiar();
+            Cls_Ent_Dominio lista;
+
+            try
+            {
+                if (!string.IsNullOrEmpty(entidad.COD_DOMINIO))
+                    lista = FindAll(w => w.FLG_ESTADO ==1 && w.ID_DOMINIO_PADRE != 0 && w.NOM_DOMINIO == entidad.COD_DOMINIO).OrderByDescending(x => x.ID_DOMINIO).FirstOrDefault(); 
+                   else 
+                    lista = new Cls_Ent_Dominio();
+            }
+            catch (Exception ex)
+            {
+                auditoria.Error(ex);
+                lista = new Cls_Ent_Dominio();
+            }
+            return lista;
+        }
+
+
+
+        public IEnumerable<Cls_Ent_Dominio> Dominio_Buscar(ref Cls_Ent_Auditoria auditoria, long id = 0, string descripcion = null,string NOM_DOMINIO = null, string COD_DOMINIO=null)
         {
             auditoria.Limpiar();
             IEnumerable<Cls_Ent_Dominio> entidad = new List<Cls_Ent_Dominio>();
 
             try
             {
-                if (id != 0)
-                    entidad = FindAll(w => w.ID_DOMINIO == id);
-                else if (descripcion != null)
-                    entidad = FindAll(e => e.DESC_CORTA_DOMINIO.ToUpper() == descripcion.ToUpper());
+                if(NOM_DOMINIO == "NUM_EXP")
+                {
+                    entidad = FindAll(e => e.COD_DOMINIO.ToUpper() == COD_DOMINIO);
+                }
+                else{
+                    if (id != 0)
+                        entidad = FindAll(w => w.ID_DOMINIO == id);
+                    else if (descripcion != null)
+                        entidad = FindAll(e => e.DESC_CORTA_DOMINIO.ToUpper() == descripcion.ToUpper());
+                }
             }
             catch (Exception ex)
             {
@@ -89,25 +119,44 @@ namespace MEF.Expedientes.Service.Administracion
 
         public void Dominio_Actualizar_Dominio(Cls_Ent_Dominio entDominio, ref Cls_Ent_Auditoria auditoria)
         {
+            string mensaje = "";
             auditoria.Limpiar();
             try
             {
                 List<Cls_Ent_Dominio> Mientidad = (List<Cls_Ent_Dominio>)Dominio_Buscar(ref auditoria, entDominio.ID_DOMINIO);
                 List<Cls_Ent_Dominio> buscar = new List<Cls_Ent_Dominio>();
-                buscar = (List<Cls_Ent_Dominio>)Dominio_Buscar(ref auditoria, 0, entDominio.DESC_CORTA_DOMINIO);
+                buscar = (List<Cls_Ent_Dominio>)Dominio_Buscar(ref auditoria, 0, entDominio.DESC_CORTA_DOMINIO, Mientidad[0].NOM_DOMINIO, entDominio.COD_DOMINIO);
                 bool Valido = true;
                 if (buscar.Count() > 0)
                 {
                     foreach (var item in buscar)
                     {
-                        if (item.DESC_CORTA_DOMINIO.ToUpper().Equals(entDominio.DESC_CORTA_DOMINIO))
+                        if (item.NOM_DOMINIO == "NUM_EXP")
                         {
+                            if (item.COD_DOMINIO.ToUpper().Equals(entDominio.COD_DOMINIO))
+                            {
                                 if (item.ID_DOMINIO != Mientidad[0].ID_DOMINIO)
                                 {
+                                    mensaje = "Año ya existe";
                                     Valido = false;
                                     break;
                                 }
+                            }
                         }
+                        else
+                        {
+
+                            if (item.DESC_CORTA_DOMINIO.ToUpper().Equals(entDominio.DESC_CORTA_DOMINIO.ToUpper()))
+                            {
+                                if (item.ID_DOMINIO != Mientidad[0].ID_DOMINIO)
+                                {
+                                    mensaje = "Descripción ya existe";
+                                    Valido = false;
+                                    break;
+                                }
+                            }
+                        }
+
                     }
                 }
                 if (Valido)
@@ -122,7 +171,7 @@ namespace MEF.Expedientes.Service.Administracion
                 }
                 else
                 {
-                    auditoria.Rechazar("Descripción ya existe");
+                    auditoria.Rechazar(mensaje);
                 }
             }
             catch (Exception ex)
@@ -171,7 +220,8 @@ namespace MEF.Expedientes.Service.Administracion
         {
             auditoria.Limpiar();
             bool Valido = true;
-            List<Cls_Ent_Dominio> buscar = Dominio_Buscar(ref auditoria, entidad.ID_DOMINIO, entidad.DESC_CORTA_DOMINIO).ToList();
+            string mensaje = ""; 
+            List<Cls_Ent_Dominio> buscar = Dominio_Buscar(ref auditoria, entidad.ID_DOMINIO, entidad.DESC_CORTA_DOMINIO, entidad.NOM_DOMINIO,entidad.COD_DOMINIO).ToList();
 
             try
             {
@@ -179,11 +229,24 @@ namespace MEF.Expedientes.Service.Administracion
                 {
                     foreach (var item in buscar)
                     {
-                        if (item.DESC_CORTA_DOMINIO.ToUpper().Equals(entidad.DESC_CORTA_DOMINIO))
-                        {            
+                        if (entidad.NOM_DOMINIO == "NUM_EXP") {
+                            if (item.COD_DOMINIO.ToUpper().Equals(entidad.COD_DOMINIO))
+                            {
+                                mensaje = "Año ya existe"; 
                                 Valido = false;
                                 break;
+                            }
                         }
+                        else
+                        {
+                            if (item.DESC_CORTA_DOMINIO.ToUpper().Equals(entidad.DESC_CORTA_DOMINIO))
+                            {
+                                Valido = false;
+                                mensaje = "Descripción ya existe"; 
+                                break;
+                            }
+                        }
+                   
                     }
                 }
 
@@ -197,7 +260,7 @@ namespace MEF.Expedientes.Service.Administracion
                 
                 }
                 else
-                    auditoria.Rechazar("Descripción ya existe");
+                    auditoria.Rechazar(mensaje);
             }
             catch (Exception ex)
             {

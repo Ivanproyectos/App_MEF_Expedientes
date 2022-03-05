@@ -188,6 +188,7 @@
     <Compile Include="Areas\Administracion\Controllers\EstadoController.cs" />
     <Compile Include="Areas\Administracion\Controllers\FaltasController.cs" />
     <Compile Include="Areas\Administracion\Controllers\FormatosCorreoController.cs" />
+    <Compile Include="Areas\Administracion\Controllers\Correlativo_ExpedienteController.cs" />
     <Compile Include="Areas\Administracion\Controllers\SancionController.cs" />
     <Compile Include="Areas\Administracion\Controllers\SituacionController.cs" />
     <Compile Include="Areas\Administracion\Controllers\TipoArchivoController.cs" />
@@ -634,6 +635,8 @@
     <Content Include="..\..\..\..\..\..\Escritorio\LINK-SOFT\PROYECTOS 2021\MEF\LEJASOS 2021\Documentos Legajo\5. Guía de Instalación y Configuración.docx">
       <Link>5. Guía de Instalación y Configuración.docx</Link>
     </Content>
+    <Content Include="Areas\Administracion\Views\Correlativo_Expediente\Index.cshtml" />
+    <Content Include="Areas\Administracion\Views\Correlativo_Expediente\Mantenimiento.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Images\block.jpg" />
     <Content Include="Recursos\Form\DescargarAdjuntos.aspx" />
@@ -676,6 +679,7 @@
     <Content Include="Scripts\jqueryPer.js" />
     <Content Include="Scripts\jquery_LinkFish.js" />
     <Content Include="Scripts\JSLINQ.js" />
+    <Content Include="Scripts\Js\Administracion\Correlativo_Expediente.js" />
     <Content Include="Scripts\Js\Administracion\FormatoCorreo.js" />
     <Content Include="Scripts\Js\Administracion\Situacion.js" />
     <Content Include="Scripts\Js\Administracion\Sancion.js" />

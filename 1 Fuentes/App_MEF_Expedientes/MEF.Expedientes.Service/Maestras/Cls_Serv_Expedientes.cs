@@ -17,7 +17,7 @@ namespace MEF.Expedientes.Service.Maestras
         readonly string SECUENCIA = "SEQ_ID_EXPEDIENTES";
 
 
-        public IEnumerable<Cls_Ent_Expedientes> Expedientes_Buscar(ref Cls_Ent_Auditoria auditoria, long id = 0, string descripcion = null)
+        public IEnumerable<Cls_Ent_Expedientes> Expedientes_Buscar(ref Cls_Ent_Auditoria auditoria, long id = 0, string descripcion = null )
         {
             auditoria.Limpiar();
             IEnumerable<Cls_Ent_Expedientes> entidad = new List<Cls_Ent_Expedientes>();
@@ -77,7 +77,7 @@ namespace MEF.Expedientes.Service.Maestras
                 {
                     foreach (var item in buscar)
                     {
-                        if (item.COD_EXPEDIENTE.ToUpper().Equals(entExpedientes.COD_EXPEDIENTE))
+                        if (item.COD_EXPEDIENTE.ToUpper().Equals(entExpedientes.COD_EXPEDIENTE) && item.ANIO_CODIGO == entExpedientes.ANIO_CODIGO)
                         {
                             if (item.ID_EXPEDIENTE != Mientidad[0].ID_EXPEDIENTE)
                             {
@@ -101,7 +101,7 @@ namespace MEF.Expedientes.Service.Maestras
                     if (entExpedientes.ID_ACTO == 0)
                         Mientidad[0].ID_ACTO = null; 
                     else
-                        entExpedientes.ID_ACTO = entExpedientes.ID_ACTO;
+                        Mientidad[0].ID_ACTO = entExpedientes.ID_ACTO;
 
                     Mientidad[0].OBSERVACION_INVESTIGADORA = entExpedientes.OBSERVACION_INVESTIGADORA;
                     //Mientidad[0].ID_FALTA = entExpedientes.ID_FALTA;
@@ -240,7 +240,7 @@ namespace MEF.Expedientes.Service.Maestras
                 {
                     foreach (var item in buscar)
                     {
-                        if (item.COD_EXPEDIENTE.ToUpper().Equals(entidad.COD_EXPEDIENTE))
+                        if (item.COD_EXPEDIENTE.ToUpper().Equals(entidad.COD_EXPEDIENTE) && item.ANIO_CODIGO == entidad.ANIO_CODIGO) // codigo por año
                         {
                             Valido = false;
                             break;
@@ -251,11 +251,11 @@ namespace MEF.Expedientes.Service.Maestras
                 if (Valido)
                 {
                     entidad.ID_EXPEDIENTE = GetSequence(SECUENCIA);
-                    var COD = "000000" + entidad.ID_EXPEDIENTE;
-                    var IndexCount = Convert.ToString(entidad.ID_EXPEDIENTE).Length;
-                    if (IndexCount < 7) {
-                        var CODIGO_EXP = string.Format("{0}{1}", "EXP", COD.Substring(IndexCount, 6));
-                        entidad.COD_EXPEDIENTE = CODIGO_EXP; 
+                    //var COD = "000000" + entidad.ID_EXPEDIENTE;
+                    //var IndexCount = Convert.ToString(entidad.ID_EXPEDIENTE).Length;
+                    //if (IndexCount < 7) {
+                    //    var CODIGO_EXP = string.Format("{0}{1}", "EXP", COD.Substring(IndexCount, 6));
+                    //    entidad.COD_EXPEDIENTE = CODIGO_EXP; 
                         entidad.FLG_ESTADO = 1;
                         entidad.FEC_CREACION = DateTime.Now;
                         if (entidad.ID_ACTO == 0)
@@ -278,14 +278,14 @@ namespace MEF.Expedientes.Service.Maestras
                             entidad.ID_SANCION_RECOMENDADA = null;
 
                         Expedientes_Registrar(entidad, ref auditoria);
-                    }
-                    else {
-                        auditoria.Rechazar("Código maximo alcanzado, no se registro.");
-                    }
+                    //}
+                    //else {
+                    //    auditoria.Rechazar("Código maximo alcanzado, no se registro.");
+                    //}
 
                 }
                 else
-                    auditoria.Rechazar("Asunto ya existe");
+                    auditoria.Rechazar("Código Expediente ya existe");
             }
             catch (Exception ex)
             {

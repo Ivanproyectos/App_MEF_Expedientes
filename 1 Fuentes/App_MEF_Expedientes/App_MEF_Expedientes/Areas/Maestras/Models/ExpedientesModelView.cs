@@ -22,9 +22,9 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
         public string ID_PERSONAL { get; set; }
        
 
-        [Display(Name = "N° de Expedientes:")]
+        [Display(Name = "N° de Expediente:")]
         [DataType(DataType.Text)]
-        //[Required(ErrorMessage = "[N° de Expedientes] es obligatorio")]
+        [Required(ErrorMessage = "[N° de Expedientes] es obligatorio")]
         public string COD_EXPEDIENTE { get; set; }
 
 

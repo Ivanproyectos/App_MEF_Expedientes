@@ -274,6 +274,8 @@
             var rutaSancion= baseUrl + "Administracion/Sancion/";
             var rutaSituacion = baseUrl + "Administracion/Situacion/";
             var rutaFormatoCorreo = baseUrl + "Administracion/FormatosCorreo/";
+            var rutaCorrelativoExpediente = baseUrl + "Administracion/Correlativo_Expediente/";
+            
 
             var rutaRe_Expedientes = baseUrl + "Reportes/Expedientes/";
             
@@ -336,6 +338,12 @@
                 {
                 };
                 InvocarVista(rutaFormatoCorreo + "Index", item);
+            });
+            jQuery('#aCorrelativoExpediente').click(function (e) {
+                var item =
+                {
+                };
+                InvocarVista(rutaCorrelativoExpediente + "Index", item);
             });
 
 

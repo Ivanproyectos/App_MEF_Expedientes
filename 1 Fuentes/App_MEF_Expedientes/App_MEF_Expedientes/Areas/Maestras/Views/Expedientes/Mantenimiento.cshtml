@@ -14,11 +14,32 @@
           //Expedientes_Codigo_Listar();
           if ($('#AccionExpedientes').val() == "M") {
               $('#contnt_archivos').show();
-                Adjuntos_ConfigurarGrilla();
-                Adjuntos_Listar();
-            }
-        });
+              $('#Check_Codigo_Expdiente').hide(); 
+              $('#Check_Codigo_Expdiente').hide(); 
+              Adjuntos_ConfigurarGrilla();
+              Adjuntos_Listar();
+          } else {
 
+              if ($('#COD_EXPEDIENTE').val() == "0") {
+                  jAlert("Correlativo de expediente falta configurar, comuniquese con el administrador del sistema.",'Atención')
+              }
+          }
+      });
+
+
+    function Change_CodigoManual() {
+        if ($('#AccionExpedientes').val() != "M") {
+            if ($('#Check_Codigo_Expdiente').is(":checked")) {
+                $('#COD_EXPEDIENTE').prop('disabled', false);
+                $('#_alert_numexp_check').show('slow');
+                $('#COD_EXPEDIENTE').val('');
+            } else {
+                $('#COD_EXPEDIENTE').prop('disabled', true);
+                $('#_alert_numexp_check').hide('slow');
+                Listar_CodigoExpediente();
+            }
+        }
+    }
 
 
         jQuery('#btnGrabar').click(function (e) {
@@ -102,18 +123,15 @@
     });
 
 
-
-
-    function Expedientes_Codigo_Listar() {
+    function Listar_CodigoExpediente() {
         var item =
         {
         };
-        var url = baseUrl + 'Maestras/Expedientes/Expedientes_Codigo_Listar';
+        var url = baseUrl + 'Administracion/Correlativo_Expediente/Dominio_Listar_MaxId';
         var auditoria = Autorizacion.Ajax(url, item, false);
-        jQuery("#" + Actos_grilla).jqGrid('clearGridData', true).trigger("reloadGrid");
         if (auditoria != null) {
             if (auditoria.EJECUCION_PROCEDIMIENTO) {
-
+                $('#COD_EXPEDIENTE').val(auditoria.OBJETO); 
             }
         }
     }
@@ -134,6 +152,11 @@
 
     .form-row {
         margin-bottom: 10px;
+    }
+    .alert-warning {
+        color: #664d03;
+        background-color: #fff3cd;
+        border-color: #ffecb5;
     }
 </style>
 <div class="modal fade" id="myModalNuevoAdjuntos" tabindex="" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false"></div>
@@ -166,56 +189,73 @@
                         @Html.TextBoxFor(model => model.ID_ORGANO_INSTRUCTOR, new { @class = "form-control", @maxlength = "100", @type = "hidden" })
                         @Html.TextBoxFor(model => model.ID_ORGANO_SANCIONADOR, new { @class = "form-control", @maxlength = "100", @type = "hidden" })
 
-                        <div class="row" style="padding:10px">
-                            @*<div class="form-row col-sm-4">
+                    <div class="row" style="padding:10px">
+                        <div class="form-group" id="_alert_numexp_check" style="display:none;">
+                            <div class="form-row col-sm-12">
+                                <div class="alert alert-warning alert-dismissible  show" role="alert">
+                                    <strong>Nota:</strong> Ingrese código expediente no existente y/o eliminada.
+                                </div>
+                            </div>
+                           </div>
+                            <div class="form-group">
+                                <div class="form-row col-sm-4">
                                     @Html.LabelFor(model => model.COD_EXPEDIENTE, new { @class = "" })
-                                    @Html.TextBoxFor(model => model.COD_EXPEDIENTE, new { @class = "form-control", @maxlength = "100", })
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(model => model.COD_EXPEDIENTE, new { @class = "form-control", @maxlength = "9", @disabled = "true" ,@placeholder="Ejm: EXP000015" })
+                                        <span class="input-group-addon" for="Check_Codigo_Expdiente" style="cursor: pointer; font-weight: bold;" title="Ingresar código manual" onclick="Change_CodigoManual();">
+                                            <input type="checkbox" id="Check_Codigo_Expdiente"/>
+                                        </span>
+                                    </div>
                                     @Html.ValidationMessageFor(model => model.COD_EXPEDIENTE, string.Empty, new { @class = "cssMessageError" })
-                                </div>*@
-                            <div class="form-row   col-sm-4">
-                                @Html.LabelFor(model => model.FECHA_RECEPCION, new { @class = "" })
-                                <div class="input-group">
-                                    @Html.TextBoxFor(model => model.FECHA_RECEPCION, new { @class = "form-control", @maxlength = "100", @readOnly = "true" })
-                                    <span title="Calendario" class="input-group-addon" id="btnFechaRecepcion" style="border: 1px solid #c42e32;  cursor: pointer; background:white;"><i class="fa fa-calendar-o"></i></span>
                                 </div>
-                                @Html.ValidationMessageFor(model => model.FECHA_RECEPCION, string.Empty, new { @class = "cssMessageError" })
-                            </div>
 
-
-
-                            <div class="form-row col-sm-4">
-                                @Html.LabelFor(model => model.FECHA_PRESCRIPCION, new { @class = "" })
-                                <div class="input-group">
-                                    @Html.TextBoxFor(model => model.FECHA_PRESCRIPCION, new { @class = "form-control", @maxlength = "100", @readOnly = "true" })
-                                    <span title="Calendario" class="input-group-addon" id="btnFechaPrescripcion" style="border: 1px solid #c42e32;  cursor: pointer; background:white;"><i class="fa fa-calendar-o"></i></span>
+                                <div class="form-row   col-sm-4">
+                                    @Html.LabelFor(model => model.FECHA_RECEPCION, new { @class = "" })
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(model => model.FECHA_RECEPCION, new { @class = "form-control", @maxlength = "100", @readOnly = "true" })
+                                        <span title="Calendario" class="input-group-addon" id="btnFechaRecepcion" style="border: 1px solid #c42e32;  cursor: pointer; background:white;"><i class="fa fa-calendar-o"></i></span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.FECHA_RECEPCION, string.Empty, new { @class = "cssMessageError" })
                                 </div>
-                                @Html.ValidationMessageFor(model => model.FECHA_PRESCRIPCION, string.Empty, new { @class = "cssMessageError" })
-                            </div>
 
-                            <div class="form-row col-sm-4">
-                                @Html.LabelFor(model => model.HOJA_RUTA, new { @class = "" })
-                                @Html.TextBoxFor(model => model.HOJA_RUTA, new { @class = "form-control", @maxlength = "100" })
-                                @Html.ValidationMessageFor(model => model.HOJA_RUTA, string.Empty, new { @class = "cssMessageError" })
-                            </div>
 
-                            <div class="form-row  col-sm-4">
-                                @Html.LabelFor(model => model.FECHA_HECHO, new { @class = "" })
-                                <div class="input-group">
-                                    @Html.TextBoxFor(model => model.FECHA_HECHO, new { @class = "form-control", @maxlength = "100", @readOnly = "true" })
-                                    <span title="Calendario" class="input-group-addon" id="btnFechaHecho" style="border: 1px solid #c42e32;  cursor: pointer; background:white;"><i class="fa fa-calendar-o"></i></span>
+
+                                <div class="form-row col-sm-4">
+                                    @Html.LabelFor(model => model.FECHA_PRESCRIPCION, new { @class = "" })
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(model => model.FECHA_PRESCRIPCION, new { @class = "form-control", @maxlength = "100", @readOnly = "true" })
+                                        <span title="Calendario" class="input-group-addon" id="btnFechaPrescripcion" style="border: 1px solid #c42e32;  cursor: pointer; background:white;"><i class="fa fa-calendar-o"></i></span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.FECHA_PRESCRIPCION, string.Empty, new { @class = "cssMessageError" })
                                 </div>
-                                @Html.ValidationMessageFor(model => model.FECHA_HECHO, string.Empty, new { @class = "cssMessageError" })
                             </div>
-
-
-                            <div class="form-row col-sm-4">
-                                @Html.LabelFor(model => model.SEARCH_REMITENTE, new { @class = "" })
-                                <div class="col-sm-12 input-group">
-                                    @Html.TextBoxFor(model => model.SEARCH_REMITENTE, new { @class = "form-control", @maxlength = "100", @placeholder = "Ejm: Consejo Fiscal." })
-                                    <span class="input-group-addon" style="cursor: pointer; font-weight: bold;" title="Buscar Remitente" onclick=""><i class=" clip-search-3" style="font-size: 13px;"></i></span>
+                            <div class="form-group">
+                                <div class="form-row col-sm-4">
+                                    @Html.LabelFor(model => model.HOJA_RUTA, new { @class = "" })
+                                    @Html.TextBoxFor(model => model.HOJA_RUTA, new { @class = "form-control", @maxlength = "100" })
+                                    @Html.ValidationMessageFor(model => model.HOJA_RUTA, string.Empty, new { @class = "cssMessageError" })
                                 </div>
-                                @Html.ValidationMessageFor(model => model.SEARCH_REMITENTE, string.Empty, new { @class = "cssMessageError" })
+
+                                <div class="form-row  col-sm-4">
+                                    @Html.LabelFor(model => model.FECHA_HECHO, new { @class = "" })
+                                    <div class="input-group">
+                                        @Html.TextBoxFor(model => model.FECHA_HECHO, new { @class = "form-control", @maxlength = "100", @readOnly = "true" })
+                                        <span title="Calendario" class="input-group-addon" id="btnFechaHecho" style="border: 1px solid #c42e32;  cursor: pointer; background:white;"><i class="fa fa-calendar-o"></i></span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.FECHA_HECHO, string.Empty, new { @class = "cssMessageError" })
+                                </div>
+
+
+                                <div class="form-row col-sm-4">
+                                    @Html.LabelFor(model => model.SEARCH_REMITENTE, new { @class = "" })
+                                    <div class="col-sm-12 input-group">
+                                        @Html.TextBoxFor(model => model.SEARCH_REMITENTE, new { @class = "form-control", @maxlength = "100", @placeholder = "Ejm: Consejo Fiscal." })
+                                        <span class="input-group-addon" style="cursor: pointer; font-weight: bold;" title="Buscar Remitente" onclick=""><i class=" clip-search-3" style="font-size: 13px;"></i></span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.SEARCH_REMITENTE, string.Empty, new { @class = "cssMessageError" })
+                                </div>
                             </div>
+
                         </div>
                     </div>
 
@@ -452,9 +492,12 @@
 
             </div>
             <div class="modal-footer">
-                <button id="btnGrabar" class="btn btn-red" type="button" data-toggle="modal"><i class="fa fa-save" />&nbsp Grabar</button>
-                <button type="button" class="btn btn-light-grey" data-dismiss="modal"><i class="fa fa-share-square-o"></i>&nbsp Cerrar</button>
-            </div>
+                @if (Model.COD_EXPEDIENTE != "0")
+                {
+                    <button id="btnGrabar" class="btn btn-red" type="button" data-toggle="modal"><i class="fa fa-save" />&nbsp Grabar</button>
+                }
+                    <button type="button" class="btn btn-light-grey" data-dismiss="modal"><i class="fa fa-share-square-o"></i>&nbsp Cerrar</button>
+                </div>
         </div>
     </div>
 </div>

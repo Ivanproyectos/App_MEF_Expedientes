@@ -11,13 +11,19 @@ using System.Data.Common;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using System.Configuration; 
 //using MEF.Microformas.Entity.Administracion;
 
 namespace MEF.Expedientes.Data
 {
+  
+
+
     [DbConfigurationType(typeof(OracleDbConfiguration))]
     public class DatabaseContext : DbContext
     {
+        private readonly string OWNER_EXPEDIENTES =  ConfigurationManager.AppSettings["OWNER_EXPEDIENTES"].ToString();
+
         public DatabaseContext()
              : base("name=DefaultConnection") => Database.SetInitializer<DatabaseContext>(null);
 
@@ -49,8 +55,9 @@ namespace MEF.Expedientes.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+
             base.OnModelCreating(modelBuilder);
-            modelBuilder.HasDefaultSchema("APP_GESEXPDIS");
+            modelBuilder.HasDefaultSchema(OWNER_EXPEDIENTES);
 
             //modelBuilder.Entity<Cls_Ent_Control_Carga>().ha.Property = false;
             //.HasSequence(PersonIdSequence)

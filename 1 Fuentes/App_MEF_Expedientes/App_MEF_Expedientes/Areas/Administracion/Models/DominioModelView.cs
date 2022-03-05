@@ -31,6 +31,25 @@ namespace App_MEF_Expedientes.Areas.Administracion.Models
         public string DESC_LARGA_DOMINIO { get; set; }
 
 
+        /*model Correlativo Expediente*/
+
+        [Display(Name = "Año:")]
+        [DataType(DataType.Text)]
+        [Required(ErrorMessage = "[Año] es obligatorio")]
+        public int ANIO { get; set; }
+
+
+        [Display(Name = "Número Expediente:")]
+        [DataType(DataType.Text)]
+        [Required(ErrorMessage = "[Número Expediente] es obligatorio")]
+        public string NUMERO_EXPEDIENTE { get; set; }
+
+
+        [Display(Name = "Correlativo:")]
+        [DataType(DataType.Text)]
+        [Required(ErrorMessage = "[Correlativo] es obligatorio")]
+        public int CORRELATIVO { get; set; }
+
         public string Accion { get; set; }
 
     }
