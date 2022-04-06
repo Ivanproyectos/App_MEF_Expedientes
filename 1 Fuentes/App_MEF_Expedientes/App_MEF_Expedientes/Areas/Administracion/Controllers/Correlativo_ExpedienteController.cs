@@ -72,8 +72,12 @@ namespace App_MEF_Expedientes.Areas.Administracion.Controllers
             else
             {
                 if (_Correlativo != null)
+                {
                     auditoria.OBJETO = _Correlativo.DESC_CORTA_DOMINIO;
-               
+                }else
+                {
+                    auditoria.Rechazar("Codigo Expediente no registrado, comuniquese con el administrador del sistema."); 
+                }
             }
             return Json(auditoria, JsonRequestBehavior.AllowGet);
         }

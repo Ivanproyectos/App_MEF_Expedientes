@@ -56,7 +56,11 @@ namespace MEF.Expedientes.Entity.Maestras
 
         public string IP_MODIFICACION { get; set; }
         public int ANIO_CODIGO { get; set; }
-        
+        public int? ID_PRESUNTA_FALTA { get; set; }
+        public int? ID_INFORME_PRECALIFICACION { get; set; }
+
+        public long? ID_ORGANO_INSTRUCTOR_S4 { get; set; }
+
 
     }
 }

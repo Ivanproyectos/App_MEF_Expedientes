@@ -129,4 +129,37 @@ $('#SEARCH_ORGANO_INSTRUCTOR').autocomplete(
 
 
 
+// BUSCAR ORGNAO INSTRUCTOR ETAPA INSITRUCTORA //////////////////////////////////////////////////////////////
+
+$('#ORGANO_INSTRUCTOR_S4').autocomplete(
+    {
+        source: function (request, response) {
+
+            $.getJSON(url_autocomplete_oficina, { DESC_OFICINA: request.term.toUpperCase() },
+                response);
+        },
+        minLength: 4,
+        select: function (event, ui) {
+            $("#ORGANO_INSTRUCTOR_S4").val(ui.item.DESC_OFICINA);
+            $("#ID_ORGANO_INSTRUCTOR_S4").val(ui.item.ID_OFICINA);
+            return false;
+        },
+        response: function (event, ui) {
+            $("#ORGANO_INSTRUCTOR_S4").val('');
+            return false;
+        }
+    })
+    .data("autocomplete")._renderItem = function (ul, item) {
+        debugger;
+        return $("<li></li>")
+            .data("item.autocomplete", item)
+            .append($("<a></a>").html(item.DESC_OFICINA))
+            .appendTo(ul);
+    }
+
+///////////////////////////////////************************//////////////////////////////////////////////////////////////
+
+
+
+
 

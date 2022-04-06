@@ -13,6 +13,7 @@
                 <Style>
                   <FontSize>9pt</FontSize>
                   <FontWeight>Bold</FontWeight>
+                  <Color>White</Color>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -45,6 +46,7 @@
                 <Value>Apellidos y Nombres:</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -79,6 +81,7 @@
                 <Value>Situacioción Laboral:</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -88,7 +91,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>1.98879cm</Top>
+        <Top>1.8124cm</Top>
         <Left>0.69616cm</Left>
         <Height>0.6cm</Height>
         <Width>3.81408cm</Width>
@@ -113,6 +116,7 @@
                 <Value>Oficina:</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -122,7 +126,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>2.69463cm</Top>
+        <Top>2.4124cm</Top>
         <Left>0.69616cm</Left>
         <Height>0.6cm</Height>
         <Width>3.81408cm</Width>
@@ -146,6 +150,7 @@
               <TextRun>
                 <Value>=First(Fields!NOMBRE_COMPLETO.Value, "Ds_Expedientes")</Value>
                 <Style>
+                  <FontFamily>calibri</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -178,6 +183,7 @@
               <TextRun>
                 <Value>=First(Fields!REGIMEN_LABORAL.Value, "Ds_Expedientes")</Value>
                 <Style>
+                  <FontFamily>calibri</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -186,7 +192,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox10</rd:DefaultName>
-        <Top>1.98879cm</Top>
+        <Top>1.8124cm</Top>
         <Left>4.51026cm</Left>
         <Height>0.6cm</Height>
         <Width>13.94354cm</Width>
@@ -210,6 +216,7 @@
               <TextRun>
                 <Value>=First(Fields!OFICINA.Value, "Ds_Expedientes")</Value>
                 <Style>
+                  <FontFamily>calibri</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -218,7 +225,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox10</rd:DefaultName>
-        <Top>2.69463cm</Top>
+        <Top>2.4124cm</Top>
         <Left>4.51025cm</Left>
         <Height>0.6cm</Height>
         <Width>13.94355cm</Width>
@@ -244,6 +251,7 @@
                 <Style>
                   <FontSize>9pt</FontSize>
                   <FontWeight>Bold</FontWeight>
+                  <Color>White</Color>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -251,7 +259,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>3.85397cm</Top>
+        <Top>3.21897cm</Top>
         <Left>0.69616cm</Left>
         <Height>0.6cm</Height>
         <Width>17.75764cm</Width>
@@ -277,6 +285,7 @@
                 <Value>Fecha Recepción:</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -286,7 +295,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>4.63036cm</Top>
+        <Top>3.99536cm</Top>
         <Left>0.70296cm</Left>
         <Height>0.6cm</Height>
         <Width>3.98167cm</Width>
@@ -310,6 +319,7 @@
               <TextRun>
                 <Value>=First(Fields!FECHA_RECEPCION.Value, "Ds_Expedientes")</Value>
                 <Style>
+                  <FontFamily>calibri</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -320,10 +330,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>4.63036cm</Top>
+        <Top>3.99536cm</Top>
         <Left>4.68463cm</Left>
         <Height>0.6cm</Height>
-        <Width>3.50542cm</Width>
+        <Width>4.0346cm</Width>
         <ZIndex>9</ZIndex>
         <Style>
           <Border>
@@ -345,6 +355,7 @@
                 <Value>Fecha Prescripción:</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -354,7 +365,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>4.63036cm</Top>
+        <Top>3.99536cm</Top>
         <Left>8.77511cm</Left>
         <Height>0.6cm</Height>
         <Width>3.98167cm</Width>
@@ -378,6 +389,7 @@
               <TextRun>
                 <Value>=First(Fields!FECHA_PRESCRIPCION.Value, "Ds_Expedientes")</Value>
                 <Style>
+                  <FontFamily>calibri</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -388,10 +400,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>4.63036cm</Top>
+        <Top>3.99536cm</Top>
         <Left>12.75678cm</Left>
         <Height>0.6cm</Height>
-        <Width>5.38396cm</Width>
+        <Width>5.69702cm</Width>
         <ZIndex>11</ZIndex>
         <Style>
           <Border>
@@ -413,6 +425,7 @@
                 <Value>Fecha Hecho:</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -422,7 +435,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>5.45056cm</Top>
+        <Top>4.59536cm</Top>
         <Left>0.70296cm</Left>
         <Height>0.6cm</Height>
         <Width>3.98167cm</Width>
@@ -446,6 +459,7 @@
               <TextRun>
                 <Value>=First(Fields!FECHA_HECHO.Value, "Ds_Expedientes")</Value>
                 <Style>
+                  <FontFamily>calibri</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -456,10 +470,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>5.45056cm</Top>
+        <Top>4.59536cm</Top>
         <Left>4.68463cm</Left>
         <Height>0.6cm</Height>
-        <Width>3.57598cm</Width>
+        <Width>4.10516cm</Width>
         <ZIndex>13</ZIndex>
         <Style>
           <Border>
@@ -481,6 +495,7 @@
                 <Value>Hoja Ruta:</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -490,7 +505,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>5.45056cm</Top>
+        <Top>4.59536cm</Top>
         <Left>8.77511cm</Left>
         <Height>0.6cm</Height>
         <Width>3.98167cm</Width>
@@ -514,6 +529,7 @@
               <TextRun>
                 <Value>=First(Fields!HOJA_RUTA.Value, "Ds_Expedientes")</Value>
                 <Style>
+                  <FontFamily>calibri</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -524,10 +540,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>5.45056cm</Top>
+        <Top>4.59536cm</Top>
         <Left>12.75678cm</Left>
         <Height>0.6cm</Height>
-        <Width>5.38396cm</Width>
+        <Width>5.69702cm</Width>
         <ZIndex>15</ZIndex>
         <Style>
           <Border>
@@ -549,6 +565,7 @@
                 <Value>Remitente</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -558,7 +575,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>6.22695cm</Top>
+        <Top>5.19536cm</Top>
         <Left>0.69616cm</Left>
         <Height>0.6cm</Height>
         <Width>3.91792cm</Width>
@@ -582,6 +599,7 @@
               <TextRun>
                 <Value>=First(Fields!REMITENTE.Value, "Ds_Expedientes")</Value>
                 <Style>
+                  <FontFamily>calibri</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -590,10 +608,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox10</rd:DefaultName>
-        <Top>6.22695cm</Top>
+        <Top>5.19536cm</Top>
         <Left>4.68463cm</Left>
         <Height>0.6cm</Height>
-        <Width>13.45611cm</Width>
+        <Width>13.76917cm</Width>
         <ZIndex>17</ZIndex>
         <Style>
           <Border>
@@ -616,6 +634,7 @@
                 <Style>
                   <FontSize>9pt</FontSize>
                   <FontWeight>Bold</FontWeight>
+                  <Color>White</Color>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -623,10 +642,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>7.1348cm</Top>
+        <Top>6.1823cm</Top>
         <Left>0.68934cm</Left>
         <Height>0.6cm</Height>
-        <Width>17.75764cm</Width>
+        <Width>17.76446cm</Width>
         <ZIndex>18</ZIndex>
         <Style>
           <Border>
@@ -649,6 +668,7 @@
                 <Value>Acto:</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -658,7 +678,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>7.91119cm</Top>
+        <Top>6.95869cm</Top>
         <Left>0.69615cm</Left>
         <Height>0.6cm</Height>
         <Width>3.81409cm</Width>
@@ -683,6 +703,7 @@
                 <Value>Observacion:</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -692,7 +713,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>8.68758cm</Top>
+        <Top>7.55869cm</Top>
         <Left>0.69615cm</Left>
         <Height>0.6cm</Height>
         <Width>3.8141cm</Width>
@@ -716,6 +737,7 @@
               <TextRun>
                 <Value>=First(Fields!ACTO.Value, "Ds_Expedientes")</Value>
                 <Style>
+                  <FontFamily>calibri</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -724,10 +746,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox10</rd:DefaultName>
-        <Top>7.91119cm</Top>
+        <Top>6.95869cm</Top>
         <Left>4.51024cm</Left>
         <Height>0.6cm</Height>
-        <Width>13.82533cm</Width>
+        <Width>13.94356cm</Width>
         <ZIndex>21</ZIndex>
         <Style>
           <Border>
@@ -748,6 +770,7 @@
               <TextRun>
                 <Value>=First(Fields!OBSERVACION_INVESTIGADORA.Value, "Ds_Expedientes")</Value>
                 <Style>
+                  <FontFamily>calibri</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -756,10 +779,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox10</rd:DefaultName>
-        <Top>8.68758cm</Top>
+        <Top>7.55869cm</Top>
         <Left>4.51025cm</Left>
         <Height>0.6cm</Height>
-        <Width>13.82532cm</Width>
+        <Width>13.94354cm</Width>
         <ZIndex>22</ZIndex>
         <Style>
           <Border>
@@ -782,6 +805,7 @@
                 <Style>
                   <FontSize>9pt</FontSize>
                   <FontWeight>Bold</FontWeight>
+                  <Color>White</Color>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -789,10 +813,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>9.72772cm</Top>
+        <Top>8.45772cm</Top>
         <Left>0.69615cm</Left>
         <Height>0.6cm</Height>
-        <Width>17.75764cm</Width>
+        <Width>17.75765cm</Width>
         <ZIndex>23</ZIndex>
         <Style>
           <Border>
@@ -815,6 +839,7 @@
                 <Value>Falta:</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -824,7 +849,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>10.46883cm</Top>
+        <Top>9.19883cm</Top>
         <Left>0.70296cm</Left>
         <Height>0.6cm</Height>
         <Width>3.98167cm</Width>
@@ -848,6 +873,7 @@
               <TextRun>
                 <Value>=First(Fields!FALTA.Value, "Ds_Expedientes")</Value>
                 <Style>
+                  <FontFamily>calibri</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -858,8 +884,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>10.50411cm</Top>
-        <Left>4.68463cm</Left>
+        <Top>9.19883cm</Top>
+        <Left>4.71991cm</Left>
         <Height>0.6cm</Height>
         <Width>4.03459cm</Width>
         <ZIndex>25</ZIndex>
@@ -883,6 +909,7 @@
                 <Value>Articulo:</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -892,7 +919,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>10.50411cm</Top>
+        <Top>9.23411cm</Top>
         <Left>9.3572cm</Left>
         <Height>0.6cm</Height>
         <Width>3.98167cm</Width>
@@ -916,6 +943,7 @@
               <TextRun>
                 <Value>=First(Fields!ARTICULO.Value, "Ds_Expedientes")</Value>
                 <Style>
+                  <FontFamily>calibri</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -926,10 +954,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>10.50411cm</Top>
+        <Top>9.23411cm</Top>
         <Left>13.33887cm</Left>
         <Height>0.6cm</Height>
-        <Width>4.9967cm</Width>
+        <Width>5.11492cm</Width>
         <ZIndex>27</ZIndex>
         <Style>
           <Border>
@@ -951,6 +979,7 @@
                 <Value>Inc:</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -960,7 +989,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>11.32431cm</Top>
+        <Top>9.79883cm</Top>
         <Left>0.70296cm</Left>
         <Height>0.6cm</Height>
         <Width>3.98167cm</Width>
@@ -984,6 +1013,7 @@
               <TextRun>
                 <Value>=First(Fields!FECHA_HECHO.Value, "Ds_Expedientes")</Value>
                 <Style>
+                  <FontFamily>calibri</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -994,7 +1024,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>11.32431cm</Top>
+        <Top>9.79883cm</Top>
         <Left>4.68463cm</Left>
         <Height>0.6cm</Height>
         <Width>4.10515cm</Width>
@@ -1019,6 +1049,7 @@
                 <Value>Precalificación:</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1028,7 +1059,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>11.32431cm</Top>
+        <Top>9.83411cm</Top>
         <Left>9.3572cm</Left>
         <Height>0.6cm</Height>
         <Width>3.98167cm</Width>
@@ -1052,6 +1083,7 @@
               <TextRun>
                 <Value>=First(Fields!HOJA_RUTA.Value, "Ds_Expedientes")</Value>
                 <Style>
+                  <FontFamily>calibri</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -1062,10 +1094,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>11.32431cm</Top>
+        <Top>9.83411cm</Top>
         <Left>13.33887cm</Left>
         <Height>0.6cm</Height>
-        <Width>4.9967cm</Width>
+        <Width>5.11493cm</Width>
         <ZIndex>31</ZIndex>
         <Style>
           <Border>
@@ -1087,6 +1119,7 @@
                 <Value>Fecha Notificación:</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1096,7 +1129,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>12.10069cm</Top>
+        <Top>10.39883cm</Top>
         <Left>0.70296cm</Left>
         <Height>0.6cm</Height>
         <Width>3.98167cm</Width>
@@ -1120,6 +1153,7 @@
               <TextRun>
                 <Value>=First(Fields!FECHA_NOTIFICACION.Value, "Ds_Expedientes")</Value>
                 <Style>
+                  <FontFamily>calibri</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -1130,7 +1164,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>12.10069cm</Top>
+        <Top>10.39883cm</Top>
         <Left>4.68463cm</Left>
         <Height>0.6cm</Height>
         <Width>4.10515cm</Width>
@@ -1155,6 +1189,7 @@
                 <Value>Acto Inicio:</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1164,7 +1199,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>12.10069cm</Top>
+        <Top>10.39883cm</Top>
         <Left>9.3572cm</Left>
         <Height>0.6cm</Height>
         <Width>3.98167cm</Width>
@@ -1188,6 +1223,7 @@
               <TextRun>
                 <Value>=First(Fields!ACTO_INICIO.Value, "Ds_Expedientes")</Value>
                 <Style>
+                  <FontFamily>calibri</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -1198,10 +1234,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>12.10069cm</Top>
+        <Top>10.36356cm</Top>
         <Left>13.33887cm</Left>
-        <Height>0.6cm</Height>
-        <Width>4.9967cm</Width>
+        <Height>0.63527cm</Height>
+        <Width>5.11493cm</Width>
         <ZIndex>35</ZIndex>
         <Style>
           <Border>
@@ -1223,6 +1259,7 @@
                 <Value>Tipo sanción R.:</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1232,10 +1269,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>12.87708cm</Top>
+        <Top>10.99883cm</Top>
         <Left>0.70296cm</Left>
         <Height>0.6cm</Height>
-        <Width>3.91111cm</Width>
+        <Width>3.98167cm</Width>
         <ZIndex>36</ZIndex>
         <Style>
           <Border>
@@ -1257,6 +1294,7 @@
                 <Value>Observacion:</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1266,10 +1304,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>13.65347cm</Top>
-        <Left>0.77352cm</Left>
+        <Top>11.59883cm</Top>
+        <Left>0.69615cm</Left>
         <Height>0.6cm</Height>
-        <Width>3.84056cm</Width>
+        <Width>3.98848cm</Width>
         <ZIndex>37</ZIndex>
         <Style>
           <Border>
@@ -1290,6 +1328,7 @@
               <TextRun>
                 <Value>=First(Fields!TIPO_SANCION_RECOMENDADA.Value, "Ds_Expedientes")</Value>
                 <Style>
+                  <FontFamily>calibri</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -1298,10 +1337,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox10</rd:DefaultName>
-        <Top>12.87708cm</Top>
+        <Top>10.99883cm</Top>
         <Left>4.68463cm</Left>
         <Height>0.6cm</Height>
-        <Width>13.65775cm</Width>
+        <Width>13.76916cm</Width>
         <ZIndex>38</ZIndex>
         <Style>
           <Border>
@@ -1322,6 +1361,7 @@
               <TextRun>
                 <Value>=First(Fields!OBSERVACION_INSTRUCTORA.Value, "Ds_Expedientes")</Value>
                 <Style>
+                  <FontFamily>calibri</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -1330,10 +1370,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox10</rd:DefaultName>
-        <Top>13.65347cm</Top>
-        <Left>4.71991cm</Left>
+        <Top>11.59883cm</Top>
+        <Left>4.68464cm</Left>
         <Height>0.6cm</Height>
-        <Width>13.65775cm</Width>
+        <Width>13.76916cm</Width>
         <ZIndex>39</ZIndex>
         <Style>
           <Border>
@@ -1356,6 +1396,7 @@
                 <Style>
                   <FontSize>9pt</FontSize>
                   <FontWeight>Bold</FontWeight>
+                  <Color>White</Color>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1363,8 +1404,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>14.68865cm</Top>
-        <Left>0.70296cm</Left>
+        <Top>12.49261cm</Top>
+        <Left>0.69615cm</Left>
         <Height>0.6cm</Height>
         <Width>17.75764cm</Width>
         <ZIndex>40</ZIndex>
@@ -1389,6 +1430,7 @@
                 <Value>Sanción Recomenda:</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1398,8 +1440,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>15.46504cm</Top>
-        <Left>0.76548cm</Left>
+        <Top>13.269cm</Top>
+        <Left>0.70297cm</Left>
         <Height>0.6cm</Height>
         <Width>3.98167cm</Width>
         <ZIndex>41</ZIndex>
@@ -1422,6 +1464,7 @@
               <TextRun>
                 <Value>=First(Fields!SANCION.Value, "Ds_Expedientes")</Value>
                 <Style>
+                  <FontFamily>calibri</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -1432,10 +1475,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>15.46504cm</Top>
-        <Left>4.74715cm</Left>
+        <Top>13.269cm</Top>
+        <Left>4.68464cm</Left>
         <Height>0.6cm</Height>
-        <Width>4.03459cm</Width>
+        <Width>4.10515cm</Width>
         <ZIndex>42</ZIndex>
         <Style>
           <Border>
@@ -1457,6 +1500,7 @@
                 <Value>Estado:</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1466,8 +1510,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>15.46504cm</Top>
-        <Left>9.41972cm</Left>
+        <Top>13.269cm</Top>
+        <Left>9.35721cm</Left>
         <Height>0.6cm</Height>
         <Width>3.98167cm</Width>
         <ZIndex>43</ZIndex>
@@ -1490,6 +1534,7 @@
               <TextRun>
                 <Value>=First(Fields!ESTADO.Value, "Ds_Expedientes")</Value>
                 <Style>
+                  <FontFamily>calibri</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -1500,10 +1545,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>15.46504cm</Top>
-        <Left>13.40139cm</Left>
+        <Top>13.269cm</Top>
+        <Left>13.33887cm</Left>
         <Height>0.6cm</Height>
-        <Width>4.9967cm</Width>
+        <Width>5.11492cm</Width>
         <ZIndex>44</ZIndex>
         <Style>
           <Border>
@@ -1525,6 +1570,7 @@
                 <Value>Situación:</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1534,8 +1580,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>16.28524cm</Top>
-        <Left>0.76548cm</Left>
+        <Top>13.869cm</Top>
+        <Left>0.70297cm</Left>
         <Height>0.6cm</Height>
         <Width>3.98167cm</Width>
         <ZIndex>45</ZIndex>
@@ -1558,6 +1604,7 @@
               <TextRun>
                 <Value>=First(Fields!SITUACION.Value, "Ds_Expedientes")</Value>
                 <Style>
+                  <FontFamily>calibri</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -1568,8 +1615,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>16.28524cm</Top>
-        <Left>4.74715cm</Left>
+        <Top>13.869cm</Top>
+        <Left>4.68464cm</Left>
         <Height>0.6cm</Height>
         <Width>4.10515cm</Width>
         <ZIndex>46</ZIndex>
@@ -1593,6 +1640,7 @@
                 <Value>Fecha Noticación:</Value>
                 <Style>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -1602,8 +1650,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>16.28524cm</Top>
-        <Left>9.41972cm</Left>
+        <Top>13.869cm</Top>
+        <Left>9.35721cm</Left>
         <Height>0.6cm</Height>
         <Width>3.98167cm</Width>
         <ZIndex>47</ZIndex>
@@ -1626,6 +1674,7 @@
               <TextRun>
                 <Value>=First(Fields!FECHA_NOTIFICACION_INICIO.Value, "Ds_Expedientes")</Value>
                 <Style>
+                  <FontFamily>calibri</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -1636,10 +1685,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>16.28524cm</Top>
-        <Left>13.40139cm</Left>
+        <Top>13.869cm</Top>
+        <Left>13.33887cm</Left>
         <Height>0.6cm</Height>
-        <Width>4.9967cm</Width>
+        <Width>5.11493cm</Width>
         <ZIndex>48</ZIndex>
         <Style>
           <Border>
@@ -1652,7 +1701,7 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>7.57292in</Height>
+    <Height>6.11459in</Height>
     <Style />
   </Body>
   <Width>7.54471in</Width>
@@ -1694,6 +1743,18 @@
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
+                <TextRun>
+                  <Value>-</Value>
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+                <TextRun>
+                  <Value>=Fields!ANIO_CODIGO.Value</Value>
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
               </TextRuns>
               <Style>
                 <TextAlign>Center</TextAlign>
@@ -1702,9 +1763,9 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>0.3175cm</Top>
-          <Left>7.55923cm</Left>
+          <Left>7.16236cm</Left>
           <Height>1.5cm</Height>
-          <Width>8.29438cm</Width>
+          <Width>10.58151cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -1898,6 +1959,18 @@
           <DataField>ID_SITUACION</DataField>
           <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
+        <Field Name="DIAS_VIGENTE">
+          <DataField>DIAS_VIGENTE</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="DOCUMENTO_NOTIFICA">
+          <DataField>DOCUMENTO_NOTIFICA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EXTENSION_ARCHIVO">
+          <DataField>EXTENSION_ARCHIVO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="SITUACION">
           <DataField>SITUACION</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -1913,6 +1986,10 @@
         <Field Name="FLG_ESTADO">
           <DataField>FLG_ESTADO</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DNI">
+          <DataField>DNI</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="USU_CREACION">
           <DataField>USU_CREACION</DataField>
@@ -1937,6 +2014,34 @@
         <Field Name="IP_MODIFICACION">
           <DataField>IP_MODIFICACION</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DESC_PUESTO">
+          <DataField>DESC_PUESTO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DIAS">
+          <DataField>DIAS</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ORGANO_INSTRUCTOR_S4">
+          <DataField>ORGANO_INSTRUCTOR_S4</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ID_ORGANO_INSTRUCTOR_S4">
+          <DataField>ID_ORGANO_INSTRUCTOR_S4</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="ID_PRESUNTA_FALTA">
+          <DataField>ID_PRESUNTA_FALTA</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="ID_INFORME_PRECALIFICACION">
+          <DataField>ID_INFORME_PRECALIFICACION</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="ANIO_CODIGO">
+          <DataField>ANIO_CODIGO</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>

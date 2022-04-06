@@ -177,6 +177,7 @@ function Expedientes_Nuevo() {
 
 function Expedientes_Actualizar() {
     if ($("#frmMantenimientoExpedientes").valid()) {
+  
         var item =
         {
             ID_EXPEDIENTE: $("#hdfID_EXPEDIENTE").val(),
@@ -211,27 +212,38 @@ function Expedientes_Actualizar() {
             DOCUMENTO_NOTIFICA: $("#DOCUMENTO_NOTIFICA").val(),
             USU_MODIFICACION: $("#inputHddcod_usuario").val(),
             TIPO: $("#HDF_Tipo_Expedientes").val(),
+
+            ID_ORGANO_INSTRUCTOR_S4: $("#ID_ORGANO_INSTRUCTOR_S4").val(),
+            ID_PRESUNTA_FALTA: $("#ID_PRESUNTA_FALTA").val(),
+            ID_INFORME_PRECALIFICACION: $("#ID_INFORME_PRECALIFICACION").val(),
+
             Accion: $("#AccionExpedientes").val()
         };
         jConfirm("¿ Desea actualizar este registro ?", "Atención", function (r) {
             if (r) {
+                $('#Load').show();
+                setTimeout(function () {
                 var url = baseUrl + 'Maestras/Expedientes/Expedientes_Actualizar';
                 var auditoria = Autorizacion.Ajax(url, item, false);
                 if (auditoria != null) {
                     if (auditoria.EJECUCION_PROCEDIMIENTO) {
                         if (!auditoria.RECHAZAR) {
+                            $('#Load').hide(); 
                             Expedientes_ConfigurarGrilla();
-                            jAlert("Datos actualizados satisfactoriamente", "Proceso");
+                            jAlert("Expediente actualizado satisfactoriamente", "Proceso");
                             $('#myModalNuevo').modal('hide');
                             jQuery("#myModalNuevo").html('');
                         } else {
+                            $('#Load').hide(); 
                             jAlert(auditoria.MENSAJE_SALIDA, 'Atención');
                         }
                     } else {
+                        $('#Load').hide(); 
                         jAlert(auditoria.MENSAJE_SALIDA, 'Atención');
                     }
-                }
-            }
+                    }
+                }, 200); 
+            } 
         });
 
     }
@@ -252,6 +264,9 @@ function Expedientes_Registrar() {
         } else {
             jConfirm("¿Desea guardar este registro ?", "Atención", function (r) {
                 if (r) {
+                    $('#Load').show(); 
+                    setTimeout(function () {
+
                     if (!$('#Check_Codigo_Expdiente').is(":checked"))
                         FLG_CODIGO = 1
                     else
@@ -290,7 +305,11 @@ function Expedientes_Registrar() {
                         DOCUMENTO_NOTIFICA: $("#DOCUMENTO_NOTIFICA").val(),
                         OBSERVACION_SANCIONADORA: $("#OBSERVACION_SANCIONADORA").val(),
                         USU_CREACION: $("#inputHddcod_usuario").val(),
-                        Accion: $("#AccionExpedientes").val()
+                        Accion: $("#AccionExpedientes").val(),
+
+                        ID_ORGANO_INSTRUCTOR_S4: $("#ID_ORGANO_INSTRUCTOR_S4").val(),
+                        ID_PRESUNTA_FALTA: $("#ID_PRESUNTA_FALTA").val(),
+                        ID_INFORME_PRECALIFICACION: $("#ID_INFORME_PRECALIFICACION").val(),
                     };
                     var url = baseUrl + 'Maestras/Expedientes/Expedientes_Insertar?FLG_CODIGO=' + FLG_CODIGO;
                     var auditoria = Autorizacion.Ajax(url, item, false);
@@ -298,16 +317,20 @@ function Expedientes_Registrar() {
                         if (auditoria.EJECUCION_PROCEDIMIENTO) {
                             if (!auditoria.RECHAZAR) {
                                 Expedientes_ConfigurarGrilla();
-                                jAlert("Datos guardados satisfactoriamente", "Proceso");
+                                $('#Load').hide(); 
+                                jAlert("Expediente guardado satisfactoriamente", "Proceso");
                                 $('#myModalNuevo').modal('hide');
                                 jQuery("#myModalNuevo").html('');
                             } else {
                                 jAlert(auditoria.MENSAJE_SALIDA, 'Atención');
+                                $('#Load').hide(); 
                             }
                         } else {
                             jAlert(auditoria.MENSAJE_SALIDA, 'Atención');
+                            $('#Load').hide(); 
                         }
-                    }
+                        }
+                    }, 200); 
                 }
             });
         }

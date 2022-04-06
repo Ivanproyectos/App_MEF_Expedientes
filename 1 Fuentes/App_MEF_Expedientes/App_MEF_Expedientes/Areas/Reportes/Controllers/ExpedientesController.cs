@@ -97,7 +97,31 @@ namespace App_MEF_Expedientes.Areas.Reportes.Controllers
                 Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
             }
 
+
+            Cls_Ent_Dominio entidad_CorreEx = new Cls_Ent_Dominio();
+            entidad_CorreEx.NOM_DOMINIO = "NUM_EXP";
+            entidad_CorreEx.FLG_ESTADO = 1;
+            var Lista_CorrelativoEx = _cls_Serv_Dominio.Dominio_Listar(entidad_CorreEx, ref auditoria);
+            if (auditoria.EJECUCION_PROCEDIMIENTO)
+            {
+                if (!auditoria.RECHAZAR)
+                {
+                    modelo.Lista_CorrelativoEx = Lista_CorrelativoEx.Select(x => new SelectListItem()
+                    {
+                        Text = x.COD_DOMINIO.ToString(),
+                        Value = x.COD_DOMINIO.ToString()
+                    }).ToList();
+                    //modelo.Lista_CorrelativoEx.Insert(0, new SelectListItem() { Value = "0", Text = "-- Seleccione --" });
+                }
+            }
+            else
+            {
+                modelo.Lista_CorrelativoEx.Insert(0, new SelectListItem() { Value = "0", Text = "-- Seleccione --" });
+                Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
+            }
             
+
+
 
 
             return View(modelo);

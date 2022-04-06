@@ -156,6 +156,11 @@ namespace MEF.Expedientes.Service.Maestras
                     Mientidad[0].FEC_MODIFICACION = DateTime.Now;
                     Mientidad[0].USU_MODIFICACION = entExpedientes.USU_MODIFICACION;
 
+                    Mientidad[0].ID_ORGANO_INSTRUCTOR_S4 = entExpedientes.ID_ORGANO_INSTRUCTOR_S4;
+                    Mientidad[0].ID_PRESUNTA_FALTA = entExpedientes.ID_PRESUNTA_FALTA;
+                    Mientidad[0].ID_INFORME_PRECALIFICACION = entExpedientes.ID_INFORME_PRECALIFICACION;
+
+
                     Expedientes_Actualizar(Mientidad[0], ref auditoria);
                 }
                 else

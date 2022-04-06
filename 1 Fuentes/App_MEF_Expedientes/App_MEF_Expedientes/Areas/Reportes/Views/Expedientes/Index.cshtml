@@ -20,6 +20,7 @@
 
         var TipoReporte = $('input[type=radio][name=Expediente_R]:checked').val();
         var NRO_EXPEDIENTE = $("#txt_nroExpediente").val();
+        var ANIO_CODIGO = $("#ANIO_CODIGO").val();        
         var DNI = $('#txt_dni').val();
         var SITUACION = $('#ID_SITUACION_SEARCH').val() == "" ? 0 : $('#ID_SITUACION_SEARCH').val();
         var ESTADO = $('#ID_ESTADO_SEARCH').val() == "" ? 0 : $('#ID_ESTADO_SEARCH').val();
@@ -30,12 +31,12 @@
             if (NRO_EXPEDIENTE == "") {
                 jAlert('Ingrese un expediente para buscar.', 'Atención')
             } else {
-                $("#iframeReporte").attr("src", '@Url.Content("~/Reportes/Fmr_Expedientes.aspx?NRO_EXPEDIENTE=")' + NRO_EXPEDIENTE + "&DNI=" + DNI + "&ID_SITUACION=" + SITUACION + "&ID_ESTADO=" + ESTADO + "&TIPO_REPORTE=" + TipoReporte + "&ID_SANCION=" + ID_SANCION );
+                $("#iframeReporte").attr("src", '@Url.Content("~/Reportes/Fmr_Expedientes.aspx?NRO_EXPEDIENTE=")' + NRO_EXPEDIENTE + "&ANIO_CODIGO=" + ANIO_CODIGO + "&DNI=" + DNI + "&ID_SITUACION=" + SITUACION + "&ID_ESTADO=" + ESTADO + "&TIPO_REPORTE=" + TipoReporte + "&ID_SANCION=" + ID_SANCION );
              }
             } else if (TipoReporte == 2) {
-            $("#iframeReporte").attr("src", '@Url.Content("~/Reportes/Fmr_Expedientes.aspx?NRO_EXPEDIENTE=")' + NRO_EXPEDIENTE + "&DNI=" + DNI + "&ID_SITUACION=" + SITUACION + "&ID_ESTADO=" + ESTADO + "&TIPO_REPORTE=" + TipoReporte + "&ID_SANCION=" + ID_SANCION);
+            $("#iframeReporte").attr("src", '@Url.Content("~/Reportes/Fmr_Expedientes.aspx?NRO_EXPEDIENTE=")' + NRO_EXPEDIENTE + "&ANIO_CODIGO=" + ANIO_CODIGO  + "&DNI=" + DNI + "&ID_SITUACION=" + SITUACION + "&ID_ESTADO=" + ESTADO + "&TIPO_REPORTE=" + TipoReporte + "&ID_SANCION=" + ID_SANCION);
             }else if (TipoReporte == 3) {
-            $("#iframeReporte").attr("src", '@Url.Content("~/Reportes/Fmr_Expedientes.aspx?NRO_EXPEDIENTE=")' + NRO_EXPEDIENTE + "&DNI=" + DNI + "&ID_SITUACION=" + SITUACION + "&ID_ESTADO=" + ESTADO + "&TIPO_REPORTE=" + TipoReporte + "&ID_SANCION=" + ID_SANCION);
+            $("#iframeReporte").attr("src", '@Url.Content("~/Reportes/Fmr_Expedientes.aspx?NRO_EXPEDIENTE=")' + NRO_EXPEDIENTE + "&ANIO_CODIGO=" + ANIO_CODIGO + "&DNI=" + DNI + "&ID_SITUACION=" + SITUACION + "&ID_ESTADO=" + ESTADO + "&TIPO_REPORTE=" + TipoReporte + "&ID_SANCION=" + ID_SANCION);
             }
 
     });
@@ -122,9 +123,15 @@
                             <label class="col-sm-15 control-label" for="form-field-1" style="width: 100%; margin-top: 5px; text-align: right;">Nro. Expediente:</label>
                         </div>
                         <div class="col-sm-2">
-                            <input type="text" id="txt_nroExpediente" name="txt_nroExpediente" maxlength="30" class="form-control" style="width: 100%" />
+                            <div class="input-group">
+                                <input type="text" id="txt_nroExpediente" name="txt_nroExpediente" maxlength="30" class="form-control" style="width: 100%" />
+                                <span class="input-group-addon" style="cursor: pointer;  padding: 0px !important;font-weight: bold; border:0px;" title="selccione año">
+                                    @Html.DropDownListFor(x => x.ANIO_CODIGO, Model.Lista_CorrelativoEx, new { @class = "form-control", @maxlength = "50", @style = "width:80px" })
+                                </span>
+                            </div>
                         </div>
-                    </div>
+                          
+                        </div>
 
                     <div class="col-sm-1">
                         <label class="col-sm-15 control-label" for="form-field-1" style="width: 100%; margin-top: 5px; text-align: right;">Dni:</label>

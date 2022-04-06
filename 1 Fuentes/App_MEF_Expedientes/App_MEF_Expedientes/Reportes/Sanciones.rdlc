@@ -88,7 +88,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Personal</Value>
+                              <Value>Persona</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -124,7 +124,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Regimel Laboral</Value>
+                              <Value>Regimen Laboral</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -160,9 +160,13 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Oficina</Value>
+                              <Value>Organo/ Unidad Organica</Value>
                               <Style>
+                                <FontStyle>Normal</FontStyle>
+                                <FontFamily>Calibri</FontFamily>
                                 <FontWeight>Bold</FontWeight>
+                                <TextDecoration>None</TextDecoration>
+                                <Color>#000000</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -294,7 +298,20 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>DocumentoNotifica</Value>
+                              <Value>Documento</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Notifica</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -531,7 +548,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!COD_EXPEDIENTE.Value</Value>
+                              <Value>=Fields!COD_EXPEDIENTE.Value &amp; "-" &amp; Fields!ANIO_CODIGO.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -1196,6 +1213,10 @@
           <DataField>DOCUMENTO_NOTIFICA</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="EXTENSION_ARCHIVO">
+          <DataField>EXTENSION_ARCHIVO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="SITUACION">
           <DataField>SITUACION</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -1243,6 +1264,30 @@
         <Field Name="DESC_PUESTO">
           <DataField>DESC_PUESTO</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DIAS">
+          <DataField>DIAS</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ORGANO_INSTRUCTOR_S4">
+          <DataField>ORGANO_INSTRUCTOR_S4</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ID_ORGANO_INSTRUCTOR_S4">
+          <DataField>ID_ORGANO_INSTRUCTOR_S4</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="ID_PRESUNTA_FALTA">
+          <DataField>ID_PRESUNTA_FALTA</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="ID_INFORME_PRECALIFICACION">
+          <DataField>ID_INFORME_PRECALIFICACION</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="ANIO_CODIGO">
+          <DataField>ANIO_CODIGO</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>

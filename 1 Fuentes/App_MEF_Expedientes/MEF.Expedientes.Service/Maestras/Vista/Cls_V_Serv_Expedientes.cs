@@ -74,6 +74,11 @@ namespace MEF.Expedientes.Service.Maestras.Vista
                         int pos_FALTA = dr.GetOrdinal("FALTA");
                         int pos_EXTENSION_ARCHIVO = dr.GetOrdinal("EXTENSION_ARCHIVO");
                         int pos_DIAS = dr.GetOrdinal("DIAS");
+                        int pos_ORGANO_INSTRUCTOR_S4 = dr.GetOrdinal("ORGANO_INSTRUCTOR_S4");
+                        int pos_ID_PRESUNTA_FALTA = dr.GetOrdinal("ID_PRESUNTA_FALTA");
+                        int pos_ID_INFORME_PRECALIFICACION = dr.GetOrdinal("ID_INFORME_PRECALIFICACION");
+                        int pos_ANIO_CODIGO = dr.GetOrdinal("ANIO_CODIGO");
+                        int pos_ID_ORGANO_INSTRUCTOR_S4 = dr.GetOrdinal("ID_ORGANO_INSTRUCTOR_S4");
                         if (dr.HasRows)
                             while (dr.Read())
                             {
@@ -138,6 +143,22 @@ namespace MEF.Expedientes.Service.Maestras.Vista
                                 if (dr.IsDBNull(pos_EXTENSION_ARCHIVO)) entidad.EXTENSION_ARCHIVO = "";
                                 else entidad.EXTENSION_ARCHIVO = dr.GetString(pos_EXTENSION_ARCHIVO);
 
+                                if (dr.IsDBNull(pos_ORGANO_INSTRUCTOR_S4)) entidad.ORGANO_INSTRUCTOR_S4 = "";
+                                else entidad.ORGANO_INSTRUCTOR_S4 = dr.GetString(pos_ORGANO_INSTRUCTOR_S4);
+
+                                
+                                if (dr.IsDBNull(pos_ID_PRESUNTA_FALTA)) entidad.ID_PRESUNTA_FALTA = 0;
+                                else entidad.ID_PRESUNTA_FALTA = int.Parse(dr[pos_ID_PRESUNTA_FALTA].ToString());
+
+                                if (dr.IsDBNull(pos_ID_INFORME_PRECALIFICACION)) entidad.ID_INFORME_PRECALIFICACION = 0;
+                                else entidad.ID_INFORME_PRECALIFICACION = int.Parse(dr[pos_ID_INFORME_PRECALIFICACION].ToString());
+
+                                if (dr.IsDBNull(pos_ANIO_CODIGO)) entidad.ANIO_CODIGO = 0;
+                                else entidad.ANIO_CODIGO = int.Parse(dr[pos_ANIO_CODIGO].ToString());
+
+                                if (dr.IsDBNull(pos_ID_ORGANO_INSTRUCTOR_S4)) entidad.ID_ORGANO_INSTRUCTOR_S4 = 0;
+                                else entidad.ID_ORGANO_INSTRUCTOR_S4 = long.Parse(dr[pos_ID_ORGANO_INSTRUCTOR_S4].ToString());
+
 
                                 if (dr.IsDBNull(pos_DIAS)) entidad.DIAS = 0;
                                 else entidad.DIAS = int.Parse(dr[pos_DIAS].ToString());
@@ -171,7 +192,7 @@ namespace MEF.Expedientes.Service.Maestras.Vista
                 if (Param.ID_EXPEDIENTE != 0)
                     entidad = FindAll(w => w.ID_EXPEDIENTE == Param.ID_EXPEDIENTE);
                 else if (Param.COD_EXPEDIENTE != null)
-                    entidad = FindAll(e => e.COD_EXPEDIENTE.ToUpper() == Param.COD_EXPEDIENTE.ToUpper());
+                    entidad = FindAll(e => e.COD_EXPEDIENTE.ToUpper() == Param.COD_EXPEDIENTE.ToUpper() &&  e.ANIO_CODIGO == Param.ANIO_CODIGO);
             }
             catch (Exception ex)
             {

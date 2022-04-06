@@ -26,18 +26,19 @@ namespace App_MEF_Expedientes.Reportes
             if (!IsPostBack)
             {
                 string NRO_EXPEDIENTE = Request.QueryString["NRO_EXPEDIENTE"].ToString();
+                int ANIO_CODIGO = int.Parse(Request.QueryString["ANIO_CODIGO"].ToString());
                 string DNI = Request.QueryString["DNI"].ToString();
                 long ID_SITUACION = long.Parse(Request.QueryString["ID_SITUACION"].ToString());
                 long ID_ESTADO = long.Parse(Request.QueryString["ID_ESTADO"].ToString());
                 int TIPO_REPORTE = int.Parse(Request.QueryString["TIPO_REPORTE"].ToString());
                 long ID_SANCION = long.Parse(Request.QueryString["ID_SANCION"].ToString());
 
-                GenerarReporte(NRO_EXPEDIENTE, DNI ,ID_SITUACION, ID_ESTADO, TIPO_REPORTE, ID_SANCION);
+                GenerarReporte(NRO_EXPEDIENTE, ANIO_CODIGO, DNI ,ID_SITUACION, ID_ESTADO, TIPO_REPORTE, ID_SANCION);
 
             }
         }
 
-        private void GenerarReporte(string NRO_EXPEDIENTE, string DNI , long ID_SITUACION, long ID_ESTADO, long TIPO_REPORTE, long ID_SANCION)
+        private void GenerarReporte(string NRO_EXPEDIENTE,int ANIO_CODIGO,  string DNI , long ID_SITUACION, long ID_ESTADO, long TIPO_REPORTE, long ID_SANCION)
         {
 
             Cls_Ent_Auditoria auditoria = new Cls_Ent_Auditoria();
@@ -49,6 +50,7 @@ namespace App_MEF_Expedientes.Reportes
                     IEnumerable<Cls_v_Expedientes> lista = null;
                     Cls_v_Expedientes entidad = new Cls_v_Expedientes();
                     entidad.COD_EXPEDIENTE = NRO_EXPEDIENTE;
+                    entidad.ANIO_CODIGO = ANIO_CODIGO;
                     ReportViewer1.LocalReport.DataSources.Clear();
                     lista = _cls_V_Serv_Expedientes.Expedientes_V_Buscar(ref auditoria, entidad);
                     if (!auditoria.EJECUCION_PROCEDIMIENTO)

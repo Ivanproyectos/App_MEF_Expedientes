@@ -41,7 +41,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
 
 
 
-        [Display(Name = "Fecha Hecho:")]
+        [Display(Name = "Fecha de comisión de los hechos:")]
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "[Fecha Hecho] es obligatorio")]
         public string FECHA_HECHO { get; set; }
@@ -76,11 +76,35 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
         public List<SelectListItem> Lista_Acto { get; set; }
 
 
+
+        [Display(Name = "Presunta Falta:")]
+        [DataType(DataType.Text)]
+        //[Required(ErrorMessage = "[Acto] es obligatorio")]
+        public long? ID_PRESUNTA_FALTA { get; set; }
+        public List<SelectListItem> Lista_PresuntaFalta{ get; set; }
+
+
+        [Display(Name = "Informe Precalificación:")]
+        [DataType(DataType.Text)]
+        public long? ID_INFORME_PRECALIFICACION { get; set; }
+        public List<SelectListItem> Lista_InformePrecalificacion { get; set; }
+
+
         [Display(Name = "Observación:")]
         [DataType(DataType.Text)]
         //[Required(ErrorMessage = "[Observación] es obligatorio")]
         public string OBSERVACION_INVESTIGADORA { get; set; }
 
+
+
+        [Display(Name = "Órgano Instructor:")]
+        [DataType(DataType.Text)]
+        public string ORGANO_INSTRUCTOR_S4 { get; set; }
+        
+
+
+        [DataType(DataType.Text)]
+        public long? ID_ORGANO_INSTRUCTOR_S4 { get; set; }
 
 
         [Display(Name = "Falta:")]
@@ -239,7 +263,8 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
         public string Accion { get; set; }
 
         public int ID_ESTADO_SEARCH { get; set; }
-
+        public int? ANIO_CODIGO { get; set; }
+        public List<SelectListItem> Lista_CorrelativoEx { get; set; }
 
         public Cls_Ent_Archivo MiArchivo { get; set; }
         

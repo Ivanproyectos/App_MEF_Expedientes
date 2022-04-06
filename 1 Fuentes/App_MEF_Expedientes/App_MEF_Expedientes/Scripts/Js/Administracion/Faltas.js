@@ -44,7 +44,7 @@ function Faltas_CargarGrilla() {
         DESC_CORTA_DOMINIO: $("#txt_DescripcionCorta").val(),
         DESC_LARGA_DOMINIO: $("#txt_DescripcionLarga").val(),
         FLG_ESTADO: $("#CBOESTADO").val(),
-        NOM_DOMINIO: 'TIPACT' // ACTOS
+        NOM_DOMINIO: 'TIPFAL' // faltas
     };
     var url = baseUrl + 'Administracion/Faltas/Faltas_Listar';
 

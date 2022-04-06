@@ -132,7 +132,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
                         null,
                         null,
                         item.ID_EXPEDIENTE.ToString(),
-                        item.COD_EXPEDIENTE.ToString(),
+                        item.COD_EXPEDIENTE.ToString() + "-" + item.ANIO_CODIGO.ToString(),
                         item.NOMBRE_COMPLETO.ToString(),
                         item.OFICINA,
                         item.REGIMEN_LABORAL,
@@ -266,6 +266,13 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
                             modelo.OBSERVACION_SANCIONADORA = item.OBSERVACION_SANCIONADORA;
                             modelo.DIAS_VIGENTE = item.DIAS_VIGENTE;
                             modelo.DOCUMENTO_NOTIFICA = item.DOCUMENTO_NOTIFICA;
+
+                            modelo.ORGANO_INSTRUCTOR_S4 = item.ORGANO_INSTRUCTOR_S4;
+                            modelo.ID_PRESUNTA_FALTA = item.ID_PRESUNTA_FALTA;
+                            modelo.ID_INFORME_PRECALIFICACION = item.ID_INFORME_PRECALIFICACION;
+                            modelo.ID_ORGANO_INSTRUCTOR_S4 = item.ID_ORGANO_INSTRUCTOR_S4;
+                            modelo.ANIO_CODIGO = item.ANIO_CODIGO;
+                            
                         }
                     }
                 }
@@ -403,6 +410,20 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
                     modelo.Lista_Falta.Insert(0, new SelectListItem() { Value = "0", Text = "-- Seleccione --" });
                     Recursos.Clases.Css_Log.Guardar(auditoria.ERROR_LOG);
                 }
+
+                modelo.Lista_PresuntaFalta = new List<SelectListItem>();
+                modelo.Lista_PresuntaFalta.Insert(0, new SelectListItem() { Value = "0", Text = "--Seleccione--" });
+                modelo.Lista_PresuntaFalta.Insert(1, new SelectListItem() { Value = "1", Text = "AMONESTACION ESCRITA" });
+                modelo.Lista_PresuntaFalta.Insert(2, new SelectListItem() { Value = "2", Text = "SUSPENSIÓN" });
+                modelo.Lista_PresuntaFalta.Insert(3, new SelectListItem() { Value = "3", Text = "DESTITUCIÓN" });
+
+
+                modelo.Lista_InformePrecalificacion = new List<SelectListItem>();
+                modelo.Lista_InformePrecalificacion.Insert(0, new SelectListItem() { Value = "0", Text = "--Seleccione--" });
+                modelo.Lista_InformePrecalificacion.Insert(1, new SelectListItem() { Value = "1", Text = "INICIO DE PAD" });
+                modelo.Lista_InformePrecalificacion.Insert(2, new SelectListItem() { Value = "2", Text = "NO HA LUGAR" });
+                
+
             }
             catch (Exception ex)
             {
@@ -522,6 +543,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
             int _NextVal = 0; 
             Cls_Ent_Auditoria auditoria = new Cls_Ent_Auditoria();
             try {
+                // generar codigo expediente
                 Cls_Ent_Dominio entidad_Correlativo = new Cls_Ent_Dominio();
                 entidad_Correlativo.COD_DOMINIO = "NUM_EXP";
                 Cls_Ent_Dominio _Correlativo = _cls_Serv_Dominio.Dominio_Listar_MaxId(entidad_Correlativo, ref auditoria);
@@ -557,6 +579,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
                         {
                             if (FLG_CODIGO == 1)
                             {
+                                // actualizar codigo expediente nuevo correlativo
                                 Cls_Ent_Dominio entidad_Dominio = new Cls_Ent_Dominio();
                                 string CODIGO_EXP = "";
                                 _NextVal = (_NextVal + 1);
@@ -569,7 +592,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
                                 }
                                 else
                                 {
-                                    auditoria.Rechazar("Correlativo Limite: Correlativo alcanzo el limite.");
+                                    CODIGO_EXP = string.Format("{0}{1}", "EXP", _NextVal); 
                                 }
                                 entidad_Dominio.ID_DOMINIO = _Correlativo.ID_DOMINIO;
                                 entidad_Dominio.COD_DOMINIO = _Correlativo.COD_DOMINIO;

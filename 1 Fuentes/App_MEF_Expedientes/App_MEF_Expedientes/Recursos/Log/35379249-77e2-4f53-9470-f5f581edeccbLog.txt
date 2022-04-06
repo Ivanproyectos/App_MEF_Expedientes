@@ -1,0 +1,13 @@
+System.Data.ConstraintException: No se puede establecer la propiedad 'ID_ORGANO_INSTRUCTOR_S4' de 'Cls_v_Expedientes' en un valor 'null'. Debe establecer esta propiedad en un valor que no sea NULL de tipo 'System.Int64'. 
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.GetPropertyValueWithErrorHandling[TProperty](Int32 ordinal, String propertyName, String typeName)
+   en lambda_method(Closure , Shaper )
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper.HandleEntityAppendOnly[TEntity](Func`2 constructEntityDelegate, EntityKey entityKey, EntitySet entitySet)
+   en lambda_method(Closure , Shaper )
+   en System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   en System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   en System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   en System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   en System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   en MEF.Expedientes.Repository.Repository`1.GetAll() en C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Repository\Repository.cs:línea 27
+   en MEF.Expedientes.Service.Maestras.Vista.Cls_V_Serv_Expedientes.Expedientes_V_GetAll(Cls_Ent_Auditoria& auditoria, Cls_v_Expedientes Param) en C:\Users\ivans\OneDrive\Documentos\GitHub\App_MEF_Expedientes\1 Fuentes\App_MEF_Expedientes\MEF.Expedientes.Service\Maestras\Vista\Cls_V_Serv_Expedientes.cs:línea 219

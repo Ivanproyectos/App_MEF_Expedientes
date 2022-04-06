@@ -62,7 +62,23 @@ namespace MEF.Expedientes.Service.Administracion
             return lista;
         }
 
+        public IEnumerable<Cls_Ent_Dominio> Dominio_Buscar_IdPadre(ref Cls_Ent_Auditoria auditoria, string NOM_DOMINIO = null)
+        {
+            auditoria.Limpiar();
+            IEnumerable<Cls_Ent_Dominio> entidad = new List<Cls_Ent_Dominio>();
 
+            try
+            {
+                    if (NOM_DOMINIO != null)
+                        entidad = FindAll(e => e.COD_DOMINIO.ToUpper() == NOM_DOMINIO.ToUpper());
+                
+            }
+            catch (Exception ex)
+            {
+                auditoria.Error(ex);
+            }
+            return entidad;
+        }
 
         public IEnumerable<Cls_Ent_Dominio> Dominio_Buscar(ref Cls_Ent_Auditoria auditoria, long id = 0, string descripcion = null,string NOM_DOMINIO = null, string COD_DOMINIO=null)
         {
@@ -184,6 +200,7 @@ namespace MEF.Expedientes.Service.Administracion
         {
             auditoria.Limpiar();
             List<Cls_Ent_Dominio> Mientidad = (List<Cls_Ent_Dominio>)Dominio_Buscar(ref auditoria, entidad.ID_DOMINIO);
+
             try
             {
                 if (Mientidad != null)
@@ -222,7 +239,7 @@ namespace MEF.Expedientes.Service.Administracion
             bool Valido = true;
             string mensaje = ""; 
             List<Cls_Ent_Dominio> buscar = Dominio_Buscar(ref auditoria, entidad.ID_DOMINIO, entidad.DESC_CORTA_DOMINIO, entidad.NOM_DOMINIO,entidad.COD_DOMINIO).ToList();
-
+            List<Cls_Ent_Dominio> ListaDominio = Dominio_Buscar_IdPadre(ref auditoria, entidad.NOM_DOMINIO).ToList();
             try
             {
                 if (buscar.Count() > 0)
@@ -252,7 +269,7 @@ namespace MEF.Expedientes.Service.Administracion
 
                 if (Valido)
                 {
-               
+                        entidad.ID_DOMINIO_PADRE = ListaDominio[0].ID_DOMINIO;
                         entidad.ID_DOMINIO = GetSequence(SECUENCIA);
                         entidad.FLG_ESTADO = 1;
                         entidad.FEC_CREACION = DateTime.Now;
