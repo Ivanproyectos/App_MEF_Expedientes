@@ -15,6 +15,7 @@
         $('#Grilla_Load').show();
         Remove_RemoverClases("liExpedientes");
         setTimeout("Expedientes_ConfigurarGrilla();", 200);
+        setTimeout(function () { $('#Grilla_Load').hide() }, 500);
     });
 
     $("#btnLimpiarExpedientes").click(function (e) {

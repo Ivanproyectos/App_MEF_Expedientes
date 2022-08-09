@@ -180,8 +180,6 @@ namespace MEF.Expedientes.Service.Maestras.Vista
             return lista;
         }
 
-
-
         public IEnumerable<Cls_v_Expedientes> Expedientes_V_Buscar(ref Cls_Ent_Auditoria auditoria, Cls_v_Expedientes Param)
         {
             auditoria.Limpiar();

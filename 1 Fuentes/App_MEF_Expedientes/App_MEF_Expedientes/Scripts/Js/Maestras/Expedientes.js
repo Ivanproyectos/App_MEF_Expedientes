@@ -43,7 +43,6 @@ function Expedientes_ConfigurarGrilla() {
     var opciones = {
         GridLocal: false, multiselect: false, CellEdit: false, Editar: false, nuevo: false, eliminar: false, search: false, sort: 'DESC', rules: true,
         gridCompleteFunc: function () {
-            $('#Grilla_Load').hide();
             Documento_ConfigurarColor_FechaPrescripcion(Expedientes_grilla);
  
         },

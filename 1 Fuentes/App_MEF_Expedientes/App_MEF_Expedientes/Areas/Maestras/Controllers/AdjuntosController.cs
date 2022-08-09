@@ -94,10 +94,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Controllers
         }
 
 
-        
-
-
-
+      
         public ActionResult Adjuntos_Insertar(AdjuntosModelView param)
         {
 

@@ -16,7 +16,7 @@ namespace App_MEF_Expedientes.Areas.Maestras.Models
 
         [Display(Name = "Personal:")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "[Personal] es obligatorio")]
+        //[Required(ErrorMessage = "[Personal] es obligatorio")]
         public string SEARCH_PERSONAL { get; set; }
 
         public string ID_PERSONAL { get; set; }
